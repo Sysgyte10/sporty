@@ -70,12 +70,12 @@ export const CustomButton: React.FC<ICustomButtonProps> = ({
   const { getTextColor } = useCustomText();
   const { getButtonColor } = useCustomButton();
   const textColor = getTextColor(
-    purple,
-    black,
-    lightGrey,
-    darkGrey,
-    white,
-    danger
+    textPurple,
+    textBlack,
+    textLightGrey,
+    textDarkGrey,
+    textWhite,
+    textDanger
   );
   const btnBgColor = getButtonColor(
     purple,
