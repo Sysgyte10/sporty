@@ -42,7 +42,12 @@ export const useStepper = (
   useEffect(() => {
     addSubmittedSteps(activeStepIndex);
     setBtnStepperText(
-      getButtonBtnState(activeStepIndex, data.length - 1, submitText)
+      getButtonBtnState(
+        activeStepIndex,
+        data.length - 1,
+        submitText,
+        processingText
+      )
     );
   }, [activeStepIndex]);
 

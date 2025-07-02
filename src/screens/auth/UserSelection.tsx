@@ -16,11 +16,47 @@ import {
 import { useStepper } from "@src/stepper/hooks/useStepper";
 import { FormStepper } from "@src/stepper/ui/Stepper";
 import { CustomInput } from "@src/components/shared/input/CustomInput";
+import { useForm } from "react-hook-form";
+import { userSelectionStep1, userSelectionStep2 } from "@src/form/types/types";
+import { yupResolver } from "@hookform/resolvers/yup";
+import {
+  userSelectionStep1ValidationSchema,
+  userSelectionStep2ValidationSchema,
+} from "@src/form/validation-rule/rule";
+import { Step1, Step2 } from "@src/components/auth/user-selection";
 
 export const UserSelection =
   ({}: AuthScreenProps<authScreenNames.USER_SELECTION>) => {
     const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
     const [searchValue, setSearchValue] = useState<string>("");
+
+    //user selection step_1 form control
+    const {
+      control: step1Control,
+      formState: { errors: step1Error },
+      trigger: step1Trigger,
+      setValue: setStep1Value,
+      getValues: getStep1Value,
+      clearErrors: clearStep1Errors,
+    } = useForm<userSelectionStep1>({
+      mode: "onChange",
+      resolver: yupResolver(userSelectionStep1ValidationSchema),
+    });
+
+    //user selection step_2 form control
+    const {
+      control: step2Control,
+      formState: { errors: step2Error },
+      trigger: step2Trigger,
+      setValue: setStep2Value,
+      getValues: getStep2Value,
+      clearErrors: clearStep2Errors,
+    } = useForm<userSelectionStep2>({
+      mode: "onChange",
+      resolver: yupResolver(userSelectionStep2ValidationSchema),
+    });
+
+    //stepper logics and functions
     const {
       activeStepIndex,
       nextStep,
@@ -28,6 +64,39 @@ export const UserSelection =
       btnStepperText,
       submittedStepsIndex,
     } = useStepper(userSelectionSteps, "Next", "Submit");
+
+    const steps = [
+      <Step1
+        useFormProps={{
+          control: step1Control,
+          errors: step1Error,
+          setValues: setStep1Value,
+          clearErrors: clearStep1Errors,
+        }}
+      />,
+      <Step2
+        useFormProps={{
+          control: step2Control,
+          errors: step2Error,
+          setValues: setStep2Value,
+          clearErrors: clearStep2Errors,
+        }}
+      />,
+    ];
+
+    const onSubmit = async () => {
+      let isValid = false;
+      if (activeStepIndex === 0) {
+        isValid = await step1Trigger();
+        if (isValid) nextStep();
+      } else if (activeStepIndex === 1) {
+        isValid = await step2Trigger();
+        if (isValid) {
+          //navigate to age selection
+        }
+      }
+    };
+
     return (
       <>
         <StatusBar style='light' />
@@ -41,7 +110,7 @@ export const UserSelection =
               activeStep={activeStepIndex}
               submittedSteps={submittedStepsIndex}
               submittedBgColor={
-                activeStepIndex > 0 ? `${colors.lightGrey}` : colors.darkGrey
+                activeStepIndex > 0 ? `${colors.purple}` : colors.darkGrey
               }
               activeBgColor={`${colors.purple}`}
               inactiveBgColor={colors.white}
@@ -73,10 +142,11 @@ export const UserSelection =
               color: colors.white,
             }}
           />
+          <View>{steps[activeStepIndex]}</View>
           <View style={styles.actionContainer}>
             <CustomButton
-              title='Next'
-              onPress={() => {}}
+              title={String(btnStepperText)}
+              onPress={() => onSubmit()}
               purple
               textWhite
               textType='medium'

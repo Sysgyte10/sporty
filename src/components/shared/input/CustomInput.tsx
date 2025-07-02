@@ -98,6 +98,11 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
 
   const renderDropdown = () => {
     const { dropDownItems, onSelectDropDownItem } = props as DropdownProps;
+    const flattenedStyle = StyleSheet.flatten(style);
+    const flattenedHeight = Number(flattenedStyle?.height);
+    const iconSize = flattenedHeight
+      ? flattenedHeight * 0.5
+      : moderateScale(27);
 
     return (
       <>
@@ -131,10 +136,17 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
           />
           <TouchableOpacity
             onPress={() => setModalVisible(true)}
-            style={styles.iconButton}>
+            style={[
+              styles.iconButton,
+              {
+                paddingTop: flattenedHeight
+                  ? (flattenedHeight - iconSize) / 2
+                  : moderateScale(27),
+              },
+            ]}>
             <MaterialIcons
-              name='keyboard-arrow-down'
-              size={moderateScale(27)}
+              name={modalVisible ? "keyboard-arrow-up" : "keyboard-arrow-down"}
+              size={flattenedHeight ? flattenedHeight * 0.5 : moderateScale(27)}
               color={iconColor}
             />
           </TouchableOpacity>
@@ -152,7 +164,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
               </CustomText>
               <FlatList
                 data={dropDownItems}
-                keyExtractor={(__, index) => index.toString()}
+                keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item }) => (
                   <TouchableOpacity
                     style={styles.option}
@@ -231,6 +243,8 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
   const renderCustomInput = () => {
     const { keyboardType, disabled, multiLine, searchInput, height } =
       props as CustomProps;
+    const flattened = StyleSheet.flatten(style);
+    const flattenedHeight = Number(flattened?.height);
 
     return (
       <>
@@ -250,7 +264,11 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
             <Feather
               name='search'
               color={borderColor}
-              size={moderateScale(23)}
+              size={
+                flattenedHeight
+                  ? Math.min(flattenedHeight * 0.6, moderateScale(26))
+                  : moderateScale(25)
+              }
             />
           )}
           <TextInput
