@@ -3,6 +3,7 @@ import { colors } from "@src/resources/color/color";
 import { moderateScale } from "@src/resources/responsiveness";
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
+import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
 
 interface IButtonListProps {
   data: string[];
@@ -25,24 +26,27 @@ export const ButtonList: React.FC<IButtonListProps> = ({
       }}>
       {data &&
         data.map((item, index) => (
-          <CustomButton
-            title={item}
-            key={index}
-            onPress={() => onButtonPress(item)}
-            buttonType='Solid'
-            textType='regular'
-            textSize={10}
-            btnStyle={[
-              styles.btn,
-              {
-                backgroundColor:
-                  selectedBtn === item ? colors.purple : "#0D0D0D",
-              },
-            ]}
-            textStyle={{
-              color: selectedBtn === item ? colors.white : colors.lightGrey,
-            }}
-          />
+          <Animated.View
+            entering={SlideInRight.springify().delay(index * 150)}
+            key={index}>
+            <CustomButton
+              title={item}
+              onPress={() => onButtonPress(item)}
+              buttonType='Solid'
+              textType='regular'
+              textSize={10}
+              btnStyle={[
+                styles.btn,
+                {
+                  backgroundColor:
+                    selectedBtn === item ? colors.purple : "#0D0D0D",
+                },
+              ]}
+              textStyle={{
+                color: selectedBtn === item ? colors.white : colors.lightGrey,
+              }}
+            />
+          </Animated.View>
         ))}
     </ScrollView>
   );

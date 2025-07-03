@@ -3,6 +3,7 @@ import {
   BottomTabBarStackParamList,
   RootStackParamList,
 } from "@src/router/types";
+import { ImageSourcePropType } from "react-native";
 
 export type authScreenTypes = {
   screenName: keyof AuthStackParamList;
@@ -18,3 +19,9 @@ export type bottomTabScreenTypes = {
   screenName: keyof BottomTabBarStackParamList;
   component: React.ComponentType<any>;
 };
+
+export type teamsDataType = {
+  club: string;
+  country: string;
+  image: ImageSourcePropType;
+}[];

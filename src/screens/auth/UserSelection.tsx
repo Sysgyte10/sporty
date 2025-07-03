@@ -11,6 +11,7 @@ import { CustomButton } from "@src/components/shared";
 import { MaterialIcons } from "@expo/vector-icons";
 import {
   sportyTypes,
+  teamsData,
   userSelectionSteps,
 } from "@src/constants/user-selection-steps";
 import { useStepper } from "@src/stepper/hooks/useStepper";
@@ -24,11 +25,16 @@ import {
   userSelectionStep2ValidationSchema,
 } from "@src/form/validation-rule/rule";
 import { Step1, Step2 } from "@src/components/auth/user-selection";
+import { useSearchFilter } from "@src/hooks";
+import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 
 export const UserSelection =
   ({}: AuthScreenProps<authScreenNames.USER_SELECTION>) => {
     const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
-    const [searchValue, setSearchValue] = useState<string>("");
+    const { filteredData, searchVal, setSearchVal } = useSearchFilter(
+      teamsData,
+      "club"
+    );
 
     //user selection step_1 form control
     const {
@@ -73,6 +79,7 @@ export const UserSelection =
           setValues: setStep1Value,
           clearErrors: clearStep1Errors,
         }}
+        teamsData={filteredData}
       />,
       <Step2
         useFormProps={{
@@ -120,8 +127,8 @@ export const UserSelection =
             />
           </View>
           <FormHeader
-            title='Add Teams'
-            description='Select one one or more teams. These will appear in your favorite tab'
+            title={String(returnFormTitleNDesc(activeStepIndex)?.title)}
+            description={String(returnFormTitleNDesc(activeStepIndex)?.desc)}
           />
           <View style={styles.btnListContainer}>
             <ButtonList
@@ -133,8 +140,8 @@ export const UserSelection =
           <CustomInput
             type='custom'
             searchInput
-            value={searchValue}
-            onChangeText={(text) => setSearchValue(text)}
+            value={searchVal}
+            onChangeText={(text) => setSearchVal(text)}
             placeholder='Search'
             placeHolderTextColor={colors.lightGrey}
             style={styles.input}

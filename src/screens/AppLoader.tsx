@@ -11,7 +11,7 @@ export const AppLoader = () => {
     <>
       <CommonStatusBar style='light' bgColor={colors.purple} />
       <AppWrapper
-        bgColor={colors.black}
+        bgColor={"#0F0F0F"}
         style={{
           width: screenWidth,
           height: screenHeight,
@@ -38,7 +38,7 @@ const loaderStyles = StyleSheet.create({
     height: "10%",
   },
   iconContainer: {
-    width: "50%",
+    width: "70%",
     height: DVH(10),
   },
   icon: {

@@ -1,3 +1,5 @@
+import { teamsDataType } from "@src/types/types";
+
 export const userSelectionSteps = ["1", "2", "3"];
 export const sportyTypes = [
   "Football",
@@ -21,4 +23,32 @@ export const sportyTypes = [
   "Surfing",
   "Rowing",
   "Ice Hockey",
+];
+
+export const teamsData: teamsDataType = [
+  {
+    club: "Manchester United",
+    image: require("@src/assets/png/man-u.png"),
+    country: "England",
+  },
+  {
+    club: "Liverpool",
+    image: require("@src/assets/png/liverpool.png"),
+    country: "England",
+  },
+  {
+    club: "Arsenal",
+    image: require("@src/assets/png/arsenal.png"),
+    country: "England",
+  },
+  {
+    club: "Totteham Hotspur",
+    image: require("@src/assets/png/totheham.png"),
+    country: "England",
+  },
+  {
+    club: "Chelsea",
+    image: require("@src/assets/png/chelsea.png"),
+    country: "England",
+  },
 ];
