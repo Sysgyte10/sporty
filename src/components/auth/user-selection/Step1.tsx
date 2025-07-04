@@ -51,7 +51,7 @@ export const Step1: React.FC<IStep1Props> = ({ useFormProps, teamsData }) => {
             (team) => team.toLowerCase() === item?.club?.toLowerCase()
           );
           return (
-            <Animated.View entering={FadeIn.springify().delay(index * 300)}>
+            <Animated.View entering={FadeIn.delay(index * 200)}>
               <TeamCard
                 selected={selectedTeam}
                 key={index}

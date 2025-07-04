@@ -5,3 +5,8 @@ export type userSelectionStep1 = {
 export type userSelectionStep2 = {
   matchAlerts: string[];
 };
+
+export type userSelectionStep3 = {
+  pushNotifications: string[];
+  news: string[];
+};

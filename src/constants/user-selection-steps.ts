@@ -1,6 +1,6 @@
 import { teamsDataType } from "@src/types/types";
 
-export const userSelectionSteps = ["1", "2", "3"];
+export const userSelectionSteps = ["1", "2", "3", "4"];
 export const sportyTypes = [
   "Football",
   "Basketball",

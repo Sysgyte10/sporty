@@ -18,13 +18,18 @@ import { useStepper } from "@src/stepper/hooks/useStepper";
 import { FormStepper } from "@src/stepper/ui/Stepper";
 import { CustomInput } from "@src/components/shared/input/CustomInput";
 import { useForm } from "react-hook-form";
-import { userSelectionStep1, userSelectionStep2 } from "@src/form/types/types";
+import {
+  userSelectionStep1,
+  userSelectionStep2,
+  userSelectionStep3,
+} from "@src/form/types/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   userSelectionStep1ValidationSchema,
   userSelectionStep2ValidationSchema,
+  userSelectionStep3ValidationSchema,
 } from "@src/form/validation-rule/rule";
-import { Step1, Step2 } from "@src/components/auth/user-selection";
+import { Step1, Step2, Step3 } from "@src/components/auth/user-selection";
 import { useSearchFilter } from "@src/hooks";
 import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 import { AppHeader } from "../AppHeader";
@@ -64,6 +69,19 @@ export const UserSelection = ({
     resolver: yupResolver(userSelectionStep2ValidationSchema),
   });
 
+  //user selection step_3 form control
+  const {
+    control: step3Control,
+    formState: { errors: step3Error },
+    trigger: step3Trigger,
+    setValue: setStep3Value,
+    getValues: getStep3Value,
+    clearErrors: clearStep3Errors,
+  } = useForm<userSelectionStep3>({
+    mode: "onChange",
+    resolver: yupResolver(userSelectionStep3ValidationSchema),
+  });
+
   //stepper logics and functions
   const {
     activeStepIndex,
@@ -92,6 +110,17 @@ export const UserSelection = ({
         getValues: getStep2Value,
         clearErrors: clearStep2Errors,
       }}
+      teamsData={filteredData}
+    />,
+    <Step3
+      useFormProps={{
+        control: step3Control,
+        errors: step3Error,
+        setValues: setStep3Value,
+        getValues: getStep3Value,
+        clearErrors: clearStep3Errors,
+      }}
+      teamsData={filteredData}
     />,
   ];
 
@@ -102,9 +131,10 @@ export const UserSelection = ({
       if (isValid) nextStep();
     } else if (activeStepIndex === 1) {
       isValid = await step2Trigger();
-      if (isValid) {
-        //navigate to age selection
-      }
+      if (isValid) nextStep();
+    } else if (activeStepIndex === 2) {
+      isValid = await step3Trigger();
+      if (isValid) nextStep();
     }
   };
 
@@ -113,7 +143,7 @@ export const UserSelection = ({
       <StatusBar style='light' />
       <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
         <AppHeader
-          title='User Selection'
+          // title='User Selection'
           backArrow
           onGoBack={() => prevStep()}
         />
@@ -130,12 +160,13 @@ export const UserSelection = ({
             }
             activeBgColor={`${colors.purple}`}
             inactiveBgColor={colors.white}
-            stepperType='dot-only'
+            stepperType='line-stepper'
             doNotShowTitle={true}
-            lineHeight={0.2}
+            lineHeight={0.5}
           />
         </View>
         <FormHeader
+          style={styles.formTitle}
           title={String(returnFormTitleNDesc(activeStepIndex)?.title)}
           description={String(returnFormTitleNDesc(activeStepIndex)?.desc)}
         />
@@ -183,6 +214,9 @@ export const UserSelection = ({
 };
 
 const styles = StyleSheet.create({
+  formTitle: {
+    paddingVertical: moderateScale(20),
+  },
   appWrapper: {
     paddingHorizontal: moderateScale(15),
   },
