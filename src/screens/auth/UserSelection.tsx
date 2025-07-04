@@ -27,151 +27,160 @@ import {
 import { Step1, Step2 } from "@src/components/auth/user-selection";
 import { useSearchFilter } from "@src/hooks";
 import { returnFormTitleNDesc } from "@src/helper/ui-utils";
+import { AppHeader } from "../AppHeader";
 
-export const UserSelection =
-  ({}: AuthScreenProps<authScreenNames.USER_SELECTION>) => {
-    const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
-    const { filteredData, searchVal, setSearchVal } = useSearchFilter(
-      teamsData,
-      "club"
-    );
+export const UserSelection = ({
+  navigation,
+}: AuthScreenProps<authScreenNames.USER_SELECTION>) => {
+  const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
+  const { filteredData, searchVal, setSearchVal } = useSearchFilter(
+    teamsData,
+    "club"
+  );
 
-    //user selection step_1 form control
-    const {
-      control: step1Control,
-      formState: { errors: step1Error },
-      trigger: step1Trigger,
-      setValue: setStep1Value,
-      getValues: getStep1Value,
-      clearErrors: clearStep1Errors,
-    } = useForm<userSelectionStep1>({
-      mode: "onChange",
-      resolver: yupResolver(userSelectionStep1ValidationSchema),
-    });
+  //user selection step_1 form control
+  const {
+    control: step1Control,
+    formState: { errors: step1Error },
+    trigger: step1Trigger,
+    setValue: setStep1Value,
+    getValues: getStep1Value,
+    clearErrors: clearStep1Errors,
+  } = useForm<userSelectionStep1>({
+    mode: "onChange",
+    resolver: yupResolver(userSelectionStep1ValidationSchema),
+  });
 
-    //user selection step_2 form control
-    const {
-      control: step2Control,
-      formState: { errors: step2Error },
-      trigger: step2Trigger,
-      setValue: setStep2Value,
-      getValues: getStep2Value,
-      clearErrors: clearStep2Errors,
-    } = useForm<userSelectionStep2>({
-      mode: "onChange",
-      resolver: yupResolver(userSelectionStep2ValidationSchema),
-    });
+  //user selection step_2 form control
+  const {
+    control: step2Control,
+    formState: { errors: step2Error },
+    trigger: step2Trigger,
+    setValue: setStep2Value,
+    getValues: getStep2Value,
+    clearErrors: clearStep2Errors,
+  } = useForm<userSelectionStep2>({
+    mode: "onChange",
+    resolver: yupResolver(userSelectionStep2ValidationSchema),
+  });
 
-    //stepper logics and functions
-    const {
-      activeStepIndex,
-      nextStep,
-      prevStep,
-      btnStepperText,
-      submittedStepsIndex,
-    } = useStepper(userSelectionSteps, "Next", "Submit");
+  //stepper logics and functions
+  const {
+    activeStepIndex,
+    nextStep,
+    prevStep,
+    btnStepperText,
+    submittedStepsIndex,
+  } = useStepper(userSelectionSteps, "Next", "Submit");
 
-    const steps = [
-      <Step1
-        useFormProps={{
-          control: step1Control,
-          errors: step1Error,
-          setValues: setStep1Value,
-          clearErrors: clearStep1Errors,
-        }}
-        teamsData={filteredData}
-      />,
-      <Step2
-        useFormProps={{
-          control: step2Control,
-          errors: step2Error,
-          setValues: setStep2Value,
-          clearErrors: clearStep2Errors,
-        }}
-      />,
-    ];
+  const steps = [
+    <Step1
+      useFormProps={{
+        control: step1Control,
+        errors: step1Error,
+        setValues: setStep1Value,
+        getValues: getStep1Value,
+        clearErrors: clearStep1Errors,
+      }}
+      teamsData={filteredData}
+    />,
+    <Step2
+      useFormProps={{
+        control: step2Control,
+        errors: step2Error,
+        setValues: setStep2Value,
+        getValues: getStep2Value,
+        clearErrors: clearStep2Errors,
+      }}
+    />,
+  ];
 
-    const onSubmit = async () => {
-      let isValid = false;
-      if (activeStepIndex === 0) {
-        isValid = await step1Trigger();
-        if (isValid) nextStep();
-      } else if (activeStepIndex === 1) {
-        isValid = await step2Trigger();
-        if (isValid) {
-          //navigate to age selection
-        }
+  const onSubmit = async () => {
+    let isValid = false;
+    if (activeStepIndex === 0) {
+      isValid = await step1Trigger();
+      if (isValid) nextStep();
+    } else if (activeStepIndex === 1) {
+      isValid = await step2Trigger();
+      if (isValid) {
+        //navigate to age selection
       }
-    };
-
-    return (
-      <>
-        <StatusBar style='light' />
-        <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
-          <View
-            style={{
-              paddingLeft: moderateScale(30),
-            }}>
-            <FormStepper
-              formSteps={userSelectionSteps}
-              activeStep={activeStepIndex}
-              submittedSteps={submittedStepsIndex}
-              submittedBgColor={
-                activeStepIndex > 0 ? `${colors.purple}` : colors.darkGrey
-              }
-              activeBgColor={`${colors.purple}`}
-              inactiveBgColor={colors.white}
-              stepperType='dot-only'
-              doNotShowTitle={true}
-              lineHeight={0.2}
-            />
-          </View>
-          <FormHeader
-            title={String(returnFormTitleNDesc(activeStepIndex)?.title)}
-            description={String(returnFormTitleNDesc(activeStepIndex)?.desc)}
-          />
-          <View style={styles.btnListContainer}>
-            <ButtonList
-              data={sportyTypes}
-              onButtonPress={(text) => setSelectedSport(text)}
-              selectedBtn={selectedSport}
-            />
-          </View>
-          <CustomInput
-            type='custom'
-            searchInput
-            value={searchVal}
-            onChangeText={(text) => setSearchVal(text)}
-            placeholder='Search'
-            placeHolderTextColor={colors.lightGrey}
-            style={styles.input}
-            inputStyle={{
-              color: colors.white,
-            }}
-          />
-          <View>{steps[activeStepIndex]}</View>
-          <View style={styles.actionContainer}>
-            <CustomButton
-              title={String(btnStepperText)}
-              onPress={() => onSubmit()}
-              purple
-              textWhite
-              textType='medium'
-              buttonType='Solid'
-              rightIcon={
-                <MaterialIcons
-                  name='arrow-forward-ios'
-                  size={moderateScale(15)}
-                  color={colors.white}
-                />
-              }
-              btnStyle={styles.actionButton}
-            />
-          </View>
-        </AppWrapper>
-      </>
-    );
+    }
   };
+
+  return (
+    <>
+      <StatusBar style='light' />
+      <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
+        <AppHeader
+          title='User Selection'
+          backArrow
+          onGoBack={() => prevStep()}
+        />
+        <View
+          style={{
+            paddingLeft: moderateScale(30),
+          }}>
+          <FormStepper
+            formSteps={userSelectionSteps}
+            activeStep={activeStepIndex}
+            submittedSteps={submittedStepsIndex}
+            submittedBgColor={
+              activeStepIndex > 0 ? `${colors.purple}` : colors.darkGrey
+            }
+            activeBgColor={`${colors.purple}`}
+            inactiveBgColor={colors.white}
+            stepperType='dot-only'
+            doNotShowTitle={true}
+            lineHeight={0.2}
+          />
+        </View>
+        <FormHeader
+          title={String(returnFormTitleNDesc(activeStepIndex)?.title)}
+          description={String(returnFormTitleNDesc(activeStepIndex)?.desc)}
+        />
+        <View style={styles.btnListContainer}>
+          <ButtonList
+            data={sportyTypes}
+            onButtonPress={(text) => setSelectedSport(text)}
+            selectedBtn={selectedSport}
+          />
+        </View>
+        <CustomInput
+          type='custom'
+          searchInput
+          value={searchVal}
+          onChangeText={(text) => setSearchVal(text)}
+          placeholder='Search'
+          placeHolderTextColor={colors.lightGrey}
+          style={styles.input}
+          inputStyle={{
+            color: colors.white,
+          }}
+        />
+        <View>{steps[activeStepIndex]}</View>
+        <View style={styles.actionContainer}>
+          <CustomButton
+            title={String(btnStepperText)}
+            onPress={() => onSubmit()}
+            purple
+            textWhite
+            textType='medium'
+            buttonType='Solid'
+            rightIcon={
+              <MaterialIcons
+                name='arrow-forward-ios'
+                size={moderateScale(15)}
+                color={colors.white}
+              />
+            }
+            btnStyle={styles.actionButton}
+          />
+        </View>
+      </AppWrapper>
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   appWrapper: {

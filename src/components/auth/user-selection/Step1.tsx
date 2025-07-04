@@ -14,6 +14,14 @@ export const Step1: React.FC<IStep1Props> = ({ useFormProps, teamsData }) => {
   const [addedTeams, addTeams] = useState<string[]>([]);
   const props = useFormProps;
 
+  // Sync form state back into local state on mount
+  useEffect(() => {
+    const existingTeams = props?.getValues("pickedMatches");
+    if (existingTeams?.length) {
+      addTeams(existingTeams);
+    }
+  }, []);
+
   useEffect(() => {
     if (addedTeams) {
       props?.setValues("pickedMatches", addedTeams);
@@ -55,9 +63,11 @@ export const Step1: React.FC<IStep1Props> = ({ useFormProps, teamsData }) => {
                     (team) => team.toLowerCase() === selectedTeam.toLowerCase()
                   );
                   if (!isTeamExisting) {
+                    //update with new selected team if not existing
                     const updatedTeams = [...addedTeams, selectedTeam];
                     addTeams(updatedTeams);
                   } else {
+                    //remove from selected team if existing
                     const removedTeam = addedTeams.filter(
                       (team) =>
                         team.toLowerCase() !== selectedTeam.toLowerCase()
