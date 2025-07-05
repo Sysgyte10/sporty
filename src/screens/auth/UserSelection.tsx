@@ -3,11 +3,11 @@ import { AppWrapper } from "../AppWrapper";
 import { colors } from "@src/resources/color/color";
 import { AuthScreenProps } from "@src/router/types";
 import { authScreenNames } from "@src/navigation/navigation-names";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { DVW, moderateScale } from "@src/resources/responsiveness";
 import { ButtonList, FormHeader } from "@src/common";
 import { StatusBar } from "expo-status-bar";
-import { CustomButton } from "@src/components/shared";
+import { CustomButton, CustomText } from "@src/components/shared";
 import { MaterialIcons } from "@expo/vector-icons";
 import {
   sportyTypes,
@@ -134,7 +134,9 @@ export const UserSelection = ({
       if (isValid) nextStep();
     } else if (activeStepIndex === 2) {
       isValid = await step3Trigger();
-      if (isValid) nextStep();
+      if (isValid) {
+        navigation.replace(authScreenNames.AGE_SELECTION);
+      }
     }
   };
 
@@ -142,11 +144,19 @@ export const UserSelection = ({
     <>
       <StatusBar style='light' />
       <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
-        <AppHeader
-          // title='User Selection'
-          backArrow
-          onGoBack={() => prevStep()}
-        />
+        <View style={styles.headerContainer}>
+          <AppHeader
+            // title='User Selection'
+            backArrow
+            onGoBack={() => prevStep()}
+          />
+          <TouchableOpacity
+            onPress={() => navigation.replace(authScreenNames.AGE_SELECTION)}>
+            <CustomText size={16} type='medium' purple>
+              Skip
+            </CustomText>
+          </TouchableOpacity>
+        </View>
         <View
           style={{
             paddingLeft: moderateScale(30),
@@ -219,6 +229,11 @@ const styles = StyleSheet.create({
   },
   appWrapper: {
     paddingHorizontal: moderateScale(15),
+  },
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   actionContainer: {
     position: "absolute",
