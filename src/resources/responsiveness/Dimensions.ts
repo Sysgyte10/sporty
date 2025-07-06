@@ -1,18 +1,21 @@
 import { Dimensions, PixelRatio, Platform } from "react-native";
 
-export const screenHeight = Dimensions.get("window").height;
-export const screenWidth = Dimensions.get("window").width;
+export const windowHeight = Dimensions.get("window").height;
+export const windowWidth = Dimensions.get("window").width;
+
+export const screenHeight = Dimensions.get("screen").height;
+export const screenWidth = Dimensions.get("screen").width;
 
 // based on iphone 5s's scale
-export const scale = screenWidth / 320;
+export const scale = windowWidth / 320;
 
 export const guidelineBaseWidth = 350;
 export const guidelineBaseHeight = 680;
 
 export const scaleSize = (size: number) =>
-  (screenWidth / guidelineBaseWidth) * size;
+  (windowWidth / guidelineBaseWidth) * size;
 export const verticalScale = (size: number) =>
-  (screenHeight / guidelineBaseHeight) * size;
+  (windowHeight / guidelineBaseHeight) * size;
 export const moderateScale = (size: number, factor = 0.5) =>
   size + (scaleSize(size) - size) * factor;
 

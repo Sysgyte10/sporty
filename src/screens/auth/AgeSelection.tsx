@@ -49,7 +49,7 @@ export const AgeSelection = ({
             textPurple
             textType='semi-bold'
             textSize={16}
-            onPress={() => {}}
+            onPress={() => setIsAuthenticated(true)}
             btnStyle={styles.btn}
           />
         </Animated.View>

@@ -1,9 +1,9 @@
-import { CustomButton } from "@src/components/shared";
+import { CustomText } from "@src/components/shared";
 import { colors } from "@src/resources/color/color";
 import { moderateScale } from "@src/resources/responsiveness";
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
-import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
+import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import Animated, { SlideInRight } from "react-native-reanimated";
 
 interface IButtonListProps {
   data: string[];
@@ -29,23 +29,24 @@ export const ButtonList: React.FC<IButtonListProps> = ({
           <Animated.View
             entering={SlideInRight.springify().delay(index * 150)}
             key={index}>
-            <CustomButton
-              title={item}
+            <TouchableOpacity
               onPress={() => onButtonPress(item)}
-              buttonType='Solid'
-              textType='regular'
-              textSize={10}
-              btnStyle={[
+              style={[
                 styles.btn,
                 {
                   backgroundColor:
                     selectedBtn === item ? colors.purple : "#0D0D0D",
                 },
-              ]}
-              textStyle={{
-                color: selectedBtn === item ? colors.white : colors.lightGrey,
-              }}
-            />
+              ]}>
+              <CustomText
+                type='regular'
+                size={10}
+                style={{
+                  color: selectedBtn === item ? colors.white : colors.lightGrey,
+                }}>
+                {item}
+              </CustomText>
+            </TouchableOpacity>
           </Animated.View>
         ))}
     </ScrollView>
@@ -54,8 +55,8 @@ export const ButtonList: React.FC<IButtonListProps> = ({
 
 const styles = StyleSheet.create({
   btn: {
-    paddingVertical: moderateScale(7),
+    paddingHorizontal: moderateScale(15),
+    paddingVertical: moderateScale(10),
     borderRadius: moderateScale(50),
-    width: moderateScale(80),
   },
 });
