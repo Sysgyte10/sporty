@@ -151,7 +151,7 @@ export const UserSelection = ({
             onGoBack={() => prevStep()}
           />
           <TouchableOpacity
-            onPress={() => navigation.replace(authScreenNames.AGE_SELECTION)}>
+            onPress={() => navigation.navigate(authScreenNames.AGE_SELECTION)}>
             <CustomText size={16} type='medium' purple>
               Skip
             </CustomText>

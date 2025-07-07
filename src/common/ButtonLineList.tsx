@@ -10,6 +10,8 @@ import {
   LayoutChangeEvent,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Platform,
+  PlatformOSType,
 } from "react-native";
 import Animated, {
   useSharedValue,
@@ -75,6 +77,14 @@ export const ButtonLineList: React.FC<IButtonLineListProps> = ({
     }
   }, [selectedBtn]);
 
+  const returnListWidth = (platform: PlatformOSType) => {
+    if (platform === "ios") {
+      return screenWidth - 5;
+    } else {
+      return screenWidth + 5;
+    }
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -91,7 +101,9 @@ export const ButtonLineList: React.FC<IButtonLineListProps> = ({
             style={[
               styles.btn,
               {
-                width: (screenWidth - 5) / data.length,
+                width:
+                  returnListWidth(Platform.OS === "ios" ? "ios" : "android") /
+                  data.length,
                 alignItems: "center",
               },
             ]}>
