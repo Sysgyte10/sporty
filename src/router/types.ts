@@ -27,6 +27,9 @@ export interface RootStackParamList extends ParamListBase {
   Football: undefined;
   Favorite: undefined;
   ForYou: undefined;
+  FixtureInfo: {
+    fixtureId: string | number | any;
+  };
 }
 
 export type RootStackScreenProps<ScreenName extends keyof RootStackParamList> =

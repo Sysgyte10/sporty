@@ -3,16 +3,22 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Image } from "expo-image";
 import { CustomText } from "@src/components/shared";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { colors } from "@src/resources/color/color";
+import { MatchCard } from "./MatchCard";
 
 interface IFixtureCardProps {
   data: fixtureDataType;
-  onPress: () => void;
+  onPress: (fixtureId: string | number | any) => void;
+  showDate?: boolean;
 }
 
-export const FixtureCard: React.FC<IFixtureCardProps> = ({ data, onPress }) => {
+export const FixtureCard: React.FC<IFixtureCardProps> = ({
+  data,
+  onPress,
+  showDate,
+}) => {
   return (
     <View style={styles.fixtureCard}>
       <View style={styles.titleActionBtnContainer}>
@@ -30,7 +36,7 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({ data, onPress }) => {
             </CustomText>
           </View>
         </View>
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={() => onPress(data?.id)}>
           <MaterialIcons
             name='keyboard-arrow-right'
             size={moderateScale(40)}
@@ -40,45 +46,7 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({ data, onPress }) => {
       </View>
       {data?.matches &&
         data?.matches.map((matchItem, index) => (
-          <View key={index} style={styles.matchCard}>
-            <View style={styles.subMatchCard}>
-              <CustomText type='medium' size={16} lightGrey>
-                FT
-              </CustomText>
-              <View
-                style={{
-                  marginLeft: moderateScale(-10),
-                }}>
-                {matchItem &&
-                  matchItem?.club.map((club, index) => (
-                    <View key={index} style={styles.clubContainer}>
-                      <View style={styles.clubImgNameContainer}>
-                        <View style={styles.clubImgContainer}>
-                          <Image
-                            source={club?.image}
-                            contentFit='cover'
-                            style={styles.clubImg}
-                          />
-                        </View>
-                        <CustomText type='regular' size={12} lightGrey>
-                          {club?.name}
-                        </CustomText>
-                      </View>
-                      <CustomText type='regular' size={12} lightGrey>
-                        {club?.score}
-                      </CustomText>
-                    </View>
-                  ))}
-              </View>
-              <TouchableOpacity>
-                <AntDesign
-                  name='hearto'
-                  color={colors.lightGrey}
-                  size={moderateScale(25)}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
+          <MatchCard matchItem={matchItem} key={index} showDate={showDate} />
         ))}
     </View>
   );
@@ -113,43 +81,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   fixtureImgTitleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: moderateScale(20),
-  },
-  matchCard: {
-    backgroundColor: colors.black,
-    paddingVertical: moderateScale(10),
-    paddingHorizontal: moderateScale(10),
-    borderRadius: moderateScale(10),
-    marginTop: moderateScale(20),
-    overflow: "hidden",
-  },
-  subMatchCard: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  clubContainer: {
-    paddingVertical: moderateScale(5),
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "center",
-    justifyContent: "space-between",
-    width: "85%",
-    paddingHorizontal: moderateScale(10),
-  },
-  clubImgContainer: {
-    width: DVW(4),
-    height: DVH(2),
-    borderRadius: moderateScale(100),
-    overflow: "hidden",
-  },
-  clubImg: {
-    width: "100%",
-    height: "100%",
-  },
-  clubImgNameContainer: {
     flexDirection: "row",
     alignItems: "center",
     gap: moderateScale(20),

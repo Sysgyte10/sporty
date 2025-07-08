@@ -14,4 +14,5 @@ export enum appScreenNames {
   FOOTBALL = "Football",
   FOR_YOU = "ForYou",
   FAVORITES = "Favorites",
+  FIXTURE_INFO = "FixtureInfo",
 }

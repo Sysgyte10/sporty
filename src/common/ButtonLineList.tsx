@@ -93,30 +93,38 @@ export const ButtonLineList: React.FC<IButtonLineListProps> = ({
         scrollEventThrottle={16}
         onScroll={handleScroll}
         contentContainerStyle={styles.scrollContainer}>
-        {data.map((item) => (
-          <TouchableOpacity
-            key={item}
-            onPress={() => onButtonPress(item)}
-            onLayout={(e) => handleLayout(item, e)}
-            style={[
-              styles.btn,
-              {
-                width:
-                  returnListWidth(Platform.OS === "ios" ? "ios" : "android") /
-                  data.length,
-                alignItems: "center",
-              },
-            ]}>
-            <CustomText
-              type='medium'
-              size={14}
-              style={{
-                color: selectedBtn === item ? colors.purple : colors.lightGrey,
-              }}>
-              {item}
-            </CustomText>
-          </TouchableOpacity>
-        ))}
+        {data.map((item) => {
+          const isIOS = Platform.OS === "ios";
+          const baseWidth = returnListWidth(isIOS ? "ios" : "android");
+
+          const itemPadding =
+            data?.length >= 4
+              ? baseWidth / data.length / 3
+              : screenWidth / 2 / data.length;
+          return (
+            <TouchableOpacity
+              key={item}
+              onPress={() => onButtonPress(item)}
+              onLayout={(e) => handleLayout(item, e)}
+              style={[
+                styles.btn,
+                {
+                  paddingHorizontal: itemPadding,
+                  alignItems: "center",
+                },
+              ]}>
+              <CustomText
+                type='medium'
+                size={14}
+                style={{
+                  color:
+                    selectedBtn === item ? colors.purple : colors.lightGrey,
+                }}>
+                {item}
+              </CustomText>
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
 
       {/* full straight grey baseline */}

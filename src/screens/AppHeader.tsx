@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons, Octicons } from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
 import { moderateScale } from "@src/resources/responsiveness";
 import { CustomText } from "@src/components/shared";
@@ -46,5 +46,85 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingBottom: moderateScale(5),
+  },
+});
+
+interface AppNavigationHeaderProps {
+  title?: string;
+  onPressActionBtn?: () => void;
+  notificationIcon?: boolean;
+  onPressNotificationIcon?: () => void;
+  heartIcon?: boolean;
+  onPressHeartIcon?: () => void;
+}
+
+export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
+  title,
+  onPressActionBtn,
+  notificationIcon,
+  onPressNotificationIcon,
+  heartIcon,
+  onPressHeartIcon,
+}) => {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={appNavStyles.arrowBackBtn}
+        onPress={onPressActionBtn}>
+        <MaterialIcons
+          name={"keyboard-arrow-left"}
+          size={moderateScale(25)}
+          color={colors.lightGrey}
+        />
+        <CustomText size={17} lightGrey type='medium'>
+          {title ? title : "Back"}
+        </CustomText>
+      </TouchableOpacity>
+      <View style={appNavStyles.actionIconContainer}>
+        {notificationIcon ? (
+          <TouchableOpacity onPress={onPressNotificationIcon}>
+            <Octicons
+              name='bell'
+              size={moderateScale(20)}
+              color={colors.lightGrey}
+            />
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
+        {heartIcon ? (
+          <TouchableOpacity onPress={onPressHeartIcon}>
+            <AntDesign
+              name='hearto'
+              size={moderateScale(20)}
+              color={colors.lightGrey}
+            />
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
+      </View>
+    </View>
+  );
+};
+
+const appNavStyles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  arrowBackBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: moderateScale(5),
+    padding: moderateScale(3),
+  },
+  actionIconContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: moderateScale(20),
   },
 });

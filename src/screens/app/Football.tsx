@@ -15,7 +15,9 @@ import { footballFixtures } from "@src/constants/fixtures";
 import { FixtureCard } from "@src/cards";
 import Animated, { ZoomIn } from "react-native-reanimated";
 
-export const Football = ({}: RootStackScreenProps<appScreenNames.FOOTBALL>) => {
+export const Football = ({
+  navigation,
+}: RootStackScreenProps<appScreenNames.FOOTBALL>) => {
   const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
   const [selectedLineList, setSelectedLineList] = useState<string>(
     footBallWatches[0]
@@ -62,7 +64,14 @@ export const Football = ({}: RootStackScreenProps<appScreenNames.FOOTBALL>) => {
               <Animated.View
                 entering={ZoomIn.delay(index * 200).duration(800)} // increase to 800ms or more
                 key={index}>
-                <FixtureCard data={item} onPress={() => {}} />
+                <FixtureCard
+                  data={item}
+                  onPress={(fixtureId) =>
+                    navigation.navigate(appScreenNames.FIXTURE_INFO, {
+                      fixtureId: fixtureId,
+                    })
+                  }
+                />
               </Animated.View>
             );
           }}
