@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AppWrapper } from "../AppWrapper";
 import { colors } from "@src/resources/color/color";
-import { StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { RootStackScreenProps } from "@src/router/types";
 import { appScreenNames } from "@src/navigation/navigation-names";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
@@ -11,6 +11,9 @@ import { sportyTypes } from "@src/constants/user-selection-steps";
 import { FootBallHeader } from "@src/components/app/football";
 import { footBallWatches } from "@src/constants/football";
 import { Image } from "expo-image";
+import { footballFixtures } from "@src/constants/fixtures";
+import { FixtureCard } from "@src/cards";
+import Animated, { ZoomIn } from "react-native-reanimated";
 
 export const Football = ({}: RootStackScreenProps<appScreenNames.FOOTBALL>) => {
   const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
@@ -48,6 +51,28 @@ export const Football = ({}: RootStackScreenProps<appScreenNames.FOOTBALL>) => {
           />
         </View>
         <DateSwitch />
+        <FlatList
+          data={footballFixtures}
+          contentContainerStyle={{
+            gap: moderateScale(10),
+          }}
+          keyExtractor={(__, index) => index.toString()}
+          renderItem={({ item, index }) => {
+            return (
+              <Animated.View
+                entering={ZoomIn.delay(index * 200).duration(800)} // increase to 800ms or more
+                key={index}>
+                <FixtureCard data={item} onPress={() => {}} />
+              </Animated.View>
+            );
+          }}
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          maxToRenderPerBatch={2}
+          initialNumToRender={2}
+          windowSize={2}
+          updateCellsBatchingPeriod={100}
+        />
       </ScrollContainer>
     </AppWrapper>
   );

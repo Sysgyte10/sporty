@@ -27,7 +27,7 @@ export const ButtonList: React.FC<IButtonListProps> = ({
       {data &&
         data.map((item, index) => (
           <Animated.View
-            entering={SlideInRight.springify().delay(index * 150)}
+            entering={SlideInRight.delay(index * 150).duration(600)}
             key={index}>
             <TouchableOpacity
               onPress={() => onButtonPress(item)}

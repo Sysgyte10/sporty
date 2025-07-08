@@ -25,3 +25,16 @@ export type teamsDataType = {
   country: string;
   image: ImageSourcePropType;
 }[];
+
+export type fixtureDataType = {
+  fixtureName: string;
+  country: string;
+  icon: ImageSourcePropType;
+  matches: {
+    club: {
+      name: string;
+      image: ImageSourcePropType;
+      score: string;
+    }[];
+  }[];
+};
