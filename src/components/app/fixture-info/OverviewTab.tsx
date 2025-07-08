@@ -1,11 +1,11 @@
-import { MatchCard } from "@src/cards";
+import { MatchCard, MatchHighLightCard } from "@src/cards";
 import { CustomText } from "@src/components/shared";
-import { colors } from "@src/resources/color/color";
+import { matchHighLightData } from "@src/constants/football";
 import { moderateScale, DVW, DVH } from "@src/resources/responsiveness";
 import { matchesDataType } from "@src/types/types";
 import React from "react";
 import { FlatList, Platform, StyleSheet, View } from "react-native";
-import Animated, { FadeIn } from "react-native-reanimated";
+import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
 
 interface IOverViewTabProps {
   matches: matchesDataType[];
@@ -54,28 +54,21 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({ matches }) => {
         MATCH HIGHLIGHTS
       </CustomText>
       <FlatList
-        data={matches}
+        data={matchHighLightData}
+        ListFooterComponent={<View style={{ paddingVertical: DVH(10) }} />}
         horizontal
         showsHorizontalScrollIndicator={false}
         keyExtractor={(_, index) => index.toString()}
-        contentContainerStyle={{
-          marginTop:
-            Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
-        }}
         renderItem={({ item, index }) => (
           <Animated.View
-            entering={FadeIn.delay(index * 200).duration(800)}
+            entering={SlideInRight.delay(index * 200).duration(800)}
             key={index}
             style={{
-              width: DVW(80),
-              marginRight: moderateScale(20),
+              width: DVW(60),
+              height: DVH(15),
+              marginRight: moderateScale(10),
             }}>
-            <MatchCard
-              showDate
-              matchItem={item}
-              onLikeItem={() => {}}
-              containerStyle={styles.card}
-            />
+            <MatchHighLightCard highLightItem={item} />
           </Animated.View>
         )}
       />
