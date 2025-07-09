@@ -34,9 +34,18 @@ export type fixtureDataType = {
   matches: matchesDataType[];
 };
 
+export type topScorersDataType = {
+  id: string | number | any;
+  footballerName: string;
+  clubName: string;
+  clubImg: ImageSourcePropType;
+  goals: number;
+};
+
 export type matchesDataType = {
   id: number;
   date: string;
+  topScorers: topScorersDataType[];
   club: {
     name: string;
     image: ImageSourcePropType;

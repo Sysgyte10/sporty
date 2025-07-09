@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Modal,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { Calendar } from "react-native-calendars";
-import { CustomText } from "@src/components/shared";
+import { CustomButton, CustomText } from "@src/components/shared";
 import { colors } from "@src/resources/color/color";
-import { moderateScale } from "@src/resources/responsiveness";
+import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 
 export const DateSwitch: React.FC = () => {
   const [calendarVisible, setCalendarVisible] = useState(false);
@@ -116,7 +122,6 @@ export const DateSwitch: React.FC = () => {
               <Calendar
                 onDayPress={(day) => {
                   setSelectedDate(day.dateString);
-                  setCalendarVisible(false);
                 }}
                 style={{
                   borderRadius: 10,
@@ -155,6 +160,16 @@ export const DateSwitch: React.FC = () => {
                 }}
               />
             </View>
+            <CustomButton
+              title='X'
+              textType='semi-bold'
+              textSize={13}
+              purple
+              textWhite
+              buttonType='Solid'
+              onPress={() => setCalendarVisible(false)}
+              btnStyle={styles.closeBtn}
+            />
           </View>
         </Modal>
       </View>
@@ -188,5 +203,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: moderateScale(3),
     paddingHorizontal: moderateScale(10),
+  },
+  closeBtn: {
+    width: Platform.OS === "ios" ? DVW(12) : DVW(13),
+    height: Platform.OS === "ios" ? DVH(5.5) : DVH(6.5),
+    borderRadius: moderateScale(100),
+    marginVertical: moderateScale(20),
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

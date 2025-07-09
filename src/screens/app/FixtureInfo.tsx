@@ -11,7 +11,7 @@ import { ButtonLineList } from "@src/common";
 import { fixturesOverview, footballFixtures } from "@src/constants/fixtures";
 import { Image } from "expo-image";
 import { CustomText } from "@src/components/shared";
-import { matchesDataType } from "@src/types/types";
+import { matchesDataType, topScorersDataType } from "@src/types/types";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { OverviewTab } from "@src/components/app/fixture-info";
 
@@ -21,13 +21,19 @@ export const FixtureInfo = ({
 }: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
   const id = route?.params?.fixtureId;
   const [filteredMatches, setFilteredMatches] = useState<matchesDataType[]>([]);
+  const [filteredTopScorer, setFilteredTopScorer] = useState<
+    topScorersDataType[]
+  >([]);
   const [selectedLineList, setSelectedLineList] = useState<string>(
     fixturesOverview[0]
   );
 
   const getMatches = () => {
     const filteredData = footballFixtures.find((f) => f.id === id);
+    const filteredTopScorers =
+      filteredData && filteredData?.matches[0]?.topScorers;
     setFilteredMatches(filteredData?.matches ?? []);
+    setFilteredTopScorer(filteredTopScorers ?? []);
   };
 
   useEffect(() => {
@@ -80,7 +86,10 @@ export const FixtureInfo = ({
         </View>
         {selectedLineList === fixturesOverview[0] && (
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
-            <OverviewTab matches={filteredMatches} />
+            <OverviewTab
+              matches={filteredMatches}
+              topScorerData={filteredTopScorer}
+            />
           </Animated.View>
         )}
       </ScrollContainer>

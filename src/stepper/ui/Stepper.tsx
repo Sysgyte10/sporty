@@ -237,7 +237,7 @@ export const FormStepper: React.FC<stepperPropType> = ({
       ) : stepperType === "line-stepper" ? (
         <View
           style={{
-            paddingVertical: moderateScale(10),
+            paddingVertical: moderateScale(5),
             alignSelf: "center",
             width: "100%",
           }}>

@@ -169,7 +169,7 @@ export const UserSelection = ({
               activeStepIndex > 0 ? `${colors.purple}` : colors.darkGrey
             }
             activeBgColor={`${colors.purple}`}
-            inactiveBgColor={colors.white}
+            inactiveBgColor={colors.lightGrey}
             stepperType='line-stepper'
             doNotShowTitle={true}
             lineHeight={0.5}
@@ -248,13 +248,12 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(13),
   },
   btnListContainer: {
-    paddingVertical: moderateScale(10),
+    paddingVertical: moderateScale(5),
   },
   input: {
     backgroundColor: "transparent",
     borderWidth: DVW(0.2),
     borderColor: colors.lightGrey,
     marginVertical: moderateScale(20),
-    paddingVertical: moderateScale(2),
   },
 });
