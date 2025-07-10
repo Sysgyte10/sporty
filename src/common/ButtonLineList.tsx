@@ -1,7 +1,7 @@
 import { CustomText } from "@src/components/shared";
 import { colors } from "@src/resources/color/color";
 import { DVW, moderateScale, screenWidth } from "@src/resources/responsiveness";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -10,8 +10,7 @@ import {
   LayoutChangeEvent,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  Platform,
-  PlatformOSType,
+  InteractionManager,
 } from "react-native";
 import Animated, {
   useSharedValue,
@@ -33,17 +32,27 @@ export const ButtonLineList: React.FC<IButtonLineListProps> = ({
   const positionsRef = useRef<{ [key: string]: { x: number; width: number } }>(
     {}
   );
+  const buttonRefs = useRef<{ [key: string]: TouchableOpacity }>({});
   const translateX = useSharedValue(0);
   const underlineWidth = useSharedValue(0);
   const scrollX = useSharedValue(0);
+  const scrollViewRef = useRef<ScrollView>(null);
+  const [isLayoutReady, setIsLayoutReady] = useState(false);
 
   const handleLayout = (item: string, e: LayoutChangeEvent) => {
     const { x, width } = e.nativeEvent.layout;
-    positionsRef.current[item] = { x, width };
+    if (width > 0 && x >= 0) {
+      positionsRef.current[item] = { x, width };
+    }
 
-    if (item === selectedBtn) {
-      translateX.value = withTiming(x - scrollX.value, { duration: 200 });
-      underlineWidth.value = withTiming(width, { duration: 200 });
+    // Update layout-ready state
+    const hasAllLayouts = data.every((item) => positionsRef.current[item]);
+    if (hasAllLayouts) {
+      setIsLayoutReady(true);
+      if (item === selectedBtn) {
+        translateX.value = withTiming(x - scrollX.value, { duration: 200 });
+        underlineWidth.value = withTiming(width, { duration: 200 });
+      }
     }
   };
 
@@ -51,21 +60,96 @@ export const ButtonLineList: React.FC<IButtonLineListProps> = ({
     const offsetX = e.nativeEvent.contentOffset.x;
     scrollX.value = offsetX;
 
-    // update underline position after scroll
+    // Update underline position after scroll
     const selectedLayout = positionsRef.current[selectedBtn];
-    if (selectedLayout) {
+    if (selectedLayout && isLayoutReady) {
       translateX.value = withTiming(selectedLayout.x - offsetX, {
         duration: 100,
       });
     }
   };
 
-  const animatedUnderlineStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: translateX.value }],
-    width: underlineWidth.value,
-  }));
+  const animatedUnderlineStyle = useAnimatedStyle(() => {
+    console.log("Underline for", selectedBtn, {
+      translateX: translateX.value,
+      width: underlineWidth.value,
+    });
+    return {
+      transform: [{ translateX: translateX.value }],
+      width: underlineWidth.value,
+    };
+  });
 
-  React.useEffect(() => {
+  // Force re-measurement of buttons if layouts are missing
+  const measureLayouts = () => {
+    let pendingMeasurements = data.length;
+    data.forEach((item) => {
+      const ref = buttonRefs.current[item];
+      if (!positionsRef.current[item] && ref) {
+        // Use measureInWindow for better accuracy on Android
+        ref.measureInWindow((x: any, y: any, width: any, height: any) => {
+          if (width > 0 && x >= 0) {
+            positionsRef.current[item] = { x, width };
+          }
+          pendingMeasurements--;
+          if (pendingMeasurements === 0) {
+            const hasAllLayouts = data.every(
+              (item) => positionsRef.current[item]
+            );
+            if (hasAllLayouts) {
+              console.log("All layouts measured:", positionsRef.current);
+              setIsLayoutReady(true);
+            } else {
+              console.log("Missing layouts:", positionsRef.current);
+              // Retry after interactions
+              InteractionManager.runAfterInteractions(() => {
+                requestAnimationFrame(measureLayouts);
+              });
+            }
+          }
+        });
+      } else {
+        pendingMeasurements--;
+        if (pendingMeasurements === 0) {
+          const hasAllLayouts = data.every(
+            (item) => positionsRef.current[item]
+          );
+          if (hasAllLayouts) {
+            console.log("All layouts measured:", positionsRef.current);
+            setIsLayoutReady(true);
+          } else {
+            console.log("Missing layouts:", positionsRef.current);
+            InteractionManager.runAfterInteractions(() => {
+              requestAnimationFrame(measureLayouts);
+            });
+          }
+        }
+      }
+    });
+  };
+
+  // Initial measurement and force render of last item
+  useEffect(() => {
+    // Briefly scroll to end to force render of last item (Odds)
+    scrollViewRef.current?.scrollToEnd({ animated: false });
+    // Scroll back to start immediately
+    scrollViewRef.current?.scrollTo({ x: 0, animated: false });
+
+    // Measure after interactions for Android reliability
+    InteractionManager.runAfterInteractions(() => {
+      requestAnimationFrame(measureLayouts);
+    });
+
+    return () => {
+      // Cleanup
+      cancelAnimationFrame(requestAnimationFrame(measureLayouts));
+    };
+  }, [data]);
+
+  // Update underline when selectedBtn or isLayoutReady changes
+  useEffect(() => {
+    if (!isLayoutReady) return;
+
     const selectedLayout = positionsRef.current[selectedBtn];
     if (selectedLayout) {
       translateX.value = withTiming(selectedLayout.x - scrollX.value, {
@@ -74,64 +158,95 @@ export const ButtonLineList: React.FC<IButtonLineListProps> = ({
       underlineWidth.value = withTiming(selectedLayout.width, {
         duration: 200,
       });
-    }
-  }, [selectedBtn]);
 
-  const returnListWidth = (platform: PlatformOSType) => {
-    if (platform === "ios") {
-      return screenWidth - 5;
+      // Auto-scroll to center the selected item
+      scrollViewRef.current?.scrollTo({
+        x: Math.max(
+          0,
+          selectedLayout.x - screenWidth / 2 + selectedLayout.width / 2
+        ),
+        animated: true,
+      });
     } else {
-      return screenWidth + 5;
+      // Fallback for missing layout
+      console.log(`Missing layout for ${selectedBtn}`, positionsRef.current);
+      translateX.value = withTiming(0, { duration: 200 });
+      underlineWidth.value = withTiming(moderateScale(80), { duration: 200 });
     }
-  };
+  }, [selectedBtn, isLayoutReady]);
+
+  // Fixed padding for consistency
+  const itemPadding = moderateScale(15);
 
   return (
     <View style={styles.container}>
       <ScrollView
+        ref={scrollViewRef}
         horizontal
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
         onScroll={handleScroll}
-        contentContainerStyle={styles.scrollContainer}>
-        {data.map((item) => {
-          const isIOS = Platform.OS === "ios";
-          const baseWidth = returnListWidth(isIOS ? "ios" : "android");
-
-          const itemPadding =
-            data?.length >= 4
-              ? baseWidth / data.length / 3
-              : screenWidth / 2 / data.length;
-          return (
-            <TouchableOpacity
-              key={item}
-              onPress={() => onButtonPress(item)}
-              onLayout={(e) => handleLayout(item, e)}
-              style={[
-                styles.btn,
-                {
-                  paddingHorizontal: itemPadding,
-                  alignItems: "center",
-                },
-              ]}>
-              <CustomText
-                type='medium'
-                size={14}
-                style={{
-                  color:
-                    selectedBtn === item ? colors.purple : colors.lightGrey,
-                }}>
-                {item}
-              </CustomText>
-            </TouchableOpacity>
-          );
-        })}
+        onContentSizeChange={(width) => {
+          console.log("Content width:", width);
+          InteractionManager.runAfterInteractions(() => {
+            requestAnimationFrame(measureLayouts);
+          });
+        }}
+        contentContainerStyle={[
+          styles.scrollContainer,
+          { minWidth: screenWidth },
+        ]}>
+        {data.map((item) => (
+          <TouchableOpacity
+            key={item}
+            ref={(ref) => {
+              if (ref) {
+                buttonRefs.current[item] = ref;
+              } else {
+                delete buttonRefs.current[item]; // Clean up on unmount
+              }
+            }}
+            onPress={() => {
+              onButtonPress(item);
+              // Force scroll to last item if it's the last one
+              if (item === data[data.length - 1]) {
+                const layout = positionsRef.current[item];
+                if (layout) {
+                  scrollViewRef.current?.scrollTo({
+                    x: layout.x - screenWidth / 2 + layout.width / 2,
+                    animated: true,
+                  });
+                } else {
+                  // Fallback: Scroll to end for last item
+                  scrollViewRef.current?.scrollToEnd({ animated: true });
+                  // Re-measure after scroll
+                  InteractionManager.runAfterInteractions(() => {
+                    requestAnimationFrame(measureLayouts);
+                  });
+                }
+              }
+            }}
+            onLayout={(e) => handleLayout(item, e)}
+            style={[styles.btn, { paddingHorizontal: itemPadding }]}>
+            <CustomText
+              type='medium'
+              size={14}
+              style={{
+                color: selectedBtn === item ? colors.purple : colors.lightGrey,
+              }}>
+              {item}
+            </CustomText>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
 
-      {/* full straight grey baseline */}
+      {/* Full straight grey baseline */}
       <View style={styles.baseLine} />
 
-      {/* animated purple underline */}
-      <Animated.View style={[styles.selectedLine, animatedUnderlineStyle]} />
+      {/* Animated purple underline */}
+      {isLayoutReady && (
+        <Animated.View style={[styles.selectedLine, animatedUnderlineStyle]} />
+      )}
     </View>
   );
 };
@@ -144,8 +259,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(5),
   },
   btn: {
-    paddingHorizontal: moderateScale(15),
     paddingVertical: moderateScale(10),
+    alignItems: "center",
+    minWidth: moderateScale(80), // Increased for stability with longer text
   },
   baseLine: {
     position: "absolute",

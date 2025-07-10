@@ -18,7 +18,11 @@ import {
   topScorersDataType,
 } from "@src/types/types";
 import Animated, { FadeIn } from "react-native-reanimated";
-import { MatchesTab, OverviewTab } from "@src/components/app/fixture-info";
+import {
+  MatchesTab,
+  NewsTab,
+  OverviewTab,
+} from "@src/components/app/fixture-info";
 
 type overViewStateType = {
   filteredMatches: matchesDataType[];
@@ -99,13 +103,19 @@ export const FixtureInfo = ({
               matches={overViewData?.filteredMatches}
               topScorerData={overViewData?.filteredTopScorer}
               matchHighLightData={overViewData?.matchHightLights}
-              newsData={overViewData?.news}
+              newsData={overViewData?.news && overViewData?.news?.slice(0, 3)}
             />
           </Animated.View>
         )}
         {selectedLineList === fixturesOverview[1] && (
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <MatchesTab matches={overViewData?.filteredMatches} />
+          </Animated.View>
+        )}
+
+        {selectedLineList === fixturesOverview[3] && (
+          <Animated.View entering={FadeIn.delay(200).duration(600)}>
+            <NewsTab newsData={overViewData?.news} />
           </Animated.View>
         )}
         <View

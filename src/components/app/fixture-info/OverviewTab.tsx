@@ -162,7 +162,7 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
             key={index}
             style={{
               width: DVW(75),
-              height: DVH(35),
+              height: Platform.OS === "ios" ? DVH(35) : DVH(37),
               marginRight: moderateScale(10),
             }}>
             <NewsCard newsItem={item} />

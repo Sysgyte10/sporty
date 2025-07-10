@@ -1,6 +1,6 @@
 import { MatchCard } from "@src/cards";
 import { SectionHeader } from "@src/common";
-import { moderateScale } from "@src/resources/responsiveness";
+import { DVH, moderateScale } from "@src/resources/responsiveness";
 import { matchesDataType } from "@src/types/types";
 import React from "react";
 import { FlatList, Platform, StyleSheet, View } from "react-native";
@@ -29,6 +29,13 @@ export const MatchesTab: React.FC<IMatchesTabProps> = ({ matches }) => {
           marginTop:
             Platform.OS === "ios" ? moderateScale(-20) : moderateScale(-30),
         }}
+        ListFooterComponent={
+          <View
+            style={{
+              paddingVertical: DVH(10),
+            }}
+          />
+        }
         keyExtractor={(__, index) => index.toString()}
         renderItem={({ item, index }) => {
           return (

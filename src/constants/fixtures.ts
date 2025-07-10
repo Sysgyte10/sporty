@@ -13,7 +13,7 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight1.png"),
+        image: require("@src/assets/png/news1.png"),
       },
       {
         id: 2,
@@ -21,7 +21,7 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight2.png"),
+        image: require("@src/assets/png/news2.png"),
       },
       {
         id: 3,
@@ -29,7 +29,31 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight1.png"),
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
       },
     ],
     matchHighLights: [
@@ -142,7 +166,7 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight1.png"),
+        image: require("@src/assets/png/news1.png"),
       },
       {
         id: 2,
@@ -150,7 +174,7 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight2.png"),
+        image: require("@src/assets/png/news2.png"),
       },
       {
         id: 3,
@@ -158,7 +182,7 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight1.png"),
+        image: require("@src/assets/png/news4.png"),
       },
     ],
     matchHighLights: [
@@ -342,7 +366,7 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight1.png"),
+        image: require("@src/assets/png/news1.png"),
       },
       {
         id: 2,
@@ -350,7 +374,7 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight2.png"),
+        image: require("@src/assets/png/news2.png"),
       },
       {
         id: 3,
@@ -358,7 +382,7 @@ export const footballFixtures: fixtureDataType[] = [
           "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
         club: "Bayern Munich",
         time: "4 hrs ago",
-        image: require("@src/assets/png/highlight1.png"),
+        image: require("@src/assets/png/news4.png"),
       },
     ],
     matchHighLights: [
