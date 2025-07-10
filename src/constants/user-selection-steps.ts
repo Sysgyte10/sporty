@@ -51,4 +51,19 @@ export const teamsData: teamsDataType = [
     image: require("@src/assets/png/chelsea.png"),
     country: "England",
   },
+  {
+    club: "Manchester United",
+    image: require("@src/assets/png/man-u.png"),
+    country: "England",
+  },
+  {
+    club: "Liverpool",
+    image: require("@src/assets/png/liverpool.png"),
+    country: "England",
+  },
+  {
+    club: "Arsenal",
+    image: require("@src/assets/png/arsenal.png"),
+    country: "England",
+  },
 ];

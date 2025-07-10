@@ -1,36 +1,52 @@
-import { MatchCard, MatchHighLightCard, TopScorerCard } from "@src/cards";
-import { CustomText } from "@src/components/shared";
-import { matchHighLightData } from "@src/constants/football";
-import { moderateScale, DVW, DVH } from "@src/resources/responsiveness";
-import { matchesDataType, topScorersDataType } from "@src/types/types";
-import React from "react";
 import {
-  FlatList,
-  Platform,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+  MatchCard,
+  MatchHighLightCard,
+  NewsCard,
+  TopScorerCard,
+} from "@src/cards";
+import { SectionHeader } from "@src/common";
+import { moderateScale, DVW, DVH } from "@src/resources/responsiveness";
+import {
+  matchesDataType,
+  matchHightLightDataType,
+  newsDataTypes,
+  topScorersDataType,
+} from "@src/types/types";
+import React from "react";
+import { FlatList, Platform, StyleSheet, View } from "react-native";
 import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
 
 interface IOverViewTabProps {
   matches: matchesDataType[];
   topScorerData: topScorersDataType[];
+  matchHighLightData: matchHightLightDataType[];
+  newsData: newsDataTypes[];
 }
 
 export const OverviewTab: React.FC<IOverViewTabProps> = ({
   matches,
   topScorerData,
+  matchHighLightData,
+  newsData,
 }) => {
+  console.log(matches);
   return (
     <View>
+      <SectionHeader
+        leftText='MATCHES'
+        actionText='See All'
+        containerStyle={{
+          marginBottom:
+            Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
+        }}
+      />
       <FlatList
-        data={matches}
+        data={matches && matches.slice(0, 2)}
         contentContainerStyle={{
           paddingVertical: moderateScale(10),
-          gap: moderateScale(2),
+          gap: moderateScale(10),
           marginTop:
-            Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
+            Platform.OS === "ios" ? moderateScale(-20) : moderateScale(-30),
         }}
         keyExtractor={(__, index) => index.toString()}
         renderItem={({ item, index }) => {
@@ -42,7 +58,12 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
                 showDate
                 matchItem={item}
                 onLikeItem={() => {}}
-                containerStyle={styles.card}
+                containerStyle={[
+                  styles.card,
+                  {
+                    marginTop: index === 0 ? moderateScale(30) : undefined,
+                  },
+                ]}
               />
             </Animated.View>
           );
@@ -54,15 +75,11 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
         windowSize={2}
         updateCellsBatchingPeriod={100}
       />
-      <CustomText
-        type='medium'
-        size={14}
-        lightGrey
-        style={{
-          paddingVertical: moderateScale(10),
-        }}>
-        MATCH HIGHLIGHTS
-      </CustomText>
+      <SectionHeader
+        leftText='MATCH HIGHLIGHTS'
+        actionText=' '
+        containerStyle={styles.textBtnContainer}
+      />
       <FlatList
         data={matchHighLightData}
         horizontal
@@ -81,21 +98,19 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
           </Animated.View>
         )}
       />
-      <View style={styles.textBtnContainer}>
-        <CustomText type='medium' size={14} lightGrey>
-          TOP SCORERS
-        </CustomText>
-        <TouchableOpacity>
-          <CustomText type='medium' size={14} lightGrey>
-            See All
-          </CustomText>
-        </TouchableOpacity>
-      </View>
+      <SectionHeader
+        leftText='TOP SCORERS'
+        actionText='See All'
+        containerStyle={{
+          marginBottom:
+            Platform.OS === "ios" ? moderateScale(-15) : moderateScale(-20),
+        }}
+      />
       <FlatList
         data={topScorerData}
         contentContainerStyle={{
           paddingVertical: moderateScale(10),
-          gap: moderateScale(2),
+          gap: moderateScale(10),
           marginTop:
             Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
         }}
@@ -105,7 +120,13 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
             <Animated.View
               entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
               key={index}>
-              <TopScorerCard topScorerItem={item} numbering={index + 1} />
+              <TopScorerCard
+                topScorerItem={item}
+                numbering={index + 1}
+                style={{
+                  marginTop: index === 0 ? moderateScale(15) : undefined,
+                }}
+              />
             </Animated.View>
           );
         }}
@@ -115,6 +136,46 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
         initialNumToRender={2}
         windowSize={2}
         updateCellsBatchingPeriod={100}
+      />
+      <SectionHeader
+        leftText='NEWS'
+        actionText='See All'
+        containerStyle={{
+          marginTop:
+            Platform.OS === "ios" ? moderateScale(-20) : moderateScale(-10),
+          marginBottom:
+            Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-15),
+        }}
+      />
+      <FlatList
+        data={newsData}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          gap: moderateScale(10),
+        }}
+        ListFooterComponent={<View style={{ paddingVertical: DVH(15) }} />}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item, index }) => (
+          <Animated.View
+            entering={SlideInRight.delay(index * 200).duration(800)}
+            key={index}
+            style={{
+              width: DVW(75),
+              height: DVH(35),
+              marginRight: moderateScale(10),
+            }}>
+            <NewsCard newsItem={item} />
+          </Animated.View>
+        )}
+      />
+      <SectionHeader
+        leftText='GOALS SCORED'
+        actionText='See All'
+        containerStyle={{
+          marginBottom:
+            Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
+        }}
       />
     </View>
   );
@@ -126,9 +187,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   textBtnContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: moderateScale(15),
+    marginTop: Platform.OS === "ios" ? moderateScale(-30) : moderateScale(-10),
+    marginBottom:
+      Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-15),
   },
 });

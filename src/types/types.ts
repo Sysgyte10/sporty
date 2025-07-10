@@ -32,6 +32,8 @@ export type fixtureDataType = {
   country: string;
   icon: ImageSourcePropType;
   matches: matchesDataType[];
+  matchHighLights: matchHightLightDataType[];
+  news: newsDataTypes[];
 };
 
 export type topScorersDataType = {
@@ -58,4 +60,12 @@ export type matchHightLightDataType = {
   image: ImageSourcePropType;
   feature: string;
   detail: string;
+};
+
+export type newsDataTypes = {
+  id: number;
+  details: string;
+  club: string;
+  time: string;
+  image: ImageSourcePropType;
 };

@@ -4,11 +4,12 @@ import { Image } from "expo-image";
 import React from "react";
 import {
   ImageSourcePropType,
+  Platform,
   StyleSheet,
   TouchableOpacity,
   View,
 } from "react-native";
-import { Entypo, FontAwesome6 } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
 
 interface ITeamCardProps {
@@ -30,10 +31,10 @@ export const TeamCard: React.FC<ITeamCardProps> = ({
     <TouchableOpacity style={styles.cardBtn} onPress={() => onSelectItem(club)}>
       <View style={styles.imgNTeamInfoContainer}>
         <View style={styles.imgContainer}>
-          <Image source={image} contentFit='cover' style={styles.img} />
+          <Image source={image} contentFit='fill' style={styles.img} />
         </View>
         <View style={styles.teamInfoContainer}>
-          <CustomText type='semi-bold' size={14} white>
+          <CustomText type='semi-bold' size={12} white>
             {club}
           </CustomText>
           <CustomText type='medium' size={11} lightGrey>
@@ -42,14 +43,14 @@ export const TeamCard: React.FC<ITeamCardProps> = ({
         </View>
       </View>
       {selected ? (
-        <FontAwesome6
-          name='dot-circle'
+        <AntDesign
+          name={"checksquare"}
           size={moderateScale(20)}
           color={colors.purple}
         />
       ) : (
-        <Entypo
-          name='circle'
+        <MaterialIcons
+          name='check-box-outline-blank'
           size={moderateScale(20)}
           color={colors.lightGrey}
         />
@@ -62,15 +63,15 @@ const styles = StyleSheet.create({
   cardBtn: {
     backgroundColor: "#24222273",
     borderRadius: moderateScale(10),
-    paddingVertical: moderateScale(10),
+    paddingVertical: moderateScale(9),
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: moderateScale(15),
   },
   imgContainer: {
-    width: DVW(12),
-    height: DVH(6),
+    width: DVW(7),
+    height: Platform.OS === "ios" ? DVH(3) : DVH(3.5),
     borderRadius: moderateScale(100),
     overflow: "hidden",
   },
@@ -84,6 +85,6 @@ const styles = StyleSheet.create({
     gap: moderateScale(20),
   },
   teamInfoContainer: {
-    gap: moderateScale(10),
+    gap: moderateScale(3),
   },
 });

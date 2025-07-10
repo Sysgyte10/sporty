@@ -2,7 +2,7 @@ import { appScreenNames } from "@src/navigation";
 import { RootStackScreenProps } from "@src/router/types";
 import React, { useEffect, useState } from "react";
 import { AppWrapper } from "../AppWrapper";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import { colors } from "@src/resources/color/color";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { AppNavigationHeader } from "../AppHeader";
@@ -11,33 +11,52 @@ import { ButtonLineList } from "@src/common";
 import { fixturesOverview, footballFixtures } from "@src/constants/fixtures";
 import { Image } from "expo-image";
 import { CustomText } from "@src/components/shared";
-import { matchesDataType, topScorersDataType } from "@src/types/types";
+import {
+  matchesDataType,
+  matchHightLightDataType,
+  newsDataTypes,
+  topScorersDataType,
+} from "@src/types/types";
 import Animated, { FadeIn } from "react-native-reanimated";
-import { OverviewTab } from "@src/components/app/fixture-info";
+import { MatchesTab, OverviewTab } from "@src/components/app/fixture-info";
+
+type overViewStateType = {
+  filteredMatches: matchesDataType[];
+  filteredTopScorer: topScorersDataType[];
+  matchHightLights: matchHightLightDataType[];
+  news: newsDataTypes[];
+};
 
 export const FixtureInfo = ({
   navigation,
   route,
 }: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
   const id = route?.params?.fixtureId;
-  const [filteredMatches, setFilteredMatches] = useState<matchesDataType[]>([]);
-  const [filteredTopScorer, setFilteredTopScorer] = useState<
-    topScorersDataType[]
-  >([]);
+  const [overViewData, setOverViewData] = useState<overViewStateType>({
+    filteredMatches: [],
+    filteredTopScorer: [],
+    matchHightLights: [],
+    news: [],
+  });
   const [selectedLineList, setSelectedLineList] = useState<string>(
     fixturesOverview[0]
   );
 
-  const getMatches = () => {
+  const getOverViewData = () => {
     const filteredData = footballFixtures.find((f) => f.id === id);
     const filteredTopScorers =
       filteredData && filteredData?.matches[0]?.topScorers;
-    setFilteredMatches(filteredData?.matches ?? []);
-    setFilteredTopScorer(filteredTopScorers ?? []);
+    setOverViewData({
+      ...overViewData,
+      filteredMatches: filteredData?.matches ?? [],
+      filteredTopScorer: filteredTopScorers ?? [],
+      matchHightLights: filteredData?.matchHighLights ?? [],
+      news: filteredData?.news ?? [],
+    });
   };
 
   useEffect(() => {
-    getMatches();
+    getOverViewData();
   }, [id]);
 
   console.log("Fixture Id is", id);
@@ -49,49 +68,51 @@ export const FixtureInfo = ({
         heartIcon
         onPressActionBtn={() => navigation.goBack()}
       />
-      <ScrollContainer>
-        <View style={styles.ctaContainer}>
-          <View style={styles.ctaImgContainer}>
-            <Image
-              source={require("@src/assets/png/fifa.png")}
-              style={styles.ctaImg}
-              contentFit='fill'
-            />
-          </View>
-          <View style={styles.ctaTitle}>
-            <CustomText size={14} white type='semi-bold'>
-              FIFA Club World Cup: Group B
-            </CustomText>
-            <CustomText size={12} lightGrey type='medium'>
-              International
-            </CustomText>
-          </View>
-        </View>
-        <View>
-          <ButtonLineList
-            data={fixturesOverview}
-            onButtonPress={(text) => setSelectedLineList(text)}
-            selectedBtn={selectedLineList}
+      <View style={styles.ctaContainer}>
+        <View style={styles.ctaImgContainer}>
+          <Image
+            source={require("@src/assets/png/fifa.png")}
+            style={styles.ctaImg}
+            contentFit='fill'
           />
         </View>
-        <View style={styles.textBtnContainer}>
-          <CustomText type='medium' size={14} lightGrey>
-            MATCHES
+        <View style={styles.ctaTitle}>
+          <CustomText size={14} white type='semi-bold'>
+            FIFA Club World Cup: Group B
           </CustomText>
-          <TouchableOpacity>
-            <CustomText type='medium' size={14} lightGrey>
-              See All
-            </CustomText>
-          </TouchableOpacity>
+          <CustomText size={12} lightGrey type='medium'>
+            International
+          </CustomText>
         </View>
+      </View>
+      <View>
+        <ButtonLineList
+          data={fixturesOverview}
+          onButtonPress={(text) => setSelectedLineList(text)}
+          selectedBtn={selectedLineList}
+        />
+      </View>
+      <ScrollContainer>
         {selectedLineList === fixturesOverview[0] && (
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <OverviewTab
-              matches={filteredMatches}
-              topScorerData={filteredTopScorer}
+              matches={overViewData?.filteredMatches}
+              topScorerData={overViewData?.filteredTopScorer}
+              matchHighLightData={overViewData?.matchHightLights}
+              newsData={overViewData?.news}
             />
           </Animated.View>
         )}
+        {selectedLineList === fixturesOverview[1] && (
+          <Animated.View entering={FadeIn.delay(200).duration(600)}>
+            <MatchesTab matches={overViewData?.filteredMatches} />
+          </Animated.View>
+        )}
+        <View
+          style={{
+            paddingVertical: DVH(10),
+          }}
+        />
       </ScrollContainer>
     </AppWrapper>
   );
@@ -106,11 +127,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: moderateScale(10),
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(5),
   },
   ctaImgContainer: {
     width: DVW(20),
-    height: DVH(10),
+    height: Platform.OS === "ios" ? DVH(9) : DVH(10),
     overflow: "hidden",
   },
   ctaImg: {

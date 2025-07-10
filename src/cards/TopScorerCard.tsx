@@ -2,20 +2,22 @@ import { CustomText } from "@src/components/shared";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { topScorersDataType } from "@src/types/types";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import { Image } from "expo-image";
 
 interface ITopScorerCardProps {
   topScorerItem: topScorersDataType;
   numbering: number;
+  style?: StyleProp<ViewStyle>;
 }
 
 export const TopScorerCard: React.FC<ITopScorerCardProps> = ({
   topScorerItem,
   numbering,
+  style,
 }) => {
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, style]}>
       <View
         style={{
           flexDirection: "row",
@@ -53,18 +55,18 @@ export const TopScorerCard: React.FC<ITopScorerCardProps> = ({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#242222",
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(10),
     paddingHorizontal: moderateScale(20),
     borderRadius: moderateScale(10),
-    marginTop: moderateScale(6),
+    marginTop: moderateScale(10),
     overflow: "hidden",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
   clubImgContainer: {
-    width: DVW(10),
-    height: DVH(5),
+    width: DVW(7),
+    height: Platform.OS === "ios" ? DVH(3) : DVH(3.5),
     borderRadius: moderateScale(100),
     overflow: "hidden",
   },
@@ -78,6 +80,6 @@ const styles = StyleSheet.create({
     gap: moderateScale(20),
   },
   infoContainer: {
-    gap: moderateScale(6),
+    gap: moderateScale(4),
   },
 });

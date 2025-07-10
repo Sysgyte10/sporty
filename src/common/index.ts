@@ -5,3 +5,4 @@ export * from "./FormHeader";
 export * from "./ButtonList";
 export * from "./ButtonLineList";
 export * from "./DateSwitch";
+export * from "./SectionHeader";

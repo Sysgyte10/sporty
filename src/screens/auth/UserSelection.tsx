@@ -225,7 +225,7 @@ export const UserSelection = ({
 
 const styles = StyleSheet.create({
   formTitle: {
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(5),
   },
   appWrapper: {
     paddingHorizontal: moderateScale(15),
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(13),
   },
   btnListContainer: {
-    paddingVertical: moderateScale(5),
+    paddingTop: moderateScale(7),
   },
   input: {
     backgroundColor: "transparent",

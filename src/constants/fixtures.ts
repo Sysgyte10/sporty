@@ -6,9 +6,105 @@ export const footballFixtures: fixtureDataType[] = [
     fixtureName: "MLS",
     country: "USA",
     icon: require("@src/assets/png/fixture.png"),
+    news: [
+      {
+        id: 1,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chelsea vs Crystal Palace",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+      {
+        id: 1,
+        feature: "Man Utd vs Chelsea",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+      {
+        id: 1,
+        feature: "Chelsea vs Man Utd",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+    ],
     matches: [
       {
         id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Jamail Musiala",
+            clubName: "Bayern Munich",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "New York City FC",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "Atlanta United",
+            image: require("@src/assets/png/fixture.png"),
+            score: "0",
+          },
+        ],
+      },
+      {
+        id: 2,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Jamail Musiala",
+            clubName: "Bayern Munich",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "New York City FC",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "Atlanta United",
+            image: require("@src/assets/png/fixture.png"),
+            score: "0",
+          },
+        ],
+      },
+      {
+        id: 3,
         date: "16 July",
         topScorers: [
           {
@@ -39,6 +135,52 @@ export const footballFixtures: fixtureDataType[] = [
     fixtureName: "MLS",
     country: "NG",
     icon: require("@src/assets/png/fixture.png"),
+    news: [
+      {
+        id: 1,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chelsea vs Crystal Palace",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+      {
+        id: 1,
+        feature: "Man Utd vs Chelsea",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+      {
+        id: 1,
+        feature: "Chelsea vs Man Utd",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+    ],
     matches: [
       {
         id: 1,
@@ -111,6 +253,81 @@ export const footballFixtures: fixtureDataType[] = [
           },
         ],
       },
+      {
+        id: 3,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Jamail Musiala",
+            clubName: "Bayern Munich",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "New York City FC",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "Atlanta United",
+            image: require("@src/assets/png/fixture.png"),
+            score: "0",
+          },
+        ],
+      },
+      {
+        id: 4,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Jamail Musiala",
+            clubName: "Bayern Munich",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "New York City FC",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "Atlanta United",
+            image: require("@src/assets/png/fixture.png"),
+            score: "0",
+          },
+        ],
+      },
+      {
+        id: 5,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Jamail Musiala",
+            clubName: "Bayern Munich",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "New York City FC",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "Atlanta United",
+            image: require("@src/assets/png/fixture.png"),
+            score: "0",
+          },
+        ],
+      },
     ],
   },
   {
@@ -118,6 +335,52 @@ export const footballFixtures: fixtureDataType[] = [
     fixtureName: "MLS",
     country: "GH",
     icon: require("@src/assets/png/fixture.png"),
+    news: [
+      {
+        id: 1,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Micheal Olise in Club World Cup debut, Brazillian media remain sceptical",
+        club: "Bayern Munich",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chelsea vs Crystal Palace",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight1.png"),
+      },
+      {
+        id: 1,
+        feature: "Man Utd vs Chelsea",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+      {
+        id: 1,
+        feature: "Chelsea vs Man Utd",
+        detail: "FIFA Club World Cup 2025",
+        image: require("@src/assets/png/highlight2.png"),
+      },
+    ],
     matches: [
       {
         id: 1,

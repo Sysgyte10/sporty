@@ -55,8 +55,8 @@ export const ButtonList: React.FC<IButtonListProps> = ({
 
 const styles = StyleSheet.create({
   btn: {
-    paddingHorizontal: moderateScale(15),
-    paddingVertical: moderateScale(10),
+    paddingHorizontal: moderateScale(12),
+    paddingVertical: moderateScale(7),
     borderRadius: moderateScale(50),
   },
 });

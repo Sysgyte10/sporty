@@ -45,9 +45,11 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
         </TouchableOpacity>
       </View>
       {data?.matches &&
-        data?.matches.map((matchItem, index) => (
-          <MatchCard matchItem={matchItem} key={index} showDate={showDate} />
-        ))}
+        data?.matches
+          .slice(0, 2)
+          .map((matchItem, index) => (
+            <MatchCard matchItem={matchItem} key={index} showDate={showDate} />
+          ))}
     </View>
   );
 };
