@@ -71,5 +71,6 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#242222",
     width: "100%",
+    paddingVertical: moderateScale(5),
   },
 });

@@ -1,10 +1,12 @@
 import {
+  GoalScorerCard,
   MatchCard,
   MatchHighLightCard,
   NewsCard,
   TopScorerCard,
 } from "@src/cards";
 import { SectionHeader } from "@src/common";
+import { CustomText } from "@src/components/shared";
 import { moderateScale, DVW, DVH } from "@src/resources/responsiveness";
 import {
   matchesDataType,
@@ -19,6 +21,7 @@ import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
 interface IOverViewTabProps {
   matches: matchesDataType[];
   topScorerData: topScorersDataType[];
+  goalScorerData: topScorersDataType[];
   matchHighLightData: matchHightLightDataType[];
   newsData: newsDataTypes[];
 }
@@ -28,6 +31,7 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
   topScorerData,
   matchHighLightData,
   newsData,
+  goalScorerData,
 }) => {
   console.log(matches);
   return (
@@ -177,6 +181,41 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
             Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
         }}
       />
+      <FlatList
+        data={goalScorerData}
+        contentContainerStyle={{
+          paddingVertical: moderateScale(10),
+          // gap: moderateScale(10),
+          marginTop: 0,
+          // Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
+        }}
+        ListHeaderComponent={
+          <View style={styles.flatListHeaderStyle}>
+            <CustomText type='medium' size={14} white>
+              Per game
+            </CustomText>
+            <CustomText type='medium' size={14} white>
+              Total
+            </CustomText>
+          </View>
+        }
+        keyExtractor={(__, index) => index.toString()}
+        renderItem={({ item, index }) => {
+          return (
+            <Animated.View
+              entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
+              key={index}>
+              <GoalScorerCard topScorerItem={item} />
+            </Animated.View>
+          );
+        }}
+        horizontal={false}
+        showsVerticalScrollIndicator={false}
+        maxToRenderPerBatch={2}
+        initialNumToRender={2}
+        windowSize={2}
+        updateCellsBatchingPeriod={100}
+      />
     </View>
   );
 };
@@ -185,10 +224,20 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#242222",
     width: "100%",
+    paddingVertical: moderateScale(5),
   },
   textBtnContainer: {
     marginTop: Platform.OS === "ios" ? moderateScale(-30) : moderateScale(-10),
     marginBottom:
       Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-15),
+  },
+  flatListHeaderStyle: {
+    backgroundColor: "#242222",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: moderateScale(40),
+    justifyContent: "flex-end",
+    paddingVertical: moderateScale(10),
+    paddingHorizontal: moderateScale(15),
   },
 });

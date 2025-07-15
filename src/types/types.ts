@@ -69,3 +69,5 @@ export type newsDataTypes = {
   time: string;
   image: ImageSourcePropType;
 };
+
+export type goalsScoredDataType = {};

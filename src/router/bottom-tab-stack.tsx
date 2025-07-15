@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BottomTabBarStackParamList } from "./types";
 import { bottomTabBarScreen } from "@src/navigation";
 import {
@@ -12,7 +12,7 @@ import { colors } from "@src/resources/color/color";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "@src/components/shared";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
+import { useActiveBottomTabStore } from "store";
 
 const Tab = createBottomTabNavigator<BottomTabBarStackParamList>();
 
@@ -27,8 +27,6 @@ const CustomTabBarButton = ({
   onPress,
   route,
 }: ICustomButtonProps) => {
-  console.log(`${route?.name} focused:`, focused);
-
   let iconName: "football" | "heart" | "document" = "football";
   let label = "";
   switch (route?.name) {
@@ -72,20 +70,11 @@ const CustomTabBarButton = ({
 
 export const BottomTabStack = () => {
   const insets = useSafeAreaInsets();
-  const navigation = useNavigation();
-  const [activeTab, setActiveTab] = useState(bottomTabBarScreen[0].screenName); // Default to first tab
+  const { activeTab, setActiveTab } = useActiveBottomTabStore();
 
-  // Listen to navigation state changes to update activeTab
   useEffect(() => {
-    const unsubscribe = navigation.addListener("state", (e) => {
-      const currentRoute = e.data.state.routes[e.data.state.index]?.name;
-      if (currentRoute && currentRoute !== activeTab) {
-        setActiveTab(currentRoute);
-      }
-    });
-
-    return unsubscribe; // Cleanup listener on unmount
-  }, [navigation, activeTab]);
+    setActiveTab(String(bottomTabBarScreen[0]?.screenName));
+  }, []);
 
   return (
     <Tab.Navigator
@@ -115,9 +104,9 @@ export const BottomTabStack = () => {
                 <CustomTabBarButton
                   focused={isFocused}
                   onPress={(event: GestureResponderEvent) => {
-                    setActiveTab(screen.screenName); // Update active tab
+                    setActiveTab(String(screen.screenName)); // Update active tab
                     defaultOnPress?.(event); // Pass the event to defaultOnPress
-                    console.log(`Pressed tab: ${screen.screenName}`);
+                    // console.log(`Pressed tab: ${screen.screenName}`);
                   }}
                   route={{ name: screen.screenName }}
                 />
@@ -137,6 +126,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     borderRadius: moderateScale(50),
     padding: moderateScale(8),
-    minWidth: moderateScale(40),
+    minWidth: moderateScale(70),
   },
 });

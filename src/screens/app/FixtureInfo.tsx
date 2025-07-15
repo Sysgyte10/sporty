@@ -22,6 +22,7 @@ import {
   MatchesTab,
   NewsTab,
   OverviewTab,
+  TableTab,
 } from "@src/components/app/fixture-info";
 
 type overViewStateType = {
@@ -101,9 +102,16 @@ export const FixtureInfo = ({
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <OverviewTab
               matches={overViewData?.filteredMatches}
-              topScorerData={overViewData?.filteredTopScorer}
+              topScorerData={
+                overViewData?.filteredTopScorer &&
+                overViewData?.filteredTopScorer.slice(0, 3)
+              }
               matchHighLightData={overViewData?.matchHightLights}
               newsData={overViewData?.news && overViewData?.news?.slice(0, 3)}
+              goalScorerData={
+                overViewData?.filteredTopScorer &&
+                overViewData?.filteredTopScorer
+              }
             />
           </Animated.View>
         )}
@@ -116,6 +124,11 @@ export const FixtureInfo = ({
         {selectedLineList === fixturesOverview[3] && (
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <NewsTab newsData={overViewData?.news} />
+          </Animated.View>
+        )}
+        {selectedLineList === fixturesOverview[2] && (
+          <Animated.View entering={FadeIn.delay(200).duration(600)}>
+            <TableTab goalScorerData={overViewData?.filteredTopScorer} />
           </Animated.View>
         )}
         <View

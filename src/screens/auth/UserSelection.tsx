@@ -4,7 +4,7 @@ import { colors } from "@src/resources/color/color";
 import { AuthScreenProps } from "@src/router/types";
 import { authScreenNames } from "@src/navigation/navigation-names";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { DVW, moderateScale } from "@src/resources/responsiveness";
+import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { ButtonList, FormHeader } from "@src/common";
 import { StatusBar } from "expo-status-bar";
 import { CustomButton, CustomText } from "@src/components/shared";
@@ -199,7 +199,12 @@ export const UserSelection = ({
             color: colors.white,
           }}
         />
-        <View>{steps[activeStepIndex]}</View>
+        <View
+          style={{
+            marginTop: moderateScale(-10),
+          }}>
+          {steps[activeStepIndex]}
+        </View>
         <View style={styles.actionContainer}>
           <CustomButton
             title={String(btnStepperText)}
@@ -255,5 +260,6 @@ const styles = StyleSheet.create({
     borderWidth: DVW(0.2),
     borderColor: colors.lightGrey,
     marginVertical: moderateScale(20),
+    height: DVH(5),
   },
 });
