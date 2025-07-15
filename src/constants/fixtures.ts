@@ -6,6 +6,24 @@ export const footballFixtures: fixtureDataType[] = [
     fixtureName: "MLS",
     country: "USA",
     icon: require("@src/assets/png/fixture.png"),
+    odds: [
+      {
+        clubName: "PSG",
+        odd: 2.5,
+      },
+      {
+        clubName: "Real Madrid",
+        odd: 3.0,
+      },
+      {
+        clubName: "Manchester City",
+        odd: 3.25,
+      },
+      {
+        clubName: "Bayern Munchen",
+        odd: 4.0,
+      },
+    ],
     news: [
       {
         id: 1,
@@ -208,6 +226,24 @@ export const footballFixtures: fixtureDataType[] = [
     fixtureName: "MLS",
     country: "NG",
     icon: require("@src/assets/png/fixture.png"),
+    odds: [
+      {
+        clubName: "PSG",
+        odd: 2.5,
+      },
+      {
+        clubName: "Real Madrid",
+        odd: 3.0,
+      },
+      {
+        clubName: "Manchester City",
+        odd: 3.25,
+      },
+      {
+        clubName: "Bayern Munchen",
+        odd: 4.0,
+      },
+    ],
     news: [
       {
         id: 1,
@@ -408,6 +444,24 @@ export const footballFixtures: fixtureDataType[] = [
     fixtureName: "MLS",
     country: "GH",
     icon: require("@src/assets/png/fixture.png"),
+    odds: [
+      {
+        clubName: "PSG",
+        odd: 2.5,
+      },
+      {
+        clubName: "Real Madrid",
+        odd: 3.0,
+      },
+      {
+        clubName: "Manchester City",
+        odd: 3.25,
+      },
+      {
+        clubName: "Bayern Munchen",
+        odd: 4.0,
+      },
+    ],
     news: [
       {
         id: 1,
@@ -504,4 +558,28 @@ export const fixturesOverview = [
   "Table",
   "News",
   "Odds",
+  "Player Stats",
+  "Team Stats",
+];
+
+export const odds = ["Outrights", "Specials"];
+
+export const playerStats = [
+  "All",
+  "Goals",
+  "Assists",
+  "Red Cards",
+  "Yellow Cards",
+  "Shots on Target",
+];
+
+export const teamStats = [
+  "All",
+  "Goals Scored",
+  "Goals COncealed",
+  "Average Possession",
+  "Shots on Target",
+  "Total Shots",
+  "Red Cards",
+  "Yellow Cards",
 ];

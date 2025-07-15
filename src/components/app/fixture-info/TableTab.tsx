@@ -1,7 +1,6 @@
 import { GoalScorerCard } from "@src/cards";
 import { SectionHeader } from "@src/common";
 import { CustomText } from "@src/components/shared";
-import { colors } from "@src/resources/color/color";
 import { moderateScale } from "@src/resources/responsiveness";
 import { topScorersDataType } from "@src/types/types";
 import React from "react";

@@ -4,6 +4,7 @@ import React from "react";
 import {
   StyleProp,
   StyleSheet,
+  TextStyle,
   TouchableOpacity,
   View,
   ViewStyle,
@@ -14,6 +15,8 @@ interface ISectionHeaderProps {
   actionText?: string;
   onPressAction?: () => void;
   containerStyle?: StyleProp<ViewStyle>;
+  leftTextStyle?: StyleProp<TextStyle>;
+  actionTextStyle?: StyleProp<TextStyle>;
 }
 
 export const SectionHeader: React.FC<ISectionHeaderProps> = ({
@@ -21,14 +24,16 @@ export const SectionHeader: React.FC<ISectionHeaderProps> = ({
   actionText,
   onPressAction,
   containerStyle,
+  leftTextStyle,
+  actionTextStyle,
 }) => {
   return (
     <View style={[styles.textBtnContainer, containerStyle]}>
-      <CustomText type='medium' size={14} lightGrey>
+      <CustomText type='medium' size={14} lightGrey style={leftTextStyle}>
         {leftText ? leftText : "MATCHES"}
       </CustomText>
       <TouchableOpacity onPress={onPressAction}>
-        <CustomText type='medium' size={14} lightGrey>
+        <CustomText type='medium' size={14} lightGrey style={actionTextStyle}>
           {actionText ? actionText : "See All"}
         </CustomText>
       </TouchableOpacity>

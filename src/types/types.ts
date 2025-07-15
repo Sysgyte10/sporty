@@ -34,6 +34,7 @@ export type fixtureDataType = {
   matches: matchesDataType[];
   matchHighLights: matchHightLightDataType[];
   news: newsDataTypes[];
+  odds: oddsDataType[];
 };
 
 export type topScorersDataType = {
@@ -70,4 +71,7 @@ export type newsDataTypes = {
   image: ImageSourcePropType;
 };
 
-export type goalsScoredDataType = {};
+export type oddsDataType = {
+  clubName: string;
+  odd: number;
+};

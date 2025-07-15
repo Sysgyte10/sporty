@@ -15,14 +15,18 @@ import {
   matchesDataType,
   matchHightLightDataType,
   newsDataTypes,
+  oddsDataType,
   topScorersDataType,
 } from "@src/types/types";
 import Animated, { FadeIn } from "react-native-reanimated";
 import {
   MatchesTab,
   NewsTab,
+  OddsTab,
   OverviewTab,
+  PlayerStatsTab,
   TableTab,
+  TeamStatsTab,
 } from "@src/components/app/fixture-info";
 
 type overViewStateType = {
@@ -30,6 +34,7 @@ type overViewStateType = {
   filteredTopScorer: topScorersDataType[];
   matchHightLights: matchHightLightDataType[];
   news: newsDataTypes[];
+  odds: oddsDataType[];
 };
 
 export const FixtureInfo = ({
@@ -42,6 +47,7 @@ export const FixtureInfo = ({
     filteredTopScorer: [],
     matchHightLights: [],
     news: [],
+    odds: [],
   });
   const [selectedLineList, setSelectedLineList] = useState<string>(
     fixturesOverview[0]
@@ -57,6 +63,7 @@ export const FixtureInfo = ({
       filteredTopScorer: filteredTopScorers ?? [],
       matchHightLights: filteredData?.matchHighLights ?? [],
       news: filteredData?.news ?? [],
+      odds: filteredData?.odds ?? [],
     });
   };
 
@@ -129,6 +136,21 @@ export const FixtureInfo = ({
         {selectedLineList === fixturesOverview[2] && (
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <TableTab goalScorerData={overViewData?.filteredTopScorer} />
+          </Animated.View>
+        )}
+        {selectedLineList === fixturesOverview[4] && (
+          <Animated.View entering={FadeIn.delay(200).duration(600)}>
+            <OddsTab oddsData={overViewData?.odds} />
+          </Animated.View>
+        )}
+        {selectedLineList === fixturesOverview[5] && (
+          <Animated.View entering={FadeIn.delay(200).duration(600)}>
+            <PlayerStatsTab topScorerData={overViewData?.filteredTopScorer} />
+          </Animated.View>
+        )}
+        {selectedLineList === fixturesOverview[6] && (
+          <Animated.View entering={FadeIn.delay(200).duration(600)}>
+            <TeamStatsTab goalScorerData={overViewData?.filteredTopScorer} />
           </Animated.View>
         )}
         <View
