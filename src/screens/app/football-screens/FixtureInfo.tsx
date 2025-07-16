@@ -1,12 +1,12 @@
 import { appScreenNames } from "@src/navigation";
 import { RootStackScreenProps } from "@src/router/types";
 import React, { useEffect, useState } from "react";
-import { AppWrapper } from "../AppWrapper";
+import { AppWrapper } from "../../AppWrapper";
 import { Platform, StyleSheet, View } from "react-native";
 import { colors } from "@src/resources/color/color";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
-import { AppNavigationHeader } from "../AppHeader";
-import { ScrollContainer } from "../ScrollContainer";
+import { AppNavigationHeader } from "../../AppHeader";
+import { ScrollContainer } from "../../ScrollContainer";
 import { ButtonLineList } from "@src/common";
 import { fixturesOverview, footballFixtures } from "@src/constants/fixtures";
 import { Image } from "expo-image";
@@ -50,7 +50,7 @@ export const FixtureInfo = ({
     odds: [],
   });
   const [selectedLineList, setSelectedLineList] = useState<string>(
-    fixturesOverview[6]
+    fixturesOverview[0]
   );
 
   const getOverViewData = () => {
@@ -119,6 +119,7 @@ export const FixtureInfo = ({
                 overViewData?.filteredTopScorer &&
                 overViewData?.filteredTopScorer
               }
+              fixtureId={id}
             />
           </Animated.View>
           <View

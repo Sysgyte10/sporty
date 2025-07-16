@@ -5,7 +5,7 @@ import {
 import { RootStackParamList } from "@src/router/types";
 import React from "react";
 import { appScreenNames } from "@src/navigation";
-import { Favorites } from "../Favorites";
+import { Favorites } from "../favorites-screens";
 
 const ScreenStack = createNativeStackNavigator<RootStackParamList>();
 const headerOptions: NativeStackNavigationOptions = { headerShown: false };

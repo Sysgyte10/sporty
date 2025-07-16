@@ -30,6 +30,10 @@ export interface RootStackParamList extends ParamListBase {
   FixtureInfo: {
     fixtureId: string | number | any;
   };
+  MatchHighlights: {
+    highLightId: string | number | any;
+    fixtureId: string | number | any;
+  };
 }
 
 export type RootStackScreenProps<ScreenName extends keyof RootStackParamList> =

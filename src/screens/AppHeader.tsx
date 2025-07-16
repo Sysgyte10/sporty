@@ -57,6 +57,7 @@ interface AppNavigationHeaderProps {
   onPressNotificationIcon?: () => void;
   heartIcon?: boolean;
   onPressHeartIcon?: () => void;
+  middleText?: string;
 }
 
 export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
@@ -66,6 +67,7 @@ export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
   onPressNotificationIcon,
   heartIcon,
   onPressHeartIcon,
+  middleText,
 }) => {
   return (
     <View style={styles.container}>
@@ -74,13 +76,20 @@ export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
         onPress={onPressActionBtn}>
         <MaterialIcons
           name={"keyboard-arrow-left"}
-          size={moderateScale(25)}
+          size={moderateScale(23)}
           color={colors.lightGrey}
         />
-        <CustomText size={17} lightGrey type='medium'>
+        <CustomText size={14} lightGrey type='medium'>
           {title ? title : "Back"}
         </CustomText>
       </TouchableOpacity>
+      {middleText ? (
+        <CustomText type='medium' size={15} white>
+          {middleText}
+        </CustomText>
+      ) : (
+        <View />
+      )}
       <View style={appNavStyles.actionIconContainer}>
         {notificationIcon ? (
           <TouchableOpacity onPress={onPressNotificationIcon}>

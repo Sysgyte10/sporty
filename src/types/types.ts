@@ -61,6 +61,7 @@ export type matchHightLightDataType = {
   image: ImageSourcePropType;
   feature: string;
   detail: string;
+  highLights: string[];
 };
 
 export type newsDataTypes = {
@@ -74,4 +75,47 @@ export type newsDataTypes = {
 export type oddsDataType = {
   clubName: string;
   odd: number;
+};
+
+//calls to youtube api response type
+export type apiYouTubeVideoResponse = {
+  kind: string;
+  etag: string;
+  items: YouTubeVideoItem[];
+  pageInfo: {
+    totalResults: number;
+    resultsPerPage: number;
+  };
+};
+type YouTubeVideoItem = {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: {
+    publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: {
+      default: Thumbnail;
+      medium: Thumbnail;
+      high: Thumbnail;
+      standard?: Thumbnail;
+      maxres?: Thumbnail;
+    };
+    channelTitle: string;
+    tags?: string[];
+    categoryId: string;
+    liveBroadcastContent: string;
+    localized: {
+      title: string;
+      description: string;
+    };
+    defaultAudioLanguage?: string;
+  };
+};
+type Thumbnail = {
+  url: string;
+  width: number;
+  height: number;
 };

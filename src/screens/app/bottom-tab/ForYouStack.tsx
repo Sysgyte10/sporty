@@ -5,7 +5,7 @@ import {
 import { RootStackParamList } from "@src/router/types";
 import React from "react";
 import { appScreenNames } from "@src/navigation";
-import { ForYou } from "../ForYou";
+import { ForYou } from "../for-you-screens";
 
 const ScreenStack = createNativeStackNavigator<RootStackParamList>();
 const headerOptions: NativeStackNavigationOptions = { headerShown: false };

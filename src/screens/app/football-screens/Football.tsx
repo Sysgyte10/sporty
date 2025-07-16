@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { AppWrapper } from "../AppWrapper";
+import { AppWrapper } from "../../AppWrapper";
 import { colors } from "@src/resources/color/color";
 import { FlatList, StyleSheet, View } from "react-native";
 import { RootStackScreenProps } from "@src/router/types";
 import { appScreenNames } from "@src/navigation/navigation-names";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
-import { ScrollContainer } from "../ScrollContainer";
+import { ScrollContainer } from "../../ScrollContainer";
 import { ButtonLineList, ButtonList, DateSwitch } from "@src/common";
 import { sportyTypes } from "@src/constants/user-selection-steps";
 import { FootBallHeader } from "@src/components/app/football";

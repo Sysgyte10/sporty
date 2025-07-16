@@ -15,8 +15,17 @@ import {
   topScorersDataType,
 } from "@src/types/types";
 import React from "react";
-import { FlatList, Platform, StyleSheet, View } from "react-native";
+import {
+  FlatList,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "@src/router/types";
+import { appScreenNames } from "@src/navigation";
 
 interface IOverViewTabProps {
   matches: matchesDataType[];
@@ -24,6 +33,7 @@ interface IOverViewTabProps {
   goalScorerData: topScorersDataType[];
   matchHighLightData: matchHightLightDataType[];
   newsData: newsDataTypes[];
+  fixtureId?: any;
 }
 
 export const OverviewTab: React.FC<IOverViewTabProps> = ({
@@ -32,8 +42,9 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
   matchHighLightData,
   newsData,
   goalScorerData,
+  fixtureId,
 }) => {
-  console.log(matches);
+  const navigation: NavigationProp<RootStackParamList> = useNavigation();
   return (
     <View>
       <SectionHeader
@@ -98,7 +109,16 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
               height: DVH(15),
               marginRight: moderateScale(10),
             }}>
-            <MatchHighLightCard highLightItem={item} />
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() =>
+                navigation.navigate(appScreenNames.MATCH_HIGHLIGHTS, {
+                  highLightId: item?.id,
+                  fixtureId: fixtureId,
+                })
+              }>
+              <MatchHighLightCard highLightItem={item} />
+            </TouchableOpacity>
           </Animated.View>
         )}
       />

@@ -3,7 +3,7 @@ import { moderateScale } from "@src/resources/responsiveness";
 import { matchHightLightDataType } from "@src/types/types";
 import { ImageBackground } from "expo-image";
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 interface IMatchHigLightCardProps {
   highLightItem: matchHightLightDataType;
@@ -13,7 +13,7 @@ export const MatchHighLightCard: React.FC<IMatchHigLightCardProps> = ({
   highLightItem,
 }) => {
   return (
-    <TouchableOpacity style={styles.bgImgContainer} activeOpacity={0.6}>
+    <View style={styles.bgImgContainer}>
       <ImageBackground
         source={highLightItem?.image}
         contentFit='fill'
@@ -31,7 +31,7 @@ export const MatchHighLightCard: React.FC<IMatchHigLightCardProps> = ({
           </CustomText>
         </View>
       </ImageBackground>
-    </TouchableOpacity>
+    </View>
   );
 };
 

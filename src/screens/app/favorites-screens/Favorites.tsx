@@ -1,5 +1,5 @@
 import React from "react";
-import { AppWrapper } from "../AppWrapper";
+import { AppWrapper } from "../../AppWrapper";
 import { colors } from "@src/resources/color/color";
 import { Text } from "react-native";
 import { RootStackScreenProps } from "@src/router/types";
