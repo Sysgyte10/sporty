@@ -2,7 +2,7 @@ import { GoalScorerCard } from "@src/cards";
 import { ButtonList, SectionHeader } from "@src/common";
 import { CustomText } from "@src/components/shared";
 import { teamStats } from "@src/constants/fixtures";
-import { moderateScale } from "@src/resources/responsiveness";
+import { DVH, moderateScale } from "@src/resources/responsiveness";
 import { topScorersDataType } from "@src/types/types";
 import React, { useState } from "react";
 import { FlatList, Platform, StyleSheet, View } from "react-native";
@@ -36,6 +36,13 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
         />
         <FlatList
           data={goalScorerData}
+          ListFooterComponent={
+            <View
+              style={{
+                paddingVertical: DVH(25),
+              }}
+            />
+          }
           contentContainerStyle={{
             paddingVertical: moderateScale(10),
             // gap: moderateScale(10),

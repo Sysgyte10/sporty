@@ -42,7 +42,7 @@ export const PlayerStatsTab: React.FC<IPlayerStatsProps> = ({
           ListFooterComponent={
             <View
               style={{
-                paddingVertical: DVH(10),
+                paddingVertical: DVH(25),
               }}
             />
           }

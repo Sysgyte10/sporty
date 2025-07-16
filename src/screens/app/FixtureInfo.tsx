@@ -50,7 +50,7 @@ export const FixtureInfo = ({
     odds: [],
   });
   const [selectedLineList, setSelectedLineList] = useState<string>(
-    fixturesOverview[0]
+    fixturesOverview[6]
   );
 
   const getOverViewData = () => {
@@ -104,8 +104,8 @@ export const FixtureInfo = ({
           selectedBtn={selectedLineList}
         />
       </View>
-      <ScrollContainer>
-        {selectedLineList === fixturesOverview[0] && (
+      {selectedLineList === fixturesOverview[0] && (
+        <ScrollContainer>
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <OverviewTab
               matches={overViewData?.filteredMatches}
@@ -121,44 +121,67 @@ export const FixtureInfo = ({
               }
             />
           </Animated.View>
-        )}
-        {selectedLineList === fixturesOverview[1] && (
-          <Animated.View entering={FadeIn.delay(200).duration(600)}>
-            <MatchesTab matches={overViewData?.filteredMatches} />
-          </Animated.View>
-        )}
+          <View
+            style={{
+              paddingVertical: DVH(10),
+            }}
+          />
+        </ScrollContainer>
+      )}
+      {selectedLineList === fixturesOverview[1] && (
+        <Animated.View entering={FadeIn.delay(200).duration(600)}>
+          <MatchesTab matches={overViewData?.filteredMatches} />
+        </Animated.View>
+      )}
 
-        {selectedLineList === fixturesOverview[3] && (
+      {selectedLineList === fixturesOverview[3] && (
+        <ScrollContainer>
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <NewsTab newsData={overViewData?.news} />
           </Animated.View>
-        )}
-        {selectedLineList === fixturesOverview[2] && (
+
+          <View
+            style={{
+              paddingVertical: DVH(10),
+            }}
+          />
+        </ScrollContainer>
+      )}
+      {selectedLineList === fixturesOverview[2] && (
+        <ScrollContainer>
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <TableTab goalScorerData={overViewData?.filteredTopScorer} />
           </Animated.View>
-        )}
-        {selectedLineList === fixturesOverview[4] && (
+          <View
+            style={{
+              paddingVertical: DVH(10),
+            }}
+          />
+        </ScrollContainer>
+      )}
+      {selectedLineList === fixturesOverview[4] && (
+        <ScrollContainer>
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
             <OddsTab oddsData={overViewData?.odds} />
           </Animated.View>
-        )}
-        {selectedLineList === fixturesOverview[5] && (
-          <Animated.View entering={FadeIn.delay(200).duration(600)}>
-            <PlayerStatsTab topScorerData={overViewData?.filteredTopScorer} />
-          </Animated.View>
-        )}
-        {selectedLineList === fixturesOverview[6] && (
-          <Animated.View entering={FadeIn.delay(200).duration(600)}>
-            <TeamStatsTab goalScorerData={overViewData?.filteredTopScorer} />
-          </Animated.View>
-        )}
-        <View
-          style={{
-            paddingVertical: DVH(10),
-          }}
-        />
-      </ScrollContainer>
+
+          <View
+            style={{
+              paddingVertical: DVH(10),
+            }}
+          />
+        </ScrollContainer>
+      )}
+      {selectedLineList === fixturesOverview[5] && (
+        <Animated.View entering={FadeIn.delay(200).duration(600)}>
+          <PlayerStatsTab topScorerData={overViewData?.filteredTopScorer} />
+        </Animated.View>
+      )}
+      {selectedLineList === fixturesOverview[6] && (
+        <Animated.View entering={FadeIn.delay(200).duration(600)}>
+          <TeamStatsTab goalScorerData={overViewData?.filteredTopScorer} />
+        </Animated.View>
+      )}
     </AppWrapper>
   );
 };
