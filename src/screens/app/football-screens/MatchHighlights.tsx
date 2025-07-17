@@ -9,7 +9,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
-  Platform,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -19,7 +18,8 @@ import YoutubePlayer from "react-native-youtube-iframe";
 import { Image } from "expo-image";
 import { VideoModal } from "@src/components/app/match-highlights";
 import { useMatchHighlights } from "@src/hooks";
-import Animated, { SlideInDown, SlideInRight } from "react-native-reanimated";
+import Animated, { SlideInDown } from "react-native-reanimated";
+import { SkeletonLoader } from "@src/common";
 
 export const MatchHighlights = ({
   navigation,
@@ -36,6 +36,7 @@ export const MatchHighlights = ({
     setPlaying,
     playing,
     videoDetails,
+    loading,
     setVideoDetails,
     highLightData,
   } = useMatchHighlights(highLightId, fixtureId);
@@ -114,78 +115,101 @@ export const MatchHighlights = ({
             </View>
           </View>
         </View>
-        <FlatList
-          data={videoDetails}
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-          columnWrapperStyle={{
-            justifyContent: "space-between",
-            marginBottom: moderateScale(10),
-          }}
-          contentContainerStyle={{
-            gap: moderateScale(5),
-            marginTop: moderateScale(10),
-          }}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={({ item, index }) => {
-            return (
-              <Animated.View
-                entering={SlideInDown.delay(index * 200).duration(800)}
-                key={index}>
-                <TouchableOpacity
-                  onPress={() =>
-                    setVideoModalState({
-                      ...videoModalState,
-                      visible: true,
-                      videoId: item?.videoId,
-                    })
-                  }
-                  activeOpacity={0.6}
-                  style={{
-                    width: DVW(46),
-                    paddingVertical: moderateScale(7),
-                    borderRadius: moderateScale(10),
-                    backgroundColor: "#242222",
-                    paddingHorizontal: moderateScale(7),
-                    gap: moderateScale(10),
-                  }}>
-                  <View style={styles.itemImgContainer}>
-                    <Image
-                      style={styles.itemImg}
-                      source={item?.videoImgUrl}
-                      contentFit='cover'
-                    />
-                  </View>
-                  <CustomText
-                    type='medium'
-                    size={9}
+        {loading ? (
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: moderateScale(10),
+            }}>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <View
+                key={index}
+                style={{
+                  gap: moderateScale(10),
+                }}>
+                <SkeletonLoader width={45} height={10} />
+                <SkeletonLoader width={40} height={2} />
+                <SkeletonLoader width={30} height={1} />
+              </View>
+            ))}
+          </View>
+        ) : (
+          <FlatList
+            data={videoDetails}
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+            columnWrapperStyle={{
+              justifyContent: "space-between",
+              marginBottom: moderateScale(10),
+            }}
+            contentContainerStyle={{
+              gap: moderateScale(5),
+              marginTop: moderateScale(10),
+            }}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({ item, index }) => {
+              return (
+                <Animated.View
+                  entering={SlideInDown.delay(index * 200).duration(800)}
+                  key={index}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      setVideoModalState({
+                        ...videoModalState,
+                        visible: true,
+                        videoId: item?.videoId,
+                      })
+                    }
+                    activeOpacity={0.6}
                     style={{
-                      color: "#ffffffe2",
+                      width: DVW(46),
+                      paddingVertical: moderateScale(7),
+                      borderRadius: moderateScale(10),
+                      backgroundColor: "#242222",
+                      paddingHorizontal: moderateScale(7),
+                      gap: moderateScale(10),
                     }}>
-                    {item?.videoTitle}
-                  </CustomText>
-                  <View>
-                    <View style={styles.bottomTextContainer}>
-                      <CustomText type='semi-bold' size={8} lightGrey>
-                        Chelsea
-                      </CustomText>
-                      <CustomText type='semi-bold' size={8} lightGrey>
-                        |
-                      </CustomText>
-                      <CustomText type='semi-bold' size={8} lightGrey>
-                        4h
-                      </CustomText>
+                    <View style={styles.itemImgContainer}>
+                      <Image
+                        style={styles.itemImg}
+                        source={{ uri: item?.videoImgUrl }}
+                        contentFit='cover'
+                        cachePolicy={"disk"}
+                      />
                     </View>
-                  </View>
-                </TouchableOpacity>
-              </Animated.View>
-            );
-          }}
-          maxToRenderPerBatch={2}
-          initialNumToRender={2}
-          windowSize={2}
-          updateCellsBatchingPeriod={100}
-        />
+                    <CustomText
+                      type='medium'
+                      size={9}
+                      style={{
+                        color: "#ffffffe2",
+                      }}>
+                      {item?.videoTitle}
+                    </CustomText>
+                    <View>
+                      <View style={styles.bottomTextContainer}>
+                        <CustomText type='semi-bold' size={8} lightGrey>
+                          Chelsea
+                        </CustomText>
+                        <CustomText type='semi-bold' size={8} lightGrey>
+                          |
+                        </CustomText>
+                        <CustomText type='semi-bold' size={8} lightGrey>
+                          4h
+                        </CustomText>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                </Animated.View>
+              );
+            }}
+            maxToRenderPerBatch={2}
+            initialNumToRender={2}
+            windowSize={2}
+            updateCellsBatchingPeriod={100}
+          />
+        )}
       </AppWrapper>
       <VideoModal
         visible={videoModalState?.visible}

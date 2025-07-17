@@ -8,6 +8,7 @@ import { useState } from "react";
 
 export const useMatchHighlights = (highLightId: any, fixtureId: any) => {
   const [videoDetails, setVideoDetails] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [playing, setPlaying] = useState<boolean>(false);
   const [highLightData, setHighlightData] =
     useState<matchHightLightDataType | null>(null);
@@ -38,6 +39,8 @@ export const useMatchHighlights = (highLightId: any, fixtureId: any) => {
     videoImgUrl: string;
     channelTitle: string;
   } | null> => {
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     try {
       const videoId = extractYouTubeVideoId(url);
       const apiKey = "AIzaSyD5K_Tef5PH7AEAzH6iO5ol0schHbDFkVU";
@@ -64,7 +67,10 @@ export const useMatchHighlights = (highLightId: any, fixtureId: any) => {
       };
     } catch (error) {
       console.error("Fetch error:", error);
+      setLoading(false);
       return null;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,5 +82,6 @@ export const useMatchHighlights = (highLightId: any, fixtureId: any) => {
     playing,
     setPlaying,
     highLightData,
+    loading,
   };
 };
