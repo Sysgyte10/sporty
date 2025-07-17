@@ -19,6 +19,7 @@ import YoutubePlayer from "react-native-youtube-iframe";
 import { Image } from "expo-image";
 import { VideoModal } from "@src/components/app/match-highlights";
 import { useMatchHighlights } from "@src/hooks";
+import Animated, { SlideInDown, SlideInRight } from "react-native-reanimated";
 
 export const MatchHighlights = ({
   navigation,
@@ -76,15 +77,42 @@ export const MatchHighlights = ({
           onPressActionBtn={() => navigation.goBack()}
           middleText='Match Highlights'
         />
-        <View style={styles.ctaImgContainer}>
-          <YoutubePlayer
-            height={400}
-            play={playing}
-            videoId={extractYouTubeVideoId(
-              String(highLightData?.highLights[0])
-            )}
-            onChangeState={onStateChange}
-          />
+        <View style={styles.ctaContainer}>
+          <View style={styles.youtubeContainer}>
+            <YoutubePlayer
+              height={400}
+              play={playing}
+              videoId={extractYouTubeVideoId(
+                String(highLightData?.highLights[0])
+              )}
+              onChangeState={onStateChange}
+            />
+          </View>
+          <View
+            style={{
+              paddingHorizontal: moderateScale(10),
+              gap: moderateScale(20),
+            }}>
+            <CustomText
+              type='medium'
+              size={14}
+              style={{
+                color: "#ffffffe2",
+              }}>
+              {videoDetails[0]?.videoTitle}
+            </CustomText>
+            <View style={styles.bottomTextContainer}>
+              <CustomText type='semi-bold' size={13} lightGrey>
+                Chelsea
+              </CustomText>
+              <CustomText type='semi-bold' size={13} lightGrey>
+                |
+              </CustomText>
+              <CustomText type='semi-bold' size={13} lightGrey>
+                4h
+              </CustomText>
+            </View>
+          </View>
         </View>
         <FlatList
           data={videoDetails}
@@ -101,53 +129,56 @@ export const MatchHighlights = ({
           keyExtractor={(_, index) => index.toString()}
           renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity
-                onPress={() =>
-                  setVideoModalState({
-                    ...videoModalState,
-                    visible: true,
-                    videoId: item?.videoId,
-                  })
-                }
-                activeOpacity={0.6}
-                key={index}
-                style={{
-                  width: DVW(46),
-                  paddingVertical: moderateScale(7),
-                  borderRadius: moderateScale(10),
-                  backgroundColor: "#242222",
-                  paddingHorizontal: moderateScale(7),
-                  gap: moderateScale(10),
-                }}>
-                <View style={styles.itemImgContainer}>
-                  <Image
-                    style={styles.itemImg}
-                    source={item?.videoImgUrl}
-                    contentFit='cover'
-                  />
-                </View>
-                <CustomText
-                  type='medium'
-                  size={9}
+              <Animated.View
+                entering={SlideInDown.delay(index * 200).duration(800)}
+                key={index}>
+                <TouchableOpacity
+                  onPress={() =>
+                    setVideoModalState({
+                      ...videoModalState,
+                      visible: true,
+                      videoId: item?.videoId,
+                    })
+                  }
+                  activeOpacity={0.6}
                   style={{
-                    color: "#ffffffe2",
+                    width: DVW(46),
+                    paddingVertical: moderateScale(7),
+                    borderRadius: moderateScale(10),
+                    backgroundColor: "#242222",
+                    paddingHorizontal: moderateScale(7),
+                    gap: moderateScale(10),
                   }}>
-                  {item?.videoTitle}
-                </CustomText>
-                <View>
-                  <View style={styles.bottomTextContainer}>
-                    <CustomText type='semi-bold' size={8} lightGrey>
-                      Chelsea
-                    </CustomText>
-                    <CustomText type='semi-bold' size={8} lightGrey>
-                      |
-                    </CustomText>
-                    <CustomText type='semi-bold' size={8} lightGrey>
-                      4h
-                    </CustomText>
+                  <View style={styles.itemImgContainer}>
+                    <Image
+                      style={styles.itemImg}
+                      source={item?.videoImgUrl}
+                      contentFit='cover'
+                    />
                   </View>
-                </View>
-              </TouchableOpacity>
+                  <CustomText
+                    type='medium'
+                    size={9}
+                    style={{
+                      color: "#ffffffe2",
+                    }}>
+                    {item?.videoTitle}
+                  </CustomText>
+                  <View>
+                    <View style={styles.bottomTextContainer}>
+                      <CustomText type='semi-bold' size={8} lightGrey>
+                        Chelsea
+                      </CustomText>
+                      <CustomText type='semi-bold' size={8} lightGrey>
+                        |
+                      </CustomText>
+                      <CustomText type='semi-bold' size={8} lightGrey>
+                        4h
+                      </CustomText>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              </Animated.View>
             );
           }}
           maxToRenderPerBatch={2}
@@ -176,13 +207,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(10),
     paddingVertical: moderateScale(0),
   },
-  ctaImgContainer: {
+  ctaContainer: {
     width: "100%",
-    height: Platform.OS === "ios" ? DVH(24) : DVH(26),
+    paddingBottom: moderateScale(20),
     overflow: "hidden",
     backgroundColor: "#242222",
-    borderRadius: moderateScale(10),
     marginBottom: moderateScale(10),
+    borderRadius: moderateScale(10),
+    gap: moderateScale(10),
+  },
+  youtubeContainer: {
+    width: "100%",
+    alignSelf: "center",
+    borderRadius: moderateScale(10),
+    height: DVH(25),
+    overflow: "hidden",
   },
   itemImgContainer: {
     width: "100%",
