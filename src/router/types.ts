@@ -34,6 +34,8 @@ export interface RootStackParamList extends ParamListBase {
     highLightId: string | number | any;
     fixtureId: string | number | any;
   };
+  More: undefined;
+  Notifications: undefined;
 }
 
 export type RootStackScreenProps<ScreenName extends keyof RootStackParamList> =

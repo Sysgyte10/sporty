@@ -16,4 +16,6 @@ export enum appScreenNames {
   FAVORITES = "Favorites",
   FIXTURE_INFO = "FixtureInfo",
   MATCH_HIGHLIGHTS = "MatchHighlights",
+  MORE = "More",
+  NOTIFICATIONS = "Notifications",
 }

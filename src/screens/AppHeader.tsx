@@ -57,7 +57,8 @@ interface AppNavigationHeaderProps {
   onPressNotificationIcon?: () => void;
   heartIcon?: boolean;
   onPressHeartIcon?: () => void;
-  middleText?: string;
+  middleText?: string | React.ReactNode;
+  rightIcon?: React.ReactNode;
 }
 
 export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
@@ -68,6 +69,7 @@ export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
   heartIcon,
   onPressHeartIcon,
   middleText,
+  rightIcon,
 }) => {
   return (
     <View style={styles.container}>
@@ -90,30 +92,34 @@ export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
       ) : (
         <View />
       )}
-      <View style={appNavStyles.actionIconContainer}>
-        {notificationIcon ? (
-          <TouchableOpacity onPress={onPressNotificationIcon}>
-            <Octicons
-              name='bell'
-              size={moderateScale(20)}
-              color={colors.lightGrey}
-            />
-          </TouchableOpacity>
-        ) : (
-          <View />
-        )}
-        {heartIcon ? (
-          <TouchableOpacity onPress={onPressHeartIcon}>
-            <AntDesign
-              name='hearto'
-              size={moderateScale(20)}
-              color={colors.lightGrey}
-            />
-          </TouchableOpacity>
-        ) : (
-          <View />
-        )}
-      </View>
+      {rightIcon ? (
+        rightIcon
+      ) : (
+        <View style={appNavStyles.actionIconContainer}>
+          {notificationIcon ? (
+            <TouchableOpacity onPress={onPressNotificationIcon}>
+              <Octicons
+                name='bell'
+                size={moderateScale(20)}
+                color={colors.lightGrey}
+              />
+            </TouchableOpacity>
+          ) : (
+            <View />
+          )}
+          {heartIcon ? (
+            <TouchableOpacity onPress={onPressHeartIcon}>
+              <AntDesign
+                name='hearto'
+                size={moderateScale(20)}
+                color={colors.lightGrey}
+              />
+            </TouchableOpacity>
+          ) : (
+            <View />
+          )}
+        </View>
+      )}
     </View>
   );
 };

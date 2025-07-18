@@ -29,6 +29,7 @@ export const Football = ({
         showSearchIcon
         showMenuIcon
         headerStyle={styles.header}
+        onPressMenuIcon={() => navigation.navigate(appScreenNames.MORE)}
       />
       <ScrollContainer style={styles.scrollContainer}>
         <View style={styles.btnListContainer}>
