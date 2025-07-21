@@ -13,6 +13,7 @@ import {
 } from "@expo/vector-icons";
 import { CustomButton, CustomText } from "@src/components/shared";
 import Animated, { FadeIn } from "react-native-reanimated";
+import { StatusBar } from "expo-status-bar";
 
 export const More = ({
   navigation,
@@ -54,6 +55,7 @@ export const More = ({
   ];
   return (
     <AppWrapper style={styles.appWrapper} safeArea>
+      <StatusBar style='light' />
       <AppNavigationHeader
         title='Back'
         rightIcon={

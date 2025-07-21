@@ -20,6 +20,7 @@ import { VideoModal } from "@src/components/app/match-highlights";
 import { useMatchHighlights } from "@src/hooks";
 import Animated, { SlideInDown } from "react-native-reanimated";
 import { SkeletonLoader } from "@src/common";
+import { StatusBar } from "expo-status-bar";
 
 export const MatchHighlights = ({
   navigation,
@@ -73,6 +74,7 @@ export const MatchHighlights = ({
   return (
     <>
       <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
+        <StatusBar style='light' />
         <AppNavigationHeader
           title='Back'
           onPressActionBtn={() => navigation.goBack()}

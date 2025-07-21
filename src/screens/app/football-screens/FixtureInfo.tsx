@@ -28,6 +28,7 @@ import {
   TableTab,
   TeamStatsTab,
 } from "@src/components/app/fixture-info";
+import { StatusBar } from "expo-status-bar";
 
 type overViewStateType = {
   filteredMatches: matchesDataType[];
@@ -74,6 +75,7 @@ export const FixtureInfo = ({
   console.log("Fixture Id is", id);
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
+      <StatusBar style='light' />
       <AppNavigationHeader
         title='Back'
         notificationIcon

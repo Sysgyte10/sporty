@@ -92,6 +92,9 @@ export const Notifications = ({
                           borderRadius: 20,
                           overflow: "hidden",
                           paddingRight: moderateScale(50),
+                          marginTop: !listItem?.desc
+                            ? moderateScale(-25)
+                            : moderateScale(0),
                         }}
                         circleStyle={{
                           width: 20,

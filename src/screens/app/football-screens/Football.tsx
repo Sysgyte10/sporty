@@ -14,6 +14,7 @@ import { Image } from "expo-image";
 import { footballFixtures } from "@src/constants/fixtures";
 import { FixtureCard } from "@src/cards";
 import Animated, { ZoomIn } from "react-native-reanimated";
+import { StatusBar } from "expo-status-bar";
 
 export const Football = ({
   navigation,
@@ -24,6 +25,7 @@ export const Football = ({
   );
   return (
     <AppWrapper safeArea bgColor={colors.black}>
+      <StatusBar style='light' />
       <FootBallHeader
         title='ScoresWatch'
         showSearchIcon

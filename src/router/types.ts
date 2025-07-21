@@ -37,6 +37,8 @@ export interface RootStackParamList extends ParamListBase {
   More: undefined;
   Notifications: undefined;
   Settings: undefined;
+  Language: undefined;
+  DefaultSport: undefined;
 }
 
 export type RootStackScreenProps<ScreenName extends keyof RootStackParamList> =

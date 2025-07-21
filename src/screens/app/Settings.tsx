@@ -9,6 +9,7 @@ import { AppNavigationHeader } from "../AppHeader";
 import { FormHeader } from "@src/common";
 import { CustomText } from "@src/components/shared";
 import SwitchToggle from "react-native-switch-toggle";
+import { StatusBar } from "expo-status-bar";
 
 export const Settings = ({
   navigation,
@@ -28,7 +29,7 @@ export const Settings = ({
       screen: appScreenNames.DEFAULT_SPORT,
     },
     {
-      title: "Show favorites in scores",
+      title: "Show Favorites in Scores",
       desc: "",
       toggle: true,
       screen: "",
@@ -37,6 +38,7 @@ export const Settings = ({
 
   return (
     <AppWrapper style={styles.appWrapper} safeArea>
+      <StatusBar style='light' />
       <AppNavigationHeader
         title='Back'
         onPressActionBtn={() => navigation.goBack()}
