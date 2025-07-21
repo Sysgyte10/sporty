@@ -18,4 +18,7 @@ export enum appScreenNames {
   MATCH_HIGHLIGHTS = "MatchHighlights",
   MORE = "More",
   NOTIFICATIONS = "Notifications",
+  SETTINGS = "Settings",
+  LANGUAGE = "Language",
+  DEFAULT_SPORT = "DefaultSport",
 }

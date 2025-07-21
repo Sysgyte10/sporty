@@ -97,7 +97,10 @@ export const FixtureInfo = ({
           </CustomText>
         </View>
       </View>
-      <View>
+      <View
+        style={{
+          marginTop: moderateScale(-7),
+        }}>
         <ButtonLineList
           data={fixturesOverview}
           onButtonPress={(text) => setSelectedLineList(text)}
@@ -199,8 +202,8 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(5),
   },
   ctaImgContainer: {
-    width: DVW(20),
-    height: Platform.OS === "ios" ? DVH(9) : DVH(10),
+    width: DVW(16),
+    height: Platform.OS === "ios" ? DVH(7) : DVH(8),
     overflow: "hidden",
   },
   ctaImg: {

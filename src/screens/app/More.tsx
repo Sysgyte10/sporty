@@ -38,7 +38,7 @@ export const More = ({
           color={colors.white}
         />
       ),
-      screen: "Settings",
+      screen: appScreenNames.SETTINGS,
     },
     {
       title: "Help & Info",

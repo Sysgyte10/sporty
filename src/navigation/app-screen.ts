@@ -1,7 +1,7 @@
 import { appScreenTypes } from "@src/types/types";
 import { appScreenNames } from "./navigation-names";
 import { BottomTabStack } from "@src/router/bottom-tab-stack";
-import { More, Notifications } from "@src/screens/app";
+import { More, Notifications, Settings } from "@src/screens/app";
 
 export const appScreen: appScreenTypes[] = [
   {
@@ -15,5 +15,9 @@ export const appScreen: appScreenTypes[] = [
   {
     screenName: appScreenNames.NOTIFICATIONS,
     component: Notifications,
+  },
+  {
+    screenName: appScreenNames.SETTINGS,
+    component: Settings,
   },
 ];
