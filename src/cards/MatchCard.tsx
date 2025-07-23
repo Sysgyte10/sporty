@@ -86,10 +86,10 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
 const styles = StyleSheet.create({
   matchCard: {
     backgroundColor: colors.black,
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(7),
     paddingHorizontal: moderateScale(20),
     borderRadius: moderateScale(10),
-    marginTop: moderateScale(20),
+    marginTop: moderateScale(10),
     overflow: "hidden",
   },
   subMatchCard: {

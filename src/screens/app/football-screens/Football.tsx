@@ -62,7 +62,7 @@ export const Football = ({
         <FlatList
           data={footballFixtures}
           contentContainerStyle={{
-            gap: moderateScale(10),
+            gap: moderateScale(1),
           }}
           keyExtractor={(__, index) => index.toString()}
           renderItem={({ item, index }) => {
