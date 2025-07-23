@@ -31,7 +31,7 @@ export const AgeSelection = ({
             paddingHorizontal: moderateScale(15),
           }}>
           <CustomText type='semi-bold' white size={22}>
-            Sporty
+            ScoresWatch
           </CustomText>
           <CustomText type='medium' size={13} style={styles.descText}>
             {`Please help us on our mission as a responsible`}

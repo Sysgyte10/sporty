@@ -4,12 +4,12 @@ export const notifications = [
     list: [
       {
         title: "Match Alerts",
-        desc: "",
+        desc: "show match alerts",
         toggle: true,
       },
       {
         title: "Player Alerts",
-        desc: "",
+        desc: "show player alerts",
         toggle: true,
       },
     ],

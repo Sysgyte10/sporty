@@ -78,10 +78,10 @@ const styles = StyleSheet.create({
   },
   subScreen: {
     paddingHorizontal: moderateScale(10),
-    paddingTop: moderateScale(15),
+    paddingTop: moderateScale(1),
   },
   itemBtn: {
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(10),
     flexDirection: "row",
     alignItems: "center",
     gap: moderateScale(10),

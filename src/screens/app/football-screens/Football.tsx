@@ -48,7 +48,10 @@ export const Football = ({
             style={styles.ctaImg}
           />
         </View>
-        <View>
+        <View
+          style={{
+            marginTop: moderateScale(-30),
+          }}>
           <ButtonLineList
             data={footBallWatches}
             onButtonPress={(text) => setSelectedLineList(text)}

@@ -125,10 +125,10 @@ const styles = StyleSheet.create({
   },
   subScreen: {
     paddingHorizontal: moderateScale(5),
-    paddingTop: moderateScale(15),
+    paddingTop: moderateScale(1),
   },
   listContainer: {
-    paddingVertical: moderateScale(15),
+    paddingVertical: moderateScale(10),
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
