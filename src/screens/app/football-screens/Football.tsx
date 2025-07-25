@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(5),
   },
   ctaImgContainer: {
+    marginTop: moderateScale(10),
     width: "100%",
     height: DVH(12),
     overflow: "hidden",

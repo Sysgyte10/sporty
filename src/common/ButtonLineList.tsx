@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(5),
   },
   btn: {
-    paddingVertical: moderateScale(10),
+    paddingTop: moderateScale(5),
     alignItems: "center",
     minWidth: moderateScale(80), // Increased for stability with longer text
   },

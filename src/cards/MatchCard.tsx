@@ -35,7 +35,7 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
               {matchItem?.date}
             </CustomText>
           )}
-          <CustomText type='medium' size={16} lightGrey>
+          <CustomText type='medium' size={12} lightGrey>
             FT
           </CustomText>
         </View>
@@ -75,7 +75,7 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
           <AntDesign
             name='hearto'
             color={colors.lightGrey}
-            size={moderateScale(25)}
+            size={moderateScale(18)}
           />
         </TouchableOpacity>
       </View>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   dateContainer: {
     flexDirection: "column",
-    gap: moderateScale(10),
+    gap: moderateScale(1),
     alignItems: "center",
   },
 });

@@ -28,10 +28,10 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
           </View>
 
           <View style={styles.fixtureNameNCountryContainer}>
-            <CustomText type='semi-bold' size={16} white>
+            <CustomText type='semi-bold' size={10} white>
               {data?.fixtureName}
             </CustomText>
-            <CustomText type='regular' size={13} style={{ color: "#9C9C9C" }}>
+            <CustomText type='regular' size={10} style={{ color: "#9C9C9C" }}>
               {data?.country}
             </CustomText>
           </View>
@@ -39,16 +39,16 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
         <TouchableOpacity onPress={() => onPress(data?.id)}>
           <MaterialIcons
             name='keyboard-arrow-right'
-            size={moderateScale(40)}
+            size={moderateScale(25)}
             color={colors.lightGrey}
           />
         </TouchableOpacity>
       </View>
       {data?.matches &&
         data?.matches
-          .slice(0, 2)
+          .slice(0, 1)
           .map((matchItem, index) => (
-            <MatchCard matchItem={matchItem} key={index} showDate={showDate} />
+            <MatchCard matchItem={matchItem} key={index} showDate={true} />
           ))}
     </View>
   );
@@ -57,7 +57,7 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
 const styles = StyleSheet.create({
   fixtureCard: {
     paddingHorizontal: moderateScale(15),
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(10),
     borderRadius: moderateScale(10),
     backgroundColor: "#242222",
     borderColor: "#2F2F2F",
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(10),
   },
   imgContainer: {
-    width: DVW(12),
-    height: DVH(6),
+    width: DVW(6),
+    height: DVH(3),
     borderRadius: moderateScale(100),
     overflow: "hidden",
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   fixtureNameNCountryContainer: {
-    gap: moderateScale(10),
+    gap: moderateScale(2),
   },
   titleActionBtnContainer: {
     flexDirection: "row",
@@ -85,6 +85,6 @@ const styles = StyleSheet.create({
   fixtureImgTitleContainer: {
     flexDirection: "row",
     alignItems: "center",
-    gap: moderateScale(20),
+    gap: moderateScale(10),
   },
 });
