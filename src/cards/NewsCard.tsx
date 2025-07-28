@@ -18,6 +18,7 @@ interface INewsCardProps {
   darkOverlayStyle?: StyleProp<ViewStyle>;
   topTextStyle?: StyleProp<TextStyle>;
   bottomTextStyle?: StyleProp<TextStyle>;
+  onPress?: () => void;
 }
 
 export const NewsCard: React.FC<INewsCardProps> = ({
@@ -26,9 +27,10 @@ export const NewsCard: React.FC<INewsCardProps> = ({
   darkOverlayStyle,
   topTextStyle,
   bottomTextStyle,
+  onPress,
 }) => {
   return (
-    <TouchableOpacity style={styles.btn} activeOpacity={0.6}>
+    <TouchableOpacity style={styles.btn} activeOpacity={0.6} onPress={onPress}>
       <View style={[styles.bgImgContainer, bgImgContainerStyle]}>
         <Image
           source={newsItem?.image}

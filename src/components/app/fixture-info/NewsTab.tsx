@@ -15,16 +15,20 @@ import { CustomText } from "@src/components/shared";
 
 interface INewsTabProps {
   newsData: newsDataTypes[];
+  onPress?: () => void;
 }
 
-export const NewsTab: React.FC<INewsTabProps> = ({ newsData }) => {
+export const NewsTab: React.FC<INewsTabProps> = ({ newsData, onPress }) => {
   return (
     <View
       style={{
         paddingVertical: moderateScale(10),
         gap: moderateScale(15),
       }}>
-      <TouchableOpacity style={styles.btn} activeOpacity={0.6}>
+      <TouchableOpacity
+        style={styles.btn}
+        activeOpacity={0.6}
+        onPress={onPress}>
         <View style={[styles.bgImgContainer]}>
           <Image
             source={newsData[0]?.image}
@@ -70,6 +74,7 @@ export const NewsTab: React.FC<INewsTabProps> = ({ newsData }) => {
               height: Platform.OS === "ios" ? DVH(25) : DVH(27),
             }}>
             <NewsCard
+              onPress={onPress}
               newsItem={item}
               bgImgContainerStyle={{
                 height: DVH(13),

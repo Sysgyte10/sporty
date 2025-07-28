@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(2),
   },
   btnListContainer: {
-    paddingVertical: moderateScale(20),
+    paddingVertical: moderateScale(8),
     borderBottomWidth: DVW(0.2),
     borderBottomColor: "#5c5757",
   },

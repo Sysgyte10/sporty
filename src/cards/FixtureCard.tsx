@@ -56,8 +56,8 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
 
 const styles = StyleSheet.create({
   fixtureCard: {
-    paddingHorizontal: moderateScale(15),
-    paddingVertical: moderateScale(10),
+    paddingHorizontal: moderateScale(6),
+    paddingVertical: moderateScale(4),
     borderRadius: moderateScale(10),
     backgroundColor: "#242222",
     borderColor: "#2F2F2F",

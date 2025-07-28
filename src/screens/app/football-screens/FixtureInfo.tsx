@@ -30,7 +30,7 @@ import {
 } from "@src/components/app/fixture-info";
 import { StatusBar } from "expo-status-bar";
 
-type overViewStateType = {
+export type overViewStateType = {
   filteredMatches: matchesDataType[];
   filteredTopScorer: topScorersDataType[];
   matchHightLights: matchHightLightDataType[];
