@@ -22,4 +22,5 @@ export enum appScreenNames {
   LANGUAGE = "Language",
   DEFAULT_SPORT = "DefaultSport",
   FOR_YOU_NEWS = "ForYouNews",
+  ONE_MATCH = "OneMatch",
 }

@@ -3,6 +3,7 @@ import { colors } from "@src/resources/color/color";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import React from "react";
 import {
+  Pressable,
   StyleProp,
   StyleSheet,
   TouchableOpacity,
@@ -18,6 +19,7 @@ interface IMatchCardProps {
   matchItem: matchesDataType;
   onLikeItem?: (itemId: string | number | any) => void;
   containerStyle?: StyleProp<ViewStyle>;
+  onPressMatchCard?: () => void;
 }
 
 export const MatchCard: React.FC<IMatchCardProps> = ({
@@ -25,9 +27,12 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
   matchItem,
   onLikeItem,
   containerStyle,
+  onPressMatchCard,
 }) => {
   return (
-    <View style={[styles.matchCard, containerStyle]}>
+    <Pressable
+      style={[styles.matchCard, containerStyle]}
+      onPress={onPressMatchCard}>
       <View style={styles.subMatchCard}>
         <View style={styles.dateContainer}>
           {showDate && (
@@ -79,7 +84,7 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
           />
         </TouchableOpacity>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
@@ -89,7 +94,7 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(7),
     paddingHorizontal: moderateScale(20),
     borderRadius: moderateScale(10),
-    marginTop: moderateScale(10),
+    marginTop: moderateScale(2),
     overflow: "hidden",
   },
   subMatchCard: {

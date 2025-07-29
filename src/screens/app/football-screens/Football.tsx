@@ -3,14 +3,16 @@ import { AppWrapper } from "../../AppWrapper";
 import { colors } from "@src/resources/color/color";
 import { FlatList, StyleSheet, View } from "react-native";
 import { RootStackScreenProps } from "@src/router/types";
-import { appScreenNames } from "@src/navigation/navigation-names";
+import {
+  appScreenNames,
+  bottomTabScreenNames,
+} from "@src/navigation/navigation-names";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { ScrollContainer } from "../../ScrollContainer";
 import { ButtonLineList, ButtonList, DateSwitch } from "@src/common";
 import { sportyTypes } from "@src/constants/user-selection-steps";
 import { FootBallHeader } from "@src/components/app/football";
 import { footBallWatches } from "@src/constants/football";
-import { Image } from "expo-image";
 import { footballFixtures } from "@src/constants/fixtures";
 import { FixtureCard } from "@src/cards";
 import Animated, { ZoomIn } from "react-native-reanimated";
@@ -33,21 +35,15 @@ export const Football = ({
         headerStyle={styles.header}
         onPressMenuIcon={() => navigation.navigate(appScreenNames.MORE)}
       />
+      <View style={styles.btnListContainer}>
+        <ButtonList
+          data={sportyTypes}
+          onButtonPress={(text) => setSelectedSport(text)}
+          selectedBtn={selectedSport}
+        />
+      </View>
+
       <ScrollContainer style={styles.scrollContainer}>
-        <View style={styles.btnListContainer}>
-          <ButtonList
-            data={sportyTypes}
-            onButtonPress={(text) => setSelectedSport(text)}
-            selectedBtn={selectedSport}
-          />
-        </View>
-        <View style={styles.ctaImgContainer}>
-          <Image
-            source={require("@src/assets/png/home-cta.png")}
-            contentFit='fill'
-            style={styles.ctaImg}
-          />
-        </View>
         <View
           style={{
             marginTop: moderateScale(-30),
@@ -77,6 +73,11 @@ export const Football = ({
                       fixtureId: fixtureId,
                     })
                   }
+                  onPressMatchCard={() =>
+                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                      screen: appScreenNames.ONE_MATCH,
+                    })
+                  }
                 />
               </Animated.View>
             );
@@ -88,6 +89,11 @@ export const Football = ({
           windowSize={2}
           updateCellsBatchingPeriod={100}
         />
+        <View
+          style={{
+            paddingVertical: DVH(5),
+          }}
+        />
       </ScrollContainer>
     </AppWrapper>
   );
@@ -96,6 +102,7 @@ export const Football = ({
 const styles = StyleSheet.create({
   scrollContainer: {
     paddingHorizontal: moderateScale(2),
+    marginTop: moderateScale(20),
   },
   btnListContainer: {
     paddingVertical: moderateScale(8),

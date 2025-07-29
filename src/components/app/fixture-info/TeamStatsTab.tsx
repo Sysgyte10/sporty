@@ -10,21 +10,27 @@ import Animated, { FadeIn } from "react-native-reanimated";
 
 interface ITeamStatsTabProps {
   goalScorerData: topScorersDataType[];
+  showFilter?: boolean;
+  listFooterHeight?: number;
 }
 
 export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
   goalScorerData,
+  showFilter = true,
+  listFooterHeight,
 }) => {
   const [selectedItem, setSelectedItem] = useState<string>(teamStats[0]);
   return (
     <View>
-      <View style={styles.btnListContainer}>
-        <ButtonList
-          data={teamStats}
-          onButtonPress={(text) => setSelectedItem(text)}
-          selectedBtn={selectedItem}
-        />
-      </View>
+      {showFilter && (
+        <View style={styles.btnListContainer}>
+          <ButtonList
+            data={teamStats}
+            onButtonPress={(text) => setSelectedItem(text)}
+            selectedBtn={selectedItem}
+          />
+        </View>
+      )}
       <View>
         <SectionHeader
           leftText={selectedItem}
@@ -39,7 +45,7 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
           ListFooterComponent={
             <View
               style={{
-                paddingVertical: DVH(25),
+                paddingVertical: DVH(listFooterHeight || 25),
               }}
             />
           }

@@ -12,12 +12,14 @@ interface IFixtureCardProps {
   data: fixtureDataType;
   onPress: (fixtureId: string | number | any) => void;
   showDate?: boolean;
+  onPressMatchCard?: () => void;
 }
 
 export const FixtureCard: React.FC<IFixtureCardProps> = ({
   data,
   onPress,
   showDate,
+  onPressMatchCard,
 }) => {
   return (
     <View style={styles.fixtureCard}>
@@ -48,7 +50,12 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
         data?.matches
           .slice(0, 1)
           .map((matchItem, index) => (
-            <MatchCard matchItem={matchItem} key={index} showDate={true} />
+            <MatchCard
+              matchItem={matchItem}
+              key={index}
+              showDate={true}
+              onPressMatchCard={onPressMatchCard}
+            />
           ))}
     </View>
   );
@@ -57,12 +64,13 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
 const styles = StyleSheet.create({
   fixtureCard: {
     paddingHorizontal: moderateScale(6),
-    paddingVertical: moderateScale(4),
+    paddingTop: moderateScale(5),
+    paddingBottom: moderateScale(4),
     borderRadius: moderateScale(10),
     backgroundColor: "#242222",
     borderColor: "#2F2F2F",
     borderWidth: DVW(0.3),
-    marginBottom: moderateScale(10),
+    marginBottom: moderateScale(8),
   },
   imgContainer: {
     width: DVW(6),
@@ -75,7 +83,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   fixtureNameNCountryContainer: {
-    gap: moderateScale(2),
+    gap: moderateScale(0.5),
   },
   titleActionBtnContainer: {
     flexDirection: "row",

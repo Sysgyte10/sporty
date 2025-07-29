@@ -5,7 +5,12 @@ import {
 import { RootStackParamList } from "@src/router/types";
 import React from "react";
 import { appScreenNames } from "@src/navigation";
-import { FixtureInfo, Football, MatchHighlights } from "../football-screens";
+import {
+  FixtureInfo,
+  Football,
+  MatchHighlights,
+  OneMach,
+} from "../football-screens";
 
 const ScreenStack = createNativeStackNavigator<RootStackParamList>();
 const headerOptions: NativeStackNavigationOptions = { headerShown: false };
@@ -22,6 +27,7 @@ export const FootBallStack = () => {
         name={appScreenNames.MATCH_HIGHLIGHTS}
         component={MatchHighlights}
       />
+      <ScreenStack.Screen name={appScreenNames.ONE_MATCH} component={OneMach} />
     </ScreenStack.Navigator>
   );
 };
