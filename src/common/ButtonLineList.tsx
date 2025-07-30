@@ -230,7 +230,7 @@ export const ButtonLineList: React.FC<IButtonLineListProps> = ({
             style={[styles.btn, { paddingHorizontal: itemPadding }]}>
             <CustomText
               type='medium'
-              size={14}
+              size={12}
               style={{
                 color: selectedBtn === item ? colors.purple : colors.lightGrey,
               }}>
