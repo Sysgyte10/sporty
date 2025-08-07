@@ -51,7 +51,7 @@ export const OneMach = ({
               style={styles.clubImg}
             />
           </View>
-          <CustomText type='bold' size={40} white>
+          <CustomText type='bold' size={20} white>
             1 - 0
           </CustomText>
           <View style={styles.clubImgContainer}>
@@ -82,7 +82,7 @@ export const OneMach = ({
         </View>
         <View
           style={{
-            marginVertical: moderateScale(10),
+            marginVertical: moderateScale(3),
           }}>
           <ButtonLineList
             data={["Match", "Competition", "Team", "Players"]}
@@ -114,8 +114,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#242222",
   },
   clubImg: {
-    width: DVW(12),
-    height: Platform.OS === "ios" ? DVH(5) : DVH(6),
+    width: DVW(10),
+    height: Platform.OS === "ios" ? DVH(4) : DVH(5),
   },
   scoreContainer: {
     flexDirection: "row",

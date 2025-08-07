@@ -11,7 +11,7 @@ export const AppLoader = () => {
     <>
       <CommonStatusBar style='light' bgColor={colors.purple} />
       <AppWrapper
-        bgColor={"#0F0F0F"}
+        bgColor={"black"}
         style={{
           width: screenWidth,
           height: screenHeight,
@@ -20,8 +20,8 @@ export const AppLoader = () => {
         }}>
         <View style={loaderStyles.iconContainer}>
           <Image
-            source={require("@src/assets/png/app-icon.png")}
-            contentFit='cover'
+            source={require("@src/assets/png/splash-icon.png")}
+            contentFit='fill'
             style={loaderStyles.icon}
           />
         </View>
@@ -39,7 +39,8 @@ const loaderStyles = StyleSheet.create({
   },
   iconContainer: {
     width: "70%",
-    height: DVH(10),
+    height: DVH(30),
+    overflow: "hidden",
   },
   icon: {
     width: "100%",

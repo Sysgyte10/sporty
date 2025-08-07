@@ -346,7 +346,7 @@ export const MatchTab: React.FC<{}> = () => {
                 style={styles.clubImg}
               />
             </View>
-            <CustomText type='bold' size={40} white>
+            <CustomText type='bold' size={20} white>
               {index === 0 ? "1 - 0" : "0 - 1"}
             </CustomText>
             <View style={styles.clubImgContainer}>
@@ -495,8 +495,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#242222",
   },
   clubImg: {
-    width: DVW(12),
-    height: Platform.OS === "ios" ? DVH(5) : DVH(6),
+    width: DVW(8),
+    height: Platform.OS === "ios" ? DVH(3) : DVH(4),
   },
   scoreContainer: {
     flexDirection: "row",

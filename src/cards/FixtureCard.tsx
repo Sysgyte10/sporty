@@ -47,16 +47,19 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
         </TouchableOpacity>
       </View>
       {data?.matches &&
-        data?.matches
-          .slice(0, 1)
-          .map((matchItem, index) => (
-            <MatchCard
-              matchItem={matchItem}
-              key={index}
-              showDate={true}
-              onPressMatchCard={onPressMatchCard}
-            />
-          ))}
+        data?.matches.slice(0, 1).map((matchItem, index) => (
+          <MatchCard
+            matchItem={matchItem}
+            key={index}
+            showDate={true}
+            onPressMatchCard={onPressMatchCard}
+            containerStyle={
+              {
+                // marginTop: moderateScale(-10),
+              }
+            }
+          />
+        ))}
     </View>
   );
 };
@@ -67,14 +70,14 @@ const styles = StyleSheet.create({
     paddingTop: moderateScale(5),
     paddingBottom: moderateScale(4),
     borderRadius: moderateScale(10),
-    backgroundColor: "#242222",
-    borderColor: "#2F2F2F",
-    borderWidth: DVW(0.3),
-    marginBottom: moderateScale(8),
+    // backgroundColor: "#242222",
+    // borderColor: "#2F2F2F",
+    // borderWidth: DVW(0.3),
+    marginBottom: moderateScale(0),
   },
   imgContainer: {
-    width: DVW(6),
-    height: DVH(3),
+    width: DVW(5),
+    height: DVH(2.5),
     borderRadius: moderateScale(100),
     overflow: "hidden",
   },
@@ -89,6 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    zIndex: 1,
   },
   fixtureImgTitleContainer: {
     flexDirection: "row",

@@ -90,8 +90,9 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
 
 const styles = StyleSheet.create({
   matchCard: {
-    backgroundColor: colors.black,
-    paddingVertical: moderateScale(7),
+    // backgroundColor: colors.black,
+    backgroundColor: "#242222",
+    paddingVertical: moderateScale(0),
     paddingHorizontal: moderateScale(20),
     borderRadius: moderateScale(10),
     marginTop: moderateScale(2),

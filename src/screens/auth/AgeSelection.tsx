@@ -6,13 +6,38 @@ import { authScreenNames } from "@src/navigation/navigation-names";
 import { CustomButton, CustomText } from "@src/components/shared";
 import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { moderateScale } from "@src/resources/responsiveness";
-import Animated, { FadeIn } from "react-native-reanimated";
+import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
 import { useAuthStore } from "@src/api/store/auth";
 
 export const AgeSelection = ({
   navigation,
 }: AuthScreenProps<authScreenNames.AGE_SELECTION>) => {
   const { setIsAuthenticated } = useAuthStore();
+
+  // const opacity = useSharedValue(0);
+  // const translateY = useSharedValue(20);
+  // const scale = useSharedValue(0.95);
+
+  // const animatedStyle = useAnimatedStyle(() => ({
+  //   opacity: opacity.value,
+  //   transform: [{ translateY: translateY.value }, { scale: scale.value }],
+  // }));
+
+  // useEffect(() => {
+  //   opacity.value = withTiming(1, {
+  //     duration: 800,
+  //     easing: Easing.out(Easing.cubic),
+  //   });
+  //   translateY.value = withTiming(0, {
+  //     duration: 800,
+  //     easing: Easing.out(Easing.cubic),
+  //   });
+  //   scale.value = withTiming(1, {
+  //     duration: 800,
+  //     easing: Easing.out(Easing.exp),
+  //   });
+  // }, []);
+
   return (
     <>
       <AppWrapper bgColor={colors.black} safeArea>
@@ -30,9 +55,16 @@ export const AgeSelection = ({
             alignItems: "center",
             paddingHorizontal: moderateScale(15),
           }}>
-          <CustomText type='semi-bold' white size={22}>
-            ScoresWatch
-          </CustomText>
+          {/* <Animated.View style={animatedStyle}>
+            <CustomText type='semi-bold' white size={25}>
+              RealSco⚽rZ
+            </CustomText>
+          </Animated.View> */}
+          <Animated.View entering={FadeInDown.delay(200).duration(1000)}>
+            <CustomText type='semi-bold' white size={25}>
+              RealSco⚽rX
+            </CustomText>
+          </Animated.View>
           <CustomText type='medium' size={13} style={styles.descText}>
             {`Please help us on our mission as a responsible`}
           </CustomText>
