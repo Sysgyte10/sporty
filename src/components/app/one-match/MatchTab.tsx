@@ -69,7 +69,15 @@ export const MatchTab: React.FC<{}> = () => {
                   {item?.time}
                 </CustomText>
                 {item?.yellowCard ? (
-                  <View style={styles.yellowCard} />
+                  // <View style={styles.yellowCard} />
+                  <FontAwesome
+                    name='soccer-ball-o'
+                    size={moderateScale(17)}
+                    color={colors.white}
+                    style={{
+                      marginRight: moderateScale(10),
+                    }}
+                  />
                 ) : (
                   <Image
                     source={require("@src/assets/png/recycle.png")}
@@ -102,10 +110,18 @@ export const MatchTab: React.FC<{}> = () => {
                 {item?.yellowCard ? (
                   <View style={styles.yellowCard} />
                 ) : (
-                  <Image
-                    source={require("@src/assets/png/recycle.png")}
-                    contentFit='contain'
-                    style={styles.recycleIcon}
+                  // <Image
+                  //   source={require("@src/assets/png/recycle.png")}
+                  //   contentFit='contain'
+                  //   style={styles.recycleIcon}
+                  // />
+                  <FontAwesome
+                    name='soccer-ball-o'
+                    size={moderateScale(17)}
+                    color={colors.white}
+                    style={{
+                      marginRight: moderateScale(10),
+                    }}
                   />
                 )}
                 <CustomText type='bold' size={10} lightGrey>
@@ -461,9 +477,9 @@ const styles = StyleSheet.create({
     gap: moderateScale(20),
   },
   yellowCard: {
-    paddingVertical: DVH(1.2),
-    paddingHorizontal: DVW(2),
-    borderRadius: moderateScale(6),
+    paddingVertical: DVH(1.25),
+    paddingHorizontal: DVW(2.5),
+    borderRadius: moderateScale(100),
     backgroundColor: "#FFCD57",
     marginBottom: moderateScale(5),
   },

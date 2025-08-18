@@ -6,7 +6,11 @@ import { authScreenNames } from "@src/navigation/navigation-names";
 import { CustomButton, CustomText } from "@src/components/shared";
 import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { moderateScale } from "@src/resources/responsiveness";
-import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated, {
+  BounceInUp,
+  FadeIn,
+  FadeInDown,
+} from "react-native-reanimated";
 import { useAuthStore } from "@src/api/store/auth";
 
 export const AgeSelection = ({
@@ -60,9 +64,9 @@ export const AgeSelection = ({
               RealSco⚽rZ
             </CustomText>
           </Animated.View> */}
-          <Animated.View entering={FadeInDown.delay(200).duration(1000)}>
+          <Animated.View entering={BounceInUp.delay(200).duration(1000)}>
             <CustomText type='semi-bold' white size={25}>
-              RealSco⚽rX
+              RealSc⚽rZ
             </CustomText>
           </Animated.View>
           <CustomText type='medium' size={13} style={styles.descText}>

@@ -9,7 +9,12 @@ import React, { useState } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { ButtonLineList } from "@src/common";
-import { MatchTab } from "@src/components/app/one-match";
+import {
+  CompetitionTab,
+  MatchTab,
+  PlayersTab,
+  TeamTab,
+} from "@src/components/app/one-match";
 import Animated, { FadeIn } from "react-native-reanimated";
 
 export const OneMach = ({
@@ -26,74 +31,94 @@ export const OneMach = ({
         }}>
         <AppNavigationHeader
           title='Back'
-          heartIcon
-          notificationIcon
+          // heartIcon
+          // notificationIcon
           onPressActionBtn={() => navigation.goBack()}
         />
       </View>
-      <View>
-        <CustomText
-          type='semi-bold'
-          size={12}
-          lightGrey
-          style={{
-            paddingVertical: moderateScale(10),
-            textAlign: "center",
-          }}>
-          20.06.2025 02:00
-        </CustomText>
+      {selectedLineList === "Match" && (
+        <View>
+          <CustomText
+            type='semi-bold'
+            size={12}
+            lightGrey
+            style={{
+              paddingVertical: moderateScale(10),
+              textAlign: "center",
+            }}>
+            20.06.2025 02:00
+          </CustomText>
 
-        <View style={styles.scoreContainer}>
-          <View style={styles.clubImgContainer}>
-            <Image
-              source={require("@src/assets/png/totheham.png")}
-              contentFit='fill'
-              style={styles.clubImg}
-            />
+          <View style={styles.scoreContainer}>
+            <View style={styles.clubImgContainer}>
+              <Image
+                source={require("@src/assets/png/totheham.png")}
+                contentFit='fill'
+                style={styles.clubImg}
+              />
+            </View>
+            <CustomText type='bold' size={20} white>
+              1 - 0
+            </CustomText>
+            <View style={styles.clubImgContainer}>
+              <Image
+                source={require("@src/assets/png/chelsea.png")}
+                contentFit='fill'
+                style={styles.clubImg}
+              />
+            </View>
           </View>
-          <CustomText type='bold' size={20} white>
-            1 - 0
-          </CustomText>
-          <View style={styles.clubImgContainer}>
-            <Image
-              source={require("@src/assets/png/chelsea.png")}
-              contentFit='fill'
-              style={styles.clubImg}
-            />
+          <View
+            style={[
+              styles.scoreContainer,
+              {
+                paddingTop: moderateScale(25),
+                paddingHorizontal: moderateScale(15),
+              },
+            ]}>
+            <CustomText type='semi-bold' size={10} lightGrey>
+              TOTHEHAM
+            </CustomText>
+            <CustomText type='semi-bold' size={10} lightGrey>
+              FINISHED
+            </CustomText>
+            <CustomText type='semi-bold' size={10} lightGrey>
+              CHELSEA
+            </CustomText>
           </View>
         </View>
-        <View
-          style={[
-            styles.scoreContainer,
-            {
-              paddingTop: moderateScale(25),
-              paddingHorizontal: moderateScale(15),
-            },
-          ]}>
-          <CustomText type='semi-bold' size={10} lightGrey>
-            TOTHEHAM
-          </CustomText>
-          <CustomText type='semi-bold' size={10} lightGrey>
-            FINISHED
-          </CustomText>
-          <CustomText type='semi-bold' size={10} lightGrey>
-            CHELSEA
-          </CustomText>
-        </View>
-        <View
-          style={{
-            marginVertical: moderateScale(3),
-          }}>
-          <ButtonLineList
-            data={["Match", "Competition", "Team", "Players"]}
-            onButtonPress={(text) => setSelectedLineList(text)}
-            selectedBtn={selectedLineList}
-          />
-        </View>
+      )}
+      <View
+        style={{
+          marginVertical: moderateScale(10),
+        }}>
+        <ButtonLineList
+          data={["Match", "Competition", "Team", "Players"]}
+          onButtonPress={(text) => setSelectedLineList(text)}
+          selectedBtn={selectedLineList}
+        />
       </View>
+
       {selectedLineList === "Match" && (
         <Animated.View entering={FadeIn.delay(200).duration(600)}>
           <MatchTab />
+        </Animated.View>
+      )}
+      {selectedLineList === "Competition" && (
+        <Animated.View entering={FadeIn.delay(200).duration(600)}>
+          <CompetitionTab />
+        </Animated.View>
+      )}
+
+      {selectedLineList === "Team" && (
+        <Animated.View entering={FadeIn.delay(200).duration(600)}>
+          <TeamTab />
+        </Animated.View>
+      )}
+
+      {selectedLineList === "Players" && (
+        <Animated.View entering={FadeIn.delay(200).duration(600)}>
+          <PlayersTab />
         </Animated.View>
       )}
     </AppWrapper>
