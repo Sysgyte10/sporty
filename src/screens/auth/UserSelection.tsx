@@ -33,10 +33,12 @@ import { Step1, Step2, Step3 } from "@src/components/auth/user-selection";
 import { useSearchFilter } from "@src/hooks";
 import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 import { AppHeader } from "../AppHeader";
+import { useGetFootballMarkets } from "@src/api/hooks/app";
 
 export const UserSelection = ({
   navigation,
 }: AuthScreenProps<authScreenNames.USER_SELECTION>) => {
+  const { footballMarket } = useGetFootballMarkets();
   const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
   const { filteredData, searchVal, setSearchVal } = useSearchFilter(
     teamsData,
