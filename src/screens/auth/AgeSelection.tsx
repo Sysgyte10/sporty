@@ -6,18 +6,11 @@ import { authScreenNames } from "@src/navigation/navigation-names";
 import { CustomButton, CustomText } from "@src/components/shared";
 import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { moderateScale } from "@src/resources/responsiveness";
-import Animated, {
-  BounceInUp,
-  FadeIn,
-  FadeInDown,
-} from "react-native-reanimated";
-import { useAuthStore } from "@src/api/store/auth";
+import Animated, { BounceInUp, FadeIn } from "react-native-reanimated";
 
 export const AgeSelection = ({
   navigation,
 }: AuthScreenProps<authScreenNames.AGE_SELECTION>) => {
-  const { setIsAuthenticated } = useAuthStore();
-
   // const opacity = useSharedValue(0);
   // const translateY = useSharedValue(20);
   // const scale = useSharedValue(0.95);
@@ -44,9 +37,9 @@ export const AgeSelection = ({
 
   return (
     <>
-      <AppWrapper bgColor={colors.black} safeArea>
+      <AppWrapper gradientColors={[colors.black, colors.purple]} safeArea>
         <TouchableOpacity
-          onPress={() => setIsAuthenticated(true)}
+          onPress={() => navigation.navigate(authScreenNames.LOGIN)}
           style={styles.skipBtn}>
           <CustomText size={16} type='medium' purple>
             Skip
@@ -87,7 +80,7 @@ export const AgeSelection = ({
                 textWhite
                 textType='semi-bold'
                 textSize={16}
-                onPress={() => setIsAuthenticated(true)}
+                onPress={() => navigation.navigate(authScreenNames.LOGIN)}
                 btnStyle={styles.btn}
               />
             </Animated.View>
@@ -100,7 +93,7 @@ export const AgeSelection = ({
                 textPurple
                 textType='semi-bold'
                 textSize={16}
-                onPress={() => setIsAuthenticated(true)}
+                onPress={() => navigation.navigate(authScreenNames.LOGIN)}
                 btnStyle={styles.btn}
               />
             </Animated.View>
@@ -111,11 +104,11 @@ export const AgeSelection = ({
             type='medium'
             size={13}
             style={{
-              color: "#9C9C9C",
+              color: colors.white,
             }}>
             Your data is protected as outlined in our{" "}
           </CustomText>
-          <CustomText type='medium' size={13} purple>
+          <CustomText type='medium' size={13} white>
             Privacy Policy
           </CustomText>
         </View>
@@ -128,6 +121,7 @@ const styles = StyleSheet.create({
   skipBtn: {
     alignSelf: "flex-end",
     paddingHorizontal: moderateScale(10),
+    marginTop: Platform.OS === "ios" ? moderateScale(35) : moderateScale(25),
   },
   descText: {
     textAlign: "center",

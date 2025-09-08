@@ -1,6 +1,9 @@
 export enum authScreenNames {
   USER_SELECTION = "UserSelection",
   AGE_SELECTION = "AgeSelection",
+  LOGIN = "Login",
+  SIGN_UP = "SignUp",
+  MEMBERSHIP = "Membership",
 }
 
 export enum bottomTabScreenNames {

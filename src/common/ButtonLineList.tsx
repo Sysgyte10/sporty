@@ -22,12 +22,14 @@ interface IButtonLineListProps {
   data: string[];
   onButtonPress: (item: string) => void;
   selectedBtn: string;
+  minWidth?: number;
 }
 
 export const ButtonLineList: React.FC<IButtonLineListProps> = ({
   data,
   onButtonPress,
   selectedBtn,
+  minWidth,
 }) => {
   const positionsRef = useRef<{ [key: string]: { x: number; width: number } }>(
     {}
@@ -227,7 +229,13 @@ export const ButtonLineList: React.FC<IButtonLineListProps> = ({
               }
             }}
             onLayout={(e) => handleLayout(item, e)}
-            style={[styles.btn, { paddingHorizontal: itemPadding }]}>
+            style={[
+              styles.btn,
+              {
+                paddingHorizontal: itemPadding,
+                minWidth: minWidth ? minWidth : moderateScale(80),
+              },
+            ]}>
             <CustomText
               type='medium'
               size={12}
@@ -260,8 +268,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     paddingTop: moderateScale(5),
-    alignItems: "center",
-    minWidth: moderateScale(80), // Increased for stability with longer text
+    alignItems: "center", // Increased for stability with longer text
   },
   baseLine: {
     position: "absolute",

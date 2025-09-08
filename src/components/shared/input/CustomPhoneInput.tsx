@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -43,14 +43,15 @@ interface CustomPhoneInputProps {
   titleStyle?: StyleProp<TextStyle>;
   inputStyle?: StyleProp<TextStyle>;
   onSubmitEditing?: () => void;
+  placeHolderTextColor?: ColorValue;
 }
 
 export const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({
-  dial_code,
+  // dial_code,
   flag,
   disabled = false,
   multiLine = false,
-  maxLength,
+  maxLength = 10,
   placeholder,
   title = "Phone number",
   titleType = "medium",
@@ -64,6 +65,7 @@ export const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({
   titleStyle,
   inputStyle,
   onSubmitEditing,
+  placeHolderTextColor,
 }) => {
   const { getValueFontType } = useCustomInput();
   const [modalVisible, setModalVisible] = useState(false);
@@ -72,10 +74,10 @@ export const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({
     flag: countriesDialCode[0].flag,
     dialCode: countriesDialCode[0].dialCode,
   });
+  const [activeDialCode, setActiveDialCode] = useState<string>("");
 
   const valueFont = getValueFontType(valueFontType);
   const borderColor = error ? colors.danger : "#d3cacaf5";
-  // const activeDialCode = dial_code || selectedCountry.dialCode;
   const activeFlag = flag || selectedCountry.flag;
 
   const handleCountrySelect = (country: CountryType) => {
@@ -83,14 +85,18 @@ export const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({
     setModalVisible(false);
   };
 
+  useEffect(() => {
+    setActiveDialCode(selectedCountry.dialCode);
+  }, [selectedCountry.dialCode]);
+
   const renderCountryItem = ({ item }: { item: CountryType }) => (
     <TouchableOpacity
       style={styles.option}
       onPress={() => handleCountrySelect(item)}>
-      <CustomText type='regular' size={14}>
+      <CustomText type='regular' size={14} lightGrey>
         {item.flag} {item.name}
       </CustomText>
-      <CustomText type='regular' size={14}>
+      <CustomText type='regular' size={14} lightGrey>
         {item.dialCode}
       </CustomText>
     </TouchableOpacity>
@@ -104,7 +110,11 @@ export const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({
       onRequestClose={() => setModalVisible(false)}>
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-          <CustomText size={16} type='semi-bold' style={styles.modalHeader}>
+          <CustomText
+            size={16}
+            type='semi-bold'
+            style={styles.modalHeader}
+            lightGrey>
             Select Country
           </CustomText>
           <FlatList
@@ -143,9 +153,17 @@ export const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({
           </CustomText>
         </TouchableOpacity>
 
-        {/* <CustomText type='regular' size={14} style={styles.dialCodeText}>
+        <CustomText
+          type='regular'
+          size={14}
+          style={[
+            styles.dialCodeText,
+            {
+              color: colors.white,
+            },
+          ]}>
           {activeDialCode}
-        </CustomText> */}
+        </CustomText>
 
         <TextInput
           onSubmitEditing={onSubmitEditing}
@@ -157,8 +175,13 @@ export const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({
             if (text.startsWith(selectedCountry.dialCode)) {
               cleanNumber = text.slice(selectedCountry.dialCode.length);
             }
+
+            // 🚀 Remove leading zero if present (after country code)
+            cleanNumber = cleanNumber.replace(/^0/, "");
+
             // Pass the full number (with country code) to the parent
-            onChangeText(`${selectedCountry.dialCode}${cleanNumber}`);
+            onChangeText(`${cleanNumber}`);
+
             // Update the input value to show only the phone number
             return cleanNumber;
           }}
@@ -171,7 +194,7 @@ export const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({
             inputStyle,
           ]}
           keyboardType='phone-pad'
-          placeholderTextColor={colors.black}
+          placeholderTextColor={placeHolderTextColor || colors.lightGrey}
           maxLength={maxLength}
           editable={!disabled}
           multiline={multiLine}
@@ -212,7 +235,7 @@ const styles = StyleSheet.create({
     height: "100%",
     padding: 0,
     margin: 0,
-    includeFontPadding: false,
+    // includeFontPadding: false,
   },
   flagBtn: {
     backgroundColor: "transparent",
@@ -225,7 +248,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   dialCodeText: {
-    paddingHorizontal: moderateScale(5),
+    paddingRight: moderateScale(1),
   },
   errorText: {
     color: colors.danger,
@@ -240,7 +263,7 @@ const styles = StyleSheet.create({
   modalContent: {
     width: "90%",
     height: "40%",
-    backgroundColor: "white",
+    backgroundColor: colors.black,
     borderRadius: moderateScale(10),
     padding: moderateScale(20),
   },

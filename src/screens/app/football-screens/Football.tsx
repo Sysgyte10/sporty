@@ -29,7 +29,7 @@ export const Football = ({
     <AppWrapper safeArea bgColor={colors.black}>
       <StatusBar style='light' />
       <FootBallHeader
-        title='ScoresWatch'
+        title='RealSc⚽rZ'
         showSearchIcon
         showMenuIcon
         headerStyle={styles.header}
