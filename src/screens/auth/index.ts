@@ -3,3 +3,6 @@ export * from "./UserSelection";
 export * from "./Login";
 export * from "./SignUp";
 export * from "./Membership";
+export * from "./Events";
+export * from "./AnotherEvents";
+export * from "./Insights";

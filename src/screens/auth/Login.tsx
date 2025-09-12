@@ -12,8 +12,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginValidationSchema } from "@src/form/validation-rule/rule";
 import { CustomInput } from "@src/components/shared/input/CustomInput";
 import { CustomButton, CustomText } from "@src/components/shared";
+import { useAuthStore } from "@src/api/store/auth";
 
 export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
+  const { setIsAuthenticated } = useAuthStore();
   const {
     control,
     handleSubmit,
@@ -26,6 +28,7 @@ export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
   const onSubmit = (data: loginFormTypes) => {
     if (data) {
       console.log(data);
+      setIsAuthenticated(true);
     }
   };
   return (

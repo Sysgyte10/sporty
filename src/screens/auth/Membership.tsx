@@ -45,7 +45,12 @@ export const Membership = ({
         </View>
       )}
       {selectedBtn === "Regular" && <Regular />}
-      {selectedBtn === "VVIP" && <VVIP selectedType={selectedPlan} />}
+      {selectedBtn === "VVIP" && (
+        <VVIP
+          selectedType={selectedPlan}
+          onActionPress={() => navigation.navigate(authScreenNames.EVENTS)}
+        />
+      )}
     </AppWrapper>
   );
 };

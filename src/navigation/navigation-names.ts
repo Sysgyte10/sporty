@@ -4,6 +4,9 @@ export enum authScreenNames {
   LOGIN = "Login",
   SIGN_UP = "SignUp",
   MEMBERSHIP = "Membership",
+  EVENTS = "Events",
+  ANOTHER_EVENTS = "AnotherEvents",
+  INSIGHTS = "Insights",
 }
 
 export enum bottomTabScreenNames {

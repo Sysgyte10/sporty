@@ -12,9 +12,10 @@ import { StyleSheet, View } from "react-native";
 
 interface IVVIPprops {
   selectedType: "Weekly" | "Monthly" | "Yearly";
+  onActionPress: () => void;
 }
 
-export const VVIP: React.FC<IVVIPprops> = ({ selectedType }) => {
+export const VVIP: React.FC<IVVIPprops> = ({ selectedType, onActionPress }) => {
   return (
     <>
       {selectedType === "Weekly" &&
@@ -65,7 +66,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType }) => {
                 textWhite
                 textType='semi-bold'
                 textSize={12}
-                onPress={() => {}}
+                onPress={() => onActionPress()}
                 btnStyle={styles.btn}
               />
               <CustomText
@@ -138,7 +139,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType }) => {
                 textWhite
                 textType='semi-bold'
                 textSize={12}
-                onPress={() => {}}
+                onPress={() => onActionPress()}
                 btnStyle={styles.btn}
               />
               <CustomText
@@ -211,7 +212,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType }) => {
                 textWhite
                 textType='semi-bold'
                 textSize={12}
-                onPress={() => {}}
+                onPress={() => onActionPress()}
                 btnStyle={styles.btn}
               />
               <CustomText

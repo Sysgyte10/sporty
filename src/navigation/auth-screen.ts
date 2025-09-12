@@ -6,6 +6,9 @@ import {
   UserSelection,
   SignUp,
   Membership,
+  Events,
+  AnotherEvents,
+  Insights,
 } from "@src/screens/auth";
 
 export const authScreen: authScreenTypes[] = [
@@ -28,5 +31,17 @@ export const authScreen: authScreenTypes[] = [
   {
     screenName: authScreenNames.MEMBERSHIP,
     component: Membership,
+  },
+  {
+    screenName: authScreenNames.EVENTS,
+    component: Events,
+  },
+  {
+    screenName: authScreenNames.ANOTHER_EVENTS,
+    component: AnotherEvents,
+  },
+  {
+    screenName: authScreenNames.INSIGHTS,
+    component: Insights,
   },
 ];
