@@ -18,6 +18,8 @@ interface IFootBallHeaderProps {
   showMenuIcon?: boolean;
   onPressMenuIcon?: () => void;
   headerStyle?: StyleProp<ViewStyle>;
+  rightIcon?: React.ReactNode;
+  onPressRightIcon?: () => void;
 }
 
 export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
@@ -27,6 +29,8 @@ export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
   showMenuIcon,
   onPressMenuIcon,
   headerStyle,
+  rightIcon,
+  onPressRightIcon,
 }) => {
   return (
     <View style={[styles.container, headerStyle]}>
@@ -38,27 +42,35 @@ export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
         <View />
       )}
       <View style={styles.iconContainer}>
-        {showSearchIcon ? (
-          <TouchableOpacity onPress={onPressSearchIcon}>
-            <Feather
-              name='search'
-              color={colors.white}
-              size={moderateScale(20)}
-            />
+        {rightIcon ? (
+          <TouchableOpacity onPress={onPressRightIcon}>
+            {rightIcon}
           </TouchableOpacity>
         ) : (
-          <View />
-        )}
-        {showMenuIcon ? (
-          <TouchableOpacity onPress={onPressMenuIcon}>
-            <Feather
-              name='menu'
-              color={colors.white}
-              size={moderateScale(20)}
-            />
-          </TouchableOpacity>
-        ) : (
-          <View />
+          <>
+            {showSearchIcon ? (
+              <TouchableOpacity onPress={onPressSearchIcon}>
+                <Feather
+                  name='search'
+                  color={colors.white}
+                  size={moderateScale(20)}
+                />
+              </TouchableOpacity>
+            ) : (
+              <View />
+            )}
+            {showMenuIcon ? (
+              <TouchableOpacity onPress={onPressMenuIcon}>
+                <Feather
+                  name='menu'
+                  color={colors.white}
+                  size={moderateScale(20)}
+                />
+              </TouchableOpacity>
+            ) : (
+              <View />
+            )}
+          </>
         )}
       </View>
     </View>

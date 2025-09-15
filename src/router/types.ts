@@ -12,6 +12,7 @@ export interface AuthStackParamList extends ParamListBase {
   Events: undefined;
   AnotherEvents: undefined;
   Insights: undefined;
+  AnotherMembership: undefined;
 }
 
 export type AuthScreenProps<ScreenName extends keyof AuthStackParamList> =

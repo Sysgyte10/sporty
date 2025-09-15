@@ -15,6 +15,10 @@ import { Image } from "expo-image";
 export const AnotherEvents = ({
   navigation,
 }: AuthScreenProps<authScreenNames.ANOTHER_EVENTS>) => {
+  const onNavigate = () => {
+    navigation.navigate(authScreenNames.INSIGHTS);
+  };
+
   return (
     <AppWrapper safeArea bgColor={colors.black}>
       <AppNavigationHeader
@@ -41,14 +45,18 @@ export const AnotherEvents = ({
           <CustomText type='medium' size={13} white>
             Spain
           </CustomText>
-          <TouchableOpacity style={styles.imgContainer}>
+          <TouchableOpacity
+            style={styles.imgContainer}
+            onPress={() => onNavigate()}>
             <Image
               source={require("@src/assets/png/1.png")}
               contentFit='contain'
               style={styles.img}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.imgContainer}>
+          <TouchableOpacity
+            style={styles.imgContainer}
+            onPress={() => onNavigate()}>
             <Image
               source={require("@src/assets/png/2.png")}
               contentFit='contain'
@@ -66,7 +74,9 @@ export const AnotherEvents = ({
           <CustomText type='medium' size={13} white>
             Italy
           </CustomText>
-          <TouchableOpacity style={styles.imgContainer}>
+          <TouchableOpacity
+            style={styles.imgContainer}
+            onPress={() => onNavigate()}>
             <Image
               source={require("@src/assets/png/3.png")}
               contentFit='contain'
@@ -84,7 +94,9 @@ export const AnotherEvents = ({
           <CustomText type='medium' size={13} white>
             United Kingdom
           </CustomText>
-          <TouchableOpacity style={styles.imgContainer}>
+          <TouchableOpacity
+            style={styles.imgContainer}
+            onPress={() => onNavigate()}>
             <Image
               source={require("@src/assets/png/3.png")}
               contentFit='contain'

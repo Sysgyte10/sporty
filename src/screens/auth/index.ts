@@ -6,3 +6,4 @@ export * from "./Membership";
 export * from "./Events";
 export * from "./AnotherEvents";
 export * from "./Insights";
+export * from "./AnotherMembership";

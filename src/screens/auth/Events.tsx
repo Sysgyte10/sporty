@@ -10,10 +10,12 @@ import { DateSwitch } from "@src/common";
 import { ScrollContainer } from "../ScrollContainer";
 import { CustomText } from "@src/components/shared";
 import { Image } from "expo-image";
+import { useAuthStore } from "@src/api/store/auth";
 
 export const Events = ({
   navigation,
 }: AuthScreenProps<authScreenNames.EVENTS>) => {
+  const { setIsAuthenticated } = useAuthStore();
   return (
     <AppWrapper safeArea bgColor={colors.black}>
       <FootBallHeader
@@ -22,6 +24,7 @@ export const Events = ({
         showMenuIcon
         headerStyle={styles.header}
         onPressMenuIcon={() => navigation.navigate("")}
+        onPressSearchIcon={() => setIsAuthenticated(true)}
       />
       <ScrollContainer
         style={{ paddingHorizontal: moderateScale(2), gap: moderateScale(10) }}>
