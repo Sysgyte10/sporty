@@ -4,7 +4,7 @@ import { colors } from "@src/resources/color/color";
 import { AppNavigationHeader } from "../AppHeader";
 import { AuthScreenProps } from "@src/router/types";
 import { authScreenNames } from "@src/navigation";
-import { FormHeader } from "@src/common";
+import { CurrencySelection, FormHeader } from "@src/common";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { CustomButton, CustomText } from "@src/components/shared";
 import { ScrollContainer } from "../ScrollContainer";
@@ -87,9 +87,17 @@ export const AnotherMembership = ({
                   paddingHorizontal: moderateScale(25),
                 }}>
                 <View style={{ gap: moderateScale(15) }}>
-                  <CustomText size={12} white type='regular'>
-                    {item?.title}
-                  </CustomText>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                    }}>
+                    <CustomText size={12} white type='regular'>
+                      {item?.title}
+                    </CustomText>
+                    <CurrencySelection />
+                  </View>
 
                   <View style={styles.priceContainer}>
                     <CustomText size={14} white type='semi-bold'>
