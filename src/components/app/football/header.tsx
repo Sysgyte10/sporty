@@ -43,9 +43,33 @@ export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
       )}
       <View style={styles.iconContainer}>
         {rightIcon ? (
-          <TouchableOpacity onPress={onPressRightIcon}>
-            {rightIcon}
-          </TouchableOpacity>
+          <>
+            <TouchableOpacity onPress={onPressRightIcon}>
+              {rightIcon}
+            </TouchableOpacity>
+            {showSearchIcon ? (
+              <TouchableOpacity onPress={onPressSearchIcon}>
+                <Feather
+                  name='search'
+                  color={colors.white}
+                  size={moderateScale(20)}
+                />
+              </TouchableOpacity>
+            ) : (
+              <View />
+            )}
+            {showMenuIcon ? (
+              <TouchableOpacity onPress={onPressMenuIcon}>
+                <Feather
+                  name='menu'
+                  color={colors.white}
+                  size={moderateScale(20)}
+                />
+              </TouchableOpacity>
+            ) : (
+              <View />
+            )}
+          </>
         ) : (
           <>
             {showSearchIcon ? (

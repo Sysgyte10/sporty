@@ -9,7 +9,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Feather,
+  FontAwesome,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
 
 interface ITeamCardProps {
@@ -18,6 +23,7 @@ interface ITeamCardProps {
   country: string;
   selected: boolean;
   onSelectItem: (value: string) => void;
+  selectionIcon?: "heart" | "check";
 }
 
 export const TeamCard: React.FC<ITeamCardProps> = ({
@@ -26,7 +32,9 @@ export const TeamCard: React.FC<ITeamCardProps> = ({
   country,
   selected = true,
   onSelectItem,
+  selectionIcon = "check",
 }) => {
+  const selectionIconType = selectionIcon;
   return (
     <TouchableOpacity style={styles.cardBtn} onPress={() => onSelectItem(club)}>
       <View style={styles.imgNTeamInfoContainer}>
@@ -43,10 +51,24 @@ export const TeamCard: React.FC<ITeamCardProps> = ({
         </View>
       </View>
       {selected ? (
-        <AntDesign
-          name={"checksquare"}
+        selectionIconType === "heart" ? (
+          <FontAwesome
+            name={"heart"}
+            size={moderateScale(20)}
+            color={colors.purple}
+          />
+        ) : (
+          <AntDesign
+            name={"checksquare"}
+            size={moderateScale(20)}
+            color={colors.purple}
+          />
+        )
+      ) : selectionIconType === "heart" ? (
+        <Feather
+          name={"heart"}
           size={moderateScale(20)}
-          color={colors.purple}
+          color={colors.lightGrey}
         />
       ) : (
         <MaterialIcons

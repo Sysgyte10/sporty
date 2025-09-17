@@ -8,9 +8,13 @@ import Animated, { FadeIn } from "react-native-reanimated";
 
 interface IMatchesTabProps {
   matches: matchesDataType[];
+  footerSpacing?: number;
 }
 
-export const MatchesTab: React.FC<IMatchesTabProps> = ({ matches }) => {
+export const MatchesTab: React.FC<IMatchesTabProps> = ({
+  matches,
+  footerSpacing,
+}) => {
   return (
     <View>
       <SectionHeader
@@ -32,7 +36,7 @@ export const MatchesTab: React.FC<IMatchesTabProps> = ({ matches }) => {
         ListFooterComponent={
           <View
             style={{
-              paddingVertical: DVH(10),
+              paddingVertical: DVH(footerSpacing ? footerSpacing : 10),
             }}
           />
         }

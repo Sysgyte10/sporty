@@ -48,6 +48,10 @@ export interface RootStackParamList extends ParamListBase {
   DefaultSport: undefined;
   ForYouNews: undefined;
   OneMatch: undefined;
+  Team: {
+    screenTitle: string;
+    screenDesc: string;
+  };
 }
 
 export type RootStackScreenProps<ScreenName extends keyof RootStackParamList> =
