@@ -12,6 +12,7 @@ import { favoriteBtnList, favoritesList } from "@src/constants/football";
 import { ScrollContainer } from "@src/screens/ScrollContainer";
 import {
   CompetitionTab,
+  FixturesTab,
   MatchTab,
   TeamTab,
 } from "@src/components/app/favorites";
@@ -62,6 +63,7 @@ export const Favorites = ({
         {selectedLineList === favoritesList[0] && <MatchTab />}
         {selectedLineList === favoritesList[1] && <CompetitionTab />}
         {selectedLineList === favoritesList[2] && <TeamTab />}
+        {selectedLineList === favoritesList[3] && <FixturesTab />}
         {/* </ScrollContainer> */}
       </View>
     </AppWrapper>

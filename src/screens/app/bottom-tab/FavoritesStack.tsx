@@ -5,7 +5,7 @@ import {
 import { RootStackParamList } from "@src/router/types";
 import React from "react";
 import { appScreenNames } from "@src/navigation";
-import { Favorites, Team } from "../favorites-screens";
+import { AnotherTeam, Favorites, Team } from "../favorites-screens";
 
 const ScreenStack = createNativeStackNavigator<RootStackParamList>();
 const headerOptions: NativeStackNavigationOptions = { headerShown: false };
@@ -18,6 +18,10 @@ export const FavoritesStack = () => {
         component={Favorites}
       />
       <ScreenStack.Screen name={appScreenNames.TEAM} component={Team} />
+      <ScreenStack.Screen
+        name={appScreenNames.ANOTHER_TEAM}
+        component={AnotherTeam}
+      />
     </ScreenStack.Navigator>
   );
 };

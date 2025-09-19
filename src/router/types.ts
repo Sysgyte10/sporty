@@ -1,6 +1,7 @@
 import { type ParamListBase } from "@react-navigation/native";
 import { type NativeStackScreenProps } from "@react-navigation/native-stack";
 import { type BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { ImageSourcePropType } from "react-native";
 
 //auth screen stack navigation
 export interface AuthStackParamList extends ParamListBase {
@@ -51,6 +52,11 @@ export interface RootStackParamList extends ParamListBase {
   Team: {
     screenTitle: string;
     screenDesc: string;
+  };
+  AnotherTeam: {
+    screenTitle: string;
+    screenDesc: string;
+    image: ImageSourcePropType;
   };
 }
 

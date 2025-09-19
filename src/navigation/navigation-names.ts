@@ -31,4 +31,5 @@ export enum appScreenNames {
   FOR_YOU_NEWS = "ForYouNews",
   ONE_MATCH = "OneMatch",
   TEAM = "Team",
+  ANOTHER_TEAM = "AnotherTeam",
 }

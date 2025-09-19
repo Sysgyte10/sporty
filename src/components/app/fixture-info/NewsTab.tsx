@@ -67,8 +67,13 @@ export const NewsTab: React.FC<INewsTabProps> = ({ newsData, onPress }) => {
           marginBottom: moderateScale(10),
         }}
         renderItem={({ item, index }) => (
-          <Animated.View
-            entering={SlideInRight.delay(index * 100).duration(600)}
+          // <Animated.View
+          //   entering={SlideInRight.delay(index * 100).duration(600)}
+          //   style={{
+          //     width: DVW(46), // 👈 roughly half of screen minus margins
+          //     height: Platform.OS === "ios" ? DVH(25) : DVH(27),
+          //   }}>
+          <View
             style={{
               width: DVW(46), // 👈 roughly half of screen minus margins
               height: Platform.OS === "ios" ? DVH(25) : DVH(27),
@@ -90,7 +95,8 @@ export const NewsTab: React.FC<INewsTabProps> = ({ newsData, onPress }) => {
                 fontSize: moderateScale(8),
               }}
             />
-          </Animated.View>
+          </View>
+          // </Animated.View>
         )}
       />
     </View>

@@ -57,11 +57,13 @@ export const TableTab: React.FC<ITableTabProps> = ({ goalScorerData }) => {
           keyExtractor={(__, index) => index.toString()}
           renderItem={({ item, index }) => {
             return (
-              <Animated.View
-                entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
-                key={index}>
+              // <Animated.View
+              //   entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
+              //   key={index}>
+              <View>
                 <GoalScorerCard topScorerItem={item} showGD />
-              </Animated.View>
+              </View>
+              // </Animated.View>
             );
           }}
           horizontal={false}

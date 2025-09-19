@@ -1,6 +1,11 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { AntDesign, MaterialIcons, Octicons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Feather,
+  MaterialIcons,
+  Octicons,
+} from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
 import { moderateScale } from "@src/resources/responsiveness";
 import { CustomText } from "@src/components/shared";
@@ -59,6 +64,7 @@ interface AppNavigationHeaderProps {
   onPressHeartIcon?: () => void;
   middleText?: string | React.ReactNode;
   rightIcon?: React.ReactNode;
+  searchIcon?: boolean;
 }
 
 export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
@@ -70,6 +76,7 @@ export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
   onPressHeartIcon,
   middleText,
   rightIcon,
+  searchIcon,
 }) => {
   return (
     <View style={styles.container}>
@@ -117,6 +124,15 @@ export const AppNavigationHeader: React.FC<AppNavigationHeaderProps> = ({
             </TouchableOpacity>
           ) : (
             <View />
+          )}
+          {searchIcon && (
+            <TouchableOpacity>
+              <Feather
+                name='search'
+                size={moderateScale(20)}
+                color={colors.lightGrey}
+              />
+            </TouchableOpacity>
           )}
         </View>
       )}

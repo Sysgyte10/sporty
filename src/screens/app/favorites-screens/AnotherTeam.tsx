@@ -1,24 +1,16 @@
+import { ButtonLineList } from "@src/common";
+import { CustomText } from "@src/components/shared";
 import { appScreenNames } from "@src/navigation";
-import { RootStackScreenProps } from "@src/router/types";
-import React, { useEffect, useState } from "react";
-import { AppWrapper } from "../../AppWrapper";
-import { Platform, StyleSheet, View } from "react-native";
 import { colors } from "@src/resources/color/color";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
-import { AppNavigationHeader } from "../../AppHeader";
-import { ScrollContainer } from "../../ScrollContainer";
-import { ButtonLineList } from "@src/common";
-import { fixturesOverview, footballFixtures } from "@src/constants/fixtures";
+import { RootStackScreenProps } from "@src/router/types";
+import { AppNavigationHeader } from "@src/screens/AppHeader";
+import { AppWrapper } from "@src/screens/AppWrapper";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Platform } from "react-native";
 import { Image } from "expo-image";
-import { CustomText } from "@src/components/shared";
-import {
-  matchesDataType,
-  matchHightLightDataType,
-  newsDataTypes,
-  oddsDataType,
-  topScorersDataType,
-} from "@src/types/types";
-import Animated, { FadeIn } from "react-native-reanimated";
+import { fixturesOverview, footballFixtures } from "@src/constants/fixtures";
+import { overViewStateType } from "../football-screens";
 import {
   MatchesTab,
   NewsTab,
@@ -28,21 +20,18 @@ import {
   TableTab,
   TeamStatsTab,
 } from "@src/components/app/fixture-info";
-import { StatusBar } from "expo-status-bar";
+import { ScrollContainer } from "@src/screens/ScrollContainer";
+import Animated, { FadeIn } from "react-native-reanimated";
 
-export type overViewStateType = {
-  filteredMatches: matchesDataType[];
-  filteredTopScorer: topScorersDataType[];
-  matchHightLights: matchHightLightDataType[];
-  news: newsDataTypes[];
-  odds: oddsDataType[];
-};
-
-export const FixtureInfo = ({
+export const AnotherTeam = ({
   navigation,
   route,
-}: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
-  const id = route?.params?.fixtureId;
+}: RootStackScreenProps<appScreenNames.ANOTHER_TEAM>) => {
+  const id = 1;
+  const { screenTitle, screenDesc, image } = route?.params ?? {};
+  const [selectedLineList, setSelectedLineList] = useState<string>(
+    fixturesOverview[0]
+  );
   const [overViewData, setOverViewData] = useState<overViewStateType>({
     filteredMatches: [],
     filteredTopScorer: [],
@@ -50,9 +39,6 @@ export const FixtureInfo = ({
     news: [],
     odds: [],
   });
-  const [selectedLineList, setSelectedLineList] = useState<string>(
-    fixturesOverview[0]
-  );
 
   const getOverViewData = () => {
     const filteredData = footballFixtures.find((f) => f.id === id);
@@ -72,36 +58,32 @@ export const FixtureInfo = ({
     getOverViewData();
   }, [id]);
 
-  console.log("Fixture Id is", id);
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
-      <StatusBar style='light' />
       <AppNavigationHeader
-        title='Back'
-        notificationIcon
-        heartIcon
+        title={screenTitle}
         onPressActionBtn={() => navigation.goBack()}
+        heartIcon
+        searchIcon
       />
+
       <View style={styles.ctaContainer}>
         <View style={styles.ctaImgContainer}>
-          <Image
-            source={require("@src/assets/png/fifa.png")}
-            style={styles.ctaImg}
-            contentFit='fill'
-          />
+          <Image source={image} style={styles.ctaImg} contentFit='fill' />
         </View>
         <View style={styles.ctaTitle}>
           <CustomText size={14} white type='semi-bold'>
-            FIFA Club World Cup: Group B
+            {screenTitle}
           </CustomText>
           <CustomText size={12} lightGrey type='medium'>
-            International
+            {screenDesc}
           </CustomText>
         </View>
       </View>
+
       <View
         style={{
-          marginTop: moderateScale(-7),
+          paddingVertical: moderateScale(10),
         }}>
         <ButtonLineList
           data={fixturesOverview}
@@ -109,6 +91,7 @@ export const FixtureInfo = ({
           selectedBtn={selectedLineList}
         />
       </View>
+
       {selectedLineList === fixturesOverview[0] && (
         <ScrollContainer>
           <Animated.View entering={FadeIn.delay(200).duration(600)}>
@@ -195,7 +178,6 @@ export const FixtureInfo = ({
 const styles = StyleSheet.create({
   appWrapper: {
     paddingHorizontal: moderateScale(10),
-    paddingVertical: moderateScale(0),
   },
   ctaContainer: {
     flexDirection: "row",
@@ -204,8 +186,8 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(5),
   },
   ctaImgContainer: {
-    width: DVW(16),
-    height: Platform.OS === "ios" ? DVH(7) : DVH(8),
+    width: DVW(12),
+    height: Platform.OS === "ios" ? DVH(5) : DVH(6),
     overflow: "hidden",
   },
   ctaImg: {
@@ -214,11 +196,5 @@ const styles = StyleSheet.create({
   },
   ctaTitle: {
     gap: moderateScale(10),
-  },
-  textBtnContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: moderateScale(15),
   },
 });

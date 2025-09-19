@@ -51,7 +51,8 @@ export const Step2: React.FC<IStep2Props> = ({ useFormProps, teamsData }) => {
             (team) => team.toLowerCase() === item?.club?.toLowerCase()
           );
           return (
-            <Animated.View entering={FadeIn.delay(index * 200)}>
+            // <Animated.View entering={FadeIn.delay(index * 200)}>
+            <View>
               <TeamCard
                 selected={selectedCompetition}
                 key={index}
@@ -82,7 +83,8 @@ export const Step2: React.FC<IStep2Props> = ({ useFormProps, teamsData }) => {
                   }
                 }}
               />
-            </Animated.View>
+            </View>
+            // </Animated.View>
           );
         }}
         horizontal={false}

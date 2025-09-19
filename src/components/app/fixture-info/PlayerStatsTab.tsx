@@ -55,9 +55,10 @@ export const PlayerStatsTab: React.FC<IPlayerStatsProps> = ({
           keyExtractor={(__, index) => index.toString()}
           renderItem={({ item, index }) => {
             return (
-              <Animated.View
-                entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
-                key={index}>
+              // <Animated.View
+              //   entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
+              //   key={index}>
+              <View key={index}>
                 <TopScorerCard
                   topScorerItem={item}
                   numbering={index + 1}
@@ -65,7 +66,8 @@ export const PlayerStatsTab: React.FC<IPlayerStatsProps> = ({
                     marginTop: index === 0 ? moderateScale(15) : undefined,
                   }}
                 />
-              </Animated.View>
+              </View>
+              // </Animated.View>
             );
           }}
           horizontal={false}

@@ -78,11 +78,13 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
           keyExtractor={(__, index) => index.toString()}
           renderItem={({ item, index }) => {
             return (
-              <Animated.View
-                entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
-                key={index}>
+              // <Animated.View
+              //   entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
+              //   key={index}>
+              <View key={index}>
                 <GoalScorerCard topScorerItem={item} />
-              </Animated.View>
+              </View>
+              // </Animated.View>
             );
           }}
           horizontal={false}

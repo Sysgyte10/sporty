@@ -43,9 +43,10 @@ export const MatchesTab: React.FC<IMatchesTabProps> = ({
         keyExtractor={(__, index) => index.toString()}
         renderItem={({ item, index }) => {
           return (
-            <Animated.View
-              entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
-              key={index}>
+            // <Animated.View
+            //   entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
+            //   key={index}>
+            <View key={index}>
               <MatchCard
                 showDate
                 matchItem={item}
@@ -57,7 +58,8 @@ export const MatchesTab: React.FC<IMatchesTabProps> = ({
                   },
                 ]}
               />
-            </Animated.View>
+            </View>
+            // </Animated.View>
           );
         }}
         horizontal={false}

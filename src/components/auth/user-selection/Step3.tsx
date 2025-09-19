@@ -70,7 +70,8 @@ export const Step3: React.FC<IStep3Props> = ({ useFormProps, teamsData }) => {
               (pushNot) => pushNot.toLowerCase() === item?.club?.toLowerCase()
             );
             return (
-              <Animated.View entering={FadeIn.delay(index * 200)}>
+              // <Animated.View entering={FadeIn.delay(index * 200)}>
+              <View>
                 <TeamCard
                   selected={selectedPushNot}
                   key={index}
@@ -97,7 +98,8 @@ export const Step3: React.FC<IStep3Props> = ({ useFormProps, teamsData }) => {
                     }
                   }}
                 />
-              </Animated.View>
+              </View>
+              // </Animated.View>
             );
           }}
           horizontal={false}

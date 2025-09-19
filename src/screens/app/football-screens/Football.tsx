@@ -63,9 +63,10 @@ export const Football = ({
           keyExtractor={(__, index) => index.toString()}
           renderItem={({ item, index }) => {
             return (
-              <Animated.View
-                entering={ZoomIn.delay(index * 200).duration(800)} // increase to 800ms or more
-                key={index}>
+              // <Animated.View
+              //   entering={ZoomIn.delay(index * 200).duration(800)} // increase to 800ms or more
+              //   key={index}>
+              <View>
                 <FixtureCard
                   data={item}
                   onPress={(fixtureId) =>
@@ -79,7 +80,8 @@ export const Football = ({
                     })
                   }
                 />
-              </Animated.View>
+              </View>
+              //  </Animated.View>
             );
           }}
           horizontal={false}

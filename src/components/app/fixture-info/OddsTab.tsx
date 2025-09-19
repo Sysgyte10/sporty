@@ -50,9 +50,10 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
           keyExtractor={(__, index) => index.toString()}
           renderItem={({ item, index }) => {
             return (
-              <Animated.View
-                entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
-                key={index}>
+              // <Animated.View
+              //   entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
+              //   key={index}>
+              <View key={index}>
                 <OddsCard
                   oddsItem={item}
                   style={{
@@ -62,7 +63,8 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
                       index === 0 ? moderateScale(10) : undefined,
                   }}
                 />
-              </Animated.View>
+              </View>
+              // </Animated.View>
             );
           }}
           ListFooterComponent={
