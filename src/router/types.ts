@@ -58,6 +58,11 @@ export interface RootStackParamList extends ParamListBase {
     screenDesc: string;
     image: ImageSourcePropType;
   };
+  AnotherPlayerTeam: {
+    screenTitle: string;
+    screenDesc: string;
+    image: ImageSourcePropType;
+  };
 }
 
 export type RootStackScreenProps<ScreenName extends keyof RootStackParamList> =

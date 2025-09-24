@@ -32,4 +32,5 @@ export enum appScreenNames {
   ONE_MATCH = "OneMatch",
   TEAM = "Team",
   ANOTHER_TEAM = "AnotherTeam",
+  ANOTHER_PLAYER_TEAM = "AnotherPlayerTeam",
 }

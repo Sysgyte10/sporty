@@ -18886,3 +18886,33 @@ export const teamStats = [
   "Red Cards",
   "Yellow Cards",
 ];
+
+export const bio = [
+  {
+    title: "170cm",
+    desc: "Height",
+  },
+  {
+    title: "38 years",
+    desc: "Jun 24, 1987",
+  },
+  {
+    title: "ARG",
+    desc: "Country",
+  },
+];
+
+export const leagueStats = [
+  {
+    title: "13",
+    desc: "Matches",
+  },
+  {
+    title: "10",
+    desc: "Goals",
+  },
+  {
+    title: "6",
+    desc: "Assists",
+  },
+];

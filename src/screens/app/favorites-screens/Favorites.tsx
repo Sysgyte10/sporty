@@ -14,6 +14,7 @@ import {
   CompetitionTab,
   FixturesTab,
   MatchTab,
+  PlayersTab,
   TeamTab,
 } from "@src/components/app/favorites";
 
@@ -64,6 +65,7 @@ export const Favorites = ({
         {selectedLineList === favoritesList[1] && <CompetitionTab />}
         {selectedLineList === favoritesList[2] && <TeamTab />}
         {selectedLineList === favoritesList[3] && <FixturesTab />}
+        {selectedLineList === favoritesList[4] && <PlayersTab />}
         {/* </ScrollContainer> */}
       </View>
     </AppWrapper>

@@ -67,3 +67,46 @@ export const teamsData: teamsDataType = [
     country: "England",
   },
 ];
+
+export const playersData: teamsDataType = [
+  {
+    club: "Marcus Rashford",
+    image: require("@src/assets/png/man-u.png"),
+    country: "Manchester United",
+  },
+  {
+    club: "Mohamed Salah",
+    image: require("@src/assets/png/liverpool.png"),
+    country: "Liverpool",
+  },
+  {
+    club: "Bukayo Saka",
+    image: require("@src/assets/png/arsenal.png"),
+    country: "Arsenal",
+  },
+  {
+    club: "Harry Kane",
+    image: require("@src/assets/png/totheham.png"),
+    country: "Tottenham Hotspur",
+  },
+  {
+    club: "Raheem Sterling",
+    image: require("@src/assets/png/chelsea.png"),
+    country: "Chelsea",
+  },
+  {
+    club: "Bruno Fernandes",
+    image: require("@src/assets/png/man-u.png"),
+    country: "Manchester United",
+  },
+  {
+    club: "Virgil van Dijk",
+    image: require("@src/assets/png/liverpool.png"),
+    country: "Liverpool",
+  },
+  {
+    club: "Martin Ødegaard",
+    image: require("@src/assets/png/arsenal.png"),
+    country: "Arsenal",
+  },
+];
