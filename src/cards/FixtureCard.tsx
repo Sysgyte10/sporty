@@ -1,6 +1,11 @@
 import { fixtureDataType } from "@src/types/types";
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  ImageSourcePropType,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Image } from "expo-image";
 import { CustomText } from "@src/components/shared";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -10,7 +15,12 @@ import { MatchCard } from "./MatchCard";
 
 interface IFixtureCardProps {
   data: fixtureDataType;
-  onPress: (fixtureId: string | number | any) => void;
+  onPress: (
+    fixtureId: string | number | any,
+    icon?: ImageSourcePropType,
+    title?: string,
+    desc?: string
+  ) => void;
   showDate?: boolean;
   onPressMatchCard?: () => void;
 }
@@ -38,7 +48,10 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
             </CustomText>
           </View>
         </View>
-        <TouchableOpacity onPress={() => onPress(data?.id)}>
+        <TouchableOpacity
+          onPress={() =>
+            onPress(data?.id, data?.icon, data?.fixtureName, data?.country)
+          }>
           <MaterialIcons
             name='keyboard-arrow-right'
             size={moderateScale(25)}

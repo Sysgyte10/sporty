@@ -9,15 +9,21 @@ import Animated, { FadeIn } from "react-native-reanimated";
 
 interface ITableTabProps {
   goalScorerData: topScorersDataType[];
+  leftText?: string;
+  actionText?: string;
 }
 
-export const TableTab: React.FC<ITableTabProps> = ({ goalScorerData }) => {
+export const TableTab: React.FC<ITableTabProps> = ({
+  goalScorerData,
+  leftText,
+  actionText,
+}) => {
   return (
     <View>
       <View>
         <SectionHeader
-          leftText='FIFA CLUB WORLd CUP. GROUP A'
-          actionText=' '
+          leftText={leftText ? leftText : "FIFA CLUB WORLd CUP. GROUP A"}
+          actionText={actionText ? actionText : " "}
           containerStyle={{
             marginBottom:
               Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),

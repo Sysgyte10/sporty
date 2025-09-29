@@ -27,6 +27,7 @@ const CustomTabBarButton = ({
   onPress,
   route,
 }: ICustomButtonProps) => {
+  const { tabName } = useActiveBottomTabStore();
   let iconName: "football" | "heart" | "document" = "football";
   let label = "";
   switch (route?.name) {
@@ -62,7 +63,7 @@ const CustomTabBarButton = ({
         type='medium'
         size={12}
         style={{ color: focused ? colors.white : "#9C9C9C" }}>
-        {label}
+        {label === "Favorite" || label === "For You" ? label : tabName || label}
       </CustomText>
     </TouchableOpacity>
   );

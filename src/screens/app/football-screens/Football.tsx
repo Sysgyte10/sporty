@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AppWrapper } from "../../AppWrapper";
 import { colors } from "@src/resources/color/color";
-import { FlatList, StyleSheet, View } from "react-native";
+import { ImageSourcePropType, StyleSheet, View } from "react-native";
 import { RootStackScreenProps } from "@src/router/types";
 import {
   appScreenNames,
@@ -13,10 +13,12 @@ import { ButtonLineList, ButtonList, DateSwitch } from "@src/common";
 import { sportyTypes } from "@src/constants/user-selection-steps";
 import { FootBallHeader } from "@src/components/app/football";
 import { footBallWatches } from "@src/constants/football";
-import { footballFixtures } from "@src/constants/fixtures";
-import { FixtureCard } from "@src/cards";
-import Animated, { ZoomIn } from "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
+import {
+  BasketballSport,
+  FootballSport,
+} from "@src/components/app/football/sports";
+import { useActiveBottomTabStore } from "store";
 
 export const Football = ({
   navigation,
@@ -25,6 +27,7 @@ export const Football = ({
   const [selectedLineList, setSelectedLineList] = useState<string>(
     footBallWatches[0]
   );
+  const { setTabName } = useActiveBottomTabStore();
   return (
     <AppWrapper safeArea bgColor={colors.black}>
       <StatusBar style='light' />
@@ -38,7 +41,10 @@ export const Football = ({
       <View style={styles.btnListContainer}>
         <ButtonList
           data={sportyTypes}
-          onButtonPress={(text) => setSelectedSport(text)}
+          onButtonPress={(text) => {
+            setSelectedSport(text);
+            setTabName(text);
+          }}
           selectedBtn={selectedSport}
         />
       </View>
@@ -55,45 +61,41 @@ export const Football = ({
           />
         </View>
         <DateSwitch />
-        <FlatList
-          data={footballFixtures}
-          contentContainerStyle={{
-            gap: moderateScale(1),
-          }}
-          keyExtractor={(__, index) => index.toString()}
-          renderItem={({ item, index }) => {
-            return (
-              // <Animated.View
-              //   entering={ZoomIn.delay(index * 200).duration(800)} // increase to 800ms or more
-              //   key={index}>
-              <View>
-                <FixtureCard
-                  data={item}
-                  onPress={(fixtureId) =>
-                    navigation.navigate(appScreenNames.FIXTURE_INFO, {
-                      fixtureId: fixtureId,
-                    })
-                  }
-                  onPressMatchCard={() =>
-                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                      screen: appScreenNames.ONE_MATCH,
-                    })
-                  }
-                />
-              </View>
-              //  </Animated.View>
-            );
-          }}
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-          maxToRenderPerBatch={2}
-          initialNumToRender={2}
-          windowSize={2}
-          updateCellsBatchingPeriod={100}
-        />
+        {selectedSport === "Football" && (
+          <FootballSport
+            onPress={(fixtureId) =>
+              navigation.navigate(appScreenNames.FIXTURE_INFO, {
+                fixtureId: fixtureId,
+              })
+            }
+            onPressMatchCard={() =>
+              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                screen: appScreenNames.ONE_MATCH,
+              })
+            }
+          />
+        )}
+
+        {selectedSport === "Basketball" && (
+          <BasketballSport
+            onPress={(fixtureId, icon, title, desc) =>
+              navigation.navigate(appScreenNames.BASKETBALL_FIXTURE_INFO, {
+                fixtureId: fixtureId,
+                image: icon as ImageSourcePropType,
+                title: title as string,
+                desc: desc as string,
+              })
+            }
+            onPressMatchCard={() =>
+              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                screen: appScreenNames.ONE_MATCH,
+              })
+            }
+          />
+        )}
         <View
           style={{
-            paddingVertical: DVH(5),
+            paddingVertical: DVH(7),
           }}
         />
       </ScrollContainer>

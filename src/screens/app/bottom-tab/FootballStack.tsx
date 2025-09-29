@@ -6,6 +6,7 @@ import { RootStackParamList } from "@src/router/types";
 import React from "react";
 import { appScreenNames } from "@src/navigation";
 import {
+  BasketballFixtureInfo,
   FixtureInfo,
   Football,
   MatchHighlights,
@@ -22,6 +23,10 @@ export const FootBallStack = () => {
       <ScreenStack.Screen
         name={appScreenNames.FIXTURE_INFO}
         component={FixtureInfo}
+      />
+      <ScreenStack.Screen
+        name={appScreenNames.BASKETBALL_FIXTURE_INFO}
+        component={BasketballFixtureInfo}
       />
       <ScreenStack.Screen
         name={appScreenNames.MATCH_HIGHLIGHTS}
