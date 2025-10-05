@@ -17,6 +17,7 @@ import { StatusBar } from "expo-status-bar";
 import {
   BasketballSport,
   FootballSport,
+  TennisSport,
 } from "@src/components/app/football/sports";
 import { useActiveBottomTabStore } from "store";
 
@@ -80,6 +81,24 @@ export const Football = ({
           <BasketballSport
             onPress={(fixtureId, icon, title, desc) =>
               navigation.navigate(appScreenNames.BASKETBALL_FIXTURE_INFO, {
+                fixtureId: fixtureId,
+                image: icon as ImageSourcePropType,
+                title: title as string,
+                desc: desc as string,
+              })
+            }
+            onPressMatchCard={() =>
+              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                screen: appScreenNames.ONE_MATCH,
+              })
+            }
+          />
+        )}
+
+        {selectedSport === "Tennis" && (
+          <TennisSport
+            onPress={(fixtureId, icon, title, desc) =>
+              navigation.navigate(appScreenNames.TENNIS_FIXTURE_INFO, {
                 fixtureId: fixtureId,
                 image: icon as ImageSourcePropType,
                 title: title as string,

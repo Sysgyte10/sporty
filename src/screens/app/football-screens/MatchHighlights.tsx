@@ -26,7 +26,7 @@ export const MatchHighlights = ({
   navigation,
   route,
 }: RootStackScreenProps<appScreenNames.MATCH_HIGHLIGHTS>) => {
-  const { highLightId, fixtureId } = route?.params;
+  const { highLightId, fixtureId, data } = route?.params;
   const [videoModalState, setVideoModalState] = useState({
     visible: false,
     videoId: "",
@@ -40,7 +40,7 @@ export const MatchHighlights = ({
     loading,
     setVideoDetails,
     highLightData,
-  } = useMatchHighlights(highLightId, fixtureId);
+  } = useMatchHighlights(highLightId, fixtureId, data);
 
   const onStateChange = useCallback((state: any) => {
     if (state === "ended") {

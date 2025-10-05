@@ -34,6 +34,7 @@ interface IOverViewTabProps {
   matchHighLightData: matchHightLightDataType[];
   newsData: newsDataTypes[];
   fixtureId?: any;
+  fixtureData?: any;
 }
 
 export const OverviewTab: React.FC<IOverViewTabProps> = ({
@@ -43,6 +44,7 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
   newsData,
   goalScorerData,
   fixtureId,
+  fixtureData,
 }) => {
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
   return (
@@ -115,6 +117,7 @@ export const OverviewTab: React.FC<IOverViewTabProps> = ({
                 navigation.navigate(appScreenNames.MATCH_HIGHLIGHTS, {
                   highLightId: item?.id,
                   fixtureId: fixtureId,
+                  data: fixtureData,
                 })
               }>
               <MatchHighLightCard highLightItem={item} />

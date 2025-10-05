@@ -48,3 +48,17 @@ export const getNetworkStatus = async () => {
     isNetworkConnectedAndReachable: status.isInternetReachable,
   };
 };
+
+/**
+ * truncates text by default to length of 10 characters or by length of choice.
+ * @param text
+ * @param length
+ * @returns
+ */
+
+export const truncateText = (text: string, length = 10): string => {
+  if (!text) return "...";
+
+  const limit = Math.max(0, length);
+  return text.length > limit ? `${text.substring(0, limit).trim()}...` : text;
+};

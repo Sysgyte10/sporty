@@ -6,7 +6,11 @@ import {
 } from "@src/types/types";
 import { useState } from "react";
 
-export const useMatchHighlights = (highLightId: any, fixtureId: any) => {
+export const useMatchHighlights = (
+  highLightId: any,
+  fixtureId: any,
+  data: any
+) => {
   const [videoDetails, setVideoDetails] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [playing, setPlaying] = useState<boolean>(false);
@@ -15,11 +19,11 @@ export const useMatchHighlights = (highLightId: any, fixtureId: any) => {
 
   const getMatchHighLightData = () => {
     try {
-      const allMatchHighlights = footballFixtures.find(
-        (item) => item.id === fixtureId
+      const allMatchHighlights = data.find(
+        (item: any) => item.id === fixtureId
       );
       const matchHighlights = allMatchHighlights?.matchHighLights.find(
-        (item) => item.id === highLightId
+        (item: any) => item.id === highLightId
       );
       if (matchHighlights) {
         setHighlightData(matchHighlights);

@@ -71,6 +71,8 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
                 // marginTop: moderateScale(-10),
               }
             }
+            truncateScoreText
+            truncLength={10}
           />
         ))}
     </View>

@@ -106,6 +106,7 @@ export const BasketballFixtureInfo = ({
                 overViewData?.filteredTopScorer
               }
               fixtureId={id}
+              fixtureData={basketballFixtures}
             />
           </Animated.View>
           <View

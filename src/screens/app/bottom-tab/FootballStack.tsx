@@ -11,6 +11,7 @@ import {
   Football,
   MatchHighlights,
   OneMach,
+  TennisFixtureInfo,
 } from "../football-screens";
 
 const ScreenStack = createNativeStackNavigator<RootStackParamList>();
@@ -27,6 +28,10 @@ export const FootBallStack = () => {
       <ScreenStack.Screen
         name={appScreenNames.BASKETBALL_FIXTURE_INFO}
         component={BasketballFixtureInfo}
+      />
+      <ScreenStack.Screen
+        name={appScreenNames.TENNIS_FIXTURE_INFO}
+        component={TennisFixtureInfo}
       />
       <ScreenStack.Screen
         name={appScreenNames.MATCH_HIGHLIGHTS}

@@ -34,4 +34,5 @@ export enum appScreenNames {
   ANOTHER_TEAM = "AnotherTeam",
   ANOTHER_PLAYER_TEAM = "AnotherPlayerTeam",
   BASKETBALL_FIXTURE_INFO = "BasketballFixtureInfo",
+  TENNIS_FIXTURE_INFO = "TennisFixtureInfo",
 }

@@ -13,6 +13,7 @@ import {
 import { Image } from "expo-image";
 import { AntDesign } from "@expo/vector-icons";
 import { matchesDataType } from "@src/types/types";
+import { truncateText } from "@src/helper/utils";
 
 interface IMatchCardProps {
   showDate?: boolean;
@@ -20,6 +21,8 @@ interface IMatchCardProps {
   onLikeItem?: (itemId: string | number | any) => void;
   containerStyle?: StyleProp<ViewStyle>;
   onPressMatchCard?: () => void;
+  truncateScoreText?: boolean;
+  truncLength?: number;
 }
 
 export const MatchCard: React.FC<IMatchCardProps> = ({
@@ -28,6 +31,8 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
   onLikeItem,
   containerStyle,
   onPressMatchCard,
+  truncateScoreText,
+  truncLength,
 }) => {
   return (
     <Pressable
@@ -71,7 +76,9 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
                   </CustomText>
                 </View>
                 <CustomText type='regular' size={12} lightGrey>
-                  {club?.score}
+                  {truncateScoreText
+                    ? truncateText(club?.score, truncLength)
+                    : club?.score}
                 </CustomText>
               </View>
             ))}

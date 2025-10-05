@@ -20378,6 +20378,960 @@ export const basketballFixtures: fixtureDataType[] = [
   },
 ];
 
+export const tennisFixtures: fixtureDataType[] = [
+  {
+    id: 1,
+    fixtureName: "Los Cabos Open: Qualification",
+    country: "ATP 250",
+    icon: require("@src/assets/png/tennis1.png"),
+    odds: [
+      {
+        clubName: "Carlos Alcaraz",
+        odd: 2.5,
+      },
+      {
+        clubName: "Daniil Medvedev",
+        odd: 3.0,
+      },
+      {
+        clubName: "Stefanos Tsitsipas",
+        odd: 3.25,
+      },
+      {
+        clubName: "Alexander Zverev",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Carlos Alcaraz dominates the quarterfinals, eyes another ATP title.",
+        club: "Carlos Alcaraz",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Medvedev serves strong to move into semifinals at Los Cabos Open.",
+        club: "Daniil Medvedev",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Tsitsipas battles through a tough three-set match to advance.",
+        club: "Stefanos Tsitsipas",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Zverev crushes his opponent in straight sets, into the finals.",
+        club: "Alexander Zverev",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Casper Ruud withdraws due to injury, creating an opening for new contender.",
+        club: "Casper Ruud",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Jannik Sinner impresses fans with powerful groundstrokes and precision.",
+        club: "Jannik Sinner",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Alcaraz vs Medvedev",
+        detail: "Los Cabos Open Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=M30lW_9D5a0",
+          "https://www.youtube.com/watch?v=2UXNwtvmQX4",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Tsitsipas vs Zverev",
+        detail: "ATP 250 Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Sinner vs Ruud",
+        detail: "Quarterfinal Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Carlos Alcaraz",
+            clubName: "Spain",
+            clubImg: require("@src/assets/png/tennis1.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Daniil Medvedev",
+            clubName: "Russia",
+            clubImg: require("@src/assets/png/tennis2.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Stefanos Tsitsipas",
+            clubName: "Greece",
+            clubImg: require("@src/assets/png/tennis1.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Alexander Zverev",
+            clubName: "Germany",
+            clubImg: require("@src/assets/png/tennis2.png"),
+            goals: 3,
+          },
+          {
+            id: 5,
+            footballerName: "Jannik Sinner",
+            clubName: "Italy",
+            clubImg: require("@src/assets/png/tennis1.png"),
+            goals: 2,
+          },
+          {
+            id: 6,
+            footballerName: "Casper Ruud",
+            clubName: "Norway",
+            clubImg: require("@src/assets/png/tennis2.png"),
+            goals: 1,
+          },
+          {
+            id: 7,
+            footballerName: "Holger Rune",
+            clubName: "Denmark",
+            clubImg: require("@src/assets/png/tennis1.png"),
+            goals: 2,
+          },
+          {
+            id: 8,
+            footballerName: "Andrey Rublev",
+            clubName: "Russia",
+            clubImg: require("@src/assets/png/tennis2.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Hubert Hurkacz",
+            clubName: "Poland",
+            clubImg: require("@src/assets/png/tennis1.png"),
+            goals: 1,
+          },
+          {
+            id: 10,
+            footballerName: "Frances Tiafoe",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/tennis2.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Carlos Alcaraz",
+            image: require("@src/assets/png/fixture.png"),
+            score: "6-3, 6-4",
+          },
+          {
+            name: "Daniil Medvedev",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3-6, 4-6",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "ATP Cup: Group A",
+    country: "Europe",
+    icon: require("@src/assets/png/tennis2.png"),
+    odds: [
+      {
+        clubName: "Novak Djokovic",
+        odd: 2.5,
+      },
+      {
+        clubName: "Rafael Nadal",
+        odd: 3.0,
+      },
+      {
+        clubName: "Andy Murray",
+        odd: 3.25,
+      },
+      {
+        clubName: "Dominic Thiem",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Djokovic continues his dominance on European courts, secures another ATP Cup win.",
+        club: "Novak Djokovic",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Nadal back from injury with a strong performance, eyes comeback title.",
+        club: "Rafael Nadal",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Murray’s resilience shines through as he wins a thrilling three-set battle.",
+        club: "Andy Murray",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Djokovic vs Nadal",
+        detail: "ATP Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Murray vs Thiem",
+        detail: "ATP Cup Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Medvedev vs Tsitsipas",
+        detail: "ATP Cup Quarterfinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Novak Djokovic",
+            clubName: "Serbia",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Rafael Nadal",
+            clubName: "Spain",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Novak Djokovic",
+            image: require("@src/assets/png/fixture.png"),
+            score: "6-4, 7-5",
+          },
+          {
+            name: "Rafael Nadal",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4-6, 5-7",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "CBA",
+    country: "China",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      {
+        clubName: "Beijing Ducks",
+        odd: 2.5,
+      },
+      {
+        clubName: "Guangdong Tigers",
+        odd: 3.0,
+      },
+      {
+        clubName: "Shanghai Sharks",
+        odd: 3.25,
+      },
+      {
+        clubName: "Liaoning Flying Leopards",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Beijing Ducks secure playoff spot, fans excited for championship run",
+        club: "Beijing Ducks",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Guangdong Tigers sign former NBA star, roster strengthened significantly",
+        club: "Guangdong Tigers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Shanghai Sharks upset victory against title favorites surprises league",
+        club: "Shanghai Sharks",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Beijing Ducks vs Guangdong Tigers",
+        detail: "CBA Finals 2025",
+        image: require("@src/assets/png/highlight1.png"),
+
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Shanghai Sharks vs Liaoning Flying Leopards",
+        detail: "CBA Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Xinjiang Flying Tigers vs Zhejiang Lions",
+        detail: "CBA Regular Season 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Jeremy Lin",
+            clubName: "Beijing Ducks",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 26,
+          },
+          {
+            id: 2,
+            footballerName: "Yi Jianlian",
+            clubName: "Guangdong Tigers",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 31,
+          },
+          {
+            id: 3,
+            footballerName: "Jimmer Fredette",
+            clubName: "Shanghai Sharks",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 28,
+          },
+        ],
+        club: [
+          {
+            name: "Beijing Ducks",
+            image: require("@src/assets/png/fixture.png"),
+            score: "98",
+          },
+          {
+            name: "Guangdong Tigers",
+            image: require("@src/assets/png/fixture.png"),
+            score: "104",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "NBA",
+    country: "USA",
+    icon: require("@src/assets/png/basketball2.png"),
+    odds: [
+      {
+        clubName: "Lakers",
+        odd: 2.5,
+      },
+      {
+        clubName: "Warriors",
+        odd: 3.0,
+      },
+      {
+        clubName: "Celtics",
+        odd: 3.25,
+      },
+      {
+        clubName: "Bucks",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "LeBron James leads Lakers to victory, analysts praise his leadership",
+        club: "Lakers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Giannis Antetokounmpo dominates in playoffs, MVP contender continues streak",
+        club: "Bucks",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Stephen Curry breaks three-point record, Warriors fans celebrate milestone",
+        club: "Warriors",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details: "Jayson Tatum leads Celtics comeback, Boston fans ecstatic",
+        club: "Celtics",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Kevin Durant trade rumors circulate, multiple teams interested",
+        club: "Nets",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Luka Doncic triple-double performance impresses scouts worldwide",
+        club: "Mavericks",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Lakers vs Warriors",
+        detail: "NBA Finals 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Celtics vs Heat",
+        detail: "NBA Eastern Conference Finals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Bucks vs 76ers",
+        detail: "NBA Eastern Conference Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "LeBron James",
+            clubName: "Lakers",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 28,
+          },
+          {
+            id: 2,
+            footballerName: "Stephen Curry",
+            clubName: "Warriors",
+            clubImg: require("@src/assets/png/chelsea.png"),
+            goals: 32,
+          },
+          {
+            id: 3,
+            footballerName: "Giannis Antetokounmpo",
+            clubName: "Bucks",
+            clubImg: require("@src/assets/png/liverpool.png"),
+            goals: 35,
+          },
+          {
+            id: 4,
+            footballerName: "Jayson Tatum",
+            clubName: "Celtics",
+            clubImg: require("@src/assets/png/totheham.png"),
+            goals: 27,
+          },
+          {
+            id: 5,
+            footballerName: "Luka Doncic",
+            clubName: "Mavericks",
+            clubImg: require("@src/assets/png/arsenal.png"),
+            goals: 31,
+          },
+          {
+            id: 6,
+            footballerName: "Kevin Durant",
+            clubName: "Suns",
+            clubImg: require("@src/assets/png/man-u.png"),
+            goals: 29,
+          },
+          {
+            id: 7,
+            footballerName: "Nikola Jokic",
+            clubName: "Nuggets",
+            clubImg: require("@src/assets/png/arsenal.png"),
+            goals: 26,
+          },
+          {
+            id: 8,
+            footballerName: "Joel Embiid",
+            clubName: "76ers",
+            clubImg: require("@src/assets/png/man-u.png"),
+            goals: 33,
+          },
+          {
+            id: 9,
+            footballerName: "Damian Lillard",
+            clubName: "Trail Blazers",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 30,
+          },
+          {
+            id: 10,
+            footballerName: "Kawhi Leonard",
+            clubName: "Clippers",
+            clubImg: require("@src/assets/png/chelsea.png"),
+            goals: 25,
+          },
+        ],
+        club: [
+          {
+            name: "Lakers",
+            image: require("@src/assets/png/fixture.png"),
+            score: "112",
+          },
+          {
+            name: "Warriors",
+            image: require("@src/assets/png/fixture.png"),
+            score: "108",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "Wimbledon Championships",
+    country: "United Kingdom",
+    icon: require("@src/assets/png/tennis1.png"),
+    odds: [
+      {
+        clubName: "Carlos Alcaraz",
+        odd: 2.5,
+      },
+      {
+        clubName: "Novak Djokovic",
+        odd: 3.0,
+      },
+      {
+        clubName: "Jannik Sinner",
+        odd: 3.25,
+      },
+      {
+        clubName: "Alexander Zverev",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Carlos Alcaraz defends his Wimbledon crown with a thrilling five-set victory over Djokovic.",
+        club: "Carlos Alcaraz",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Novak Djokovic’s quest for an eighth Wimbledon title falls short in a classic final.",
+        club: "Novak Djokovic",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Jannik Sinner makes semifinal run, signaling a strong grass-court season ahead.",
+        club: "Jannik Sinner",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Alcaraz vs Djokovic",
+        detail: "Wimbledon Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sinner vs Zverev",
+        detail: "Wimbledon Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Medvedev vs Tsitsipas",
+        detail: "Wimbledon Quarterfinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "14 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Carlos Alcaraz",
+            clubName: "Spain",
+            clubImg: require("@src/assets/png/tennis1.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Novak Djokovic",
+            clubName: "Serbia",
+            clubImg: require("@src/assets/png/tennis2.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Carlos Alcaraz",
+            image: require("@src/assets/png/tennis2.png"),
+            score: "6-3, 6-7, 6-4, 3-6, 6-3",
+          },
+          {
+            name: "Novak Djokovic",
+            image: require("@src/assets/png/tennis1.png"),
+            score: "3-6, 7-6, 4-6, 6-3, 3-6",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "CBA",
+    country: "China",
+    icon: require("@src/assets/png/basketball2.png"),
+    odds: [
+      { clubName: "Beijing Ducks", odd: 2.5 },
+      { clubName: "Guangdong Tigers", odd: 3.0 },
+      { clubName: "Shanghai Sharks", odd: 3.25 },
+      { clubName: "Liaoning Flying Leopards", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Beijing Ducks secure playoff spot, fans excited for championship run",
+        club: "Beijing Ducks",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Guangdong Tigers sign former NBA star, roster strengthened significantly",
+        club: "Guangdong Tigers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Shanghai Sharks upset victory against title favorites surprises league",
+        club: "Shanghai Sharks",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Beijing Ducks vs Guangdong Tigers",
+        detail: "CBA Finals 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Shanghai Sharks vs Liaoning Flying Leopards",
+        detail: "CBA Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Xinjiang Flying Tigers vs Zhejiang Lions",
+        detail: "CBA Regular Season 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Jeremy Lin",
+            clubName: "Beijing Ducks",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 26,
+          },
+          {
+            id: 2,
+            footballerName: "Yi Jianlian",
+            clubName: "Guangdong Tigers",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 31,
+          },
+          {
+            id: 3,
+            footballerName: "Jimmer Fredette",
+            clubName: "Shanghai Sharks",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 28,
+          },
+        ],
+        club: [
+          {
+            name: "Beijing Ducks",
+            image: require("@src/assets/png/fixture.png"),
+            score: "98",
+          },
+          {
+            name: "Guangdong Tigers",
+            image: require("@src/assets/png/fixture.png"),
+            score: "104",
+          },
+        ],
+      },
+    ],
+  },
+];
+
 export const fixturesOverview = [
   "Overview",
   "Matches",

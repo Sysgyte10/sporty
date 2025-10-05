@@ -8,16 +8,9 @@ import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { AppNavigationHeader } from "../../AppHeader";
 import { ScrollContainer } from "../../ScrollContainer";
 import { ButtonLineList } from "@src/common";
-import { fixturesOverview, footballFixtures } from "@src/constants/fixtures";
+import { fixturesOverview, tennisFixtures } from "@src/constants/fixtures";
 import { Image } from "expo-image";
 import { CustomText } from "@src/components/shared";
-import {
-  matchesDataType,
-  matchHightLightDataType,
-  newsDataTypes,
-  oddsDataType,
-  topScorersDataType,
-} from "@src/types/types";
 import Animated, { FadeIn } from "react-native-reanimated";
 import {
   MatchesTab,
@@ -29,21 +22,13 @@ import {
   TeamStatsTab,
 } from "@src/components/app/fixture-info";
 import { StatusBar } from "expo-status-bar";
+import { overViewStateType } from "./FixtureInfo";
 
-export type overViewStateType = {
-  filteredMatches: matchesDataType[];
-  filteredTopScorer: topScorersDataType[];
-  matchHightLights: matchHightLightDataType[];
-  news: newsDataTypes[];
-  odds: oddsDataType[];
-};
-
-export const FixtureInfo = ({
+export const TennisFixtureInfo = ({
   navigation,
   route,
-}: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
-  const id = route?.params?.fixtureId;
-  console.log(id);
+}: RootStackScreenProps<appScreenNames.TENNIS_FIXTURE_INFO>) => {
+  const { fixtureId: id, image, title, desc } = route?.params;
   const [overViewData, setOverViewData] = useState<overViewStateType>({
     filteredMatches: [],
     filteredTopScorer: [],
@@ -56,7 +41,7 @@ export const FixtureInfo = ({
   );
 
   const getOverViewData = () => {
-    const filteredData = footballFixtures.find((f) => f.id === id);
+    const filteredData = tennisFixtures.find((f) => f.id === id);
     const filteredTopScorers =
       filteredData && filteredData?.matches[0]?.topScorers;
     setOverViewData({
@@ -73,7 +58,6 @@ export const FixtureInfo = ({
     getOverViewData();
   }, [id]);
 
-  console.log("Fixture Id is", id);
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
       <StatusBar style='light' />
@@ -85,18 +69,14 @@ export const FixtureInfo = ({
       />
       <View style={styles.ctaContainer}>
         <View style={styles.ctaImgContainer}>
-          <Image
-            source={require("@src/assets/png/fifa.png")}
-            style={styles.ctaImg}
-            contentFit='fill'
-          />
+          <Image source={image} style={styles.ctaImg} contentFit='fill' />
         </View>
         <View style={styles.ctaTitle}>
           <CustomText size={14} white type='semi-bold'>
-            FIFA Club World Cup: Group B
+            {title}
           </CustomText>
           <CustomText size={12} lightGrey type='medium'>
-            International
+            {desc}
           </CustomText>
         </View>
       </View>
@@ -126,7 +106,7 @@ export const FixtureInfo = ({
                 overViewData?.filteredTopScorer
               }
               fixtureId={id}
-              fixtureData={footballFixtures}
+              fixtureData={tennisFixtures}
             />
           </Animated.View>
           <View
@@ -158,7 +138,10 @@ export const FixtureInfo = ({
       {selectedLineList === fixturesOverview[2] && (
         <ScrollContainer>
           {/* <Animated.View entering={FadeIn.delay(200).duration(600)}> */}
-          <TableTab goalScorerData={overViewData?.filteredTopScorer} />
+          <TableTab
+            goalScorerData={overViewData?.filteredTopScorer}
+            leftText='FIBA BASKETBALL WORLD CUP'
+          />
           {/* </Animated.View> */}
           <View
             style={{
@@ -206,8 +189,8 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(5),
   },
   ctaImgContainer: {
-    width: DVW(16),
-    height: Platform.OS === "ios" ? DVH(7) : DVH(8),
+    width: DVW(12),
+    height: Platform.OS === "ios" ? DVH(5) : DVH(6),
     overflow: "hidden",
   },
   ctaImg: {
