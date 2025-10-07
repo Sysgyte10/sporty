@@ -50,6 +50,12 @@ export interface RootStackParamList extends ParamListBase {
     title: string;
     desc: string;
   };
+  AmericanFootballFixtureInfo: {
+    fixtureId: string | number | any;
+    image: ImageSourcePropType;
+    title: string;
+    desc: string;
+  };
   MatchHighlights: {
     highLightId: string | number | any;
     fixtureId: string | number | any;

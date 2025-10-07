@@ -21332,6 +21332,2177 @@ export const tennisFixtures: fixtureDataType[] = [
   },
 ];
 
+export const americanFootballFixtures: fixtureDataType[] = [
+  {
+    id: 1,
+    fixtureName: "AFC Championship: Qualification",
+    country: "NFL Playoffs",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "Kansas City Chiefs", odd: 2.5 },
+      { clubName: "Buffalo Bills", odd: 3.0 },
+      { clubName: "Cincinnati Bengals", odd: 3.25 },
+      { clubName: "Baltimore Ravens", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant win, eyes Super Bowl return.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen shines as Bills power through the divisional round with strong defense.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Burrow and the Bengals survive a nail-biter to reach the next stage.",
+        club: "Cincinnati Bengals",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Lamar Jackson dominates both passing and rushing in a blowout victory.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Justin Herbert and the Chargers fall short in a close matchup against the Chiefs.",
+        club: "Los Angeles Chargers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Trevor Lawrence shows improvement despite Jaguars’ playoff exit.",
+        club: "Jacksonville Jaguars",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=GOOiEcMyZf8", // Full Game Highlights Chiefs vs. Bills playoff :contentReference[oaicite:0]{index=0}
+          "https://www.youtube.com/watch?v=6TW5qfA1slk", // Bills vs Chiefs Week 14 2023 4th QTR :contentReference[oaicite:1]{index=1}
+          "https://www.youtube.com/watch?v=WugoszGta-w",
+          "https://www.youtube.com/watch?v=DldQhe4azr4",
+          "https://www.youtube.com/watch?v=GOOiEcMyZf8",
+          "https://www.youtube.com/watch?v=6TW5qfA1slk",
+          "https://www.youtube.com/watch?v=N3p7_XIHM8g",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Bengals vs Ravens",
+        detail: "AFC Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Jaguars vs Chargers",
+        detail: "Divisional Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Burrow",
+            clubName: "Cincinnati Bengals",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 5,
+            footballerName: "Justin Herbert",
+            clubName: "Los Angeles Chargers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 6,
+            footballerName: "Trevor Lawrence",
+            clubName: "Jacksonville Jaguars",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 7,
+            footballerName: "Tua Tagovailoa",
+            clubName: "Miami Dolphins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 8,
+            footballerName: "Deshaun Watson",
+            clubName: "Cleveland Browns",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Aaron Rodgers",
+            clubName: "New York Jets",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 10,
+            footballerName: "Dak Prescott",
+            clubName: "Dallas Cowboys",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28-21",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "21-28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "AFC Championship: Qualification 1",
+    country: "NFL Playoffs",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "Kansas City Chiefs", odd: 2.5 },
+      { clubName: "Buffalo Bills", odd: 3.0 },
+      { clubName: "Cincinnati Bengals", odd: 3.25 },
+      { clubName: "Baltimore Ravens", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant win, eyes Super Bowl return.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen shines as Bills power through the divisional round with strong defense.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Burrow and the Bengals survive a nail-biter to reach the next stage.",
+        club: "Cincinnati Bengals",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Lamar Jackson dominates both passing and rushing in a blowout victory.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Justin Herbert and the Chargers fall short in a close matchup against the Chiefs.",
+        club: "Los Angeles Chargers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Trevor Lawrence shows improvement despite Jaguars’ playoff exit.",
+        club: "Jacksonville Jaguars",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=_5VBE0pbjNw",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=ZQA7E_Yp31Q",
+          "https://www.youtube.com/watch?v=JsiJudkJuqc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=pWCFWkqZj6c",
+          "https://www.youtube.com/watch?v=7O_Px0liRvI",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Bengals vs Ravens",
+        detail: "AFC Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Jaguars vs Chargers",
+        detail: "Divisional Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/LaLiga.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Burrow",
+            clubName: "Cincinnati Bengals",
+            clubImg: require("@src/assets/png/ligue1.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/home-cta.png"),
+            goals: 3,
+          },
+          {
+            id: 5,
+            footballerName: "Justin Herbert",
+            clubName: "Los Angeles Chargers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 6,
+            footballerName: "Trevor Lawrence",
+            clubName: "Jacksonville Jaguars",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 7,
+            footballerName: "Tua Tagovailoa",
+            clubName: "Miami Dolphins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 8,
+            footballerName: "Deshaun Watson",
+            clubName: "Cleveland Browns",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Aaron Rodgers",
+            clubName: "New York Jets",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 10,
+            footballerName: "Dak Prescott",
+            clubName: "Dallas Cowboys",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28-21",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "21-28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "NFL: American Conference",
+    country: "USA",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      {
+        clubName: "Kansas City Chiefs",
+        odd: 2.5,
+      },
+      {
+        clubName: "Buffalo Bills",
+        odd: 3.0,
+      },
+      {
+        clubName: "Baltimore Ravens",
+        odd: 3.25,
+      },
+      {
+        clubName: "Cincinnati Bengals",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant performance as playoffs approach.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen’s precision passing secures a crucial win for the Bills in overtime.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Lamar Jackson shines as Ravens edge out their rivals in a thrilling showdown.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Ravens vs Bengals",
+        detail: "AFC Divisional Playoffs 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Dolphins vs Jets",
+        detail: "AFC Regular Season Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 4,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 3,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "35",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "NFL: National Conference",
+    country: "USA",
+    icon: require("@src/assets/png/basketball2.png"),
+    odds: [
+      {
+        clubName: "Dallas Cowboys",
+        odd: 2.5,
+      },
+      {
+        clubName: "San Francisco 49ers",
+        odd: 3.0,
+      },
+      {
+        clubName: "Philadelphia Eagles",
+        odd: 3.25,
+      },
+      {
+        clubName: "Detroit Lions",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Dak Prescott delivers a stellar game as Cowboys move to top of NFC standings.",
+        club: "Dallas Cowboys",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Christian McCaffrey’s explosive performance leads 49ers to another win streak.",
+        club: "San Francisco 49ers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Jalen Hurts puts on a clinic as Eagles dominate in primetime matchup.",
+        club: "Philadelphia Eagles",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Amon-Ra St. Brown shines as the Lions continue their surprising playoff push.",
+        club: "Detroit Lions",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Aaron Rodgers rumored to make an early comeback, Jets fans hopeful.",
+        club: "New York Jets",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Brock Purdy continues to silence critics with back-to-back elite performances.",
+        club: "San Francisco 49ers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Cowboys vs 49ers",
+        detail: "NFC Championship 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Eagles vs Lions",
+        detail: "NFC Divisional Round 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Packers vs Bears",
+        detail: "NFC Regular Season 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Dak Prescott",
+            clubName: "Dallas Cowboys",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 4,
+          },
+          {
+            id: 2,
+            footballerName: "Christian McCaffrey",
+            clubName: "San Francisco 49ers",
+            clubImg: require("@src/assets/png/chelsea.png"),
+            goals: 3,
+          },
+          {
+            id: 3,
+            footballerName: "Jalen Hurts",
+            clubName: "Philadelphia Eagles",
+            clubImg: require("@src/assets/png/liverpool.png"),
+            goals: 3,
+          },
+          {
+            id: 4,
+            footballerName: "Amon-Ra St. Brown",
+            clubName: "Detroit Lions",
+            clubImg: require("@src/assets/png/totheham.png"),
+            goals: 2,
+          },
+          {
+            id: 5,
+            footballerName: "Brock Purdy",
+            clubName: "San Francisco 49ers",
+            clubImg: require("@src/assets/png/arsenal.png"),
+            goals: 3,
+          },
+          {
+            id: 6,
+            footballerName: "Aaron Rodgers",
+            clubName: "New York Jets",
+            clubImg: require("@src/assets/png/man-u.png"),
+            goals: 2,
+          },
+          {
+            id: 7,
+            footballerName: "Jared Goff",
+            clubName: "Detroit Lions",
+            clubImg: require("@src/assets/png/arsenal.png"),
+            goals: 3,
+          },
+          {
+            id: 8,
+            footballerName: "Justin Fields",
+            clubName: "Chicago Bears",
+            clubImg: require("@src/assets/png/man-u.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Jordan Love",
+            clubName: "Green Bay Packers",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+          {
+            id: 10,
+            footballerName: "Matthew Stafford",
+            clubName: "Los Angeles Rams",
+            clubImg: require("@src/assets/png/chelsea.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "Cowboys",
+            image: require("@src/assets/png/fixture.png"),
+            score: "31",
+          },
+          {
+            name: "49ers",
+            image: require("@src/assets/png/fixture.png"),
+            score: "27",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "AFC Championship: Qualification",
+    country: "NFL Playoffs",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "Kansas City Chiefs", odd: 2.5 },
+      { clubName: "Buffalo Bills", odd: 3.0 },
+      { clubName: "Cincinnati Bengals", odd: 3.25 },
+      { clubName: "Baltimore Ravens", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant win, eyes Super Bowl return.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen shines as Bills power through the divisional round with strong defense.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Burrow and the Bengals survive a nail-biter to reach the next stage.",
+        club: "Cincinnati Bengals",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Lamar Jackson dominates both passing and rushing in a blowout victory.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Justin Herbert and the Chargers fall short in a close matchup against the Chiefs.",
+        club: "Los Angeles Chargers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Trevor Lawrence shows improvement despite Jaguars’ playoff exit.",
+        club: "Jacksonville Jaguars",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=M30lW_9D5a0",
+          "https://www.youtube.com/watch?v=2UXNwtvmQX4",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Bengals vs Ravens",
+        detail: "AFC Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Jaguars vs Chargers",
+        detail: "Divisional Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Burrow",
+            clubName: "Cincinnati Bengals",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 5,
+            footballerName: "Justin Herbert",
+            clubName: "Los Angeles Chargers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 6,
+            footballerName: "Trevor Lawrence",
+            clubName: "Jacksonville Jaguars",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 7,
+            footballerName: "Tua Tagovailoa",
+            clubName: "Miami Dolphins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 8,
+            footballerName: "Deshaun Watson",
+            clubName: "Cleveland Browns",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Aaron Rodgers",
+            clubName: "New York Jets",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 10,
+            footballerName: "Dak Prescott",
+            clubName: "Dallas Cowboys",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28-21",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "21-28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "NFL: American Conference",
+    country: "USA",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      {
+        clubName: "Kansas City Chiefs",
+        odd: 2.5,
+      },
+      {
+        clubName: "Buffalo Bills",
+        odd: 3.0,
+      },
+      {
+        clubName: "Baltimore Ravens",
+        odd: 3.25,
+      },
+      {
+        clubName: "Cincinnati Bengals",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant performance as playoffs approach.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen’s precision passing secures a crucial win for the Bills in overtime.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Lamar Jackson shines as Ravens edge out their rivals in a thrilling showdown.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Ravens vs Bengals",
+        detail: "AFC Divisional Playoffs 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Dolphins vs Jets",
+        detail: "AFC Regular Season Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 4,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 3,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "35",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "AFC Championship: Qualification",
+    country: "NFL Playoffs",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "Kansas City Chiefs", odd: 2.5 },
+      { clubName: "Buffalo Bills", odd: 3.0 },
+      { clubName: "Cincinnati Bengals", odd: 3.25 },
+      { clubName: "Baltimore Ravens", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant win, eyes Super Bowl return.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen shines as Bills power through the divisional round with strong defense.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Burrow and the Bengals survive a nail-biter to reach the next stage.",
+        club: "Cincinnati Bengals",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Lamar Jackson dominates both passing and rushing in a blowout victory.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Justin Herbert and the Chargers fall short in a close matchup against the Chiefs.",
+        club: "Los Angeles Chargers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Trevor Lawrence shows improvement despite Jaguars’ playoff exit.",
+        club: "Jacksonville Jaguars",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=GOOiEcMyZf8", // Full Game Highlights Chiefs vs. Bills playoff :contentReference[oaicite:0]{index=0}
+          "https://www.youtube.com/watch?v=6TW5qfA1slk", // Bills vs Chiefs Week 14 2023 4th QTR :contentReference[oaicite:1]{index=1}
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Bengals vs Ravens",
+        detail: "AFC Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Jaguars vs Chargers",
+        detail: "Divisional Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Burrow",
+            clubName: "Cincinnati Bengals",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 5,
+            footballerName: "Justin Herbert",
+            clubName: "Los Angeles Chargers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 6,
+            footballerName: "Trevor Lawrence",
+            clubName: "Jacksonville Jaguars",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 7,
+            footballerName: "Tua Tagovailoa",
+            clubName: "Miami Dolphins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 8,
+            footballerName: "Deshaun Watson",
+            clubName: "Cleveland Browns",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Aaron Rodgers",
+            clubName: "New York Jets",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 10,
+            footballerName: "Dak Prescott",
+            clubName: "Dallas Cowboys",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28-21",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "21-28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "AFC Championship: Qualification",
+    country: "NFL Playoffs",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "Kansas City Chiefs", odd: 2.5 },
+      { clubName: "Buffalo Bills", odd: 3.0 },
+      { clubName: "Cincinnati Bengals", odd: 3.25 },
+      { clubName: "Baltimore Ravens", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant win, eyes Super Bowl return.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen shines as Bills power through the divisional round with strong defense.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Burrow and the Bengals survive a nail-biter to reach the next stage.",
+        club: "Cincinnati Bengals",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Lamar Jackson dominates both passing and rushing in a blowout victory.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Justin Herbert and the Chargers fall short in a close matchup against the Chiefs.",
+        club: "Los Angeles Chargers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Trevor Lawrence shows improvement despite Jaguars’ playoff exit.",
+        club: "Jacksonville Jaguars",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=M30lW_9D5a0",
+          "https://www.youtube.com/watch?v=2UXNwtvmQX4",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Bengals vs Ravens",
+        detail: "AFC Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Jaguars vs Chargers",
+        detail: "Divisional Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Burrow",
+            clubName: "Cincinnati Bengals",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 5,
+            footballerName: "Justin Herbert",
+            clubName: "Los Angeles Chargers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 6,
+            footballerName: "Trevor Lawrence",
+            clubName: "Jacksonville Jaguars",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 7,
+            footballerName: "Tua Tagovailoa",
+            clubName: "Miami Dolphins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 8,
+            footballerName: "Deshaun Watson",
+            clubName: "Cleveland Browns",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Aaron Rodgers",
+            clubName: "New York Jets",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 10,
+            footballerName: "Dak Prescott",
+            clubName: "Dallas Cowboys",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28-21",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "21-28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "NFL: American Conference",
+    country: "USA",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      {
+        clubName: "Kansas City Chiefs",
+        odd: 2.5,
+      },
+      {
+        clubName: "Buffalo Bills",
+        odd: 3.0,
+      },
+      {
+        clubName: "Baltimore Ravens",
+        odd: 3.25,
+      },
+      {
+        clubName: "Cincinnati Bengals",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant performance as playoffs approach.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen’s precision passing secures a crucial win for the Bills in overtime.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Lamar Jackson shines as Ravens edge out their rivals in a thrilling showdown.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Ravens vs Bengals",
+        detail: "AFC Divisional Playoffs 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Dolphins vs Jets",
+        detail: "AFC Regular Season Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 4,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 3,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "35",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "NFL: National Conference",
+    country: "USA",
+    icon: require("@src/assets/png/basketball2.png"),
+    odds: [
+      {
+        clubName: "Dallas Cowboys",
+        odd: 2.5,
+      },
+      {
+        clubName: "San Francisco 49ers",
+        odd: 3.0,
+      },
+      {
+        clubName: "Philadelphia Eagles",
+        odd: 3.25,
+      },
+      {
+        clubName: "Detroit Lions",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Dak Prescott delivers a stellar game as Cowboys move to top of NFC standings.",
+        club: "Dallas Cowboys",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Christian McCaffrey’s explosive performance leads 49ers to another win streak.",
+        club: "San Francisco 49ers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Jalen Hurts puts on a clinic as Eagles dominate in primetime matchup.",
+        club: "Philadelphia Eagles",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Amon-Ra St. Brown shines as the Lions continue their surprising playoff push.",
+        club: "Detroit Lions",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Aaron Rodgers rumored to make an early comeback, Jets fans hopeful.",
+        club: "New York Jets",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Brock Purdy continues to silence critics with back-to-back elite performances.",
+        club: "San Francisco 49ers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Cowboys vs 49ers",
+        detail: "NFC Championship 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Eagles vs Lions",
+        detail: "NFC Divisional Round 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Packers vs Bears",
+        detail: "NFC Regular Season 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Dak Prescott",
+            clubName: "Dallas Cowboys",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 4,
+          },
+          {
+            id: 2,
+            footballerName: "Christian McCaffrey",
+            clubName: "San Francisco 49ers",
+            clubImg: require("@src/assets/png/chelsea.png"),
+            goals: 3,
+          },
+          {
+            id: 3,
+            footballerName: "Jalen Hurts",
+            clubName: "Philadelphia Eagles",
+            clubImg: require("@src/assets/png/liverpool.png"),
+            goals: 3,
+          },
+          {
+            id: 4,
+            footballerName: "Amon-Ra St. Brown",
+            clubName: "Detroit Lions",
+            clubImg: require("@src/assets/png/totheham.png"),
+            goals: 2,
+          },
+          {
+            id: 5,
+            footballerName: "Brock Purdy",
+            clubName: "San Francisco 49ers",
+            clubImg: require("@src/assets/png/arsenal.png"),
+            goals: 3,
+          },
+          {
+            id: 6,
+            footballerName: "Aaron Rodgers",
+            clubName: "New York Jets",
+            clubImg: require("@src/assets/png/man-u.png"),
+            goals: 2,
+          },
+          {
+            id: 7,
+            footballerName: "Jared Goff",
+            clubName: "Detroit Lions",
+            clubImg: require("@src/assets/png/arsenal.png"),
+            goals: 3,
+          },
+          {
+            id: 8,
+            footballerName: "Justin Fields",
+            clubName: "Chicago Bears",
+            clubImg: require("@src/assets/png/man-u.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Jordan Love",
+            clubName: "Green Bay Packers",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+          {
+            id: 10,
+            footballerName: "Matthew Stafford",
+            clubName: "Los Angeles Rams",
+            clubImg: require("@src/assets/png/chelsea.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "Cowboys",
+            image: require("@src/assets/png/fixture.png"),
+            score: "31",
+          },
+          {
+            name: "49ers",
+            image: require("@src/assets/png/fixture.png"),
+            score: "27",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "AFC Championship: Qualification",
+    country: "NFL Playoffs",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "Kansas City Chiefs", odd: 2.5 },
+      { clubName: "Buffalo Bills", odd: 3.0 },
+      { clubName: "Cincinnati Bengals", odd: 3.25 },
+      { clubName: "Baltimore Ravens", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant win, eyes Super Bowl return.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen shines as Bills power through the divisional round with strong defense.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Burrow and the Bengals survive a nail-biter to reach the next stage.",
+        club: "Cincinnati Bengals",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Lamar Jackson dominates both passing and rushing in a blowout victory.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Justin Herbert and the Chargers fall short in a close matchup against the Chiefs.",
+        club: "Los Angeles Chargers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Trevor Lawrence shows improvement despite Jaguars’ playoff exit.",
+        club: "Jacksonville Jaguars",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=M30lW_9D5a0",
+          "https://www.youtube.com/watch?v=2UXNwtvmQX4",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Bengals vs Ravens",
+        detail: "AFC Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Jaguars vs Chargers",
+        detail: "Divisional Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Burrow",
+            clubName: "Cincinnati Bengals",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 5,
+            footballerName: "Justin Herbert",
+            clubName: "Los Angeles Chargers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 6,
+            footballerName: "Trevor Lawrence",
+            clubName: "Jacksonville Jaguars",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 7,
+            footballerName: "Tua Tagovailoa",
+            clubName: "Miami Dolphins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 8,
+            footballerName: "Deshaun Watson",
+            clubName: "Cleveland Browns",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "Aaron Rodgers",
+            clubName: "New York Jets",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 10,
+            footballerName: "Dak Prescott",
+            clubName: "Dallas Cowboys",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28-21",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "21-28",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "NFL: American Conference",
+    country: "USA",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      {
+        clubName: "Kansas City Chiefs",
+        odd: 2.5,
+      },
+      {
+        clubName: "Buffalo Bills",
+        odd: 3.0,
+      },
+      {
+        clubName: "Baltimore Ravens",
+        odd: 3.25,
+      },
+      {
+        clubName: "Cincinnati Bengals",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Patrick Mahomes leads the Chiefs to another dominant performance as playoffs approach.",
+        club: "Kansas City Chiefs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Josh Allen’s precision passing secures a crucial win for the Bills in overtime.",
+        club: "Buffalo Bills",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Lamar Jackson shines as Ravens edge out their rivals in a thrilling showdown.",
+        club: "Baltimore Ravens",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Chiefs vs Bills",
+        detail: "AFC Championship 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Ravens vs Bengals",
+        detail: "AFC Divisional Playoffs 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Dolphins vs Jets",
+        detail: "AFC Regular Season Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Patrick Mahomes",
+            clubName: "Kansas City Chiefs",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 4,
+          },
+          {
+            id: 2,
+            footballerName: "Josh Allen",
+            clubName: "Buffalo Bills",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 3,
+            footballerName: "Lamar Jackson",
+            clubName: "Baltimore Ravens",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+        ],
+        club: [
+          {
+            name: "Kansas City Chiefs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "35",
+          },
+          {
+            name: "Buffalo Bills",
+            image: require("@src/assets/png/fixture.png"),
+            score: "28",
+          },
+        ],
+      },
+    ],
+  },
+];
+
 export const fixturesOverview = [
   "Overview",
   "Matches",

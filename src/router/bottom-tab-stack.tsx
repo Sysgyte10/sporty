@@ -13,6 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "@src/components/shared";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useActiveBottomTabStore } from "store";
+import { truncateText } from "@src/helper/utils";
 
 const Tab = createBottomTabNavigator<BottomTabBarStackParamList>();
 
@@ -63,7 +64,12 @@ const CustomTabBarButton = ({
         type='medium'
         size={12}
         style={{ color: focused ? colors.white : "#9C9C9C" }}>
-        {label === "Favorite" || label === "For You" ? label : tabName || label}
+        {truncateText(
+          label === "Favorite" || label === "For You"
+            ? label
+            : tabName || label,
+          10
+        )}
       </CustomText>
     </TouchableOpacity>
   );

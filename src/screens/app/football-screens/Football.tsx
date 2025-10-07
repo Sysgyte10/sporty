@@ -15,6 +15,7 @@ import { FootBallHeader } from "@src/components/app/football";
 import { footBallWatches } from "@src/constants/football";
 import { StatusBar } from "expo-status-bar";
 import {
+  AmericanFootballSport,
   BasketballSport,
   FootballSport,
   TennisSport,
@@ -104,6 +105,27 @@ export const Football = ({
                 title: title as string,
                 desc: desc as string,
               })
+            }
+            onPressMatchCard={() =>
+              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                screen: appScreenNames.ONE_MATCH,
+              })
+            }
+          />
+        )}
+
+        {selectedSport === "American Football" && (
+          <AmericanFootballSport
+            onPress={(fixtureId, icon, title, desc) =>
+              navigation.navigate(
+                appScreenNames.AMERICAN_FOOTBALL_FIXTURE_INFO,
+                {
+                  fixtureId: fixtureId,
+                  image: icon as ImageSourcePropType,
+                  title: title as string,
+                  desc: desc as string,
+                }
+              )
             }
             onPressMatchCard={() =>
               navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
