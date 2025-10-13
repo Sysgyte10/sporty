@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "sporty",
-    "slug": "sporty",
+    "name": "realscorz",
+    "slug": "realscorz",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,17 +13,25 @@
       "backgroundColor": "#171717"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.adebunmy.realscorz"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/splash-icon.png",
         "backgroundColor": "#171717"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.adebunmy.realscorz"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "15bbd72e-fabe-480c-b6fb-1bf3c19da5cd"
+      }
+    },
+    "owner": "plug2020-org"
   }
 }
