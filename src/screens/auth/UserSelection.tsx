@@ -34,6 +34,7 @@ import { useSearchFilter } from "@src/hooks";
 import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 import { AppHeader } from "../AppHeader";
 import { useGetFootballMarkets } from "@src/api/hooks/app";
+import { useAuthStore } from "@src/api/store/auth";
 
 export const UserSelection = ({
   navigation,
@@ -44,6 +45,7 @@ export const UserSelection = ({
     teamsData,
     "club"
   );
+  const { setIsAuthenticated } = useAuthStore();
 
   //user selection step_1 form control
   const {
@@ -149,11 +151,10 @@ export const UserSelection = ({
         <View style={styles.headerContainer}>
           <AppHeader
             // title='User Selection'
-            backArrow
+            // backArrow
             onGoBack={() => prevStep()}
           />
-          <TouchableOpacity
-            onPress={() => navigation.navigate(authScreenNames.AGE_SELECTION)}>
+          <TouchableOpacity onPress={() => setIsAuthenticated(true)}>
             <CustomText size={16} type='medium' purple>
               Skip
             </CustomText>

@@ -36,4 +36,6 @@ export enum appScreenNames {
   BASKETBALL_FIXTURE_INFO = "BasketballFixtureInfo",
   TENNIS_FIXTURE_INFO = "TennisFixtureInfo",
   AMERICAN_FOOTBALL_FIXTURE_INFO = "AmericanFootballFixtureInfo",
+  CRICKET_FIXTURE_INFO = "CricketFixtureInfo",
+  ICE_HOCKEY_FIXTURE_INFO = "IceHockeyFixtureInfo",
 }

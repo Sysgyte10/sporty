@@ -66,6 +66,7 @@ export const MatchHighlights = ({
 
       // Filter out nulls (in case some fetches failed)
       setVideoDetails(results.filter(Boolean));
+      console.log("video res", results.filter(Boolean));
     };
 
     fetchVideos();

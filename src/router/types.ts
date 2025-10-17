@@ -56,6 +56,18 @@ export interface RootStackParamList extends ParamListBase {
     title: string;
     desc: string;
   };
+  CricketFixtureInfo: {
+    fixtureId: string | number | any;
+    image: ImageSourcePropType;
+    title: string;
+    desc: string;
+  };
+  IceHockeyFixtureInfo: {
+    fixtureId: string | number | any;
+    image: ImageSourcePropType;
+    title: string;
+    desc: string;
+  };
   MatchHighlights: {
     highLightId: string | number | any;
     fixtureId: string | number | any;

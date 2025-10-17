@@ -23503,6 +23503,3604 @@ export const americanFootballFixtures: fixtureDataType[] = [
   },
 ];
 
+export const cricketFixtures: fixtureDataType[] = [
+  {
+    id: 1,
+    fixtureName: "ICC Cricket World Cup: Qualifiers",
+    country: "International Cricket",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "India", odd: 2.5 },
+      { clubName: "Australia", odd: 3.0 },
+      { clubName: "England", odd: 3.25 },
+      { clubName: "South Africa", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli leads India to another dominant win, eyes World Cup glory.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Pat Cummins shines as Australia advances with a strong bowling performance.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root anchors England’s innings to secure a thrilling semi-final berth.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Quinton de Kock dominates with both bat and gloves in a convincing victory.",
+        club: "South Africa",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Kane Williamson’s New Zealand side narrowly misses out in a close contest.",
+        club: "New Zealand",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Babar Azam shows resilience despite Pakistan’s tough loss in the qualifiers.",
+        club: "Pakistan",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "World Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=dJ1uTVMwZpw", // KL Rahul 100 & Stokes Run-Out – England vs India Day 3 :contentReference[oaicite:0]{index=0}
+          "https://www.youtube.com/watch?v=7O5VMOi03Cs", // Australia vs South Africa ODI highlights :contentReference[oaicite:1]{index=1}
+          "https://www.youtube.com/watch?v=z85-8ra-kCc", // Fourth T20 Highlights Australia vs West Indies :contentReference[oaicite:2]{index=2}
+          "https://www.youtube.com/watch?v=d8JfQPp6WrE", // England vs India Extended 1st Test highlights :contentReference[oaicite:3]{index=3}
+          "https://www.youtube.com/watch?v=Vw74YgG4jP0", // Gill, Jadeja & Sundar Hundreds Highlights :contentReference[oaicite:4]{index=4}
+          "https://www.youtube.com/watch?v=pR7vnJ2vxsc", // Australia vs South Africa T20I match highlights :contentReference[oaicite:5]{index=5}
+          "https://www.youtube.com/watch?v=OuKFd47sxBo",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "World Cup Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Pakistan vs New Zealand",
+        detail: "Super 8 Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 87, // Runs
+          },
+          {
+            id: 2,
+            footballerName: "Pat Cummins",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3, // Wickets
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 72,
+          },
+          {
+            id: 4,
+            footballerName: "Quinton de Kock",
+            clubName: "South Africa",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 55,
+          },
+          {
+            id: 5,
+            footballerName: "Kane Williamson",
+            clubName: "New Zealand",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 63,
+          },
+          {
+            id: 6,
+            footballerName: "Babar Azam",
+            clubName: "Pakistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 70,
+          },
+          {
+            id: 7,
+            footballerName: "Rashid Khan",
+            clubName: "Afghanistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 4, // Wickets
+          },
+          {
+            id: 8,
+            footballerName: "Ben Stokes",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 68,
+          },
+          {
+            id: 9,
+            footballerName: "David Warner",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 76,
+          },
+          {
+            id: 10,
+            footballerName: "Rohit Sharma",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 89,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "310/7",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "290/9",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "ICC Cricket World Cup: Qualifier 1",
+    country: "International Cricket",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "India", odd: 2.5 },
+      { clubName: "Australia", odd: 3.0 },
+      { clubName: "England", odd: 3.25 },
+      { clubName: "South Africa", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli leads India to another commanding victory, edging closer to World Cup triumph.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Pat Cummins shines as Australia secure a semifinal spot with clinical bowling.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root’s steady batting guides England through a tense chase against New Zealand.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Quinton de Kock dazzles with a century as South Africa dominate Pakistan.",
+        club: "South Africa",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Kane Williamson’s leadership keeps New Zealand’s hopes alive despite tough competition.",
+        club: "New Zealand",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Babar Azam’s fifty not enough as Pakistan fall short in a thrilling encounter.",
+        club: "Pakistan",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "World Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=_5VBE0pbjNw",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=ZQA7E_Yp31Q",
+          "https://www.youtube.com/watch?v=JsiJudkJuqc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=pWCFWkqZj6c",
+          "https://www.youtube.com/watch?v=7O_Px0liRvI",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "World Cup Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Pakistan vs New Zealand",
+        detail: "Super 8 Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 87, // Runs
+          },
+          {
+            id: 2,
+            footballerName: "Pat Cummins",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/LaLiga.png"),
+            goals: 3, // Wickets
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/ligue1.png"),
+            goals: 72,
+          },
+          {
+            id: 4,
+            footballerName: "Quinton de Kock",
+            clubName: "South Africa",
+            clubImg: require("@src/assets/png/home-cta.png"),
+            goals: 55,
+          },
+          {
+            id: 5,
+            footballerName: "Kane Williamson",
+            clubName: "New Zealand",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 63,
+          },
+          {
+            id: 6,
+            footballerName: "Babar Azam",
+            clubName: "Pakistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 70,
+          },
+          {
+            id: 7,
+            footballerName: "Rashid Khan",
+            clubName: "Afghanistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 4, // Wickets
+          },
+          {
+            id: 8,
+            footballerName: "Ben Stokes",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 68,
+          },
+          {
+            id: 9,
+            footballerName: "David Warner",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 76,
+          },
+          {
+            id: 10,
+            footballerName: "Rohit Sharma",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 89,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "310/7",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "290/9",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "ICC: World Test Championship",
+    country: "International",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      {
+        clubName: "India",
+        odd: 2.5,
+      },
+      {
+        clubName: "Australia",
+        odd: 3.0,
+      },
+      {
+        clubName: "England",
+        odd: 3.25,
+      },
+      {
+        clubName: "South Africa",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli’s century powers India to a strong position in the World Test Championship final.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Steve Smith’s resilience keeps Australia in contention with a gritty 95 on Day 3.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root’s elegant batting display helps England secure a vital Test series win.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "WTC Final 2025 Highlights",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "Test Series 2025 Highlights",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "India vs England",
+        detail: "Border-Gavaskar Trophy 2025 Highlights",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 145, // Runs scored
+          },
+          {
+            id: 2,
+            footballerName: "Steve Smith",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 110,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 95,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "445/8d",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "367 all out",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "ICC Cricket World Cup: Qualifiers",
+    country: "International Cricket",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "India", odd: 2.5 },
+      { clubName: "Australia", odd: 3.0 },
+      { clubName: "England", odd: 3.25 },
+      { clubName: "South Africa", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli leads India to another dominant win, eyes World Cup glory.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Pat Cummins shines as Australia advances with a strong bowling performance.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root anchors England’s innings to secure a thrilling semi-final berth.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Quinton de Kock dominates with both bat and gloves in a convincing victory.",
+        club: "South Africa",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Kane Williamson’s New Zealand side narrowly misses out in a close contest.",
+        club: "New Zealand",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Babar Azam shows resilience despite Pakistan’s tough loss in the qualifiers.",
+        club: "Pakistan",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "World Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=GOOiEcMyZf8",
+          "https://www.youtube.com/watch?v=6TW5qfA1slk",
+          "https://www.youtube.com/watch?v=WugoszGta-w",
+          "https://www.youtube.com/watch?v=DldQhe4azr4",
+          "https://www.youtube.com/watch?v=GOOiEcMyZf8",
+          "https://www.youtube.com/watch?v=6TW5qfA1slk",
+          "https://www.youtube.com/watch?v=N3p7_XIHM8g",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "World Cup Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Pakistan vs New Zealand",
+        detail: "Super 8 Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 87, // Runs
+          },
+          {
+            id: 2,
+            footballerName: "Pat Cummins",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3, // Wickets
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 72,
+          },
+          {
+            id: 4,
+            footballerName: "Quinton de Kock",
+            clubName: "South Africa",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 55,
+          },
+          {
+            id: 5,
+            footballerName: "Kane Williamson",
+            clubName: "New Zealand",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 63,
+          },
+          {
+            id: 6,
+            footballerName: "Babar Azam",
+            clubName: "Pakistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 70,
+          },
+          {
+            id: 7,
+            footballerName: "Rashid Khan",
+            clubName: "Afghanistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 4, // Wickets
+          },
+          {
+            id: 8,
+            footballerName: "Ben Stokes",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 68,
+          },
+          {
+            id: 9,
+            footballerName: "David Warner",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 76,
+          },
+          {
+            id: 10,
+            footballerName: "Rohit Sharma",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 89,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "310/7",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "290/9",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "ICC Cricket World Cup: Qualifier 1",
+    country: "International Cricket",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "India", odd: 2.5 },
+      { clubName: "Australia", odd: 3.0 },
+      { clubName: "England", odd: 3.25 },
+      { clubName: "South Africa", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli leads India to another commanding victory, edging closer to World Cup triumph.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Pat Cummins shines as Australia secure a semifinal spot with clinical bowling.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root’s steady batting guides England through a tense chase against New Zealand.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Quinton de Kock dazzles with a century as South Africa dominate Pakistan.",
+        club: "South Africa",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Kane Williamson’s leadership keeps New Zealand’s hopes alive despite tough competition.",
+        club: "New Zealand",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Babar Azam’s fifty not enough as Pakistan fall short in a thrilling encounter.",
+        club: "Pakistan",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "World Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=_5VBE0pbjNw",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=ZQA7E_Yp31Q",
+          "https://www.youtube.com/watch?v=JsiJudkJuqc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=pWCFWkqZj6c",
+          "https://www.youtube.com/watch?v=7O_Px0liRvI",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "World Cup Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Pakistan vs New Zealand",
+        detail: "Super 8 Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 87, // Runs
+          },
+          {
+            id: 2,
+            footballerName: "Pat Cummins",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/LaLiga.png"),
+            goals: 3, // Wickets
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/ligue1.png"),
+            goals: 72,
+          },
+          {
+            id: 4,
+            footballerName: "Quinton de Kock",
+            clubName: "South Africa",
+            clubImg: require("@src/assets/png/home-cta.png"),
+            goals: 55,
+          },
+          {
+            id: 5,
+            footballerName: "Kane Williamson",
+            clubName: "New Zealand",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 63,
+          },
+          {
+            id: 6,
+            footballerName: "Babar Azam",
+            clubName: "Pakistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 70,
+          },
+          {
+            id: 7,
+            footballerName: "Rashid Khan",
+            clubName: "Afghanistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 4, // Wickets
+          },
+          {
+            id: 8,
+            footballerName: "Ben Stokes",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 68,
+          },
+          {
+            id: 9,
+            footballerName: "David Warner",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 76,
+          },
+          {
+            id: 10,
+            footballerName: "Rohit Sharma",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 89,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "310/7",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "290/9",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "ICC: World Test Championship",
+    country: "International",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      {
+        clubName: "India",
+        odd: 2.5,
+      },
+      {
+        clubName: "Australia",
+        odd: 3.0,
+      },
+      {
+        clubName: "England",
+        odd: 3.25,
+      },
+      {
+        clubName: "South Africa",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli’s century powers India to a strong position in the World Test Championship final.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Steve Smith’s resilience keeps Australia in contention with a gritty 95 on Day 3.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root’s elegant batting display helps England secure a vital Test series win.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "WTC Final 2025 Highlights",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "Test Series 2025 Highlights",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "India vs England",
+        detail: "Border-Gavaskar Trophy 2025 Highlights",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 145, // Runs scored
+          },
+          {
+            id: 2,
+            footballerName: "Steve Smith",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 110,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 95,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "445/8d",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "367 all out",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "ICC Cricket World Cup: Qualifiers",
+    country: "International Cricket",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "India", odd: 2.5 },
+      { clubName: "Australia", odd: 3.0 },
+      { clubName: "England", odd: 3.25 },
+      { clubName: "South Africa", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli leads India to another dominant win, eyes World Cup glory.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Pat Cummins shines as Australia advances with a strong bowling performance.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root anchors England’s innings to secure a thrilling semi-final berth.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Quinton de Kock dominates with both bat and gloves in a convincing victory.",
+        club: "South Africa",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Kane Williamson’s New Zealand side narrowly misses out in a close contest.",
+        club: "New Zealand",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Babar Azam shows resilience despite Pakistan’s tough loss in the qualifiers.",
+        club: "Pakistan",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "World Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=GOOiEcMyZf8",
+          "https://www.youtube.com/watch?v=6TW5qfA1slk",
+          "https://www.youtube.com/watch?v=WugoszGta-w",
+          "https://www.youtube.com/watch?v=DldQhe4azr4",
+          "https://www.youtube.com/watch?v=GOOiEcMyZf8",
+          "https://www.youtube.com/watch?v=6TW5qfA1slk",
+          "https://www.youtube.com/watch?v=N3p7_XIHM8g",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "World Cup Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Pakistan vs New Zealand",
+        detail: "Super 8 Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 87, // Runs
+          },
+          {
+            id: 2,
+            footballerName: "Pat Cummins",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3, // Wickets
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 72,
+          },
+          {
+            id: 4,
+            footballerName: "Quinton de Kock",
+            clubName: "South Africa",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 55,
+          },
+          {
+            id: 5,
+            footballerName: "Kane Williamson",
+            clubName: "New Zealand",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 63,
+          },
+          {
+            id: 6,
+            footballerName: "Babar Azam",
+            clubName: "Pakistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 70,
+          },
+          {
+            id: 7,
+            footballerName: "Rashid Khan",
+            clubName: "Afghanistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 4, // Wickets
+          },
+          {
+            id: 8,
+            footballerName: "Ben Stokes",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 68,
+          },
+          {
+            id: 9,
+            footballerName: "David Warner",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 76,
+          },
+          {
+            id: 10,
+            footballerName: "Rohit Sharma",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 89,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "310/7",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "290/9",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "ICC Cricket World Cup: Qualifier 1",
+    country: "International Cricket",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "India", odd: 2.5 },
+      { clubName: "Australia", odd: 3.0 },
+      { clubName: "England", odd: 3.25 },
+      { clubName: "South Africa", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli leads India to another commanding victory, edging closer to World Cup triumph.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Pat Cummins shines as Australia secure a semifinal spot with clinical bowling.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root’s steady batting guides England through a tense chase against New Zealand.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Quinton de Kock dazzles with a century as South Africa dominate Pakistan.",
+        club: "South Africa",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Kane Williamson’s leadership keeps New Zealand’s hopes alive despite tough competition.",
+        club: "New Zealand",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Babar Azam’s fifty not enough as Pakistan fall short in a thrilling encounter.",
+        club: "Pakistan",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "World Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=_5VBE0pbjNw",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=ZQA7E_Yp31Q",
+          "https://www.youtube.com/watch?v=JsiJudkJuqc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=pWCFWkqZj6c",
+          "https://www.youtube.com/watch?v=7O_Px0liRvI",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "World Cup Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Pakistan vs New Zealand",
+        detail: "Super 8 Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 87, // Runs
+          },
+          {
+            id: 2,
+            footballerName: "Pat Cummins",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/LaLiga.png"),
+            goals: 3, // Wickets
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/ligue1.png"),
+            goals: 72,
+          },
+          {
+            id: 4,
+            footballerName: "Quinton de Kock",
+            clubName: "South Africa",
+            clubImg: require("@src/assets/png/home-cta.png"),
+            goals: 55,
+          },
+          {
+            id: 5,
+            footballerName: "Kane Williamson",
+            clubName: "New Zealand",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 63,
+          },
+          {
+            id: 6,
+            footballerName: "Babar Azam",
+            clubName: "Pakistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 70,
+          },
+          {
+            id: 7,
+            footballerName: "Rashid Khan",
+            clubName: "Afghanistan",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 4, // Wickets
+          },
+          {
+            id: 8,
+            footballerName: "Ben Stokes",
+            clubName: "England",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 68,
+          },
+          {
+            id: 9,
+            footballerName: "David Warner",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 76,
+          },
+          {
+            id: 10,
+            footballerName: "Rohit Sharma",
+            clubName: "India",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 89,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "310/7",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "290/9",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "ICC: World Test Championship",
+    country: "International",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      {
+        clubName: "India",
+        odd: 2.5,
+      },
+      {
+        clubName: "Australia",
+        odd: 3.0,
+      },
+      {
+        clubName: "England",
+        odd: 3.25,
+      },
+      {
+        clubName: "South Africa",
+        odd: 4.0,
+      },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Virat Kohli’s century powers India to a strong position in the World Test Championship final.",
+        club: "India",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Steve Smith’s resilience keeps Australia in contention with a gritty 95 on Day 3.",
+        club: "Australia",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Joe Root’s elegant batting display helps England secure a vital Test series win.",
+        club: "England",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "India vs Australia",
+        detail: "WTC Final 2025 Highlights",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 2,
+        feature: "England vs South Africa",
+        detail: "Test Series 2025 Highlights",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+      {
+        id: 3,
+        feature: "India vs England",
+        detail: "Border-Gavaskar Trophy 2025 Highlights",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=ON18ItHo5YE",
+          "https://www.youtube.com/watch?v=g8metHHWcx0",
+          "https://www.youtube.com/watch?v=WRse9_XQuDc",
+          "https://www.youtube.com/watch?v=OihgT6fRLrE",
+          "https://www.youtube.com/watch?v=ns4kM_xqACU",
+          "https://www.youtube.com/watch?v=elnrftCjt9M",
+          "https://www.youtube.com/watch?v=ouH3ApIMHb0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Virat Kohli",
+            clubName: "India",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 145, // Runs scored
+          },
+          {
+            id: 2,
+            footballerName: "Steve Smith",
+            clubName: "Australia",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 110,
+          },
+          {
+            id: 3,
+            footballerName: "Joe Root",
+            clubName: "England",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 95,
+          },
+        ],
+        club: [
+          {
+            name: "India",
+            image: require("@src/assets/png/fixture.png"),
+            score: "445/8d",
+          },
+          {
+            name: "Australia",
+            image: require("@src/assets/png/fixture.png"),
+            score: "367 all out",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const iceHockeyFixtures: fixtureDataType[] = [
+  {
+    id: 1,
+    fixtureName: "NHL Stanley Cup: Eastern Conference Finals",
+    country: "USA / Canada",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "Toronto Maple Leafs", odd: 2.5 },
+      { clubName: "Boston Bruins", odd: 3.0 },
+      { clubName: "New York Rangers", odd: 3.25 },
+      { clubName: "Tampa Bay Lightning", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Auston Matthews scores twice as the Maple Leafs advance to the Stanley Cup Finals.",
+        club: "Toronto Maple Leafs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Brad Marchand leads the Bruins in a thrilling overtime victory over the Lightning.",
+        club: "Boston Bruins",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Igor Shesterkin’s outstanding saves keep the Rangers in the playoff race.",
+        club: "New York Rangers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Nikita Kucherov’s late goal seals a comeback win for Tampa Bay in Game 5.",
+        club: "Tampa Bay Lightning",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Sidney Crosby’s Penguins fall short in a hard-fought series against the Bruins.",
+        club: "Pittsburgh Penguins",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Connor McDavid’s Oilers dominate with offensive brilliance despite a defensive lapse.",
+        club: "Edmonton Oilers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Maple Leafs vs Bruins",
+        detail: "Stanley Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=7P-fRhGJIWw", // NHL Best Goals of 2025
+          "https://www.youtube.com/watch?v=vJ0sF01gN0g", // Stanley Cup Final Highlights
+          "https://www.youtube.com/watch?v=BKal9FX48Qc", // Maple Leafs vs Oilers Highlights
+          "https://www.youtube.com/watch?v=7uviXSza8Cg", // NHL Big Hits & Saves
+          "https://www.youtube.com/watch?v=r6AdKaNV9pg", // Top 10 Goals of the Week
+          "https://www.youtube.com/watch?v=lgis6UHloPI", // Best Goalie Saves 2025
+          "https://www.youtube.com/watch?v=BixRuaF4G28", // Trophy Ceremony
+        ],
+      },
+      {
+        id: 2,
+        feature: "Rangers vs Lightning",
+        detail: "Eastern Conference Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=7P-fRhGJIWw", // NHL Best Goals of 2025
+          "https://www.youtube.com/watch?v=vJ0sF01gN0g", // Stanley Cup Final Highlights
+          "https://www.youtube.com/watch?v=BKal9FX48Qc", // Maple Leafs vs Oilers Highlights
+          "https://www.youtube.com/watch?v=7uviXSza8Cg", // NHL Big Hits & Saves
+          "https://www.youtube.com/watch?v=r6AdKaNV9pg", // Top 10 Goals of the Week
+          "https://www.youtube.com/watch?v=lgis6UHloPI", // Best Goalie Saves 2025
+          "https://www.youtube.com/watch?v=BixRuaF4G28", // Trophy Ceremony
+        ],
+      },
+      {
+        id: 3,
+        feature: "Penguins vs Oilers",
+        detail: "Regular Season Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=7P-fRhGJIWw", // NHL Best Goals of 2025
+          "https://www.youtube.com/watch?v=vJ0sF01gN0g", // Stanley Cup Final Highlights
+          "https://www.youtube.com/watch?v=BKal9FX48Qc", // Maple Leafs vs Oilers Highlights
+          "https://www.youtube.com/watch?v=7uviXSza8Cg", // NHL Big Hits & Saves
+          "https://www.youtube.com/watch?v=r6AdKaNV9pg", // Top 10 Goals of the Week
+          "https://www.youtube.com/watch?v=lgis6UHloPI", // Best Goalie Saves 2025
+          "https://www.youtube.com/watch?v=BixRuaF4G28", // Trophy Ceremony
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Auston Matthews",
+            clubName: "Toronto Maple Leafs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Brad Marchand",
+            clubName: "Boston Bruins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Igor Shesterkin",
+            clubName: "New York Rangers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 0, // Goalie
+          },
+          {
+            id: 4,
+            footballerName: "Nikita Kucherov",
+            clubName: "Tampa Bay Lightning",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 5,
+            footballerName: "Sidney Crosby",
+            clubName: "Pittsburgh Penguins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 6,
+            footballerName: "Connor McDavid",
+            clubName: "Edmonton Oilers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Toronto Maple Leafs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "5",
+          },
+          {
+            name: "Boston Bruins",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "IIHF Ice Hockey World Championship: Qualifier 1",
+    country: "International Ice Hockey",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "Canada", odd: 2.5 },
+      { clubName: "USA", odd: 3.0 },
+      { clubName: "Sweden", odd: 3.25 },
+      { clubName: "Finland", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Connor McDavid leads Canada to another commanding victory, edging closer to championship triumph.",
+        club: "Canada",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Auston Matthews shines as USA secures a semifinal spot with clinical playmaking.",
+        club: "USA",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Elias Pettersson’s steady offense guides Sweden through a tense overtime against Finland.",
+        club: "Sweden",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Aleksander Barkov dazzles with a double goal as Finland dominates Czech Republic.",
+        club: "Finland",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Roman Josi’s leadership keeps Switzerland’s hopes alive despite tough competition.",
+        club: "Switzerland",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "David Pastrňák’s efforts not enough as Czech Republic falls short in a thrilling encounter.",
+        club: "Czech Republic",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Canada vs USA",
+        detail: "World Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=7P-fRhGJIWw", // NHL Best Goals of 2025
+          "https://www.youtube.com/watch?v=vJ0sF01gN0g", // Stanley Cup Final Highlights
+          "https://www.youtube.com/watch?v=BKal9FX48Qc", // Maple Leafs vs Oilers Highlights
+          "https://www.youtube.com/watch?v=7uviXSza8Cg", // NHL Big Hits & Saves
+          "https://www.youtube.com/watch?v=r6AdKaNV9pg", // Top 10 Goals of the Week
+          "https://www.youtube.com/watch?v=lgis6UHloPI", // Best Goalie Saves 2025
+          "https://www.youtube.com/watch?v=BixRuaF4G28", // Trophy Ceremony
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sweden vs Finland",
+        detail: "Semifinals Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=7P-fRhGJIWw", // NHL Best Goals of 2025
+          "https://www.youtube.com/watch?v=vJ0sF01gN0g", // Stanley Cup Final Highlights
+          "https://www.youtube.com/watch?v=BKal9FX48Qc", // Maple Leafs vs Oilers Highlights
+          "https://www.youtube.com/watch?v=7uviXSza8Cg", // NHL Big Hits & Saves
+          "https://www.youtube.com/watch?v=r6AdKaNV9pg", // Top 10 Goals of the Week
+          "https://www.youtube.com/watch?v=lgis6UHloPI", // Best Goalie Saves 2025
+          "https://www.youtube.com/watch?v=BixRuaF4G28", // Trophy Ceremony
+        ],
+      },
+      {
+        id: 3,
+        feature: "Czech Republic vs Switzerland",
+        detail: "Group Stage Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=7P-fRhGJIWw", // NHL Best Goals of 2025
+          "https://www.youtube.com/watch?v=vJ0sF01gN0g", // Stanley Cup Final Highlights
+          "https://www.youtube.com/watch?v=BKal9FX48Qc", // Maple Leafs vs Oilers Highlights
+          "https://www.youtube.com/watch?v=7uviXSza8Cg", // NHL Big Hits & Saves
+          "https://www.youtube.com/watch?v=r6AdKaNV9pg", // Top 10 Goals of the Week
+          "https://www.youtube.com/watch?v=lgis6UHloPI", // Best Goalie Saves 2025
+          "https://www.youtube.com/watch?v=BixRuaF4G28", // Trophy Ceremony
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Connor McDavid",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Auston Matthews",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/LaLiga.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Elias Pettersson",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/ligue1.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Aleksander Barkov",
+            clubName: "Finland",
+            clubImg: require("@src/assets/png/home-cta.png"),
+            goals: 1,
+          },
+          {
+            id: 5,
+            footballerName: "Roman Josi",
+            clubName: "Switzerland",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 6,
+            footballerName: "David Pastrňák",
+            clubName: "Czech Republic",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 7,
+            footballerName: "Nico Hischier",
+            clubName: "Switzerland",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 8,
+            footballerName: "Patrick Kane",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "William Nylander",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 10,
+            footballerName: "Sidney Crosby",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Canada",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "USA",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "IIHF: World Ice Hockey Championship",
+    country: "International",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      { clubName: "Canada", odd: 2.5 },
+      { clubName: "USA", odd: 3.0 },
+      { clubName: "Sweden", odd: 3.25 },
+      { clubName: "Finland", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Connor McDavid’s hat-trick powers Canada to a dominant win in the World Ice Hockey Championship final.",
+        club: "Canada",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Auston Matthews’ clutch goal in overtime keeps USA in contention for gold.",
+        club: "USA",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Elias Pettersson’s brilliant assists help Sweden secure a vital victory over Finland.",
+        club: "Sweden",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Canada vs USA",
+        detail: "World Championship Final 2025 Highlights",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=qluPHZQk5nI",
+          "https://www.youtube.com/watch?v=ELeT6xzIKyI",
+          "https://www.youtube.com/watch?v=Q3SLl2xw3Do",
+          "https://www.youtube.com/watch?v=U1ENb5ZTqKg",
+          "https://www.youtube.com/watch?v=fb8pZcJr2kI",
+          "https://www.youtube.com/watch?v=6NrxovbtuMw",
+          "https://www.youtube.com/watch?v=Fe0X1LKkkNw",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sweden vs Finland",
+        detail: "Group Stage Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=lp7pAK8nS94",
+          "https://www.youtube.com/watch?v=4Qdc1YfA7XM",
+          "https://www.youtube.com/watch?v=QyxxaJ4QbrM",
+          "https://www.youtube.com/watch?v=EU2VhU2D_5A",
+          "https://www.youtube.com/watch?v=9P0eSeS8RfY",
+          "https://www.youtube.com/watch?v=Hq1MtHZh5Fc",
+          "https://www.youtube.com/watch?v=heG4Z6V1RCE",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Canada vs Sweden",
+        detail: "Semifinal Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=s1iCuK2Oluo",
+          "https://www.youtube.com/watch?v=QnW2jZ8D1Yw",
+          "https://www.youtube.com/watch?v=knq4O6zU57E",
+          "https://www.youtube.com/watch?v=9RUKQwhR3A0",
+          "https://www.youtube.com/watch?v=8pW8A4tTZUE",
+          "https://www.youtube.com/watch?v=Zk3Rt7oAsO0",
+          "https://www.youtube.com/watch?v=cxkScdCZpG0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Connor McDavid",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Auston Matthews",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Elias Pettersson",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Canada",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "USA",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "NHL Stanley Cup: Eastern Conference Finals",
+    country: "USA / Canada",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "Toronto Maple Leafs", odd: 2.5 },
+      { clubName: "Boston Bruins", odd: 3.0 },
+      { clubName: "New York Rangers", odd: 3.25 },
+      { clubName: "Tampa Bay Lightning", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Auston Matthews scores twice as the Maple Leafs advance to the Stanley Cup Finals.",
+        club: "Toronto Maple Leafs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Brad Marchand leads the Bruins in a thrilling overtime victory over the Lightning.",
+        club: "Boston Bruins",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Igor Shesterkin’s outstanding saves keep the Rangers in the playoff race.",
+        club: "New York Rangers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Nikita Kucherov’s late goal seals a comeback win for Tampa Bay in Game 5.",
+        club: "Tampa Bay Lightning",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Sidney Crosby’s Penguins fall short in a hard-fought series against the Bruins.",
+        club: "Pittsburgh Penguins",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Connor McDavid’s Oilers dominate with offensive brilliance despite a defensive lapse.",
+        club: "Edmonton Oilers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Maple Leafs vs Bruins",
+        detail: "Stanley Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=p4GlXqUpc2E", // Leafs vs Bruins Game 7 Highlights
+          "https://www.youtube.com/watch?v=ZT27zLpA1S4", // Bruins OT Thriller
+          "https://www.youtube.com/watch?v=KhUhdQ7fR0Y", // Stanley Cup Final Recap
+          "https://www.youtube.com/watch?v=hKhXK6M8LrI", // Game 6 Key Saves
+          "https://www.youtube.com/watch?v=6h4UOBw0FvM", // Matthews Hat-Trick
+          "https://www.youtube.com/watch?v=Tfqg6Kj4g3E", // Best Hits of the Series
+          "https://www.youtube.com/watch?v=8Z4BbU7Nc3w", // Trophy Ceremony
+        ],
+      },
+      {
+        id: 2,
+        feature: "Rangers vs Lightning",
+        detail: "Eastern Conference Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=4VuCgKPuYrY",
+          "https://www.youtube.com/watch?v=6lAK4gqlzvc",
+          "https://www.youtube.com/watch?v=G3XyV8fCtJ8",
+          "https://www.youtube.com/watch?v=8BiqyK1ezyY",
+          "https://www.youtube.com/watch?v=Y81PoAM1r7s",
+          "https://www.youtube.com/watch?v=E9uv1yUeO_Y",
+          "https://www.youtube.com/watch?v=ZQ0neO1o1Wk",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Penguins vs Oilers",
+        detail: "Regular Season Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=Y2V05n4qTuY",
+          "https://www.youtube.com/watch?v=VfPbnzFzDq8",
+          "https://www.youtube.com/watch?v=s0E7U01O8e4",
+          "https://www.youtube.com/watch?v=hT75N6Amv74",
+          "https://www.youtube.com/watch?v=QDMuF-jm1nE",
+          "https://www.youtube.com/watch?v=7Zc7bB7Oyc0",
+          "https://www.youtube.com/watch?v=aE1pBKrNMeE",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Auston Matthews",
+            clubName: "Toronto Maple Leafs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Brad Marchand",
+            clubName: "Boston Bruins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Igor Shesterkin",
+            clubName: "New York Rangers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 0, // Goalie
+          },
+          {
+            id: 4,
+            footballerName: "Nikita Kucherov",
+            clubName: "Tampa Bay Lightning",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 5,
+            footballerName: "Sidney Crosby",
+            clubName: "Pittsburgh Penguins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 6,
+            footballerName: "Connor McDavid",
+            clubName: "Edmonton Oilers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Toronto Maple Leafs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "5",
+          },
+          {
+            name: "Boston Bruins",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "IIHF Ice Hockey World Championship: Qualifier 1",
+    country: "International Ice Hockey",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "Canada", odd: 2.5 },
+      { clubName: "USA", odd: 3.0 },
+      { clubName: "Sweden", odd: 3.25 },
+      { clubName: "Finland", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Connor McDavid leads Canada to another commanding victory, edging closer to championship triumph.",
+        club: "Canada",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Auston Matthews shines as USA secures a semifinal spot with clinical playmaking.",
+        club: "USA",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Elias Pettersson’s steady offense guides Sweden through a tense overtime against Finland.",
+        club: "Sweden",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Aleksander Barkov dazzles with a double goal as Finland dominates Czech Republic.",
+        club: "Finland",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Roman Josi’s leadership keeps Switzerland’s hopes alive despite tough competition.",
+        club: "Switzerland",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "David Pastrňák’s efforts not enough as Czech Republic falls short in a thrilling encounter.",
+        club: "Czech Republic",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Canada vs USA",
+        detail: "World Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=qluPHZQk5nI",
+          "https://www.youtube.com/watch?v=ELeT6xzIKyI",
+          "https://www.youtube.com/watch?v=Q3SLl2xw3Do",
+          "https://www.youtube.com/watch?v=U1ENb5ZTqKg",
+          "https://www.youtube.com/watch?v=fb8pZcJr2kI",
+          "https://www.youtube.com/watch?v=6NrxovbtuMw",
+          "https://www.youtube.com/watch?v=Fe0X1LKkkNw",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sweden vs Finland",
+        detail: "Semifinals Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=lp7pAK8nS94",
+          "https://www.youtube.com/watch?v=4Qdc1YfA7XM",
+          "https://www.youtube.com/watch?v=QyxxaJ4QbrM",
+          "https://www.youtube.com/watch?v=EU2VhU2D_5A",
+          "https://www.youtube.com/watch?v=9P0eSeS8RfY",
+          "https://www.youtube.com/watch?v=Hq1MtHZh5Fc",
+          "https://www.youtube.com/watch?v=heG4Z6V1RCE",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Czech Republic vs Switzerland",
+        detail: "Group Stage Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=s1iCuK2Oluo",
+          "https://www.youtube.com/watch?v=QnW2jZ8D1Yw",
+          "https://www.youtube.com/watch?v=knq4O6zU57E",
+          "https://www.youtube.com/watch?v=9RUKQwhR3A0",
+          "https://www.youtube.com/watch?v=8pW8A4tTZUE",
+          "https://www.youtube.com/watch?v=Zk3Rt7oAsO0",
+          "https://www.youtube.com/watch?v=cxkScdCZpG0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Connor McDavid",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Auston Matthews",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/LaLiga.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Elias Pettersson",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/ligue1.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Aleksander Barkov",
+            clubName: "Finland",
+            clubImg: require("@src/assets/png/home-cta.png"),
+            goals: 1,
+          },
+          {
+            id: 5,
+            footballerName: "Roman Josi",
+            clubName: "Switzerland",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 6,
+            footballerName: "David Pastrňák",
+            clubName: "Czech Republic",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 7,
+            footballerName: "Nico Hischier",
+            clubName: "Switzerland",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 8,
+            footballerName: "Patrick Kane",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "William Nylander",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 10,
+            footballerName: "Sidney Crosby",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Canada",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "USA",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "IIHF: World Ice Hockey Championship",
+    country: "International",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      { clubName: "Canada", odd: 2.5 },
+      { clubName: "USA", odd: 3.0 },
+      { clubName: "Sweden", odd: 3.25 },
+      { clubName: "Finland", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Connor McDavid’s hat-trick powers Canada to a dominant win in the World Ice Hockey Championship final.",
+        club: "Canada",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Auston Matthews’ clutch goal in overtime keeps USA in contention for gold.",
+        club: "USA",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Elias Pettersson’s brilliant assists help Sweden secure a vital victory over Finland.",
+        club: "Sweden",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Canada vs USA",
+        detail: "World Championship Final 2025 Highlights",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=qluPHZQk5nI",
+          "https://www.youtube.com/watch?v=ELeT6xzIKyI",
+          "https://www.youtube.com/watch?v=Q3SLl2xw3Do",
+          "https://www.youtube.com/watch?v=U1ENb5ZTqKg",
+          "https://www.youtube.com/watch?v=fb8pZcJr2kI",
+          "https://www.youtube.com/watch?v=6NrxovbtuMw",
+          "https://www.youtube.com/watch?v=Fe0X1LKkkNw",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sweden vs Finland",
+        detail: "Group Stage Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=lp7pAK8nS94",
+          "https://www.youtube.com/watch?v=4Qdc1YfA7XM",
+          "https://www.youtube.com/watch?v=QyxxaJ4QbrM",
+          "https://www.youtube.com/watch?v=EU2VhU2D_5A",
+          "https://www.youtube.com/watch?v=9P0eSeS8RfY",
+          "https://www.youtube.com/watch?v=Hq1MtHZh5Fc",
+          "https://www.youtube.com/watch?v=heG4Z6V1RCE",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Canada vs Sweden",
+        detail: "Semifinal Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=s1iCuK2Oluo",
+          "https://www.youtube.com/watch?v=QnW2jZ8D1Yw",
+          "https://www.youtube.com/watch?v=knq4O6zU57E",
+          "https://www.youtube.com/watch?v=9RUKQwhR3A0",
+          "https://www.youtube.com/watch?v=8pW8A4tTZUE",
+          "https://www.youtube.com/watch?v=Zk3Rt7oAsO0",
+          "https://www.youtube.com/watch?v=cxkScdCZpG0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Connor McDavid",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Auston Matthews",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Elias Pettersson",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Canada",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "USA",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "NHL Stanley Cup: Eastern Conference Finals",
+    country: "USA / Canada",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "Toronto Maple Leafs", odd: 2.5 },
+      { clubName: "Boston Bruins", odd: 3.0 },
+      { clubName: "New York Rangers", odd: 3.25 },
+      { clubName: "Tampa Bay Lightning", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Auston Matthews scores twice as the Maple Leafs advance to the Stanley Cup Finals.",
+        club: "Toronto Maple Leafs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Brad Marchand leads the Bruins in a thrilling overtime victory over the Lightning.",
+        club: "Boston Bruins",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Igor Shesterkin’s outstanding saves keep the Rangers in the playoff race.",
+        club: "New York Rangers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Nikita Kucherov’s late goal seals a comeback win for Tampa Bay in Game 5.",
+        club: "Tampa Bay Lightning",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Sidney Crosby’s Penguins fall short in a hard-fought series against the Bruins.",
+        club: "Pittsburgh Penguins",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Connor McDavid’s Oilers dominate with offensive brilliance despite a defensive lapse.",
+        club: "Edmonton Oilers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Maple Leafs vs Bruins",
+        detail: "Stanley Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=p4GlXqUpc2E", // Leafs vs Bruins Game 7 Highlights
+          "https://www.youtube.com/watch?v=ZT27zLpA1S4", // Bruins OT Thriller
+          "https://www.youtube.com/watch?v=KhUhdQ7fR0Y", // Stanley Cup Final Recap
+          "https://www.youtube.com/watch?v=hKhXK6M8LrI", // Game 6 Key Saves
+          "https://www.youtube.com/watch?v=6h4UOBw0FvM", // Matthews Hat-Trick
+          "https://www.youtube.com/watch?v=Tfqg6Kj4g3E", // Best Hits of the Series
+          "https://www.youtube.com/watch?v=8Z4BbU7Nc3w", // Trophy Ceremony
+        ],
+      },
+      {
+        id: 2,
+        feature: "Rangers vs Lightning",
+        detail: "Eastern Conference Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=4VuCgKPuYrY",
+          "https://www.youtube.com/watch?v=6lAK4gqlzvc",
+          "https://www.youtube.com/watch?v=G3XyV8fCtJ8",
+          "https://www.youtube.com/watch?v=8BiqyK1ezyY",
+          "https://www.youtube.com/watch?v=Y81PoAM1r7s",
+          "https://www.youtube.com/watch?v=E9uv1yUeO_Y",
+          "https://www.youtube.com/watch?v=ZQ0neO1o1Wk",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Penguins vs Oilers",
+        detail: "Regular Season Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=Y2V05n4qTuY",
+          "https://www.youtube.com/watch?v=VfPbnzFzDq8",
+          "https://www.youtube.com/watch?v=s0E7U01O8e4",
+          "https://www.youtube.com/watch?v=hT75N6Amv74",
+          "https://www.youtube.com/watch?v=QDMuF-jm1nE",
+          "https://www.youtube.com/watch?v=7Zc7bB7Oyc0",
+          "https://www.youtube.com/watch?v=aE1pBKrNMeE",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Auston Matthews",
+            clubName: "Toronto Maple Leafs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Brad Marchand",
+            clubName: "Boston Bruins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Igor Shesterkin",
+            clubName: "New York Rangers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 0, // Goalie
+          },
+          {
+            id: 4,
+            footballerName: "Nikita Kucherov",
+            clubName: "Tampa Bay Lightning",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 5,
+            footballerName: "Sidney Crosby",
+            clubName: "Pittsburgh Penguins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 6,
+            footballerName: "Connor McDavid",
+            clubName: "Edmonton Oilers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Toronto Maple Leafs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "5",
+          },
+          {
+            name: "Boston Bruins",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "IIHF Ice Hockey World Championship: Qualifier 1",
+    country: "International Ice Hockey",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "Canada", odd: 2.5 },
+      { clubName: "USA", odd: 3.0 },
+      { clubName: "Sweden", odd: 3.25 },
+      { clubName: "Finland", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Connor McDavid leads Canada to another commanding victory, edging closer to championship triumph.",
+        club: "Canada",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Auston Matthews shines as USA secures a semifinal spot with clinical playmaking.",
+        club: "USA",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Elias Pettersson’s steady offense guides Sweden through a tense overtime against Finland.",
+        club: "Sweden",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Aleksander Barkov dazzles with a double goal as Finland dominates Czech Republic.",
+        club: "Finland",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Roman Josi’s leadership keeps Switzerland’s hopes alive despite tough competition.",
+        club: "Switzerland",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "David Pastrňák’s efforts not enough as Czech Republic falls short in a thrilling encounter.",
+        club: "Czech Republic",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Canada vs USA",
+        detail: "World Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=qluPHZQk5nI",
+          "https://www.youtube.com/watch?v=ELeT6xzIKyI",
+          "https://www.youtube.com/watch?v=Q3SLl2xw3Do",
+          "https://www.youtube.com/watch?v=U1ENb5ZTqKg",
+          "https://www.youtube.com/watch?v=fb8pZcJr2kI",
+          "https://www.youtube.com/watch?v=6NrxovbtuMw",
+          "https://www.youtube.com/watch?v=Fe0X1LKkkNw",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sweden vs Finland",
+        detail: "Semifinals Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=lp7pAK8nS94",
+          "https://www.youtube.com/watch?v=4Qdc1YfA7XM",
+          "https://www.youtube.com/watch?v=QyxxaJ4QbrM",
+          "https://www.youtube.com/watch?v=EU2VhU2D_5A",
+          "https://www.youtube.com/watch?v=9P0eSeS8RfY",
+          "https://www.youtube.com/watch?v=Hq1MtHZh5Fc",
+          "https://www.youtube.com/watch?v=heG4Z6V1RCE",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Czech Republic vs Switzerland",
+        detail: "Group Stage Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=s1iCuK2Oluo",
+          "https://www.youtube.com/watch?v=QnW2jZ8D1Yw",
+          "https://www.youtube.com/watch?v=knq4O6zU57E",
+          "https://www.youtube.com/watch?v=9RUKQwhR3A0",
+          "https://www.youtube.com/watch?v=8pW8A4tTZUE",
+          "https://www.youtube.com/watch?v=Zk3Rt7oAsO0",
+          "https://www.youtube.com/watch?v=cxkScdCZpG0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Connor McDavid",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Auston Matthews",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/LaLiga.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Elias Pettersson",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/ligue1.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Aleksander Barkov",
+            clubName: "Finland",
+            clubImg: require("@src/assets/png/home-cta.png"),
+            goals: 1,
+          },
+          {
+            id: 5,
+            footballerName: "Roman Josi",
+            clubName: "Switzerland",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 6,
+            footballerName: "David Pastrňák",
+            clubName: "Czech Republic",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 7,
+            footballerName: "Nico Hischier",
+            clubName: "Switzerland",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 8,
+            footballerName: "Patrick Kane",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "William Nylander",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 10,
+            footballerName: "Sidney Crosby",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Canada",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "USA",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "IIHF: World Ice Hockey Championship",
+    country: "International",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      { clubName: "Canada", odd: 2.5 },
+      { clubName: "USA", odd: 3.0 },
+      { clubName: "Sweden", odd: 3.25 },
+      { clubName: "Finland", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Connor McDavid’s hat-trick powers Canada to a dominant win in the World Ice Hockey Championship final.",
+        club: "Canada",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Auston Matthews’ clutch goal in overtime keeps USA in contention for gold.",
+        club: "USA",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Elias Pettersson’s brilliant assists help Sweden secure a vital victory over Finland.",
+        club: "Sweden",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Canada vs USA",
+        detail: "World Championship Final 2025 Highlights",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=qluPHZQk5nI",
+          "https://www.youtube.com/watch?v=ELeT6xzIKyI",
+          "https://www.youtube.com/watch?v=Q3SLl2xw3Do",
+          "https://www.youtube.com/watch?v=U1ENb5ZTqKg",
+          "https://www.youtube.com/watch?v=fb8pZcJr2kI",
+          "https://www.youtube.com/watch?v=6NrxovbtuMw",
+          "https://www.youtube.com/watch?v=Fe0X1LKkkNw",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sweden vs Finland",
+        detail: "Group Stage Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=lp7pAK8nS94",
+          "https://www.youtube.com/watch?v=4Qdc1YfA7XM",
+          "https://www.youtube.com/watch?v=QyxxaJ4QbrM",
+          "https://www.youtube.com/watch?v=EU2VhU2D_5A",
+          "https://www.youtube.com/watch?v=9P0eSeS8RfY",
+          "https://www.youtube.com/watch?v=Hq1MtHZh5Fc",
+          "https://www.youtube.com/watch?v=heG4Z6V1RCE",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Canada vs Sweden",
+        detail: "Semifinal Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=s1iCuK2Oluo",
+          "https://www.youtube.com/watch?v=QnW2jZ8D1Yw",
+          "https://www.youtube.com/watch?v=knq4O6zU57E",
+          "https://www.youtube.com/watch?v=9RUKQwhR3A0",
+          "https://www.youtube.com/watch?v=8pW8A4tTZUE",
+          "https://www.youtube.com/watch?v=Zk3Rt7oAsO0",
+          "https://www.youtube.com/watch?v=cxkScdCZpG0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Connor McDavid",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Auston Matthews",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Elias Pettersson",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Canada",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "USA",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    fixtureName: "NHL Stanley Cup: Eastern Conference Finals",
+    country: "USA / Canada",
+    icon: require("@src/assets/png/football.png"),
+    odds: [
+      { clubName: "Toronto Maple Leafs", odd: 2.5 },
+      { clubName: "Boston Bruins", odd: 3.0 },
+      { clubName: "New York Rangers", odd: 3.25 },
+      { clubName: "Tampa Bay Lightning", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Auston Matthews scores twice as the Maple Leafs advance to the Stanley Cup Finals.",
+        club: "Toronto Maple Leafs",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Brad Marchand leads the Bruins in a thrilling overtime victory over the Lightning.",
+        club: "Boston Bruins",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Igor Shesterkin’s outstanding saves keep the Rangers in the playoff race.",
+        club: "New York Rangers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Nikita Kucherov’s late goal seals a comeback win for Tampa Bay in Game 5.",
+        club: "Tampa Bay Lightning",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Sidney Crosby’s Penguins fall short in a hard-fought series against the Bruins.",
+        club: "Pittsburgh Penguins",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "Connor McDavid’s Oilers dominate with offensive brilliance despite a defensive lapse.",
+        club: "Edmonton Oilers",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Maple Leafs vs Bruins",
+        detail: "Stanley Cup Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=p4GlXqUpc2E", // Leafs vs Bruins Game 7 Highlights
+          "https://www.youtube.com/watch?v=ZT27zLpA1S4", // Bruins OT Thriller
+          "https://www.youtube.com/watch?v=KhUhdQ7fR0Y", // Stanley Cup Final Recap
+          "https://www.youtube.com/watch?v=hKhXK6M8LrI", // Game 6 Key Saves
+          "https://www.youtube.com/watch?v=6h4UOBw0FvM", // Matthews Hat-Trick
+          "https://www.youtube.com/watch?v=Tfqg6Kj4g3E", // Best Hits of the Series
+          "https://www.youtube.com/watch?v=8Z4BbU7Nc3w", // Trophy Ceremony
+        ],
+      },
+      {
+        id: 2,
+        feature: "Rangers vs Lightning",
+        detail: "Eastern Conference Semifinals 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=4VuCgKPuYrY",
+          "https://www.youtube.com/watch?v=6lAK4gqlzvc",
+          "https://www.youtube.com/watch?v=G3XyV8fCtJ8",
+          "https://www.youtube.com/watch?v=8BiqyK1ezyY",
+          "https://www.youtube.com/watch?v=Y81PoAM1r7s",
+          "https://www.youtube.com/watch?v=E9uv1yUeO_Y",
+          "https://www.youtube.com/watch?v=ZQ0neO1o1Wk",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Penguins vs Oilers",
+        detail: "Regular Season Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=Y2V05n4qTuY",
+          "https://www.youtube.com/watch?v=VfPbnzFzDq8",
+          "https://www.youtube.com/watch?v=s0E7U01O8e4",
+          "https://www.youtube.com/watch?v=hT75N6Amv74",
+          "https://www.youtube.com/watch?v=QDMuF-jm1nE",
+          "https://www.youtube.com/watch?v=7Zc7bB7Oyc0",
+          "https://www.youtube.com/watch?v=aE1pBKrNMeE",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Auston Matthews",
+            clubName: "Toronto Maple Leafs",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Brad Marchand",
+            clubName: "Boston Bruins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Igor Shesterkin",
+            clubName: "New York Rangers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 0, // Goalie
+          },
+          {
+            id: 4,
+            footballerName: "Nikita Kucherov",
+            clubName: "Tampa Bay Lightning",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 5,
+            footballerName: "Sidney Crosby",
+            clubName: "Pittsburgh Penguins",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 6,
+            footballerName: "Connor McDavid",
+            clubName: "Edmonton Oilers",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Toronto Maple Leafs",
+            image: require("@src/assets/png/fixture.png"),
+            score: "5",
+          },
+          {
+            name: "Boston Bruins",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    fixtureName: "IIHF Ice Hockey World Championship: Qualifier 1",
+    country: "International Ice Hockey",
+    icon: require("@src/assets/png/basketball.png"),
+    odds: [
+      { clubName: "Canada", odd: 2.5 },
+      { clubName: "USA", odd: 3.0 },
+      { clubName: "Sweden", odd: 3.25 },
+      { clubName: "Finland", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Connor McDavid leads Canada to another commanding victory, edging closer to championship triumph.",
+        club: "Canada",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Auston Matthews shines as USA secures a semifinal spot with clinical playmaking.",
+        club: "USA",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Elias Pettersson’s steady offense guides Sweden through a tense overtime against Finland.",
+        club: "Sweden",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+      {
+        id: 4,
+        details:
+          "Aleksander Barkov dazzles with a double goal as Finland dominates Czech Republic.",
+        club: "Finland",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 5,
+        details:
+          "Roman Josi’s leadership keeps Switzerland’s hopes alive despite tough competition.",
+        club: "Switzerland",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 6,
+        details:
+          "David Pastrňák’s efforts not enough as Czech Republic falls short in a thrilling encounter.",
+        club: "Czech Republic",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Canada vs USA",
+        detail: "World Championship Final 2025",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=qluPHZQk5nI",
+          "https://www.youtube.com/watch?v=ELeT6xzIKyI",
+          "https://www.youtube.com/watch?v=Q3SLl2xw3Do",
+          "https://www.youtube.com/watch?v=U1ENb5ZTqKg",
+          "https://www.youtube.com/watch?v=fb8pZcJr2kI",
+          "https://www.youtube.com/watch?v=6NrxovbtuMw",
+          "https://www.youtube.com/watch?v=Fe0X1LKkkNw",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sweden vs Finland",
+        detail: "Semifinals Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=lp7pAK8nS94",
+          "https://www.youtube.com/watch?v=4Qdc1YfA7XM",
+          "https://www.youtube.com/watch?v=QyxxaJ4QbrM",
+          "https://www.youtube.com/watch?v=EU2VhU2D_5A",
+          "https://www.youtube.com/watch?v=9P0eSeS8RfY",
+          "https://www.youtube.com/watch?v=Hq1MtHZh5Fc",
+          "https://www.youtube.com/watch?v=heG4Z6V1RCE",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Czech Republic vs Switzerland",
+        detail: "Group Stage Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=s1iCuK2Oluo",
+          "https://www.youtube.com/watch?v=QnW2jZ8D1Yw",
+          "https://www.youtube.com/watch?v=knq4O6zU57E",
+          "https://www.youtube.com/watch?v=9RUKQwhR3A0",
+          "https://www.youtube.com/watch?v=8pW8A4tTZUE",
+          "https://www.youtube.com/watch?v=Zk3Rt7oAsO0",
+          "https://www.youtube.com/watch?v=cxkScdCZpG0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "16 July",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Connor McDavid",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Auston Matthews",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/LaLiga.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Elias Pettersson",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/ligue1.png"),
+            goals: 2,
+          },
+          {
+            id: 4,
+            footballerName: "Aleksander Barkov",
+            clubName: "Finland",
+            clubImg: require("@src/assets/png/home-cta.png"),
+            goals: 1,
+          },
+          {
+            id: 5,
+            footballerName: "Roman Josi",
+            clubName: "Switzerland",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 6,
+            footballerName: "David Pastrňák",
+            clubName: "Czech Republic",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 7,
+            footballerName: "Nico Hischier",
+            clubName: "Switzerland",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 1,
+          },
+          {
+            id: 8,
+            footballerName: "Patrick Kane",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+          {
+            id: 9,
+            footballerName: "William Nylander",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 3,
+          },
+          {
+            id: 10,
+            footballerName: "Sidney Crosby",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/football.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Canada",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "USA",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    fixtureName: "IIHF: World Ice Hockey Championship",
+    country: "International",
+    icon: require("@src/assets/png/basketball1.png"),
+    odds: [
+      { clubName: "Canada", odd: 2.5 },
+      { clubName: "USA", odd: 3.0 },
+      { clubName: "Sweden", odd: 3.25 },
+      { clubName: "Finland", odd: 4.0 },
+    ],
+    news: [
+      {
+        id: 1,
+        details:
+          "Connor McDavid’s hat-trick powers Canada to a dominant win in the World Ice Hockey Championship final.",
+        club: "Canada",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news1.png"),
+      },
+      {
+        id: 2,
+        details:
+          "Auston Matthews’ clutch goal in overtime keeps USA in contention for gold.",
+        club: "USA",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news2.png"),
+      },
+      {
+        id: 3,
+        details:
+          "Elias Pettersson’s brilliant assists help Sweden secure a vital victory over Finland.",
+        club: "Sweden",
+        time: "4 hrs ago",
+        image: require("@src/assets/png/news4.png"),
+      },
+    ],
+    matchHighLights: [
+      {
+        id: 1,
+        feature: "Canada vs USA",
+        detail: "World Championship Final 2025 Highlights",
+        image: require("@src/assets/png/highlight1.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=qluPHZQk5nI",
+          "https://www.youtube.com/watch?v=ELeT6xzIKyI",
+          "https://www.youtube.com/watch?v=Q3SLl2xw3Do",
+          "https://www.youtube.com/watch?v=U1ENb5ZTqKg",
+          "https://www.youtube.com/watch?v=fb8pZcJr2kI",
+          "https://www.youtube.com/watch?v=6NrxovbtuMw",
+          "https://www.youtube.com/watch?v=Fe0X1LKkkNw",
+        ],
+      },
+      {
+        id: 2,
+        feature: "Sweden vs Finland",
+        detail: "Group Stage Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=lp7pAK8nS94",
+          "https://www.youtube.com/watch?v=4Qdc1YfA7XM",
+          "https://www.youtube.com/watch?v=QyxxaJ4QbrM",
+          "https://www.youtube.com/watch?v=EU2VhU2D_5A",
+          "https://www.youtube.com/watch?v=9P0eSeS8RfY",
+          "https://www.youtube.com/watch?v=Hq1MtHZh5Fc",
+          "https://www.youtube.com/watch?v=heG4Z6V1RCE",
+        ],
+      },
+      {
+        id: 3,
+        feature: "Canada vs Sweden",
+        detail: "Semifinal Highlights 2025",
+        image: require("@src/assets/png/highlight2.png"),
+        highLights: [
+          "https://www.youtube.com/watch?v=s1iCuK2Oluo",
+          "https://www.youtube.com/watch?v=QnW2jZ8D1Yw",
+          "https://www.youtube.com/watch?v=knq4O6zU57E",
+          "https://www.youtube.com/watch?v=9RUKQwhR3A0",
+          "https://www.youtube.com/watch?v=8pW8A4tTZUE",
+          "https://www.youtube.com/watch?v=Zk3Rt7oAsO0",
+          "https://www.youtube.com/watch?v=cxkScdCZpG0",
+        ],
+      },
+    ],
+    matches: [
+      {
+        id: 1,
+        date: "17 Jun",
+        topScorers: [
+          {
+            id: 1,
+            footballerName: "Connor McDavid",
+            clubName: "Canada",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 3,
+          },
+          {
+            id: 2,
+            footballerName: "Auston Matthews",
+            clubName: "USA",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+          {
+            id: 3,
+            footballerName: "Elias Pettersson",
+            clubName: "Sweden",
+            clubImg: require("@src/assets/png/fixture.png"),
+            goals: 2,
+          },
+        ],
+        club: [
+          {
+            name: "Canada",
+            image: require("@src/assets/png/fixture.png"),
+            score: "4",
+          },
+          {
+            name: "USA",
+            image: require("@src/assets/png/fixture.png"),
+            score: "3",
+          },
+        ],
+      },
+    ],
+  },
+];
+
 export const fixturesOverview = [
   "Overview",
   "Matches",

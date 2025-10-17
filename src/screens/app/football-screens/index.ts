@@ -5,3 +5,5 @@ export * from "./MatchHighlights";
 export * from "./OneMach";
 export * from "./TennisFixtureInfo";
 export * from "./AmericanFootballFixtureInfo";
+export * from "./CricketFixtureInfo";
+export * from "./IceHockeyFixtureInfo";

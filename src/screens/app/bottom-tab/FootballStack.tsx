@@ -8,8 +8,10 @@ import { appScreenNames } from "@src/navigation";
 import {
   AmericanFootballFixtureInfo,
   BasketballFixtureInfo,
+  CricketFixtureInfo,
   FixtureInfo,
   Football,
+  IceHockeyFixtureInfo,
   MatchHighlights,
   OneMach,
   TennisFixtureInfo,
@@ -38,10 +40,21 @@ export const FootBallStack = () => {
         name={appScreenNames.AMERICAN_FOOTBALL_FIXTURE_INFO}
         component={AmericanFootballFixtureInfo}
       />
+
+      <ScreenStack.Screen
+        name={appScreenNames.CRICKET_FIXTURE_INFO}
+        component={CricketFixtureInfo}
+      />
+
+      <ScreenStack.Screen
+        name={appScreenNames.ICE_HOCKEY_FIXTURE_INFO}
+        component={IceHockeyFixtureInfo}
+      />
       <ScreenStack.Screen
         name={appScreenNames.MATCH_HIGHLIGHTS}
         component={MatchHighlights}
       />
+
       <ScreenStack.Screen name={appScreenNames.ONE_MATCH} component={OneMach} />
     </ScreenStack.Navigator>
   );
