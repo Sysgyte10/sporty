@@ -10,6 +10,8 @@ import {
   AnotherEvents,
   Insights,
   AnotherMembership,
+  PredictionServices,
+  DailyCoupon,
 } from "@src/screens/auth";
 
 export const authScreen: authScreenTypes[] = [
@@ -48,5 +50,13 @@ export const authScreen: authScreenTypes[] = [
   {
     screenName: authScreenNames.ANOTHER_MEMBERSHIP,
     component: AnotherMembership,
+  },
+  {
+    screenName: authScreenNames.PREDICTION_SERVICES,
+    component: PredictionServices,
+  },
+  {
+    screenName: authScreenNames.DAILY_COUPON,
+    component: DailyCoupon,
   },
 ];

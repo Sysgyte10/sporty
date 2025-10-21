@@ -126,7 +126,9 @@ export const AnotherMembership = ({
                     textWhite
                     textType='semi-bold'
                     textSize={12}
-                    onPress={() => {}}
+                    onPress={() =>
+                      navigation.navigate(authScreenNames.PREDICTION_SERVICES)
+                    }
                     btnStyle={styles.btn}
                   />
 
@@ -138,7 +140,7 @@ export const AnotherMembership = ({
                     What's included:
                   </CustomText>
 
-                  <View>
+                  {/* <View>
                     {item?.whatsIncluded &&
                       item?.whatsIncluded.map((i, index) => (
                         <CustomText
@@ -149,7 +151,7 @@ export const AnotherMembership = ({
                           {i}
                         </CustomText>
                       ))}
-                  </View>
+                  </View> */}
                 </View>
               </LinearGradient>
             );

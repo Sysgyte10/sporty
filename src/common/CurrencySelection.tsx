@@ -1,9 +1,10 @@
 import { CustomText } from "@src/components/shared";
 import { colors } from "@src/resources/color/color";
-import { DVW, moderateScale } from "@src/resources/responsiveness";
+import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { ScrollContainer } from "@src/screens/ScrollContainer";
 
 const currencySelections = [
   {
@@ -62,23 +63,30 @@ export const CurrencySelection: React.FC<{}> = () => {
       </TouchableOpacity>
       {opened && (
         <View style={styles.modal}>
-          {currencySelections &&
-            currencySelections.map((item, index) => (
-              <TouchableOpacity
-                style={styles.modalActionBtn}
-                key={index}
-                onPress={() => {
-                  setSelectedCurr(item.currency);
-                  setOpened(!opened);
-                }}>
-                <CustomText type='regular' size={13} black>
-                  {item?.currency}
-                </CustomText>
-                <CustomText type='bold' size={14} black>
-                  {item?.value}
-                </CustomText>
-              </TouchableOpacity>
-            ))}
+          <ScrollContainer>
+            {currencySelections &&
+              currencySelections.map((item, index) => (
+                <TouchableOpacity
+                  style={styles.modalActionBtn}
+                  key={index}
+                  onPress={() => {
+                    setSelectedCurr(item.currency);
+                    setOpened(!opened);
+                  }}>
+                  <CustomText type='regular' size={13} black>
+                    {item?.currency}
+                  </CustomText>
+                  <CustomText type='bold' size={14} black>
+                    {item?.value}
+                  </CustomText>
+                </TouchableOpacity>
+              ))}
+            <View
+              style={{
+                paddingVertical: DVH(10),
+              }}
+            />
+          </ScrollContainer>
         </View>
       )}
     </View>

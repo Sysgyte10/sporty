@@ -8,6 +8,8 @@ export enum authScreenNames {
   ANOTHER_EVENTS = "AnotherEvents",
   INSIGHTS = "Insights",
   ANOTHER_MEMBERSHIP = "AnotherMembership",
+  PREDICTION_SERVICES = "PredictionServices",
+  DAILY_COUPON = "DailyCoupon",
 }
 
 export enum bottomTabScreenNames {
