@@ -16,8 +16,8 @@ import { Platform, StyleSheet, View } from "react-native";
 import { verticalScale } from "@src/resources/responsiveness";
 import FlashMessage from "react-native-flash-message";
 import { IGlobalModalMessageRef, ModalMessage } from "@src/common";
-import { ModalMessageProvider } from "@src/helper/ui-utils";
 import { useAuthStore } from "@src/api/store/auth";
+import { ModalMessageProvider } from "@src/helper/msg-utils";
 
 const persister = createAsyncStoragePersister({
   storage: AsyncStorage,
@@ -35,8 +35,10 @@ export default function App() {
   const { isFontLoadingComplete, loadResourcesAndDataAsync } = useFontLoading();
   const modalRef = useRef<IGlobalModalMessageRef | null>(null);
 
-  // Expose modalRef globally
-  ModalMessageProvider.setRef(modalRef);
+  useEffect(() => {
+    // Expose modalRef globally
+    ModalMessageProvider.setRef(modalRef);
+  }, []);
 
   //load font family resources
   useEffect(() => {
@@ -47,10 +49,7 @@ export default function App() {
   }, []);
 
   return (
-    <GestureHandlerRootView
-      style={{
-        flex: 1,
-      }}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <PersistQueryClientProvider
         persistOptions={{ persister }}
         onSuccess={() =>
@@ -60,22 +59,27 @@ export default function App() {
         }
         client={queryClient}>
         <SafeAreaProvider>
-          <ModalMessage ref={modalRef} />
-          <View style={styles.flashMsgContainer}>
-            <FlashMessage
-              position='top'
-              style={{
-                paddingTop:
-                  Platform.OS === "ios" ? verticalScale(10) : verticalScale(40),
-                zIndex: 300,
-              }}
-            />
+          <View style={{ flex: 1 }}>
+            <View style={styles.flashMsgContainer}>
+              <FlashMessage
+                position='top'
+                style={{
+                  paddingTop:
+                    Platform.OS === "ios"
+                      ? verticalScale(10)
+                      : verticalScale(40),
+                  zIndex: 300,
+                }}
+              />
+            </View>
+            {!isFontLoadingComplete ? (
+              <AppLoader />
+            ) : (
+              <Router isAuthenticated={isAuthenticated} />
+            )}
+            {/* Move ModalMessage here, inside all providers */}
+            <ModalMessage ref={modalRef} />
           </View>
-          {!isFontLoadingComplete ? (
-            <AppLoader />
-          ) : (
-            <Router isAuthenticated={isAuthenticated} />
-          )}
         </SafeAreaProvider>
       </PersistQueryClientProvider>
     </GestureHandlerRootView>

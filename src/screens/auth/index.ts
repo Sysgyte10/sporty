@@ -9,3 +9,5 @@ export * from "./Insights";
 export * from "./AnotherMembership";
 export * from "./PredictionServices";
 export * from "./DailyCoupon";
+export * from "./DailySingleMatches";
+export * from "./UpgradeMembership";

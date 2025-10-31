@@ -8,16 +8,8 @@ import { FootBallHeader } from "@src/components/app/football";
 import { ColorValue, StyleSheet, View } from "react-native";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { CustomButton, CustomText } from "@src/components/shared";
-import { LinearGradient } from "expo-linear-gradient";
 import { ScrollContainer } from "../ScrollContainer";
 import { Ionicons } from "@expo/vector-icons";
-
-const predictions = [
-  "Daily Combo Coupon",
-  "Daily Single Match",
-  "Resulted Coupons",
-  "Resulted Matches",
-];
 
 const dailyComboCoupon = [
   {
@@ -129,7 +121,9 @@ export const DailyCoupon = ({
               title={"View Coupon"}
               textType='regular'
               textWhite
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate(authScreenNames.DAILY_SINGLE_MATCHES)
+              }
               buttonType='Solid'
               btnStyle={{
                 alignItems: "center",
