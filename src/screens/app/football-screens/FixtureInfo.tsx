@@ -8,7 +8,7 @@ import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { AppNavigationHeader } from "../../AppHeader";
 import { ScrollContainer } from "../../ScrollContainer";
 import { ButtonLineList } from "@src/common";
-import { fixturesOverview, footballFixtures } from "@src/constants/fixtures";
+import { fixturesOverview } from "@src/constants/fixtures";
 import { Image } from "expo-image";
 import { CustomText } from "@src/components/shared";
 import {
@@ -29,6 +29,7 @@ import {
   TeamStatsTab,
 } from "@src/components/app/fixture-info";
 import { StatusBar } from "expo-status-bar";
+import { useFixturesStore } from "store";
 
 export type overViewStateType = {
   filteredMatches: matchesDataType[];
@@ -43,7 +44,8 @@ export const FixtureInfo = ({
   route,
 }: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
   const id = route?.params?.fixtureId;
-  console.log(id);
+  const { fixtures } = useFixturesStore();
+  console.log("id", id);
   const [overViewData, setOverViewData] = useState<overViewStateType>({
     filteredMatches: [],
     filteredTopScorer: [],
@@ -56,7 +58,7 @@ export const FixtureInfo = ({
   );
 
   const getOverViewData = () => {
-    const filteredData = footballFixtures.find((f) => f.id === id);
+    const filteredData = fixtures.find((f) => f.id === id);
     const filteredTopScorers =
       filteredData && filteredData?.matches[0]?.topScorers;
     setOverViewData({
@@ -72,6 +74,12 @@ export const FixtureInfo = ({
   useEffect(() => {
     getOverViewData();
   }, [id]);
+
+  useEffect(() => {
+    if (overViewData) {
+      console.log("overViewData", overViewData);
+    }
+  }, [overViewData]);
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
       <StatusBar style='light' />
@@ -124,7 +132,7 @@ export const FixtureInfo = ({
                 overViewData?.filteredTopScorer
               }
               fixtureId={id}
-              fixtureData={footballFixtures}
+              fixtureData={fixtures}
             />
           </Animated.View>
           <View

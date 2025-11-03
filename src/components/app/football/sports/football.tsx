@@ -1,8 +1,9 @@
+import { fetchAndTransformFootballData } from "@src/api/services/apiTransformService";
 import { FixtureCard } from "@src/cards";
-import { footballFixtures } from "@src/constants/fixtures";
 import { moderateScale } from "@src/resources/responsiveness";
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, View } from "react-native";
+import { useFixturesStore } from "store";
 
 interface IFootBallProps {
   onPress: (id: any) => void;
@@ -13,19 +14,25 @@ export const FootballSport: React.FC<IFootBallProps> = ({
   onPress,
   onPressMatchCard,
 }) => {
+  const { fixtures, setFixtures } = useFixturesStore();
+
+  useEffect(() => {
+    fetchAndTransformFootballData().then((data) => {
+      setFixtures(data);
+      console.log("Fetched fixtures data:", data);
+    });
+  }, []);
+
   return (
     <>
       <FlatList
-        data={footballFixtures}
+        data={fixtures}
         contentContainerStyle={{
           gap: moderateScale(1),
         }}
         keyExtractor={(__, index) => index.toString()}
         renderItem={({ item, index }) => {
           return (
-            // <Animated.View
-            //   entering={ZoomIn.delay(index * 200).duration(800)} // increase to 800ms or more
-            //   key={index}>
             <View key={index}>
               <FixtureCard
                 data={item}
@@ -33,7 +40,6 @@ export const FootballSport: React.FC<IFootBallProps> = ({
                 onPressMatchCard={() => onPressMatchCard()}
               />
             </View>
-            //  </Animated.View>
           );
         }}
         horizontal={false}
