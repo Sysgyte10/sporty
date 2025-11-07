@@ -50,6 +50,7 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <ModalMessage ref={modalRef} />
       <PersistQueryClientProvider
         persistOptions={{ persister }}
         onSuccess={() =>
@@ -78,7 +79,6 @@ export default function App() {
               <Router isAuthenticated={isAuthenticated} />
             )}
             {/* Move ModalMessage here, inside all providers */}
-            <ModalMessage ref={modalRef} />
           </View>
         </SafeAreaProvider>
       </PersistQueryClientProvider>

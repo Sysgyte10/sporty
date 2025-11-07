@@ -12,6 +12,7 @@ export enum authScreenNames {
   DAILY_COUPON = "DailyCoupon",
   DAILY_SINGLE_MATCHES = "DailySingleMatches",
   UPGRADE_MEMBERSHIP = "UpgradeMembership",
+  GAMES = "Games",
 }
 
 export enum bottomTabScreenNames {

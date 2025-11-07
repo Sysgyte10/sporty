@@ -30,7 +30,7 @@ export const Membership = ({
         data={["Regular", "VVIP"]}
         onButtonPress={(item) => setSelectedBtn(item)}
         selectedBtn={selectedBtn}
-        minWidth={160}
+        minWidth={180}
       />
       {selectedBtn === "VVIP" && (
         <View

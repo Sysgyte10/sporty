@@ -20,7 +20,7 @@ export const UpgradeMembership = ({
     "Predicted"
   );
   const onNavigate = () => {
-    navigation.navigate(authScreenNames.INSIGHTS);
+    navigation.navigate(authScreenNames.GAMES);
   };
 
   return (

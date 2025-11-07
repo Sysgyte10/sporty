@@ -14,6 +14,7 @@ import {
   DailyCoupon,
   DailySingleMatches,
   UpgradeMembership,
+  Games,
 } from "@src/screens/auth";
 
 export const authScreen: authScreenTypes[] = [
@@ -68,5 +69,9 @@ export const authScreen: authScreenTypes[] = [
   {
     screenName: authScreenNames.UPGRADE_MEMBERSHIP,
     component: UpgradeMembership,
+  },
+  {
+    screenName: authScreenNames.GAMES,
+    component: Games,
   },
 ];

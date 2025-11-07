@@ -11,7 +11,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { Image } from "expo-image";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { matchesDataType } from "@src/types/types";
 import { truncateText } from "@src/helper/utils";
 
@@ -72,7 +72,9 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
                     />
                   </View>
                   <CustomText type='regular' size={12} lightGrey>
-                    {club?.name}
+                    {truncateScoreText
+                      ? truncateText(club?.name, truncLength)
+                      : club?.name}
                   </CustomText>
                 </View>
                 <CustomText type='regular' size={12} lightGrey>
@@ -84,8 +86,8 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
             ))}
         </View>
         <TouchableOpacity onPress={() => onLikeItem?.(matchItem?.id)}>
-          <AntDesign
-            name='hearto'
+          <FontAwesome
+            name='heart-o'
             color={colors.lightGrey}
             size={moderateScale(18)}
           />

@@ -31,7 +31,7 @@ export const SignUp = ({
   const onSubmit = (data: signUpFormTypes) => {
     if (data) {
       console.log(data);
-      navigation.navigate(authScreenNames.MEMBERSHIP);
+      navigation.navigate(authScreenNames.EVENTS);
     }
   };
 

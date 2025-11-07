@@ -18,6 +18,7 @@ export interface AuthStackParamList extends ParamListBase {
   DailyCoupon: undefined;
   DailySingleMatches: undefined;
   UpgradeMembership: undefined;
+  Games: undefined;
 }
 
 export type AuthScreenProps<ScreenName extends keyof AuthStackParamList> =

@@ -13,6 +13,7 @@ import {
   AntDesign,
   Feather,
   FontAwesome,
+  MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
@@ -58,8 +59,8 @@ export const TeamCard: React.FC<ITeamCardProps> = ({
             color={colors.purple}
           />
         ) : (
-          <AntDesign
-            name={"checksquare"}
+          <MaterialIcons
+            name={"check-box"}
             size={moderateScale(20)}
             color={colors.purple}
           />
