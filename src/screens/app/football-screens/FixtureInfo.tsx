@@ -45,7 +45,7 @@ export const FixtureInfo = ({
 }: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
   const id = route?.params?.fixtureId;
   const { fixtures } = useFixturesStore();
-  console.log("id", id);
+  console.log("id", fixtures);
   const [overViewData, setOverViewData] = useState<overViewStateType>({
     filteredMatches: [],
     filteredTopScorer: [],

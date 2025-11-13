@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppWrapper } from "../AppWrapper";
 import { colors } from "@src/resources/color/color";
 import { AuthScreenProps } from "@src/router/types";
@@ -33,19 +33,25 @@ import { Step1, Step2, Step3 } from "@src/components/auth/user-selection";
 import { useSearchFilter } from "@src/hooks";
 import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 import { AppHeader } from "../AppHeader";
-import { useGetFootballMarkets } from "@src/api/hooks/app";
 import { useAuthStore } from "@src/api/store/auth";
+import { useFetchSportData } from "@src/api/services/apiTransformService";
 
 export const UserSelection = ({
   navigation,
 }: AuthScreenProps<authScreenNames.USER_SELECTION>) => {
-  const { footballMarket } = useGetFootballMarkets();
+  const { loading, fixtures } = useFetchSportData();
   const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
   const { filteredData, searchVal, setSearchVal } = useSearchFilter(
     teamsData,
     "club"
   );
   const { setIsAuthenticated } = useAuthStore();
+
+  useEffect(() => {
+    if (!loading && fixtures) {
+      console.log(fixtures);
+    }
+  }, [loading, fixtures]);
 
   //user selection step_1 form control
   const {

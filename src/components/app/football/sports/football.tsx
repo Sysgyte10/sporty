@@ -1,4 +1,3 @@
-import { fetchAndTransformFootballData } from "@src/api/services/apiTransformService";
 import { FixtureCard } from "@src/cards";
 import { moderateScale } from "@src/resources/responsiveness";
 import React, { useEffect } from "react";
@@ -14,14 +13,7 @@ export const FootballSport: React.FC<IFootBallProps> = ({
   onPress,
   onPressMatchCard,
 }) => {
-  const { fixtures, setFixtures } = useFixturesStore();
-
-  useEffect(() => {
-    fetchAndTransformFootballData().then((data) => {
-      setFixtures(data);
-      console.log("Fetched fixtures data:", data);
-    });
-  }, []);
+  const { fixtures } = useFixturesStore();
 
   return (
     <>
