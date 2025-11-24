@@ -15,6 +15,8 @@ export const FootballSport: React.FC<IFootBallProps> = ({
 }) => {
   const { fixtures } = useFixturesStore();
 
+  console.log(fixtures);
+
   return (
     <>
       <FlatList

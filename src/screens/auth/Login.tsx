@@ -12,10 +12,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginValidationSchema } from "@src/form/validation-rule/rule";
 import { CustomInput } from "@src/components/shared/input/CustomInput";
 import { CustomButton, CustomText } from "@src/components/shared";
-import { useAuthStore } from "@src/api/store/auth";
+import { useAuth } from "@src/api/services/auth";
 
 export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
-  const { setIsAuthenticated } = useAuthStore();
+  const { login, loading, error } = useAuth();
   const {
     control,
     handleSubmit,
@@ -26,10 +26,10 @@ export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
   });
 
   const onSubmit = (data: loginFormTypes) => {
-    if (data) {
-      console.log(data);
-      setIsAuthenticated(true);
-    }
+    login({
+      email: data?.email,
+      password: data?.password,
+    });
   };
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
@@ -90,6 +90,8 @@ export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
         textSize={16}
         onPress={handleSubmit(onSubmit)}
         btnStyle={styles.btn}
+        isLoading={loading}
+        loaderColor={colors?.white}
       />
       <View
         style={{

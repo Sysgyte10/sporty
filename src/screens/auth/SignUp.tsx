@@ -15,10 +15,12 @@ import { CustomInput } from "@src/components/shared/input/CustomInput";
 import { FormHeader } from "@src/common";
 import { CustomPhoneInput } from "@src/components/shared/input/CustomPhoneInput";
 import { CustomButton } from "@src/components/shared";
+import { useAuth } from "@src/api/services/auth";
 
 export const SignUp = ({
   navigation,
 }: AuthScreenProps<authScreenNames.SIGN_UP>) => {
+  const { register, loading, error, isSuccess } = useAuth();
   const {
     control,
     handleSubmit,
@@ -29,10 +31,13 @@ export const SignUp = ({
   });
 
   const onSubmit = (data: signUpFormTypes) => {
-    if (data) {
-      console.log(data);
-      navigation.navigate(authScreenNames.EVENTS);
-    }
+    register({
+      firstName: data?.first_name,
+      lastName: data?.last_name,
+      phoneNumber: data?.phone_number,
+      email: data?.email,
+      password: data?.password,
+    });
   };
 
   return (
@@ -175,6 +180,8 @@ export const SignUp = ({
           textSize={16}
           onPress={handleSubmit(onSubmit)}
           btnStyle={styles.btn}
+          isLoading={loading}
+          loaderColor={colors.white}
         />
       </View>
     </AppWrapper>
