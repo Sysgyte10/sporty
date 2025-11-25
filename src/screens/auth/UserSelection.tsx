@@ -49,7 +49,7 @@ export const UserSelection = ({
 
   useEffect(() => {
     if (!loading && fixtures) {
-      console.log(fixtures);
+      // console.log(fixtures);
     }
   }, [loading, fixtures]);
 

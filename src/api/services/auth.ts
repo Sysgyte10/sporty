@@ -8,13 +8,18 @@ import {
 } from "../types/types";
 import { BASE_URL } from "./apiTransformService";
 import { useAuthStore } from "@src/api/store/auth";
-import { ModalMessageProvider } from "@src/helper/ui-utils";
+import { ModalMessageProvider } from "@src/helper/msg-utils";
+import { colors } from "@src/resources/color/color";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
+import { AuthScreenProps, AuthStackParamList } from "@src/router/types";
+import { authScreenNames } from "@src/navigation";
 
 export const useAuth = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const { setIsAuthenticated } = useAuthStore();
+  const navigation: NavigationProp<AuthStackParamList> = useNavigation();
 
   const register = async ({
     firstName,
@@ -44,11 +49,21 @@ export const useAuth = () => {
       const data: ApiResponse<UserResponse> = await response.json();
       if (data && data?.success) {
         setIsSuccess(true);
-        setIsAuthenticated(true);
+        navigation.navigate(authScreenNames.LOGIN);
         ModalMessageProvider.showModalMsg({
           title: "Success",
           description: String(data?.message),
           msgType: "SUCCESS",
+          containerStyle: {
+            backgroundColor: "#1b1919",
+          },
+          titleStyle: {
+            color: colors.white,
+          },
+          descriptionStyle: {
+            color: colors.white,
+          },
+          hideMsgIcon: true,
         });
         return {
           success: data?.success,
@@ -60,6 +75,17 @@ export const useAuth = () => {
         title: "Error",
         description: String(data?.message),
         msgType: "ERROR",
+        containerStyle: {
+          backgroundColor: "#1b1919",
+        },
+        titleStyle: {
+          color: colors.white,
+        },
+        descriptionStyle: {
+          color: colors.white,
+        },
+        hideMsgIcon: true,
+        btnColor: colors.danger,
       });
       return {
         success: data?.success,
@@ -69,6 +95,22 @@ export const useAuth = () => {
     } catch (err: any) {
       setError(err || "Something went wrong");
       setIsSuccess(false);
+      ModalMessageProvider.showModalMsg({
+        title: "Error",
+        description: String(err) || "Something went wrong",
+        msgType: "ERROR",
+        containerStyle: {
+          backgroundColor: "#1b1919",
+        },
+        titleStyle: {
+          color: colors.white,
+        },
+        descriptionStyle: {
+          color: colors.white,
+        },
+        hideMsgIcon: true,
+        btnColor: colors.danger,
+      });
       return {
         success: false,
         message: err || "Something went wrong",
@@ -104,6 +146,16 @@ export const useAuth = () => {
           title: "Success",
           description: String(data?.message),
           msgType: "SUCCESS",
+          containerStyle: {
+            backgroundColor: "#1b1919",
+          },
+          titleStyle: {
+            color: colors.white,
+          },
+          descriptionStyle: {
+            color: colors.white,
+          },
+          hideMsgIcon: true,
         });
         return {
           success: data?.success,
@@ -115,6 +167,17 @@ export const useAuth = () => {
         title: "Error",
         description: String(data?.message),
         msgType: "ERROR",
+        containerStyle: {
+          backgroundColor: "#1b1919",
+        },
+        titleStyle: {
+          color: colors.white,
+        },
+        descriptionStyle: {
+          color: colors.white,
+        },
+        hideMsgIcon: true,
+        btnColor: colors.danger,
       });
       return {
         success: data?.success,
@@ -124,6 +187,22 @@ export const useAuth = () => {
     } catch (err: any) {
       setError(err?.toString() || "Something went wrong");
       setIsSuccess(false);
+      ModalMessageProvider.showModalMsg({
+        title: "Error",
+        description: String(err) || "Something went wrong",
+        msgType: "ERROR",
+        containerStyle: {
+          backgroundColor: "#1b1919",
+        },
+        titleStyle: {
+          color: colors.white,
+        },
+        descriptionStyle: {
+          color: colors.white,
+        },
+        hideMsgIcon: true,
+        btnColor: colors.danger,
+      });
       return {
         success: false,
         message: err?.toString() || "Something went wrong",

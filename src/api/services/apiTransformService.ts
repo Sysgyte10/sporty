@@ -29,7 +29,7 @@ export const getFootballCountries = async (): Promise<
     // 👇 Parse + type in one line
     const { result }: { result: getFootBallCountriesResp[] } =
       await response.json();
-    console.log("result1", result);
+    // console.log("result1", result);
     return result;
   } catch (err) {
     console.error("Error fetching football countries:", err);
@@ -52,7 +52,7 @@ export const getFootballLeagues = async (
     // 👇 Parse + type in one line
     const { result }: { result: getFootballLeaguesResp[] } =
       await response.json();
-    console.log("result2", result);
+    // console.log("result2", result);
     return result;
   } catch (err) {
     console.error("Error fetching football leagues:", err);
@@ -76,7 +76,7 @@ export const getFootballLeagueTopScorer = async (
     // 👇 Parse + type in one line
     const { result }: { result: getFootballLeagueTopScorerResp[] } =
       await response.json();
-    console.log("result3", result);
+    // console.log("result3", result);
     return result;
   } catch (err) {
     console.error("Error fetching football leagues top scorer:", err);
@@ -100,7 +100,7 @@ export const getFootballLeagueStanding = async (
     // 👇 Parse and bind only what you need
     const { result }: { result: { total: getFootballLeagueStandingResp[] } } =
       await response.json();
-    console.log("result4", result?.total);
+    // console.log("result4", result?.total);
 
     // ✅ Return only the "total" array
     return result.total;
@@ -117,7 +117,7 @@ export const getFootballLeagueLiveScore = async (): Promise<
     const response = await fetch(`${BASE_URL}/api/AllSportFootball/livescores`);
     const { result }: { result: getFootballLeagueLiveScoreResp[] } =
       await response.json();
-    console.log("result5", result);
+    // console.log("result5", result);
     return result;
   } catch (err) {
     console.error("Error fetching football live score:", err);
@@ -136,7 +136,7 @@ export const getFootballLeagueCompareTeamHeadToHead = async (
     );
     const { result }: { result: { h2H: getFootballCompareHeadToHeadResp[] } } =
       await response.json();
-    console.log("result6", result?.h2H);
+    // console.log("result6", result?.h2H);
     return result.h2H;
   } catch (err) {
     console.error("Error fetching football compare head-to-head", err);
@@ -155,7 +155,7 @@ export const getFootballLeagueOddsByMatchId = async (
 
     const { result }: { result: getFootballOddsResp } = await response.json();
 
-    console.log("result7", result);
+    // console.log("result7", result);
     return result;
   } catch (err) {
     console.error("Error fetching football odds", err);
@@ -176,7 +176,7 @@ export const getFootballLeagueOddsLive = async (): Promise<
 
     // Flatten all odds from all match IDs into a single array
     if (!result || typeof result !== "object") {
-      console.log("No odds data available");
+      // console.log("No odds data available");
       return [];
     }
 
@@ -189,7 +189,7 @@ export const getFootballLeagueOddsLive = async (): Promise<
       }
     });
 
-    console.log("Total odds fetched:", allOdds.length);
+    // console.log("Total odds fetched:", allOdds.length);
     return allOdds;
   } catch (err) {
     console.error("Error fetching football odds", err);
