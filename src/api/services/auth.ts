@@ -11,7 +11,7 @@ import { useAuthStore } from "@src/api/store/auth";
 import { ModalMessageProvider } from "@src/helper/msg-utils";
 import { colors } from "@src/resources/color/color";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { AuthScreenProps, AuthStackParamList } from "@src/router/types";
+import { AuthStackParamList } from "@src/router/types";
 import { authScreenNames } from "@src/navigation";
 
 export const useAuth = () => {

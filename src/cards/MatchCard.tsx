@@ -11,7 +11,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { Image } from "expo-image";
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { matchesDataType } from "@src/types/types";
 import { truncateText } from "@src/helper/utils";
 
@@ -60,7 +60,7 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
                 style={[
                   styles.clubContainer,
                   {
-                    width: showDate ? "80%" : "85%",
+                    width: showDate ? "70%" : "85%",
                   },
                 ]}>
                 <View style={styles.clubImgNameContainer}>
