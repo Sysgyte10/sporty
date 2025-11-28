@@ -180,7 +180,7 @@ export const Games = ({
                     textType='regular'
                     textWhite
                     onPress={() => {
-                      navigation.navigate(authScreenNames.UPGRADE_MEMBERSHIP);
+                      navigation.navigate(authScreenNames.LOGIN);
                     }}
                     buttonType='Solid'
                     btnStyle={{

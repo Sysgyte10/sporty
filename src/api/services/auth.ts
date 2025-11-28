@@ -49,7 +49,7 @@ export const useAuth = () => {
       const data: ApiResponse<UserResponse> = await response.json();
       if (data && data?.success) {
         setIsSuccess(true);
-        navigation.navigate(authScreenNames.LOGIN);
+        navigation.navigate(authScreenNames.MEMBERSHIP);
         ModalMessageProvider.showModalMsg({
           title: "Success",
           description: String(data?.message),
