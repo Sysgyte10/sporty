@@ -23,6 +23,7 @@ import {
   TennisSport,
 } from "@src/components/app/football/sports";
 import { useActiveBottomTabStore } from "store";
+import { AdComponent } from "@src/components/shared";
 
 export const Football = ({
   navigation,
@@ -33,152 +34,177 @@ export const Football = ({
   );
   const { setTabName } = useActiveBottomTabStore();
   return (
-    <AppWrapper safeArea bgColor={colors.black}>
-      <StatusBar style='light' />
-      <FootBallHeader
-        title='RealSc⚽rZ'
-        showSearchIcon
-        showMenuIcon
-        headerStyle={styles.header}
-        onPressMenuIcon={() => navigation.navigate(appScreenNames.MORE)}
-      />
-      <View style={styles.btnListContainer}>
-        <ButtonList
-          data={sportyTypes}
-          onButtonPress={(text) => {
-            setSelectedSport(text);
-            setTabName(text);
-          }}
-          selectedBtn={selectedSport}
+    <>
+      <AppWrapper safeArea bgColor={colors.black}>
+        <StatusBar style='light' />
+        <FootBallHeader
+          title='RealSc⚽rZ'
+          showSearchIcon
+          showMenuIcon
+          headerStyle={styles.header}
+          onPressMenuIcon={() => navigation.navigate(appScreenNames.MORE)}
         />
-      </View>
-
-      <ScrollContainer style={styles.scrollContainer}>
-        <View
-          style={{
-            marginTop: moderateScale(-30),
-          }}>
-          <ButtonLineList
-            data={footBallWatches}
-            onButtonPress={(text) => setSelectedLineList(text)}
-            selectedBtn={selectedLineList}
+        <View style={styles.btnListContainer}>
+          <ButtonList
+            data={sportyTypes}
+            onButtonPress={(text) => {
+              setSelectedSport(text);
+              setTabName(text);
+            }}
+            selectedBtn={selectedSport}
           />
         </View>
-        <DateSwitch />
-        {selectedSport === "Football" && (
-          <FootballSport
-            onPress={(fixtureId) =>
-              navigation.navigate(appScreenNames.FIXTURE_INFO, {
-                fixtureId: fixtureId,
-              })
-            }
-            onPressMatchCard={() =>
-              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                screen: appScreenNames.ONE_MATCH,
-              })
-            }
-          />
-        )}
 
-        {selectedSport === "Basketball" && (
-          <BasketballSport
-            onPress={(fixtureId, icon, title, desc) =>
-              navigation.navigate(appScreenNames.BASKETBALL_FIXTURE_INFO, {
-                fixtureId: fixtureId,
-                image: icon as ImageSourcePropType,
-                title: title as string,
-                desc: desc as string,
-              })
-            }
-            onPressMatchCard={() =>
-              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                screen: appScreenNames.ONE_MATCH,
-              })
-            }
+        <ScrollContainer style={styles.scrollContainer}>
+          <View
+            style={{
+              marginTop: moderateScale(-30),
+            }}>
+            <ButtonLineList
+              data={footBallWatches}
+              onButtonPress={(text) => setSelectedLineList(text)}
+              selectedBtn={selectedLineList}
+            />
+          </View>
+          <DateSwitch />
+          <AdComponent
+            imgSrc={require("@src/assets/jpg/ad1.jpg")}
+            imageFit='contain'
+            visible={true}
           />
-        )}
+          {selectedSport === "Football" && (
+            <FootballSport
+              onPress={(fixtureId) =>
+                navigation.navigate(appScreenNames.FIXTURE_INFO, {
+                  fixtureId: fixtureId,
+                })
+              }
+              onPressMatchCard={() =>
+                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                  screen: appScreenNames.ONE_MATCH,
+                })
+              }
+            />
+          )}
 
-        {selectedSport === "Tennis" && (
-          <TennisSport
-            onPress={(fixtureId, icon, title, desc) =>
-              navigation.navigate(appScreenNames.TENNIS_FIXTURE_INFO, {
-                fixtureId: fixtureId,
-                image: icon as ImageSourcePropType,
-                title: title as string,
-                desc: desc as string,
-              })
-            }
-            onPressMatchCard={() =>
-              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                screen: appScreenNames.ONE_MATCH,
-              })
-            }
-          />
-        )}
-
-        {selectedSport === "American Football" && (
-          <AmericanFootballSport
-            onPress={(fixtureId, icon, title, desc) =>
-              navigation.navigate(
-                appScreenNames.AMERICAN_FOOTBALL_FIXTURE_INFO,
-                {
+          {selectedSport === "Basketball" && (
+            <BasketballSport
+              onPress={(fixtureId, icon, title, desc) =>
+                navigation.navigate(appScreenNames.BASKETBALL_FIXTURE_INFO, {
                   fixtureId: fixtureId,
                   image: icon as ImageSourcePropType,
                   title: title as string,
                   desc: desc as string,
-                }
-              )
-            }
-            onPressMatchCard={() =>
-              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                screen: appScreenNames.ONE_MATCH,
-              })
-            }
-          />
-        )}
+                })
+              }
+              onPressMatchCard={() =>
+                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                  screen: appScreenNames.ONE_MATCH,
+                })
+              }
+            />
+          )}
 
-        {selectedSport === "Cricket" && (
-          <Cricket
-            onPress={(fixtureId, icon, title, desc) =>
-              navigation.navigate(appScreenNames.CRICKET_FIXTURE_INFO, {
-                fixtureId: fixtureId,
-                image: icon as ImageSourcePropType,
-                title: title as string,
-                desc: desc as string,
-              })
-            }
-            onPressMatchCard={() =>
-              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                screen: appScreenNames.ONE_MATCH,
-              })
-            }
-          />
-        )}
+          {selectedSport === "Tennis" && (
+            <TennisSport
+              onPress={(fixtureId, icon, title, desc) =>
+                navigation.navigate(appScreenNames.TENNIS_FIXTURE_INFO, {
+                  fixtureId: fixtureId,
+                  image: icon as ImageSourcePropType,
+                  title: title as string,
+                  desc: desc as string,
+                })
+              }
+              onPressMatchCard={() =>
+                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                  screen: appScreenNames.ONE_MATCH,
+                })
+              }
+            />
+          )}
 
-        {selectedSport === "Ice Hockey" && (
-          <IceHockey
-            onPress={(fixtureId, icon, title, desc) =>
-              navigation.navigate(appScreenNames.ICE_HOCKEY_FIXTURE_INFO, {
-                fixtureId: fixtureId,
-                image: icon as ImageSourcePropType,
-                title: title as string,
-                desc: desc as string,
-              })
-            }
-            onPressMatchCard={() =>
-              navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                screen: appScreenNames.ONE_MATCH,
-              })
-            }
+          {selectedSport === "American Football" && (
+            <AmericanFootballSport
+              onPress={(fixtureId, icon, title, desc) =>
+                navigation.navigate(
+                  appScreenNames.AMERICAN_FOOTBALL_FIXTURE_INFO,
+                  {
+                    fixtureId: fixtureId,
+                    image: icon as ImageSourcePropType,
+                    title: title as string,
+                    desc: desc as string,
+                  }
+                )
+              }
+              onPressMatchCard={() =>
+                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                  screen: appScreenNames.ONE_MATCH,
+                })
+              }
+            />
+          )}
+
+          {selectedSport === "Cricket" && (
+            <Cricket
+              onPress={(fixtureId, icon, title, desc) =>
+                navigation.navigate(appScreenNames.CRICKET_FIXTURE_INFO, {
+                  fixtureId: fixtureId,
+                  image: icon as ImageSourcePropType,
+                  title: title as string,
+                  desc: desc as string,
+                })
+              }
+              onPressMatchCard={() =>
+                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                  screen: appScreenNames.ONE_MATCH,
+                })
+              }
+            />
+          )}
+
+          {selectedSport === "Ice Hockey" && (
+            <IceHockey
+              onPress={(fixtureId, icon, title, desc) =>
+                navigation.navigate(appScreenNames.ICE_HOCKEY_FIXTURE_INFO, {
+                  fixtureId: fixtureId,
+                  image: icon as ImageSourcePropType,
+                  title: title as string,
+                  desc: desc as string,
+                })
+              }
+              onPressMatchCard={() =>
+                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                  screen: appScreenNames.ONE_MATCH,
+                })
+              }
+            />
+          )}
+          <View
+            style={{
+              paddingVertical: DVH(7),
+            }}
           />
-        )}
-        <View
-          style={{
-            paddingVertical: DVH(7),
+        </ScrollContainer>
+      </AppWrapper>
+
+      <View
+        style={{
+          backgroundColor: "transparent",
+          position: "absolute",
+          bottom: moderateScale(1),
+          width: "95%",
+          alignSelf: "center",
+        }}>
+        <AdComponent
+          imgSrc={require("@src/assets/jpg/ad2.jpg")}
+          imageFit='cover'
+          visible={true}
+          containerStyle={{
+            height: DVH(7),
           }}
         />
-      </ScrollContainer>
-    </AppWrapper>
+      </View>
+    </>
   );
 };
 

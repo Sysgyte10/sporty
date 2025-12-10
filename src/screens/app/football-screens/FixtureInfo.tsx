@@ -29,7 +29,8 @@ import {
   TeamStatsTab,
 } from "@src/components/app/fixture-info";
 import { StatusBar } from "expo-status-bar";
-import { useFixturesStore } from "store";
+import { footballFixtures } from "@src/constants/fixtures";
+// import { useFixturesStore } from "store";
 
 export type overViewStateType = {
   filteredMatches: matchesDataType[];
@@ -44,8 +45,8 @@ export const FixtureInfo = ({
   route,
 }: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
   const id = route?.params?.fixtureId;
-  const { fixtures } = useFixturesStore();
-  console.log("id", fixtures);
+  // const { fixtures } = useFixturesStore();
+  console.log("id", footballFixtures);
   const [overViewData, setOverViewData] = useState<overViewStateType>({
     filteredMatches: [],
     filteredTopScorer: [],
@@ -58,7 +59,7 @@ export const FixtureInfo = ({
   );
 
   const getOverViewData = () => {
-    const filteredData = fixtures.find((f) => f.id === id);
+    const filteredData = footballFixtures.find((f) => f.id === id);
     const filteredTopScorers =
       filteredData && filteredData?.matches[0]?.topScorers;
     setOverViewData({
@@ -132,7 +133,7 @@ export const FixtureInfo = ({
                 overViewData?.filteredTopScorer
               }
               fixtureId={id}
-              fixtureData={fixtures}
+              fixtureData={footballFixtures}
             />
           </Animated.View>
           <View
