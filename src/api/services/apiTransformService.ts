@@ -1,199 +1,143 @@
 import { Alert } from "react-native";
 import {
-  getFootballCompareHeadToHeadResp,
-  getFootBallCountriesResp,
-  getFootballLeagueLiveScoreResp,
-  getFootballLeagueOddsLiveResp,
-  getFootballLeaguesResp,
-  getFootballLeagueStandingResp,
-  getFootballLeagueTopScorerResp,
-  getFootballOddsResp,
+  ExtendedFixturesApiResponse,
+  extendedLeague,
+  fixtureLeague,
+  footballLeague,
+  FootballLiveScoreApiResponse,
+  FootballUpcomingScheduleApiResponse,
+  InjuriesSuspensionsApiResponse,
+  injuryLeague,
+  scorerLeague,
+  ScorersApiResponse,
+  standingLeague,
+  StandingsApiResponse,
 } from "../types/types";
 import { useEffect, useState } from "react";
-import { transformSportDataToFixtures } from "./transform";
 import { useFixturesStore } from "store";
+import { transformApiToFixtures } from "./transform";
 
 // Base URL
 export const BASE_URL = "https://zairapay.com/sysgytesport";
 
-export const getFootballCountries = async (): Promise<
-  getFootBallCountriesResp[]
-> => {
+export const getFootballLiveScores = async (): Promise<footballLeague[]> => {
   try {
-    const response = await fetch(`${BASE_URL}/api/AllSportFootball/countries`);
+    const response = await fetch(`${BASE_URL}/api/StatpalFootball/livescores`);
 
     if (!response.ok) {
       Alert.alert("Error", "Error fetching football countries data");
     }
 
     // 👇 Parse + type in one line
-    const { result }: { result: getFootBallCountriesResp[] } =
-      await response.json();
-    // console.log("result1", result);
-    return result;
+    const { livescore }: FootballLiveScoreApiResponse = await response?.json();
+    return livescore?.league ?? [];
   } catch (err) {
-    console.error("Error fetching football countries:", err);
+    console.error("Error fetching football live scores:", err);
     return []; // Return an empty array to keep the return type consistent
   }
 };
 
-//use 6 as id
-export const getFootballLeagues = async (
-  id: number | string
-): Promise<getFootballLeaguesResp[]> => {
+export const getFootballUpcomingScheduleByCountry = async (
+  country: string
+): Promise<fixtureLeague[]> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/AllSportFootball/leagues?countryId=${id}`
+      `${BASE_URL}/api/StatpalFootball/upcoming-schedule/${country}`
     );
 
     if (!response.ok) {
-      Alert.alert("Error", "Error fetching football leagues data");
-    }
-    // 👇 Parse + type in one line
-    const { result }: { result: getFootballLeaguesResp[] } =
-      await response.json();
-    // console.log("result2", result);
-    return result;
-  } catch (err) {
-    console.error("Error fetching football leagues:", err);
-    return []; // Return an empty array to keep the return type consistent
-  }
-};
-
-//use 3 as id
-export const getFootballLeagueTopScorer = async (
-  id: number | string
-): Promise<getFootballLeagueTopScorerResp[]> => {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/api/AllSportFootball/topscorers?leagueId=${id}`
-    );
-
-    if (!response.ok) {
-      Alert.alert("Error", "Error fetching football leagues top scorer data");
+      Alert.alert("Error", "Error fetching football countries data");
     }
 
     // 👇 Parse + type in one line
-    const { result }: { result: getFootballLeagueTopScorerResp[] } =
-      await response.json();
-    // console.log("result3", result);
-    return result;
+    const { fixtures }: FootballUpcomingScheduleApiResponse =
+      await response?.json();
+    return fixtures?.league ?? [];
   } catch (err) {
-    console.error("Error fetching football leagues top scorer:", err);
+    console.error("Error fetching football upcoming schedule by country:", err);
     return []; // Return an empty array to keep the return type consistent
   }
 };
 
-//use 3 as id
-export const getFootballLeagueStanding = async (
-  id: number | string
-): Promise<getFootballLeagueStandingResp[]> => {
+export const getFootballExtendedScheduleByCountry = async (
+  country: string
+): Promise<extendedLeague[]> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/AllSportFootball/standings/${id}`
+      `${BASE_URL}/api/StatpalFootball/extended-schedule/${country}`
     );
 
     if (!response.ok) {
-      Alert.alert("Error", "Error fetching football leagues standing data");
+      Alert.alert("Error", "Error fetching football countries data");
     }
 
-    // 👇 Parse and bind only what you need
-    const { result }: { result: { total: getFootballLeagueStandingResp[] } } =
-      await response.json();
-    // console.log("result4", result?.total);
-
-    // ✅ Return only the "total" array
-    return result.total;
+    // 👇 Parse + type in one line
+    const { extended_Fixtures }: ExtendedFixturesApiResponse =
+      await response?.json();
+    return extended_Fixtures?.league ?? [];
   } catch (err) {
-    console.error("Error fetching football leagues standing:", err);
+    console.error("Error fetching football extended schedule by country:", err);
     return []; // Return an empty array to keep the return type consistent
   }
 };
 
-export const getFootballLeagueLiveScore = async (): Promise<
-  getFootballLeagueLiveScoreResp[]
-> => {
-  try {
-    const response = await fetch(`${BASE_URL}/api/AllSportFootball/livescores`);
-    const { result }: { result: getFootballLeagueLiveScoreResp[] } =
-      await response.json();
-    console.log("result5", result);
-    return result;
-  } catch (err) {
-    console.error("Error fetching football live score:", err);
-    return [];
-  }
-};
-
-//use 1 for from and 2 for to
-export const getFootballLeagueCompareTeamHeadToHead = async (
-  from: number,
-  to: number
-): Promise<getFootballCompareHeadToHeadResp[]> => {
+export const getFootballStandingsByCountry = async (
+  country: string
+): Promise<standingLeague[]> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/AllSportFootball/compareteamheadtohead?firstTeamId=${from}&secondTeamId=${to}`
-    );
-    const { result }: { result: { h2H: getFootballCompareHeadToHeadResp[] } } =
-      await response.json();
-    console.log("result6", response);
-    return result.h2H;
-  } catch (err) {
-    console.error("Error fetching football compare head-to-head", err);
-    return [];
-  }
-};
-
-//use 10 or 12 as matchId
-export const getFootballLeagueOddsByMatchId = async (
-  matchId: number
-): Promise<getFootballOddsResp> => {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/api/AllSportFootball/odds/${matchId}`
+      `${BASE_URL}/api/StatpalFootball/standings/${country}`
     );
 
-    const { result }: { result: getFootballOddsResp } = await response.json();
-
-    // console.log("result7", result);
-    return result;
-  } catch (err) {
-    console.error("Error fetching football odds", err);
-    return {};
-  }
-};
-
-export const getFootballLeagueOddsLive = async (): Promise<
-  getFootballLeagueOddsLiveResp[]
-> => {
-  try {
-    const response = await fetch(`${BASE_URL}/api/AllSportFootball/odds-live`);
-
-    const {
-      result,
-    }: { result: Record<string, getFootballLeagueOddsLiveResp[]> } =
-      await response.json();
-
-    // Flatten all odds from all match IDs into a single array
-    if (!result || typeof result !== "object") {
-      // console.log("No odds data available");
-      return [];
+    if (!response.ok) {
+      Alert.alert("Error", "Error fetching football countries data");
     }
 
-    const allOdds: getFootballLeagueOddsLiveResp[] = [];
-
-    Object.keys(result).forEach((matchId) => {
-      const matchOdds = result[matchId];
-      if (Array.isArray(matchOdds)) {
-        allOdds.push(...matchOdds);
-      }
-    });
-
-    // console.log("Total odds fetched:", allOdds.length);
-    return allOdds;
+    // 👇 Parse + type in one line
+    const { standings }: StandingsApiResponse = await response?.json();
+    return standings?.league ?? [];
   } catch (err) {
-    console.error("Error fetching football odds", err);
-    return [];
+    console.error("Error fetching football standings by country:", err);
+    return []; // Return an empty array to keep the return type consistent
+  }
+};
+
+export const getFootballScorersLeadersByCountry = async (
+  country: string
+): Promise<scorerLeague[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/StatpalFootball/scoring-leaders/${country}`
+    );
+
+    if (!response.ok) {
+      Alert.alert("Error", "Error fetching football countries data");
+    }
+
+    // 👇 Parse + type in one line
+    const { scorers }: ScorersApiResponse = await response?.json();
+    return scorers?.league ?? [];
+  } catch (err) {
+    console.error("Error fetching football scorers by country:", err);
+    return []; // Return an empty array to keep the return type consistent
+  }
+};
+
+export const getFootballInjuries = async (): Promise<injuryLeague[]> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/StatpalFootball/injuries`);
+
+    if (!response.ok) {
+      Alert.alert("Error", "Error fetching football countries data");
+    }
+
+    // 👇 Parse + type in one line
+    const { injuries_suspensions }: InjuriesSuspensionsApiResponse =
+      await response?.json();
+    return injuries_suspensions?.league ?? [];
+  } catch (err) {
+    console.error("Error fetching football injuries:", err);
+    return []; // Return an empty array to keep the return type consistent
   }
 };
 
@@ -202,44 +146,119 @@ export const useFetchSportData = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  // const getSportData = async () => {
+  //   setLoading(true);
+  //   setError(null);
+
+  //   try {
+  //     const [
+  //       liveScores,
+  //       upcomingSchedules,
+  //       extendedSchedules,
+  //       standings,
+  //       footballScorers,
+  //       footballInjuries,
+  //     ] = await Promise.all([
+  //       getFootballLiveScores(),
+  //       getFootballUpcomingScheduleByCountry("spain"),
+  //       getFootballExtendedScheduleByCountry("spain"),
+  //       getFootballStandingsByCountry("spain"),
+  //       getFootballScorersLeadersByCountry("spain"),
+  //       getFootballInjuries(),
+  //     ]);
+
+  //     // 🎉 Transform API responses to match your constant data structure
+  //     const transformedFixtures = transformApiToFixtures(
+  //       liveScores,
+  //       upcomingSchedules,
+  //       extendedSchedules,
+  //       standings,
+  //       footballScorers,
+  //       footballInjuries
+  //     );
+
+  //     // Set the transformed data to your store
+  //     setFixtures(transformedFixtures);
+
+  //     console.log("✅ Transformed fixtures:", transformedFixtures);
+  //   } catch (err) {
+  //     console.error("Error in getSportData:", err);
+  //     setError("Failed to fetch sports data");
+  //     Alert.alert("Error", "Failed to fetch sports data");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const getSportData = async () => {
     setLoading(true);
     setError(null);
 
     try {
+      // Step 1: Get live scores first to know which countries have data
+      const liveScores = await getFootballLiveScores();
+
+      // Step 2: Extract unique countries from live scores
+      const countries = [
+        ...new Set(liveScores.map((league) => league.country)),
+      ];
+
+      console.log("📍 Countries with live data:", countries);
+
+      // Step 3: Fetch data for all countries in parallel
       const [
-        countries,
-        leagues,
-        topScorers,
-        standings,
-        liveScore,
-        compareHeadToHead,
-        oddsByMatchId,
-        oddsLive,
+        upcomingSchedulesData,
+        extendedSchedulesData,
+        standingsData,
+        footballScorersData,
+        footballInjuries,
       ] = await Promise.all([
-        getFootballCountries(),
-        getFootballLeagues(6),
-        getFootballLeagueTopScorer(3),
-        getFootballLeagueStanding(3),
-        getFootballLeagueLiveScore(),
-        getFootballLeagueCompareTeamHeadToHead(1, 2),
-        getFootballLeagueOddsByMatchId(10),
-        getFootballLeagueOddsLive(),
+        // Fetch upcoming schedules for all countries
+        Promise.all(
+          countries.map((country) =>
+            getFootballUpcomingScheduleByCountry(country)
+          )
+        ),
+        // Fetch extended schedules for all countries
+        Promise.all(
+          countries.map((country) =>
+            getFootballExtendedScheduleByCountry(country)
+          )
+        ),
+        // Fetch standings for all countries
+        Promise.all(
+          countries.map((country) => getFootballStandingsByCountry(country))
+        ),
+        // Fetch scorers for all countries
+        Promise.all(
+          countries.map((country) =>
+            getFootballScorersLeadersByCountry(country)
+          )
+        ),
+        // Injuries is global, so just fetch once
+        getFootballInjuries(),
       ]);
 
-      //Transform API data to match your constant data structure
-      const transformedData = transformSportDataToFixtures(
-        countries,
-        leagues,
-        topScorers,
+      // Step 4: Flatten the arrays (since Promise.all returns array of arrays)
+      const upcomingSchedules = upcomingSchedulesData.flat();
+      const extendedSchedules = extendedSchedulesData.flat();
+      const standings = standingsData.flat();
+      const footballScorers = footballScorersData.flat();
+
+      // 🎉 Transform API responses to match your constant data structure
+      const transformedFixtures = transformApiToFixtures(
+        liveScores,
+        upcomingSchedules,
+        extendedSchedules,
         standings,
-        liveScore,
-        compareHeadToHead,
-        oddsByMatchId,
-        oddsLive
+        footballScorers,
+        footballInjuries
       );
 
-      setFixtures(transformedData);
+      // Set the transformed data to your store
+      setFixtures(transformedFixtures);
+
+      console.log("✅ Transformed fixtures:", transformedFixtures);
     } catch (err) {
       console.error("Error in getSportData:", err);
       setError("Failed to fetch sports data");

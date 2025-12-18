@@ -1,303 +1,296 @@
 import { ImageSourcePropType } from "react-native";
 
-export type getFootBallCountriesResp = {
-  country_Key: number;
-  country_Name: string;
-  country_Iso2: string;
-  country_Logo: string;
-};
-
-export type getFootballLeaguesResp = {
-  league_key: number;
-  league_name: string;
-  country_key: number;
-  country_name: string;
-  league_logo: string;
-  country_logo: string;
-};
-
-export type getFootballLeagueTopScorerResp = {
-  player_place: number;
-  player_name: string;
-  player_key: number;
-  team_name: string;
-  team_key: number;
-  goals: number;
-  assists: null;
-  penalty_goals: null;
-};
-
-export type getFootballLeagueStandingResp = {
-  standing_Place: number;
-  standing_Place_Type: string;
-  standing_Team: string;
-  standing_P: number;
-  standing_W: number;
-  standing_D: number;
-  standing_L: number;
-  standing_F: number;
-  standing_A: number;
-  standing_GD: number;
-  standing_PTS: number;
-  team_Key: number;
-  league_Key: number;
-  league_Season: string;
-  league_Round: string;
-  standing_Updated: string;
-  fk_Stage_Key: number;
-  stage_Name: string;
-  team_Logo: string;
-  standing_LP: number;
-  standing_WP: number;
-};
-
-export type getFootballLeagueLiveScoreResp = {
-  event_key: number;
-  event_date: string;
-  event_time: string;
-  event_home_team: string;
-  home_team_key: number;
-  event_away_team: string;
-  away_team_key: number;
-  event_halftime_result: string;
-  event_final_result: string;
-  event_ft_result: string;
-  event_penalty_result: string;
-  event_status: string;
-  country_name: string;
-  league_name: string;
-  league_key: number;
-  league_round: string;
-  league_season: string;
-  event_live: string;
-  event_stadium: string;
-  event_referee: string;
-  home_team_logo: string;
-  away_team_logo: string;
-  event_country_key: number;
-  league_logo: string;
-  country_logo: string;
-  event_home_formation: string;
-  event_away_formation: string;
-  fk_stage_key: number;
-  stage_name: string;
-  league_group: string | null;
-
-  goalscorers: {
-    time: string;
-    home_scorer: string;
-    home_scorer_id: string;
-    home_assist: string;
-    home_assist_id: string;
-    score: string;
-    away_scorer: string;
-    away_scorer_id: string;
-    away_assist: string;
-    away_assist_id: string;
-    info: string;
-    info_time: string;
-  }[];
-
-  substitutes: {
-    time: string;
-    home_scorer:
-      | []
-      | {
-          in: string;
-          out: string;
-          in_id: number;
-          out_id: number;
-        };
-    home_assist: string;
-    score: string;
-    away_scorer:
-      | []
-      | {
-          in: string;
-          out: string;
-          in_id: number;
-          out_id: number;
-        };
-    away_assist: string;
-    info: string;
-    info_time: string;
-  }[];
-
-  cards: {
-    time: string;
-    home_fault: string;
-    card: string;
-    away_fault: string;
-    info: string;
-    home_player_id: string;
-    away_player_id: string;
-    info_time: string;
-  }[];
-
-  vars: {
-    home_team: any[];
-    away_team: any[];
+// live score API data response
+export type FootballLiveScoreApiResponse = {
+  livescore: {
+    updated: string;
+    sport: string;
+    league: footballLeague[];
   };
+};
 
-  lineups: {
-    home_team: {
-      starting_lineups: {
-        player: string | null;
-        player_number: number | null;
-        player_position: number;
-        player_country: string | null;
-        player_key: string | null;
-        info_time: string;
-      }[];
-      substitutes: any[];
-      coaches: {
-        coache: string;
-        coache_country: string | null;
-      }[];
-      missing_players: any[];
+export type footballLeague = {
+  country: string;
+  name: string;
+  cup: string;
+  id: string;
+  subId: string | null;
+  match: {
+    alternate_id: string;
+    alternate_id_2: string;
+    commentary: string;
+    coveredlive: string;
+    date: string;
+    heatmap: string;
+    id: string;
+    inj_minute: string;
+    inj_time: string;
+    static_id: string;
+    status: string;
+    time: string;
+    venue: string;
+    home: {
+      goals: string;
+      id: string;
+      name: string;
     };
-
-    away_team: {
-      starting_lineups: {
-        player: string | null;
-        player_number: number | null;
-        player_position: number;
-        player_country: string | null;
-        player_key: string | null;
-        info_time: string;
-      }[];
-      substitutes: any[];
-      coaches: {
-        coache: string;
-        coache_country: string | null;
-      }[];
-      missing_players: any[];
+    away: {
+      goals: string;
+      id: string;
+      name: string;
+    };
+    events: null;
+    ht: {
+      score: string;
     };
   };
-
-  statistics: {
-    type: string;
-    home: string;
-    away: string;
-  }[];
 };
 
-export type getFootballCompareHeadToHeadResp = {
-  event_key: number;
-  event_date: string;
-  event_time: string;
-  event_home_team: string;
-  home_team_key: number;
-  event_away_team: string;
-  away_team_key: number;
-  home_team_logo: string;
-  away_team_logo: string;
-  event_halftime_result: string;
-  event_final_result: string;
-  event_status: string;
-  country_name: string;
-  league_name: string;
-  league_key: number;
-  league_round: string;
-  league_season: string;
-  event_live: string;
-  event_country_key: number;
+// upcoming schedule API data response
+export type FootballUpcomingScheduleApiResponse = {
+  fixtures: {
+    updated: string;
+    sport: string;
+    country: string;
+    league: fixtureLeague[];
+  };
 };
 
-export type OddsItem = {
-  match_Id: number;
-  odd_Bookmakers: string;
-
-  odd_1: number | null;
-  odd_X: number | null;
-  odd_2: number | null;
-  odd_1X: number | null;
-  odd_12: number | null;
-  odd_X2: number | null;
-
-  ah_Minus_4_5_1: number | null;
-  ah_Minus_4_5_2: number | null;
-  ah_Minus_4_1: number | null;
-  ah_Minus_4_2: number | null;
-  ah_Minus_3_5_1: number | null;
-  ah_Minus_3_5_2: number | null;
-  ah_Minus_3_1: number | null;
-  ah_Minus_3_2: number | null;
-  ah_Minus_2_5_1: number | null;
-  ah_Minus_2_5_2: number | null;
-  ah_Minus_2_1: number | null;
-  ah_Minus_2_2: number | null;
-  ah_Minus_1_5_1: number | null;
-  ah_Minus_1_5_2: number | null;
-  ah_Minus_1_1: number | null;
-  ah_Minus_1_2: number | null;
-
-  ah0_1: number | null;
-  ah0_2: number | null;
-
-  ah_Plus_0_5_1: number | null;
-  ah_Plus_1_1: number | null;
-  ah_Plus_1_2: number | null;
-  ah_Plus_1_5_1: number | null;
-  ah_Plus_1_5_2: number | null;
-  ah_Plus_2_1: number | null;
-  ah_Plus_2_2: number | null;
-  ah_Plus_2_5_1: number | null;
-  ah_Plus_2_5_2: number | null;
-  ah_Plus_3_1: number | null;
-  ah_Plus_3_2: number | null;
-  ah_Plus_3_5_1: number | null;
-  ah_Plus_3_5_2: number | null;
-  ah_Plus_4_1: number | null;
-  ah_Plus_4_2: number | null;
-  ah_Plus_4_5_1: number | null;
-  ah_Plus_4_5_2: number | null;
-
-  o_Plus_0_5: number | null;
-  u_Plus_0_5: number | null;
-  o_Plus_1: number | null;
-  u_Plus_1: number | null;
-  o_Plus_1_5: number | null;
-  u_Plus_1_5: number | null;
-  o_Plus_2: number | null;
-  u_Plus_2: number | null;
-  o_Plus_2_5: number | null;
-  u_Plus_2_5: number | null;
-  o_Plus_3: number | null;
-  u_Plus_3: number | null;
-  o_Plus_3_5: number | null;
-  u_Plus_3_5: number | null;
-  o_Plus_4: number | null;
-  u_Plus_4: number | null;
-  o_Plus_4_5: number | null;
-  u_Plus_4_5: number | null;
-  o_Plus_5: number | null;
-  u_Plus_5: number | null;
-  o_Plus_5_5: number | null;
-  u_Plus_5_5: number | null;
-
-  bts_Yes: number | null;
-  bts_No: number | null;
+export type fixtureLeague = {
+  country: string;
+  name: string;
+  id: string;
+  subId: string | null;
+  match: fixtureMatch[];
 };
 
-export type getFootballOddsResp = {
-  [matchId: string]: OddsItem[];
+export type fixtureMatch = {
+  alternateId: string | null;
+  alternateId2: string | null;
+  date: string;
+  id: string;
+  staticId: string | null;
+  status: string;
+  time: string;
+  venue: string;
+  home: {
+    id: string;
+    name: string;
+  };
+  away: {
+    id: string;
+    name: string;
+  };
+  tvStations: string | null;
 };
 
-export type getFootballLeagueOddsLiveResp = {
-  odd_name: string;
-  is_odd_suspended: "Yes" | "No";
-  odd_type: string;
-  odd_value: string; // comes as string from API
-  odd_participant_handicap: string | null;
-  odd_last_updated: string; // timestamp string
-  match_id: number;
+// extended schedule API data response
+export type ExtendedFixturesApiResponse = {
+  extended_Fixtures: extendedFixtures;
 };
 
-export type getFootballOddsLiveResult = Record<
-  string,
-  getFootballLeagueOddsLiveResp[]
->;
+export type extendedFixtures = {
+  updated: string;
+  sport: string;
+  country: string;
+  league: extendedLeague[];
+};
+
+export type extendedLeague = {
+  name: string;
+  season: string;
+  id: string;
+  sub_Id: string;
+  week: week[];
+};
+
+export type week = {
+  number: string;
+  match: extendedMatch[];
+};
+
+export type extendedMatch = {
+  alternate_Id: string;
+  alternate_Id_2: string;
+  attendance: string;
+  date: string;
+  id: string;
+  static_Id: string;
+  status: string;
+  time: string;
+  venue: string;
+  venue_City: string;
+  venue_Id: string;
+  home: teamDetails;
+  away: teamDetails;
+  halftime: { score: string };
+  lineups: any | null;
+  substitutions: any | null;
+  goals: any | null;
+  coaches: coaches;
+  referee: referee;
+};
+
+export type teamDetails = {
+  et_Score: string;
+  ft_Score: string;
+  id: string;
+  name: string;
+  pen_Score: string;
+  score: string;
+  coach: coach | null;
+};
+
+export type coaches = {
+  home: coachWrapper;
+  away: coachWrapper;
+};
+
+export type coachWrapper = {
+  et_Score: string | null;
+  ft_Score: string | null;
+  id: string | null;
+  name: string | null;
+  pen_Score: string | null;
+  score: string | null;
+  coach: coach;
+};
+
+export type coach = {
+  id: string;
+  name: string;
+};
+
+export type referee = {
+  id: string;
+  name: string;
+};
+
+// football standings API data response
+export type StandingsApiResponse = {
+  standings: standings;
+};
+
+export type standings = {
+  country: string;
+  updated: string;
+  sport: string;
+  league: standingLeague[];
+};
+
+export type standingLeague = {
+  country: string;
+  id: string;
+  is_Current: string; // "True" | "False"
+  name: string;
+  season: string;
+  sub_Id: string;
+  team: standingTeam[];
+};
+
+export type standingTeam = {
+  id: string;
+  name: string;
+  position: string;
+  recent_Form: string; // e.g., "WWWWW"
+  status: string; // e.g., "same"
+  overall: stats;
+  home: stats;
+  away: stats;
+  totals: totals;
+  special: special | null;
+};
+
+export type stats = {
+  draw: string;
+  goals_Allowed: string;
+  goals_Scored: string;
+  lose: string;
+  played: string;
+  win: string;
+  p?: string; // Only present in home/away
+};
+
+export type totals = {
+  goal_Difference: string;
+  points: string;
+};
+
+export type special = {
+  name: string;
+};
+
+//scoring leaders API data response
+export type ScorersApiResponse = {
+  scorers: scorers;
+};
+
+export type scorers = {
+  updated: string;
+  sport: string;
+  country: string;
+  league: scorerLeague[];
+};
+
+export type scorerLeague = {
+  country: string;
+  name: string;
+  id: string;
+  sub_id: string;
+  player: scorerPlayer[];
+};
+
+export type scorerPlayer = {
+  goals: string;
+  id: string;
+  name: string;
+  penalty_goals: string;
+  pos: string; // Position in ranking, e.g., "1"
+  team: string;
+  team_id: string;
+};
+
+//football injuries API data response
+export type InjuriesSuspensionsApiResponse = {
+  injuries_suspensions: injuriesSuspensions;
+};
+
+export type injuriesSuspensions = {
+  updated: string;
+  sport: string;
+  league: injuryLeague[];
+};
+
+export type injuryLeague = {
+  name: string;
+  id: string;
+  sub_id: string;
+  match: injuryMatch[];
+};
+
+export type injuryMatch = {
+  alternate_id: string;
+  alternate_id_2: string;
+  date: string;
+  id: string;
+  static_id: string;
+  status: string;
+  time: string;
+  home: teamInjury;
+  away: teamInjury;
+};
+
+export type teamInjury = {
+  goals: string;
+  id: string;
+  name: string;
+  sidelined: sidelined;
+};
+
+export type sidelined = {
+  to_miss: string | null;
+  questionable: string | null;
+};
 
 export type ApiResponse<T> = {
   success: boolean;

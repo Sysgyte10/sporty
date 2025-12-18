@@ -47,12 +47,6 @@ export const UserSelection = ({
   );
   const { setIsAuthenticated } = useAuthStore();
 
-  useEffect(() => {
-    if (!loading && fixtures) {
-      // console.log(fixtures);
-    }
-  }, [loading, fixtures]);
-
   //user selection step_1 form control
   const {
     control: step1Control,
