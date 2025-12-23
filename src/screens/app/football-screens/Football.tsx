@@ -23,6 +23,7 @@ import {
   TennisSport,
 } from "@src/components/app/football/sports";
 import { useActiveBottomTabStore } from "store";
+import { AdComponent } from "@src/components/shared";
 
 export const Football = ({
   navigation,
@@ -65,6 +66,11 @@ export const Football = ({
           />
         </View>
         <DateSwitch />
+        <AdComponent
+          imgSrc={require("@src/assets/jpg/ad1.jpg")}
+          imageFit='contain'
+          visible={true}
+        />
         {selectedSport === "Football" && (
           <FootballSport
             onPress={(fixtureId) =>
