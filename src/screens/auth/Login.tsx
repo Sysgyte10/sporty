@@ -35,7 +35,9 @@ export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
       <FormHeader
         title='Welcome Back'
-        description='Please provide the information below to get logged in'
+        description={"Please provide the information below to get logged in"}
+        showBackBtn
+        onPressBackBtn={() => navigation.goBack()}
       />
       <View
         style={{

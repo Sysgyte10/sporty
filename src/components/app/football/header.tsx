@@ -7,7 +7,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
 import { moderateScale } from "@src/resources/responsiveness";
 
@@ -20,6 +20,8 @@ interface IFootBallHeaderProps {
   headerStyle?: StyleProp<ViewStyle>;
   rightIcon?: React.ReactNode;
   onPressRightIcon?: () => void;
+  showBackBtn?: boolean;
+  onPressBackBtn?: () => void;
 }
 
 export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
@@ -31,16 +33,35 @@ export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
   headerStyle,
   rightIcon,
   onPressRightIcon,
+  showBackBtn,
+  onPressBackBtn,
 }) => {
   return (
     <View style={[styles.container, headerStyle]}>
-      {title ? (
-        <CustomText type='bold' size={18} white>
-          {title}
-        </CustomText>
-      ) : (
-        <View />
-      )}
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          gap: moderateScale(5),
+          marginLeft: moderateScale(-10),
+        }}>
+        {showBackBtn ? (
+          <TouchableOpacity onPress={onPressBackBtn}>
+            <MaterialIcons
+              name='keyboard-arrow-left'
+              size={moderateScale(30)}
+              color={colors.white}
+            />
+          </TouchableOpacity>
+        ) : null}
+        {title ? (
+          <CustomText type='bold' size={18} white>
+            {title}
+          </CustomText>
+        ) : (
+          <View />
+        )}
+      </View>
       <View style={styles.iconContainer}>
         {rightIcon ? (
           <>

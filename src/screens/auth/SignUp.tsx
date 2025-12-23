@@ -20,7 +20,7 @@ import { useAuth } from "@src/api/services/auth";
 export const SignUp = ({
   navigation,
 }: AuthScreenProps<authScreenNames.SIGN_UP>) => {
-  const { register, loading, error, isSuccess } = useAuth();
+  const { register, loading } = useAuth();
   const {
     control,
     handleSubmit,

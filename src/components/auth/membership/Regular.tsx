@@ -1,12 +1,17 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { useAuthStore } from "@src/api/store/auth";
 import { CustomButton, CustomText } from "@src/components/shared";
 import { regularMembership } from "@src/constants/membership";
 import { colors } from "@src/resources/color/color";
 import { moderateScale } from "@src/resources/responsiveness";
+import { AuthStackParamList } from "@src/router/types";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
 export const Regular = () => {
+  // const navigation:NavigationProp<AuthStackParamList> = useNavigation()
+  const { setIsAuthenticated } = useAuthStore();
   return (
     <>
       {regularMembership &&
@@ -21,6 +26,7 @@ export const Regular = () => {
               paddingVertical: moderateScale(20),
               borderRadius: moderateScale(10),
               paddingHorizontal: moderateScale(25),
+              height: "60%",
             }}>
             <View
               style={{
@@ -53,7 +59,7 @@ export const Regular = () => {
                 textWhite
                 textType='semi-bold'
                 textSize={12}
-                onPress={() => {}}
+                onPress={() => setIsAuthenticated(true)}
                 btnStyle={styles.btn}
               />
               <CustomText
@@ -69,7 +75,7 @@ export const Regular = () => {
               <View>
                 {item?.whatsIncluded &&
                   item?.whatsIncluded.map((i, index) => (
-                    <CustomText type='regular' size={11} lightGrey key={index}>
+                    <CustomText type='regular' size={14} lightGrey key={index}>
                       {i}
                     </CustomText>
                   ))}

@@ -52,7 +52,7 @@ export const useAuth = () => {
         navigation.navigate(authScreenNames.MEMBERSHIP);
         ModalMessageProvider.showModalMsg({
           title: "Success",
-          description: String(data?.message),
+          description: "User data created successfully",
           msgType: "SUCCESS",
           containerStyle: {
             backgroundColor: "#1b1919",

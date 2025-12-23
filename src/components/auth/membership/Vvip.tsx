@@ -31,6 +31,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType, onActionPress }) => {
               paddingVertical: moderateScale(20),
               borderRadius: moderateScale(10),
               paddingHorizontal: moderateScale(25),
+              height: "60%",
             }}>
             <View
               style={{
@@ -82,7 +83,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType, onActionPress }) => {
               <View>
                 {item?.whatsIncluded &&
                   item?.whatsIncluded.map((i, index) => (
-                    <CustomText type='regular' size={11} lightGrey key={index}>
+                    <CustomText type='regular' size={16} lightGrey key={index}>
                       {i}
                     </CustomText>
                   ))}
@@ -104,6 +105,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType, onActionPress }) => {
               paddingVertical: moderateScale(20),
               borderRadius: moderateScale(10),
               paddingHorizontal: moderateScale(25),
+              height: "60%",
             }}>
             <View
               style={{
@@ -155,7 +157,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType, onActionPress }) => {
               <View>
                 {item?.whatsIncluded &&
                   item?.whatsIncluded.map((i, index) => (
-                    <CustomText type='regular' size={11} lightGrey key={index}>
+                    <CustomText type='regular' size={14} lightGrey key={index}>
                       {i}
                     </CustomText>
                   ))}
@@ -177,6 +179,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType, onActionPress }) => {
               paddingVertical: moderateScale(20),
               borderRadius: moderateScale(10),
               paddingHorizontal: moderateScale(25),
+              height: "60%",
             }}>
             <View
               style={{
@@ -228,7 +231,7 @@ export const VVIP: React.FC<IVVIPprops> = ({ selectedType, onActionPress }) => {
               <View>
                 {item?.whatsIncluded &&
                   item?.whatsIncluded.map((i, index) => (
-                    <CustomText type='regular' size={11} lightGrey key={index}>
+                    <CustomText type='regular' size={14} lightGrey key={index}>
                       {i}
                     </CustomText>
                   ))}

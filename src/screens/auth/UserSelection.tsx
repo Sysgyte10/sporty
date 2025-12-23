@@ -3,9 +3,9 @@ import { AppWrapper } from "../AppWrapper";
 import { colors } from "@src/resources/color/color";
 import { AuthScreenProps } from "@src/router/types";
 import { authScreenNames } from "@src/navigation/navigation-names";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, TouchableOpacity, View } from "react-native";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
-import { ButtonList, FormHeader } from "@src/common";
+import { ButtonList, FormHeader, Loader } from "@src/common";
 import { StatusBar } from "expo-status-bar";
 import { CustomButton, CustomText } from "@src/components/shared";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -39,7 +39,7 @@ import { useFetchSportData } from "@src/api/services/apiTransformService";
 export const UserSelection = ({
   navigation,
 }: AuthScreenProps<authScreenNames.USER_SELECTION>) => {
-  const { loading, fixtures } = useFetchSportData();
+  const { loading } = useFetchSportData();
   const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
   const { filteredData, searchVal, setSearchVal } = useSearchFilter(
     teamsData,
@@ -154,11 +154,37 @@ export const UserSelection = ({
             // backArrow
             onGoBack={() => prevStep()}
           />
-          <TouchableOpacity onPress={() => setIsAuthenticated(true)}>
-            <CustomText size={16} type='medium' purple>
-              Skip
-            </CustomText>
-          </TouchableOpacity>
+          {loading ? (
+            <View>
+              <Loader size={"small"} color={colors.purple} />
+            </View>
+          ) : (
+            <TouchableOpacity
+              onPress={() => {
+                Alert.alert("Info", "Where do you want to go?", [
+                  {
+                    text: "Dashboard",
+                    onPress: () => {
+                      setIsAuthenticated(true);
+                    },
+                  },
+                  {
+                    text: "Predictions",
+                    onPress: () => {
+                      navigation.navigate(authScreenNames.LOGIN);
+                    },
+                  },
+                  {
+                    text: "Close",
+                    onPress: () => {},
+                  },
+                ]);
+              }}>
+              <CustomText size={16} type='medium' purple>
+                Skip
+              </CustomText>
+            </TouchableOpacity>
+          )}
         </View>
         <View
           style={{

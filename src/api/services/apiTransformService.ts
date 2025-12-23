@@ -24,10 +24,6 @@ export const getFootballLiveScores = async (): Promise<footballLeague[]> => {
   try {
     const response = await fetch(`${BASE_URL}/api/StatpalFootball/livescores`);
 
-    if (!response.ok) {
-      Alert.alert("Error", "Error fetching football countries data");
-    }
-
     // 👇 Parse + type in one line
     const { livescore }: FootballLiveScoreApiResponse = await response?.json();
     return livescore?.league ?? [];
@@ -44,10 +40,6 @@ export const getFootballUpcomingScheduleByCountry = async (
     const response = await fetch(
       `${BASE_URL}/api/StatpalFootball/upcoming-schedule/${country}`
     );
-
-    if (!response.ok) {
-      Alert.alert("Error", "Error fetching football countries data");
-    }
 
     // 👇 Parse + type in one line
     const { fixtures }: FootballUpcomingScheduleApiResponse =
@@ -67,10 +59,6 @@ export const getFootballExtendedScheduleByCountry = async (
       `${BASE_URL}/api/StatpalFootball/extended-schedule/${country}`
     );
 
-    if (!response.ok) {
-      Alert.alert("Error", "Error fetching football countries data");
-    }
-
     // 👇 Parse + type in one line
     const { extended_Fixtures }: ExtendedFixturesApiResponse =
       await response?.json();
@@ -89,10 +77,6 @@ export const getFootballStandingsByCountry = async (
       `${BASE_URL}/api/StatpalFootball/standings/${country}`
     );
 
-    if (!response.ok) {
-      Alert.alert("Error", "Error fetching football countries data");
-    }
-
     // 👇 Parse + type in one line
     const { standings }: StandingsApiResponse = await response?.json();
     return standings?.league ?? [];
@@ -110,10 +94,6 @@ export const getFootballScorersLeadersByCountry = async (
       `${BASE_URL}/api/StatpalFootball/scoring-leaders/${country}`
     );
 
-    if (!response.ok) {
-      Alert.alert("Error", "Error fetching football countries data");
-    }
-
     // 👇 Parse + type in one line
     const { scorers }: ScorersApiResponse = await response?.json();
     return scorers?.league ?? [];
@@ -126,10 +106,6 @@ export const getFootballScorersLeadersByCountry = async (
 export const getFootballInjuries = async (): Promise<injuryLeague[]> => {
   try {
     const response = await fetch(`${BASE_URL}/api/StatpalFootball/injuries`);
-
-    if (!response.ok) {
-      Alert.alert("Error", "Error fetching football countries data");
-    }
 
     // 👇 Parse + type in one line
     const { injuries_suspensions }: InjuriesSuspensionsApiResponse =
@@ -207,18 +183,18 @@ export const useFetchSportData = () => {
 
       // Step 3: Fetch data for all countries in parallel
       const [
-        upcomingSchedulesData,
+        // upcomingSchedulesData,
         extendedSchedulesData,
         standingsData,
         footballScorersData,
         footballInjuries,
       ] = await Promise.all([
         // Fetch upcoming schedules for all countries
-        Promise.all(
-          countries.map((country) =>
-            getFootballUpcomingScheduleByCountry(country)
-          )
-        ),
+        // Promise.all(
+        //   countries.map((country) =>
+        //     getFootballUpcomingScheduleByCountry(country)
+        //   )
+        // ),
         // Fetch extended schedules for all countries
         Promise.all(
           countries.map((country) =>
@@ -240,7 +216,7 @@ export const useFetchSportData = () => {
       ]);
 
       // Step 4: Flatten the arrays (since Promise.all returns array of arrays)
-      const upcomingSchedules = upcomingSchedulesData.flat();
+      // const upcomingSchedules = upcomingSchedulesData.flat();
       const extendedSchedules = extendedSchedulesData.flat();
       const standings = standingsData.flat();
       const footballScorers = footballScorersData.flat();
@@ -248,7 +224,7 @@ export const useFetchSportData = () => {
       // 🎉 Transform API responses to match your constant data structure
       const transformedFixtures = transformApiToFixtures(
         liveScores,
-        upcomingSchedules,
+        [],
         extendedSchedules,
         standings,
         footballScorers,
@@ -262,6 +238,7 @@ export const useFetchSportData = () => {
     } catch (err) {
       console.error("Error in getSportData:", err);
       setError("Failed to fetch sports data");
+      setLoading(false);
       Alert.alert("Error", "Failed to fetch sports data");
     } finally {
       setLoading(false);

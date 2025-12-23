@@ -19,12 +19,14 @@ export const Events = ({
   return (
     <AppWrapper safeArea bgColor={colors.black}>
       <FootBallHeader
-        title='Events'
+        title='Predictions'
         showSearchIcon
         showMenuIcon
         headerStyle={styles.header}
         onPressMenuIcon={() => navigation.navigate("")}
         onPressSearchIcon={() => setIsAuthenticated(true)}
+        showBackBtn
+        onPressBackBtn={() => navigation.goBack()}
       />
       <ScrollContainer
         style={{ paddingHorizontal: moderateScale(2), gap: moderateScale(10) }}>

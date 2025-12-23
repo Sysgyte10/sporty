@@ -22,7 +22,7 @@ export const FootballSport: React.FC<IFootBallProps> = ({
       <FlatList
         data={fixtures}
         contentContainerStyle={{
-          gap: moderateScale(1),
+          gap: moderateScale(5),
         }}
         keyExtractor={(__, index) => index.toString()}
         renderItem={({ item, index }) => {

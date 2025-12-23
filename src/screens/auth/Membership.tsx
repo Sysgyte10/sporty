@@ -13,7 +13,7 @@ import { VVIP } from "@src/components/auth/membership/Vvip";
 export const Membership = ({
   navigation,
 }: AuthScreenProps<authScreenNames.MEMBERSHIP>) => {
-  const [selectedBtn, setSelectedBtn] = useState<string>("Regular");
+  const [selectedBtn, setSelectedBtn] = useState<string>("Guest");
   const [selectedPlan, setSelectedPlan] = useState<string>("Weekly");
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
@@ -27,12 +27,12 @@ export const Membership = ({
         description='Please choose any membership of your choice'
       />
       <ButtonLineList
-        data={["Regular", "VVIP"]}
+        data={["Guest", "Member"]}
         onButtonPress={(item) => setSelectedBtn(item)}
         selectedBtn={selectedBtn}
         minWidth={180}
       />
-      {selectedBtn === "VVIP" && (
+      {selectedBtn === "Member" && (
         <View
           style={{
             paddingVertical: moderateScale(10),
@@ -44,8 +44,8 @@ export const Membership = ({
           />
         </View>
       )}
-      {selectedBtn === "Regular" && <Regular />}
-      {selectedBtn === "VVIP" && (
+      {selectedBtn === "Guest" && <Regular />}
+      {selectedBtn === "Member" && (
         <VVIP
           selectedType={selectedPlan}
           onActionPress={() => navigation.navigate(authScreenNames.EVENTS)}
