@@ -13,12 +13,14 @@ import { colors } from "@src/resources/color/color";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { AuthStackParamList } from "@src/router/types";
 import { authScreenNames } from "@src/navigation";
+import { useAccountCreatedStore } from "@src/hooks";
 
 export const useAuth = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const { setIsAuthenticated } = useAuthStore();
+  const { setHasCreatedAccount } = useAccountCreatedStore();
   const navigation: NavigationProp<AuthStackParamList> = useNavigation();
 
   const register = async ({
@@ -48,6 +50,7 @@ export const useAuth = () => {
 
       const data: ApiResponse<UserResponse> = await response.json();
       if (data && data?.success) {
+        setHasCreatedAccount(true);
         setIsSuccess(true);
         navigation.navigate(authScreenNames.MEMBERSHIP);
         ModalMessageProvider.showModalMsg({

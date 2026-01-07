@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { AppWrapper } from "../../AppWrapper";
 import { colors } from "@src/resources/color/color";
-import { ImageSourcePropType, StyleSheet, View } from "react-native";
+import {
+  ImageSourcePropType,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { RootStackScreenProps } from "@src/router/types";
 import {
   appScreenNames,
@@ -23,7 +28,9 @@ import {
   TennisSport,
 } from "@src/components/app/football/sports";
 import { useActiveBottomTabStore } from "store";
-import { AdComponent } from "@src/components/shared";
+import { AdComponent, CustomText } from "@src/components/shared";
+import { useAuthStore } from "@src/api/store/auth";
+import { useGoToPredictions } from "@src/hooks";
 
 export const Football = ({
   navigation,
@@ -33,10 +40,24 @@ export const Football = ({
     footBallWatches[0]
   );
   const { setTabName } = useActiveBottomTabStore();
+  const { setIsAuthenticated } = useAuthStore();
+  const { setGoToPredictions } = useGoToPredictions();
   return (
     <>
       <AppWrapper safeArea bgColor={colors.black}>
         <StatusBar style='light' />
+        <TouchableOpacity
+          onPress={() => {
+            setIsAuthenticated(false);
+            setGoToPredictions(true);
+          }}
+          style={{
+            alignSelf: "flex-end",
+          }}>
+          <CustomText size={14} type='medium' purple>
+            Go To Predictions
+          </CustomText>
+        </TouchableOpacity>
         <FootBallHeader
           title='RealSc⚽rZ'
           showSearchIcon
@@ -210,7 +231,7 @@ export const Football = ({
 const styles = StyleSheet.create({
   scrollContainer: {
     paddingHorizontal: moderateScale(2),
-    marginTop: moderateScale(20),
+    marginTop: moderateScale(22),
   },
   btnListContainer: {
     paddingVertical: moderateScale(8),

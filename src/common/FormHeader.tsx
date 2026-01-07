@@ -59,5 +59,6 @@ export const FormHeader: React.FC<IFormHeaderProps> = ({
 const styles = StyleSheet.create({
   container: {
     gap: moderateScale(2),
+    marginLeft: moderateScale(15),
   },
 });

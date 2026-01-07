@@ -30,7 +30,11 @@ import {
   userSelectionStep3ValidationSchema,
 } from "@src/form/validation-rule/rule";
 import { Step1, Step2, Step3 } from "@src/components/auth/user-selection";
-import { useSearchFilter } from "@src/hooks";
+import {
+  useAccountCreatedStore,
+  useGoToPredictions,
+  useSearchFilter,
+} from "@src/hooks";
 import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 import { AppHeader } from "../AppHeader";
 import { useAuthStore } from "@src/api/store/auth";
@@ -46,6 +50,8 @@ export const UserSelection = ({
     "club"
   );
   const { setIsAuthenticated } = useAuthStore();
+  const { setGoToPredictions } = useGoToPredictions();
+  const { hasCreatedAccount } = useAccountCreatedStore();
 
   //user selection step_1 form control
   const {
@@ -165,18 +171,27 @@ export const UserSelection = ({
                   {
                     text: "Dashboard",
                     onPress: () => {
-                      setIsAuthenticated(true);
+                      if (hasCreatedAccount) {
+                        setIsAuthenticated(true);
+                        setGoToPredictions(false);
+                      } else {
+                        setIsAuthenticated(true);
+                        setGoToPredictions(false);
+                      }
                     },
                   },
                   {
                     text: "Predictions",
                     onPress: () => {
                       navigation.navigate(authScreenNames.LOGIN);
+                      setGoToPredictions(false);
                     },
                   },
                   {
                     text: "Close",
-                    onPress: () => {},
+                    onPress: () => {
+                      setGoToPredictions(false);
+                    },
                   },
                 ]);
               }}>

@@ -9,7 +9,7 @@ import { ColorValue, StyleSheet, View } from "react-native";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { CustomButton, CustomText } from "@src/components/shared";
 import { ScrollContainer } from "../ScrollContainer";
-import { ModalMessageProvider } from "@src/helper/ui-utils";
+import { ModalMessageProvider } from "@src/helper/msg-utils";
 import { fontFamily } from "@src/resources/fonts/font-family";
 
 const dailyComboCoupon = [

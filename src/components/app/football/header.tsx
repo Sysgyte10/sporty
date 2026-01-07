@@ -3,6 +3,7 @@ import React from "react";
 import {
   StyleProp,
   StyleSheet,
+  TextStyle,
   TouchableOpacity,
   View,
   ViewStyle,
@@ -22,6 +23,7 @@ interface IFootBallHeaderProps {
   onPressRightIcon?: () => void;
   showBackBtn?: boolean;
   onPressBackBtn?: () => void;
+  titleStyle?: StyleProp<TextStyle>;
 }
 
 export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
@@ -35,6 +37,7 @@ export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
   onPressRightIcon,
   showBackBtn,
   onPressBackBtn,
+  titleStyle,
 }) => {
   return (
     <View style={[styles.container, headerStyle]}>
@@ -55,7 +58,11 @@ export const FootBallHeader: React.FC<IFootBallHeaderProps> = ({
           </TouchableOpacity>
         ) : null}
         {title ? (
-          <CustomText type='bold' size={18} white>
+          <CustomText
+            type='bold'
+            size={18}
+            white
+            style={[titleStyle, { marginLeft: moderateScale(10) }]}>
             {title}
           </CustomText>
         ) : (

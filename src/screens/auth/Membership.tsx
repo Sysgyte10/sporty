@@ -9,17 +9,24 @@ import { AppHeader } from "../AppHeader";
 import { ButtonLineList, ButtonList, FormHeader } from "@src/common";
 import { Regular } from "@src/components/auth/membership";
 import { VVIP } from "@src/components/auth/membership/Vvip";
+import { useGoToPredictions } from "@src/hooks";
+import { useAuthStore } from "@src/api/store/auth";
 
 export const Membership = ({
   navigation,
 }: AuthScreenProps<authScreenNames.MEMBERSHIP>) => {
   const [selectedBtn, setSelectedBtn] = useState<string>("Guest");
   const [selectedPlan, setSelectedPlan] = useState<string>("Weekly");
+  const { setGoToPredictions } = useGoToPredictions();
+  const { setIsAuthenticated } = useAuthStore();
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
       <AppHeader
         backArrow
-        onGoBack={() => navigation.goBack()}
+        onGoBack={() => {
+          setGoToPredictions(false);
+          setIsAuthenticated(true);
+        }}
         title='Membership'
       />
       <FormHeader

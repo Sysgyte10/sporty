@@ -16,11 +16,15 @@ import { FormHeader } from "@src/common";
 import { CustomPhoneInput } from "@src/components/shared/input/CustomPhoneInput";
 import { CustomButton } from "@src/components/shared";
 import { useAuth } from "@src/api/services/auth";
+import { useGoToPredictions } from "@src/hooks";
+import { useAuthStore } from "@src/api/store/auth";
 
 export const SignUp = ({
   navigation,
 }: AuthScreenProps<authScreenNames.SIGN_UP>) => {
   const { register, loading } = useAuth();
+  const { setGoToPredictions } = useGoToPredictions();
+  const { setIsAuthenticated } = useAuthStore();
   const {
     control,
     handleSubmit,
@@ -45,7 +49,10 @@ export const SignUp = ({
       <AppHeader
         backArrow
         title='Sign Up'
-        onGoBack={() => navigation.goBack()}
+        onGoBack={() => {
+          setGoToPredictions(false);
+          setIsAuthenticated(true);
+        }}
       />
       <ScrollContainer
         style={{
