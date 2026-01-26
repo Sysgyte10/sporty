@@ -1,3 +1,5 @@
+// Base URL
+export const BASE_URL = "https://zairapay.com/sysgytesport";
 import {
   FOOTBALL_FIXTURES,
   FOOTBALL_LEAGUES,

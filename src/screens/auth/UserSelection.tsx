@@ -39,6 +39,12 @@ import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 import { AppHeader } from "../AppHeader";
 import { useAuthStore } from "@src/api/store/auth";
 import { useFetchSportData } from "@src/api/services/apiTransformService";
+import { get } from "node_modules/axios/index.cjs";
+import {
+  getCountryByName,
+  getLiveFixtures,
+  getLiveFixturesById,
+} from "@src/api/services/football.service";
 
 export const UserSelection = ({
   navigation,
@@ -47,11 +53,21 @@ export const UserSelection = ({
   const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
   const { filteredData, searchVal, setSearchVal } = useSearchFilter(
     teamsData,
-    "club"
+    "club",
   );
   const { setIsAuthenticated } = useAuthStore();
   const { setGoToPredictions } = useGoToPredictions();
   const { hasCreatedAccount } = useAccountCreatedStore();
+
+  useEffect(() => {
+    const initiateData = async () => {
+      //fetching data or any other side effects can be handled here
+      await getLiveFixturesById("1505844").then((data) => {
+        console.log("Fetched live fixtures:", data);
+      });
+    };
+    initiateData();
+  });
 
   //user selection step_1 form control
   const {

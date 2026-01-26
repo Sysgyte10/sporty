@@ -16,9 +16,7 @@ import {
 import { useEffect, useState } from "react";
 import { useFixturesStore } from "store";
 import { transformApiToFixtures } from "./transform";
-
-// Base URL
-export const BASE_URL = "https://zairapay.com/sysgytesport";
+import { BASE_URL } from "../endpoint/endpoint";
 
 export const getFootballLiveScores = async (): Promise<footballLeague[]> => {
   try {
@@ -34,11 +32,11 @@ export const getFootballLiveScores = async (): Promise<footballLeague[]> => {
 };
 
 export const getFootballUpcomingScheduleByCountry = async (
-  country: string
+  country: string,
 ): Promise<fixtureLeague[]> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/StatpalFootball/upcoming-schedule/${country}`
+      `${BASE_URL}/api/StatpalFootball/upcoming-schedule/${country}`,
     );
 
     // 👇 Parse + type in one line
@@ -52,11 +50,11 @@ export const getFootballUpcomingScheduleByCountry = async (
 };
 
 export const getFootballExtendedScheduleByCountry = async (
-  country: string
+  country: string,
 ): Promise<extendedLeague[]> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/StatpalFootball/extended-schedule/${country}`
+      `${BASE_URL}/api/StatpalFootball/extended-schedule/${country}`,
     );
 
     // 👇 Parse + type in one line
@@ -70,11 +68,11 @@ export const getFootballExtendedScheduleByCountry = async (
 };
 
 export const getFootballStandingsByCountry = async (
-  country: string
+  country: string,
 ): Promise<standingLeague[]> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/StatpalFootball/standings/${country}`
+      `${BASE_URL}/api/StatpalFootball/standings/${country}`,
     );
 
     // 👇 Parse + type in one line
@@ -87,11 +85,11 @@ export const getFootballStandingsByCountry = async (
 };
 
 export const getFootballScorersLeadersByCountry = async (
-  country: string
+  country: string,
 ): Promise<scorerLeague[]> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/StatpalFootball/scoring-leaders/${country}`
+      `${BASE_URL}/api/StatpalFootball/scoring-leaders/${country}`,
     );
 
     // 👇 Parse + type in one line
@@ -198,18 +196,18 @@ export const useFetchSportData = () => {
         // Fetch extended schedules for all countries
         Promise.all(
           countries.map((country) =>
-            getFootballExtendedScheduleByCountry(country)
-          )
+            getFootballExtendedScheduleByCountry(country),
+          ),
         ),
         // Fetch standings for all countries
         Promise.all(
-          countries.map((country) => getFootballStandingsByCountry(country))
+          countries.map((country) => getFootballStandingsByCountry(country)),
         ),
         // Fetch scorers for all countries
         Promise.all(
           countries.map((country) =>
-            getFootballScorersLeadersByCountry(country)
-          )
+            getFootballScorersLeadersByCountry(country),
+          ),
         ),
         // Injuries is global, so just fetch once
         getFootballInjuries(),
@@ -228,7 +226,7 @@ export const useFetchSportData = () => {
         extendedSchedules,
         standings,
         footballScorers,
-        footballInjuries
+        footballInjuries,
       );
 
       // Set the transformed data to your store
