@@ -1,7 +1,20 @@
-import { footballCountries, liveFixtures, liveFixturesById } from "./types";
+import {
+  footballCountries,
+  liveCurrentFixtureLeagues,
+  liveFixtureOfLeaguesByCountry,
+  liveFixtures,
+  liveFixturesById,
+  liveFixturesByLeagueAndSeason,
+  liveFixturesByRounds,
+  liveFixturesLeaguesBySeason,
+  liveFixturesOfLeaguesById,
+  liveFixturesOfLeaguesByName,
+  liveFixturesRoundsDatesByLeagueAndSeason,
+  searchLiveFixtureLeagues,
+} from "./types";
 
 export type GetFootballCountryResponse = {
-  get: "countries";
+  get: string;
   parameters: unknown[];
   errors: unknown[];
   results: number;
@@ -13,7 +26,7 @@ export type GetFootballCountryResponse = {
 };
 
 export type GetFootballCountryByNameResponse = {
-  get: "countries";
+  get: string;
   parameters: {
     name: string;
   };
@@ -27,7 +40,7 @@ export type GetFootballCountryByNameResponse = {
 };
 
 export type GetLiveFixturesResponse = {
-  get: "fixtures";
+  get: string;
   parameters: {
     live: string;
   };
@@ -52,4 +65,146 @@ export type GetLiveFixtureByIdResponse = {
     total: number;
   };
   response: liveFixturesById[];
+};
+
+export type GetLiveFixturesBySeasonAndLeagueResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveFixturesByLeagueAndSeason[];
+};
+
+export type GetLiveFixturesByRoundsResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveFixturesByRounds[];
+};
+
+export type GetLiveFixturesRoundsDatesByLeagueAndSeasonResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+    dates: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveFixturesRoundsDatesByLeagueAndSeason[];
+};
+
+export type GetLiveFixtureOfLeaguesByIdResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+    dates: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveFixturesOfLeaguesById[];
+};
+
+export type GetLiveFixtureOfLeaguesByNameResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+    dates: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveFixturesOfLeaguesByName[];
+};
+
+export type GetLiveFixturesOfLeaguesByCountryResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+    dates: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveFixtureOfLeaguesByCountry[];
+};
+
+export type GetLiveFixturesLeaguesBySeasonResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+    dates: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveFixturesLeaguesBySeason[];
+};
+
+export type SearchLiveFixturesResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+    dates: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: searchLiveFixtureLeagues[];
+};
+
+export type GetLiveCurrentFixturesLeaguesResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+    dates: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveCurrentFixtureLeagues[];
 };

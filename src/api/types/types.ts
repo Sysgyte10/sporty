@@ -247,3 +247,333 @@ export type liveFixturesById = {
     }[];
   }[];
 };
+
+export type liveFixturesByLeagueAndSeason = {
+  fixture: {
+    id: number;
+    referee: string;
+    timezone: string;
+    date: string; // ISO string
+    timestamp: number;
+    periods: {
+      first: number;
+      second: number;
+    };
+    venue: {
+      id: number;
+      name: string;
+      city: string;
+    };
+    status: {
+      long: string;
+      short: string;
+      elapsed: number;
+      extra: number | null;
+    };
+  };
+  league: {
+    id: number;
+    name: string;
+    country: string;
+    logo: string;
+    flag: string;
+    season: number;
+    round: string;
+    standings: boolean;
+  };
+  teams: {
+    home: {
+      id: number;
+      name: string;
+      logo: string;
+      winner: boolean;
+    };
+    away: {
+      id: number;
+      name: string;
+      logo: string;
+      winner: boolean;
+    };
+  };
+  goals: {
+    home: number;
+    away: number;
+  };
+  score: {
+    halftime: {
+      home: number;
+      away: number;
+    };
+    fulltime: {
+      home: number;
+      away: number;
+    };
+    extratime: {
+      home: number | null;
+      away: number | null;
+    };
+    penalty: {
+      home: number | null;
+      away: number | null;
+    };
+  };
+};
+
+export type liveFixturesByRounds = string[];
+
+export type liveFixturesRoundsDatesByLeagueAndSeason = {
+  round: string;
+  dates: string[];
+};
+
+export type liveFixturesOfLeaguesById = {
+  league: {
+    id: number;
+    name: string;
+    country: string | null;
+    logo: string;
+    flag: string | null;
+    season: number;
+    round: string | null;
+    standings: boolean;
+  };
+  country: {
+    name: string;
+    code: string | null;
+    flag: string | null;
+  };
+  seasons: {
+    year: number;
+    start: string; // ISO date string
+    end: string; // ISO date string
+    current: boolean;
+    coverage: {
+      fixtures: {
+        events: boolean;
+        lineups: boolean;
+        statistics_fixtures: boolean;
+        statistics_players: boolean;
+      };
+      standings: boolean;
+      players: boolean;
+      top_scorers: boolean;
+      top_assists: boolean;
+      top_cards: boolean;
+      injuries: boolean;
+      predictions: boolean;
+      odds: boolean;
+    };
+  }[];
+};
+
+export type liveFixturesOfLeaguesByName = {
+  league: {
+    id: number;
+    name: string;
+    country: string | null;
+    logo: string;
+    flag: string | null;
+    season: number;
+    round: string | null;
+    standings: boolean;
+  };
+  country: {
+    name: string;
+    code: string | null;
+    flag: string | null;
+  };
+  seasons: {
+    year: number;
+    start: string; // ISO date string
+    end: string; // ISO date string
+    current: boolean;
+    coverage: {
+      fixtures: {
+        events: boolean;
+        lineups: boolean;
+        statistics_fixtures: boolean;
+        statistics_players: boolean;
+      };
+      standings: boolean;
+      players: boolean;
+      top_scorers: boolean;
+      top_assists: boolean;
+      top_cards: boolean;
+      injuries: boolean;
+      predictions: boolean;
+      odds: boolean;
+    };
+  }[];
+};
+
+export type liveFixtureOfLeaguesByCountry = {
+  league: {
+    id: number;
+    name: string;
+    country: string | null;
+    logo: string;
+    flag: string | null;
+    season: number;
+    round: string | null;
+    standings: boolean;
+  };
+  country: {
+    name: string;
+    code: string | null;
+    flag: string | null;
+  };
+  seasons: {
+    year: number;
+    start: string; // ISO date string
+    end: string; // ISO date string
+    current: boolean;
+    coverage: {
+      fixtures: {
+        events: boolean;
+        lineups: boolean;
+        statistics_fixtures: boolean;
+        statistics_players: boolean;
+      };
+      standings: boolean;
+      players: boolean;
+      top_scorers: boolean;
+      top_assists: boolean;
+      top_cards: boolean;
+      injuries: boolean;
+      predictions: boolean;
+      odds: boolean;
+    };
+  }[];
+};
+
+export type liveFixturesLeaguesBySeason = {
+  league: {
+    id: number;
+    name: string;
+    type: "League" | "Cup" | string;
+    logo: string;
+  };
+  country: {
+    id: number;
+    name: string;
+    code: string | null;
+    codeISO_2: string | null;
+    codeISO_3: string | null;
+    isCountryOfPresence: boolean;
+    createdOn: string; // ISO date-time
+    createdBy: string | null;
+    isDeleted: boolean;
+    modifiedOn: string | null;
+    modifiedBy: string | null;
+  };
+  seasons: {
+    year: number;
+    start: string; // ISO date string
+    end: string; // ISO date string
+    current: boolean;
+    coverage: {
+      fixtures: {
+        events: boolean;
+        lineups: boolean;
+        statistics_fixtures: boolean;
+        statistics_players: boolean;
+      };
+      standings: boolean;
+      players: boolean;
+      top_scorers: boolean;
+      top_assists: boolean;
+      top_cards: boolean;
+      injuries: boolean;
+      predictions: boolean;
+      odds: boolean;
+    };
+  }[];
+};
+
+export type searchLiveFixtureLeagues = {
+  league: {
+    id: number;
+    name: string;
+    type: "League" | "Cup" | string;
+    logo: string;
+  };
+  country: {
+    id: number;
+    name: string;
+    code: string | null;
+    codeISO_2: string | null;
+    codeISO_3: string | null;
+    isCountryOfPresence: boolean;
+    createdOn: string; // ISO datetime
+    createdBy: string | null;
+    isDeleted: boolean;
+    modifiedOn: string | null;
+    modifiedBy: string | null;
+  };
+  seasons: {
+    year: number;
+    start: string; // ISO date
+    end: string; // ISO date
+    current: boolean;
+    coverage: {
+      fixtures: {
+        events: boolean;
+        lineups: boolean;
+        statistics_fixtures: boolean;
+        statistics_players: boolean;
+      };
+      standings: boolean;
+      players: boolean;
+      top_scorers: boolean;
+      top_assists: boolean;
+      top_cards: boolean;
+      injuries: boolean;
+      predictions: boolean;
+      odds: boolean;
+    };
+  }[];
+};
+
+export type liveCurrentFixtureLeagues = {
+  league: {
+    id: number;
+    name: string;
+    type: "League" | "Cup" | string;
+    logo: string;
+  };
+  country: {
+    id: number;
+    name: string;
+    code: string | null;
+    codeISO_2: string | null;
+    codeISO_3: string | null;
+    isCountryOfPresence: boolean;
+    createdOn: string; // ISO datetime
+    createdBy: string | null;
+    isDeleted: boolean;
+    modifiedOn: string | null;
+    modifiedBy: string | null;
+  };
+  seasons: {
+    year: number;
+    start: string; // ISO date
+    end: string; // ISO date
+    current: boolean;
+    coverage: {
+      fixtures: {
+        events: boolean;
+        lineups: boolean;
+        statistics_fixtures: boolean;
+        statistics_players: boolean;
+      };
+      standings: boolean;
+      players: boolean;
+      top_scorers: boolean;
+      top_assists: boolean;
+      top_cards: boolean;
+      injuries: boolean;
+      predictions: boolean;
+      odds: boolean;
+    };
+  }[];
+};
