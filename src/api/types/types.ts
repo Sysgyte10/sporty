@@ -577,3 +577,31 @@ export type liveCurrentFixtureLeagues = {
     };
   }[];
 };
+
+export type teamsById = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+    winner: null;
+  };
+  venue: {
+    id: number;
+    name: string;
+    city: string;
+  };
+};
+
+export type teamsByName = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+    winner: null;
+  };
+  venue: {
+    id: number;
+    name: string;
+    city: string;
+  };
+};

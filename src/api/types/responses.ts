@@ -11,6 +11,8 @@ import {
   liveFixturesOfLeaguesByName,
   liveFixturesRoundsDatesByLeagueAndSeason,
   searchLiveFixtureLeagues,
+  teamsById,
+  teamsByName,
 } from "./types";
 
 export type GetFootballCountryResponse = {
@@ -207,4 +209,32 @@ export type GetLiveCurrentFixturesLeaguesResponse = {
     total: number;
   };
   response: liveCurrentFixtureLeagues[];
+};
+
+export type GetTeamsByIdResponse = {
+  get: string;
+  parameters: {
+    id: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsById[];
+};
+
+export type GetTeamsByNameResponse = {
+  get: string;
+  parameters: {
+    name: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsByName[];
 };

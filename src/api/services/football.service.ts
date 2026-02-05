@@ -11,6 +11,8 @@ import {
   GetLiveFixturesOfLeaguesByCountryResponse,
   GetLiveFixturesResponse,
   GetLiveFixturesRoundsDatesByLeagueAndSeasonResponse,
+  GetTeamsByIdResponse,
+  GetTeamsByNameResponse,
   SearchLiveFixturesResponse,
 } from "../types/responses";
 import {
@@ -26,6 +28,8 @@ import {
   liveFixturesOfLeaguesByName,
   liveFixturesRoundsDatesByLeagueAndSeason,
   searchLiveFixtureLeagues,
+  teamsById,
+  teamsByName,
 } from "../types/types";
 
 export const getListOfFootballCountries = async (): Promise<
@@ -234,6 +238,30 @@ export const getLiveCurrentFixtureLeague = async (): Promise<
     return responseData?.response ?? [];
   } catch (err) {
     console.error("Error fetching live fixtures by rounds", err);
+    return [];
+  }
+};
+
+//use id = 399
+export const getTeamsById = async (id: number): Promise<teamsById[]> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/ApiFootball/teams/${id}`);
+    const responseData: GetTeamsByIdResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams by id", err);
+    return [];
+  }
+};
+
+//use id = 399
+export const getTeamsByName = async (id: number): Promise<teamsByName[]> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/ApiFootball/teams/${id}`);
+    const responseData: GetTeamsByNameResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams by name", err);
     return [];
   }
 };
