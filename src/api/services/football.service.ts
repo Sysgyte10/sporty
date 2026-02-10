@@ -11,8 +11,15 @@ import {
   GetLiveFixturesOfLeaguesByCountryResponse,
   GetLiveFixturesResponse,
   GetLiveFixturesRoundsDatesByLeagueAndSeasonResponse,
+  GetStandingsByLeagueIdSeasonTeamIdResponse,
+  GetTeamsByCountryResponse,
   GetTeamsByIdResponse,
+  GetTeamsByLeagueAndSeasonResponse,
   GetTeamsByNameResponse,
+  GetTeamsByVenueResponse,
+  GetTeamsCountriesResponse,
+  GetTeamsSeasonsResponse,
+  GetVenuesByIdResponse,
   SearchLiveFixturesResponse,
 } from "../types/responses";
 import {
@@ -28,8 +35,14 @@ import {
   liveFixturesOfLeaguesByName,
   liveFixturesRoundsDatesByLeagueAndSeason,
   searchLiveFixtureLeagues,
+  standingsByLeagueIdSeasonTeamId,
   teamsById,
+  teamsByLeagueAndSeason,
   teamsByName,
+  teamsByVenue,
+  teamsCountries,
+  teamsSeasons,
+  venuesById,
 } from "../types/types";
 
 export const getListOfFootballCountries = async (): Promise<
@@ -262,6 +275,118 @@ export const getTeamsByName = async (id: number): Promise<teamsByName[]> => {
     return responseData?.response ?? [];
   } catch (err: any) {
     console.error("Error fetching teams by name", err);
+    return [];
+  }
+};
+
+//use league = 39 and season = 2019 for test purposes
+export const getTeamsByLeagueAndSeason = async (
+  league: number,
+  season: number,
+): Promise<teamsByLeagueAndSeason[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/teams/by-league-season?league=${league}&season=${season}`,
+    );
+    const responseData: GetTeamsByLeagueAndSeasonResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams by league and season", err);
+    return [];
+  }
+};
+
+//use country = Nigeria for test purposes
+export const getTeamsByCountry = async (
+  country: string,
+): Promise<teamsByLeagueAndSeason[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/teams/by-country?country=${country}`,
+    );
+    const responseData: GetTeamsByCountryResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams by country", err);
+    return [];
+  }
+};
+
+//use venueId = 3909 for test purposes
+export const getTeamsByVenue = async (
+  venueId: number,
+): Promise<teamsByVenue[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/teams/by-venue?venueId=${venueId}`,
+    );
+    const responseData: GetTeamsByVenueResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams by venue", err);
+    return [];
+  }
+};
+
+//use teamId = 3909 for test purposes
+export const getTeamsSeasons = async (
+  teamId: number,
+): Promise<teamsSeasons[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/teams/seasons?teamId=${teamId}`,
+    );
+    const responseData: GetTeamsSeasonsResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams seasons", err);
+    return [];
+  }
+};
+
+export const getTeamsCountries = async (): Promise<teamsCountries[]> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/ApiFootball/teams/countries`);
+    const responseData: GetTeamsCountriesResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams countries", err);
+    return [];
+  }
+};
+
+//use venuesId = 3909 for test purposes
+export const getVenuesById = async (
+  venuesId: number,
+): Promise<venuesById[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/venues/${venuesId}`,
+    );
+    const responseData: GetVenuesByIdResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching venues by id", err);
+    return [];
+  }
+};
+
+//use leagueId = 6, seasonId = 2019 and teamId = 32 for test purposes
+export const getStandingsLeagueIdSeasonTeamId = async (
+  leagueId: number,
+  seasonId: number,
+  teamId: number,
+): Promise<standingsByLeagueIdSeasonTeamId[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/standings/by-league-season-teamid?league=${leagueId}&season=${seasonId}&teamId=${teamId}`,
+    );
+    const responseData: GetStandingsByLeagueIdSeasonTeamIdResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching venues by id", err);
     return [];
   }
 };

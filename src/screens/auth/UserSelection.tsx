@@ -41,7 +41,13 @@ import { useAuthStore } from "@src/api/store/auth";
 import { useFetchSportData } from "@src/api/services/apiTransformService";
 import {
   getLiveCurrentFixtureLeague,
+  getStandingsLeagueIdSeasonTeamId,
+  getTeamsByCountry,
   getTeamsById,
+  getTeamsByLeagueAndSeason,
+  getTeamsCountries,
+  getTeamsSeasons,
+  getVenuesById,
 } from "@src/api/services/football.service";
 
 export const UserSelection = ({
@@ -60,8 +66,8 @@ export const UserSelection = ({
   useEffect(() => {
     const initiateData = async () => {
       //fetching data or any other side effects can be handled here
-      await getTeamsById(399).then((data) => {
-        console.log("Fetched teams by id:", data);
+      await getStandingsLeagueIdSeasonTeamId(6, 2019, 32).then((data) => {
+        console.log("Fetched standings by league id season team id:", data);
       });
     };
     initiateData();

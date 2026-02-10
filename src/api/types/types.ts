@@ -605,3 +605,115 @@ export type teamsByName = {
     city: string;
   };
 };
+
+export type teamsByLeagueAndSeason = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+    winner: boolean | null;
+  };
+  venue: {
+    id: number;
+    name: string;
+    city: string;
+  };
+};
+
+export type teamsByCountry = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+    winner: null;
+  };
+  venue: {
+    id: number;
+    name: string;
+    city: string;
+  };
+};
+
+export type teamsByVenue = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+    winner: null;
+  };
+  venue: {
+    id: number;
+    name: string;
+    city: string;
+  };
+};
+
+export type teamsSeasons = string;
+
+export type teamsCountries = {
+  name: string;
+  code: string | null;
+  flag: string | null;
+};
+
+export type venuesById = {
+  id: number;
+  name: string;
+  city: string;
+};
+
+export type standingsByLeagueIdSeasonTeamId = {
+  league: {
+    id: number;
+    name: string;
+    country: string;
+    logo: string;
+    flag: string | null;
+    season: number;
+    standings: {
+      rank: number;
+      team: {
+        id: number;
+        name: string;
+        logo: string;
+      };
+      points: number;
+      goalsDiff: number;
+      group: string;
+      form: string | null;
+      status: string | null;
+      description: string | null;
+      all: {
+        played: number;
+        win: number;
+        draw: number;
+        lose: number;
+        goals: {
+          for: number;
+          against: number;
+        };
+      };
+      home: {
+        played: number;
+        win: number;
+        draw: number;
+        lose: number;
+        goals: {
+          for: number;
+          against: number;
+        };
+      };
+      away: {
+        played: number;
+        win: number;
+        draw: number;
+        lose: number;
+        goals: {
+          for: number;
+          against: number;
+        };
+      };
+      update: string;
+    }[][];
+  };
+};

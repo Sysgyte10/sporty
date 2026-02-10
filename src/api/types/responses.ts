@@ -11,8 +11,15 @@ import {
   liveFixturesOfLeaguesByName,
   liveFixturesRoundsDatesByLeagueAndSeason,
   searchLiveFixtureLeagues,
+  standingsByLeagueIdSeasonTeamId,
+  teamsByCountry,
   teamsById,
+  teamsByLeagueAndSeason,
   teamsByName,
+  teamsByVenue,
+  teamsCountries,
+  teamsSeasons,
+  venuesById,
 } from "./types";
 
 export type GetFootballCountryResponse = {
@@ -237,4 +244,101 @@ export type GetTeamsByNameResponse = {
     total: number;
   };
   response: teamsByName[];
+};
+
+export type GetTeamsByLeagueAndSeasonResponse = {
+  get: string;
+  parameters: {
+    id: null;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsByLeagueAndSeason[];
+};
+
+export type GetTeamsByCountryResponse = {
+  get: string;
+  parameters: {
+    id: null;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsByCountry[];
+};
+
+export type GetTeamsByVenueResponse = {
+  get: string;
+  parameters: {
+    id: null;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsByVenue[];
+};
+
+export type GetTeamsSeasonsResponse = {
+  get: string;
+  parameters: {
+    team: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsSeasons[];
+};
+
+export type GetTeamsCountriesResponse = {
+  get: string;
+  parameters: unknown[];
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsCountries[];
+};
+
+export type GetVenuesByIdResponse = {
+  get: string;
+  parameters: {
+    id: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: venuesById[];
+};
+
+export type GetStandingsByLeagueIdSeasonTeamIdResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: standingsByLeagueIdSeasonTeamId[];
 };
