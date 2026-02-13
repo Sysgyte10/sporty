@@ -39,16 +39,7 @@ import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 import { AppHeader } from "../AppHeader";
 import { useAuthStore } from "@src/api/store/auth";
 import { useFetchSportData } from "@src/api/services/apiTransformService";
-import {
-  getLiveCurrentFixtureLeague,
-  getStandingsLeagueIdSeasonTeamId,
-  getTeamsByCountry,
-  getTeamsById,
-  getTeamsByLeagueAndSeason,
-  getTeamsCountries,
-  getTeamsSeasons,
-  getVenuesById,
-} from "@src/api/services/football.service";
+import { getTeamsPlayerSquad } from "@src/api/services/football.service";
 
 export const UserSelection = ({
   navigation,
@@ -66,8 +57,8 @@ export const UserSelection = ({
   useEffect(() => {
     const initiateData = async () => {
       //fetching data or any other side effects can be handled here
-      await getStandingsLeagueIdSeasonTeamId(6, 2019, 32).then((data) => {
-        console.log("Fetched standings by league id season team id:", data);
+      await getTeamsPlayerSquad(39).then((data) => {
+        console.log("Fetched team player squad", data);
       });
     };
     initiateData();

@@ -1,6 +1,7 @@
 import { BASE_URL } from "../endpoint/endpoint";
 import {
   GetFootballCountryResponse,
+  GetFootballPlayersProfileByIdResponse,
   GetLiveCurrentFixturesLeaguesResponse,
   GetLiveFixtureByIdResponse,
   GetLiveFixtureOfLeaguesByIdResponse,
@@ -11,19 +12,23 @@ import {
   GetLiveFixturesOfLeaguesByCountryResponse,
   GetLiveFixturesResponse,
   GetLiveFixturesRoundsDatesByLeagueAndSeasonResponse,
+  GetPlayerSeasonsResponse,
   GetStandingsByLeagueIdSeasonTeamIdResponse,
+  GetStandingsByTeamResponse,
   GetTeamsByCountryResponse,
   GetTeamsByIdResponse,
   GetTeamsByLeagueAndSeasonResponse,
   GetTeamsByNameResponse,
   GetTeamsByVenueResponse,
   GetTeamsCountriesResponse,
+  GetTeamsPlayerSquadResponse,
   GetTeamsSeasonsResponse,
   GetVenuesByIdResponse,
   SearchLiveFixturesResponse,
 } from "../types/responses";
 import {
   footballCountries,
+  footballPlayersProfileById,
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
   liveFixtures,
@@ -34,13 +39,16 @@ import {
   liveFixturesOfLeaguesById,
   liveFixturesOfLeaguesByName,
   liveFixturesRoundsDatesByLeagueAndSeason,
+  playerSeasons,
   searchLiveFixtureLeagues,
   standingsByLeagueIdSeasonTeamId,
+  standingsByTeam,
   teamsById,
   teamsByLeagueAndSeason,
   teamsByName,
   teamsByVenue,
   teamsCountries,
+  teamsPlayerSquad,
   teamsSeasons,
   venuesById,
 } from "../types/types";
@@ -387,6 +395,66 @@ export const getStandingsLeagueIdSeasonTeamId = async (
     return responseData?.response ?? [];
   } catch (err: any) {
     console.error("Error fetching venues by id", err);
+    return [];
+  }
+};
+
+export const getStandingsByTeam = async (
+  teamId: number,
+  season: number,
+): Promise<standingsByTeam[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/standings/by-team?teamId=${teamId}&season=${season}`,
+    );
+    const responseData: GetStandingsByTeamResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching standings by team", err);
+    return [];
+  }
+};
+
+export const getPlayersSeasons = async (): Promise<playerSeasons[]> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/ApiFootball/players/seasons`);
+    const responseData: GetPlayerSeasonsResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching players seasons", err);
+    return [];
+  }
+};
+
+//use playerId = 249239 for test purposes
+export const getFootballPlayersProfileById = async (
+  playerId: number,
+): Promise<footballPlayersProfileById[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/profile/${playerId}`,
+    );
+    const responseData: GetFootballPlayersProfileByIdResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching players profile by id", err);
+    return [];
+  }
+};
+
+//use teamdId = 19 for test purposes
+export const getTeamsPlayerSquad = async (
+  teamId: number,
+): Promise<teamsPlayerSquad[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/squads?teamId=${teamId}`,
+    );
+    const responseData: GetTeamsPlayerSquadResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams player squad", err);
     return [];
   }
 };

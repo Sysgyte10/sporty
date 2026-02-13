@@ -1,5 +1,6 @@
 import {
   footballCountries,
+  footballPlayersProfileById,
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
   liveFixtures,
@@ -10,14 +11,17 @@ import {
   liveFixturesOfLeaguesById,
   liveFixturesOfLeaguesByName,
   liveFixturesRoundsDatesByLeagueAndSeason,
+  playerSeasons,
   searchLiveFixtureLeagues,
   standingsByLeagueIdSeasonTeamId,
+  standingsByTeam,
   teamsByCountry,
   teamsById,
   teamsByLeagueAndSeason,
   teamsByName,
   teamsByVenue,
   teamsCountries,
+  teamsPlayerSquad,
   teamsSeasons,
   venuesById,
 } from "./types";
@@ -341,4 +345,59 @@ export type GetStandingsByLeagueIdSeasonTeamIdResponse = {
     total: number;
   };
   response: standingsByLeagueIdSeasonTeamId[];
+};
+
+export type GetStandingsByTeamResponse = {
+  get: string;
+  parameters: {
+    league: null;
+    season: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: standingsByTeam[];
+};
+
+export type GetPlayerSeasonsResponse = {
+  get: string;
+  parameters: unknown[];
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: playerSeasons[];
+};
+
+export type GetFootballPlayersProfileByIdResponse = {
+  get: string;
+  parameters: {
+    player: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: footballPlayersProfileById[];
+};
+
+export type GetTeamsPlayerSquadResponse = {
+  get: string;
+  parameters: {
+    team: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsPlayerSquad[];
 };

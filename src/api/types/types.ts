@@ -1,3 +1,9 @@
+export type PlayerPosition =
+  | "Goalkeeper"
+  | "Defender"
+  | "Midfielder"
+  | "Attacker";
+
 export type footballCountries = {
   name: string;
   code: string;
@@ -716,4 +722,97 @@ export type standingsByLeagueIdSeasonTeamId = {
       update: string;
     }[][];
   };
+};
+
+export type standingsByTeam = {
+  id: number;
+  name: string;
+  country: string;
+  logo: string;
+  flag: string | null;
+  season: number;
+  standings: {
+    rank: number;
+    team: {
+      id: number;
+      name: string;
+      logo: string;
+    };
+    points: number;
+    goalsDiff: number;
+    group: string;
+    form: string | null;
+    status: string | null;
+    description: string | null;
+    all: {
+      played: number;
+      win: number;
+      draw: number;
+      lose: number;
+      goals: {
+        for: number;
+        against: number;
+      };
+    };
+    home: {
+      played: number;
+      win: number;
+      draw: number;
+      lose: number;
+      goals: {
+        for: number;
+        against: number;
+      };
+    };
+    away: {
+      played: number;
+      win: number;
+      draw: number;
+      lose: number;
+      goals: {
+        for: number;
+        against: number;
+      };
+    };
+    update: string;
+  }[][];
+};
+
+export type playerSeasons = string[];
+
+export type footballPlayersProfileById = {
+  player: {
+    id: number;
+    name: string;
+    firstname: string;
+    lastname: string;
+    age: number;
+    birth: {
+      date: string;
+      place: string | null;
+      country: string;
+    };
+    nationality: string;
+    height: number | null;
+    weight: number | null;
+    number: number | null;
+    position: string;
+    photo: string;
+  };
+};
+
+export type teamsPlayerSquad = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+  };
+  players: {
+    id: number;
+    name: string;
+    age: number;
+    number: number;
+    position: PlayerPosition;
+    photo: string;
+  }[];
 };
