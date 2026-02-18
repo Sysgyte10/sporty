@@ -12,6 +12,9 @@ import {
   liveFixturesOfLeaguesByName,
   liveFixturesRoundsDatesByLeagueAndSeason,
   playerSeasons,
+  playerSidelinedByPlayerId,
+  playersSidelinedBulkByPlayerId,
+  playersTrophiesByPlayersId,
   searchLiveFixtureLeagues,
   standingsByLeagueIdSeasonTeamId,
   standingsByTeam,
@@ -21,8 +24,10 @@ import {
   teamsByName,
   teamsByVenue,
   teamsCountries,
-  teamsPlayerSquad,
+  teamsPlayerSquadByPlayerId,
+  teamsPlayerSquadByTeamId,
   teamsSeasons,
+  transfersPlayerByPlayerId,
   venuesById,
 } from "./types";
 
@@ -399,5 +404,75 @@ export type GetTeamsPlayerSquadResponse = {
     current: number;
     total: number;
   };
-  response: teamsPlayerSquad[];
+  response: teamsPlayerSquadByTeamId[];
+};
+
+export type GetTeamsPlayerSquadByPlayerIdResponse = {
+  get: string;
+  parameters: {
+    player: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamsPlayerSquadByPlayerId[];
+};
+
+export type GetTransfersPlayerByPlayerIdResponse = {
+  get: string;
+  parameters: {
+    player: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: transfersPlayerByPlayerId[];
+};
+
+export type GetPlayerSidelinedByPlayerIdResponse = {
+  get: string;
+  parameters: {
+    player: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: playerSidelinedByPlayerId[];
+};
+
+export type GetPlayersSidelinedBulkByPlayerIdResponse = {
+  get: string;
+  parameters: {
+    players: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: playersSidelinedBulkByPlayerId[];
+};
+
+export type GetPlayerTrophiesByPlayerIdResponse = {
+  get: string;
+  parameters: {
+    player: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: playersTrophiesByPlayersId[];
 };

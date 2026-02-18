@@ -801,7 +801,7 @@ export type footballPlayersProfileById = {
   };
 };
 
-export type teamsPlayerSquad = {
+export type teamsPlayerSquadByTeamId = {
   team: {
     id: number;
     name: string;
@@ -816,3 +816,13 @@ export type teamsPlayerSquad = {
     photo: string;
   }[];
 };
+
+export type teamsPlayerSquadByPlayerId = any;
+
+export type transfersPlayerByPlayerId = any;
+
+export type playerSidelinedByPlayerId = any;
+
+export type playersSidelinedBulkByPlayerId = any;
+
+export type playersTrophiesByPlayersId = any;

@@ -13,6 +13,9 @@ import {
   GetLiveFixturesResponse,
   GetLiveFixturesRoundsDatesByLeagueAndSeasonResponse,
   GetPlayerSeasonsResponse,
+  GetPlayerSidelinedByPlayerIdResponse,
+  GetPlayersSidelinedBulkByPlayerIdResponse,
+  GetPlayerTrophiesByPlayerIdResponse,
   GetStandingsByLeagueIdSeasonTeamIdResponse,
   GetStandingsByTeamResponse,
   GetTeamsByCountryResponse,
@@ -21,8 +24,10 @@ import {
   GetTeamsByNameResponse,
   GetTeamsByVenueResponse,
   GetTeamsCountriesResponse,
+  GetTeamsPlayerSquadByPlayerIdResponse,
   GetTeamsPlayerSquadResponse,
   GetTeamsSeasonsResponse,
+  GetTransfersPlayerByPlayerIdResponse,
   GetVenuesByIdResponse,
   SearchLiveFixturesResponse,
 } from "../types/responses";
@@ -40,6 +45,9 @@ import {
   liveFixturesOfLeaguesByName,
   liveFixturesRoundsDatesByLeagueAndSeason,
   playerSeasons,
+  playerSidelinedByPlayerId,
+  playersSidelinedBulkByPlayerId,
+  playersTrophiesByPlayersId,
   searchLiveFixtureLeagues,
   standingsByLeagueIdSeasonTeamId,
   standingsByTeam,
@@ -48,8 +56,10 @@ import {
   teamsByName,
   teamsByVenue,
   teamsCountries,
-  teamsPlayerSquad,
+  teamsPlayerSquadByPlayerId,
+  teamsPlayerSquadByTeamId,
   teamsSeasons,
+  transfersPlayerByPlayerId,
   venuesById,
 } from "../types/types";
 
@@ -427,7 +437,7 @@ export const getPlayersSeasons = async (): Promise<playerSeasons[]> => {
 };
 
 //use playerId = 249239 for test purposes
-export const getFootballPlayersProfileById = async (
+export const getFootballPlayersProfileByPlayerId = async (
   playerId: number,
 ): Promise<footballPlayersProfileById[]> => {
   try {
@@ -444,9 +454,9 @@ export const getFootballPlayersProfileById = async (
 };
 
 //use teamdId = 19 for test purposes
-export const getTeamsPlayerSquad = async (
+export const getTeamsPlayerSquadByTeamId = async (
   teamId: number,
-): Promise<teamsPlayerSquad[]> => {
+): Promise<teamsPlayerSquadByTeamId[]> => {
   try {
     const response = await fetch(
       `${BASE_URL}/api/ApiFootball/players/squads?teamId=${teamId}`,
@@ -455,6 +465,91 @@ export const getTeamsPlayerSquad = async (
     return responseData?.response ?? [];
   } catch (err: any) {
     console.error("Error fetching teams player squad", err);
+    return [];
+  }
+};
+
+//use playerId = 249239 for test purposes
+export const getTeamsPlayerSquadByPlayerId = async (
+  playerId: number,
+): Promise<teamsPlayerSquadByPlayerId[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}api/ApiFootball/players/squads/by-player?playerId=${playerId}`,
+    );
+    const responseData: GetTeamsPlayerSquadByPlayerIdResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching teams player squad by player id", err);
+    return [];
+  }
+};
+
+//use playerId = 249239 for test purposes
+export const getTransfersPlayerByPlayerId = async (
+  playerId: number,
+): Promise<transfersPlayerByPlayerId[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/transfers/player?playerId=${playerId}`,
+    );
+    const responseData: GetTransfersPlayerByPlayerIdResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching transfers by player id", err);
+    return [];
+  }
+};
+
+//use playerId = 249239 for test purposes
+export const getPlayersSidelinedByPlayerId = async (
+  playerId: number,
+): Promise<playerSidelinedByPlayerId[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/sidelined?playerId=${playerId}`,
+    );
+    const responseData: GetPlayerSidelinedByPlayerIdResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching players sidelined by player id", err);
+    return [];
+  }
+};
+
+//use playerId = 249239 for test purposes
+export const getPlayersSidelinedBulkByPlayerId = async (
+  playerId: number,
+): Promise<playersSidelinedBulkByPlayerId[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/sidelined/bulk?players=${playerId}`,
+    );
+    const responseData: GetPlayersSidelinedBulkByPlayerIdResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching players sidelined bulk by player id", err);
+    return [];
+  }
+};
+
+//use playerId = 249239 for test purposes
+export const getPlayersTrophiesByPlayerId = async (
+  playerId: number,
+): Promise<playersTrophiesByPlayersId[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/${playerId}/trophies`,
+    );
+    const responseData: GetPlayerTrophiesByPlayerIdResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching players trophies by player id", err);
     return [];
   }
 };
