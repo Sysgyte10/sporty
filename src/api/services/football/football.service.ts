@@ -1,4 +1,4 @@
-import { BASE_URL } from "../endpoint/endpoint";
+import { BASE_URL } from "../../endpoint/endpoint";
 import {
   GetFootballCountryResponse,
   GetFootballPlayersProfileByIdResponse,
@@ -6,6 +6,7 @@ import {
   GetLiveFixtureByIdResponse,
   GetLiveFixtureOfLeaguesByIdResponse,
   GetLiveFixtureOfLeaguesByNameResponse,
+  GetLiveFixturesByDateResponse,
   GetLiveFixturesByRoundsResponse,
   GetLiveFixturesBySeasonAndLeagueResponse,
   GetLiveFixturesLeaguesBySeasonResponse,
@@ -30,13 +31,14 @@ import {
   GetTransfersPlayerByPlayerIdResponse,
   GetVenuesByIdResponse,
   SearchLiveFixturesResponse,
-} from "../types/responses";
+} from "../../types/responses";
 import {
   footballCountries,
   footballPlayersProfileById,
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
   liveFixtures,
+  liveFixturesByDate,
   liveFixturesById,
   liveFixturesByLeagueAndSeason,
   liveFixturesByRounds,
@@ -61,7 +63,7 @@ import {
   teamsSeasons,
   transfersPlayerByPlayerId,
   venuesById,
-} from "../types/types";
+} from "../../types/types";
 
 export const getListOfFootballCountries = async (): Promise<
   footballCountries[]
@@ -102,6 +104,21 @@ export const getLiveFixtures = async (live: "all"): Promise<liveFixtures[]> => {
     return responseData?.response ?? [];
   } catch (err) {
     console.error("Error fetching live fixtures", err);
+    return [];
+  }
+};
+
+export const getLiveFixturesByDate = async (
+  date: string,
+): Promise<liveFixturesByDate[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/fixtures/by-date?date=${date}`,
+    );
+    const responseData: GetLiveFixturesByDateResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err) {
+    console.error("Error fetching live fixtures by date", err);
     return [];
   }
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AppWrapper } from "../AppWrapper";
 import { colors } from "@src/resources/color/color";
 import { AuthScreenProps } from "@src/router/types";
@@ -39,7 +39,6 @@ import { returnFormTitleNDesc } from "@src/helper/ui-utils";
 import { AppHeader } from "../AppHeader";
 import { useAuthStore } from "@src/api/store/auth";
 import { useFetchSportData } from "@src/api/services/apiTransformService";
-import { getTeamsPlayerSquad } from "@src/api/services/football.service";
 
 export const UserSelection = ({
   navigation,
@@ -53,16 +52,6 @@ export const UserSelection = ({
   const { setIsAuthenticated } = useAuthStore();
   const { setGoToPredictions } = useGoToPredictions();
   const { hasCreatedAccount } = useAccountCreatedStore();
-
-  useEffect(() => {
-    const initiateData = async () => {
-      //fetching data or any other side effects can be handled here
-      await getTeamsPlayerSquad(39).then((data) => {
-        console.log("Fetched team player squad", data);
-      });
-    };
-    initiateData();
-  });
 
   //user selection step_1 form control
   const {

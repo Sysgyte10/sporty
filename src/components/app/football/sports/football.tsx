@@ -1,6 +1,6 @@
 import { FixtureCard } from "@src/cards";
 import { moderateScale } from "@src/resources/responsiveness";
-import React, { useEffect } from "react";
+import React from "react";
 import { FlatList, View } from "react-native";
 import { useFixturesStore } from "store";
 
@@ -14,8 +14,6 @@ export const FootballSport: React.FC<IFootBallProps> = ({
   onPressMatchCard,
 }) => {
   const { fixtures } = useFixturesStore();
-
-  console.log(fixtures);
 
   return (
     <>

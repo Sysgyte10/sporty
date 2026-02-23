@@ -28,7 +28,7 @@ export const APILogger = (
   status: number,
   success: boolean,
   code: string,
-  message: string
+  message: string,
 ) => {
   if (__DEV__) {
     console.log("🚀 Response Log:");
@@ -61,4 +61,8 @@ export const truncateText = (text: string, length = 10): string => {
 
   const limit = Math.max(0, length);
   return text.length > limit ? `${text.substring(0, limit).trim()}...` : text;
+};
+
+export const getToday = () => {
+  return new Date().toISOString().split("T")[0];
 };

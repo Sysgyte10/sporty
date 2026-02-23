@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppWrapper } from "../../AppWrapper";
 import { colors } from "@src/resources/color/color";
 import {
@@ -27,21 +27,41 @@ import {
   IceHockey,
   TennisSport,
 } from "@src/components/app/football/sports";
-import { useActiveBottomTabStore } from "store";
+import { useActiveBottomTabStore, useFixturesStore } from "store";
 import { AdComponent, CustomText } from "@src/components/shared";
 import { useAuthStore } from "@src/api/store/auth";
 import { useGoToPredictions } from "@src/hooks";
+import { getLiveFixturesByDate } from "@src/api/services/football/football.service";
+import { transformFixturesToLeagues } from "@src/api/services/football/football.transformer";
+import { getToday } from "@src/helper/utils";
 
 export const Football = ({
   navigation,
 }: RootStackScreenProps<appScreenNames.FOOTBALL>) => {
   const [selectedSport, setSelectedSport] = useState<string>(sportyTypes[0]);
   const [selectedLineList, setSelectedLineList] = useState<string>(
-    footBallWatches[0]
+    footBallWatches[0],
   );
   const { setTabName } = useActiveBottomTabStore();
   const { setIsAuthenticated } = useAuthStore();
   const { setGoToPredictions } = useGoToPredictions();
+
+  const { setFixtures } = useFixturesStore();
+  const [selectedDate, setSelectedData] = useState<string>("");
+
+  useEffect(() => {
+    const initiateData = async () => {
+      const dateToUse = selectedDate || getToday();
+
+      const data = await getLiveFixturesByDate(dateToUse);
+      const transformed = transformFixturesToLeagues(data);
+
+      setFixtures(transformed);
+    };
+
+    initiateData();
+  }, [selectedDate]);
+
   return (
     <>
       <AppWrapper safeArea bgColor={colors.black}>
@@ -87,7 +107,11 @@ export const Football = ({
               selectedBtn={selectedLineList}
             />
           </View>
-          <DateSwitch />
+          <DateSwitch
+            onDateChange={(dateVal) => {
+              setSelectedData(dateVal);
+            }}
+          />
           <AdComponent
             imgSrc={require("@src/assets/jpg/ad1.jpg")}
             imageFit='contain'
@@ -154,7 +178,7 @@ export const Football = ({
                     image: icon as ImageSourcePropType,
                     title: title as string,
                     desc: desc as string,
-                  }
+                  },
                 )
               }
               onPressMatchCard={() =>

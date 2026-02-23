@@ -4,6 +4,7 @@ import {
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
   liveFixtures,
+  liveFixturesByDate,
   liveFixturesById,
   liveFixturesByLeagueAndSeason,
   liveFixturesByRounds,
@@ -69,6 +70,20 @@ export type GetLiveFixturesResponse = {
     total: 1;
   };
   response: liveFixtures[];
+};
+
+export type GetLiveFixturesByDateResponse = {
+  get: string;
+  parameters: {
+    date: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: liveFixturesByDate[];
 };
 
 export type GetLiveFixtureByIdResponse = {

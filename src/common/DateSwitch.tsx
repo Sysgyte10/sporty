@@ -12,11 +12,15 @@ import { CustomButton, CustomText } from "@src/components/shared";
 import { colors } from "@src/resources/color/color";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 
-export const DateSwitch: React.FC = () => {
+interface IDateSwitchProps {
+  onDateChange?: (val: string) => void;
+}
+
+export const DateSwitch: React.FC<IDateSwitchProps> = ({ onDateChange }) => {
   const [calendarVisible, setCalendarVisible] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState<string>(
-    new Date().toISOString().split("T")[0] // today's date in YYYY-MM-DD
+    new Date().toISOString().split("T")[0], // today's date in YYYY-MM-DD
   );
 
   const getDaysInMonth = (year: number, month: number) => {
@@ -38,6 +42,7 @@ export const DateSwitch: React.FC = () => {
     }
 
     setSelectedDate(date.toISOString().split("T")[0]);
+    onDateChange?.(String(date.toISOString().split("T")[0]));
   };
 
   const onSubtract = () => {
@@ -55,6 +60,7 @@ export const DateSwitch: React.FC = () => {
     }
 
     setSelectedDate(date.toISOString().split("T")[0]);
+    onDateChange?.(String(date.toISOString().split("T")[0]));
   };
 
   const formattedDisplay = selectedDate
@@ -122,6 +128,7 @@ export const DateSwitch: React.FC = () => {
               <Calendar
                 onDayPress={(day) => {
                   setSelectedDate(day.dateString);
+                  onDateChange?.(day.dateString);
                 }}
                 style={{
                   borderRadius: 10,
