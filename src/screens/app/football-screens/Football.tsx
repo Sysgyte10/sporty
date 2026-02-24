@@ -14,7 +14,13 @@ import {
 } from "@src/navigation/navigation-names";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { ScrollContainer } from "../../ScrollContainer";
-import { ButtonLineList, ButtonList, DateSwitch } from "@src/common";
+import {
+  ButtonLineList,
+  ButtonList,
+  DateSwitch,
+  Loader,
+  SearchFilterModal,
+} from "@src/common";
 import { sportyTypes } from "@src/constants/user-selection-steps";
 import { FootBallHeader } from "@src/components/app/football";
 import { footBallWatches } from "@src/constants/football";
@@ -30,7 +36,7 @@ import {
 import { useActiveBottomTabStore, useFixturesStore } from "store";
 import { AdComponent, CustomText } from "@src/components/shared";
 import { useAuthStore } from "@src/api/store/auth";
-import { useGoToPredictions } from "@src/hooks";
+import { useFixtureSearch, useGoToPredictions } from "@src/hooks";
 import { getLiveFixturesByDate } from "@src/api/services/football/football.service";
 import { transformFixturesToLeagues } from "@src/api/services/football/football.transformer";
 import { getToday } from "@src/helper/utils";
@@ -42,21 +48,30 @@ export const Football = ({
   const [selectedLineList, setSelectedLineList] = useState<string>(
     footBallWatches[0],
   );
+  const [isSearchModalVisible, setIsSearchModalVisible] = useState(false);
   const { setTabName } = useActiveBottomTabStore();
   const { setIsAuthenticated } = useAuthStore();
   const { setGoToPredictions } = useGoToPredictions();
 
-  const { setFixtures } = useFixturesStore();
   const [selectedDate, setSelectedData] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const { setFixtures, fixtures } = useFixturesStore();
+  const { searchQuery, setSearchQuery, filteredFixtures, hasResults } =
+    useFixtureSearch(fixtures ?? []);
 
   useEffect(() => {
     const initiateData = async () => {
-      const dateToUse = selectedDate || getToday();
-
-      const data = await getLiveFixturesByDate(dateToUse);
-      const transformed = transformFixturesToLeagues(data);
-
-      setFixtures(transformed);
+      try {
+        setLoading(true);
+        const dateToUse = selectedDate || getToday();
+        const data = await getLiveFixturesByDate(dateToUse);
+        const transformed = transformFixturesToLeagues(data);
+        setFixtures(transformed);
+      } catch (err: any) {
+        console.log("Error", err);
+      } finally {
+        setLoading(false);
+      }
     };
 
     initiateData();
@@ -82,6 +97,7 @@ export const Football = ({
           title='RealSc⚽rZ'
           showSearchIcon
           showMenuIcon
+          onPressSearchIcon={() => setIsSearchModalVisible(true)}
           headerStyle={styles.header}
           onPressMenuIcon={() => navigation.navigate(appScreenNames.MORE)}
         />
@@ -117,112 +133,137 @@ export const Football = ({
             imageFit='contain'
             visible={true}
           />
-          {selectedSport === "Football" && (
-            <FootballSport
-              onPress={(fixtureId) =>
-                navigation.navigate(appScreenNames.FIXTURE_INFO, {
-                  fixtureId: fixtureId,
-                })
-              }
-              onPressMatchCard={() =>
-                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                  screen: appScreenNames.ONE_MATCH,
-                })
-              }
-            />
-          )}
+          {loading ? (
+            <View
+              style={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                width: "100%",
+                height: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "rgba(0,0,0,0.6)",
+              }}>
+              <Loader size='large' color={colors.purple} />
+            </View>
+          ) : (
+            <>
+              {selectedSport === "Football" && (
+                <FootballSport
+                  data={filteredFixtures}
+                  onPress={(fixtureId) =>
+                    navigation.navigate(appScreenNames.FIXTURE_INFO, {
+                      fixtureId: fixtureId,
+                    })
+                  }
+                  onPressMatchCard={() =>
+                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                      screen: appScreenNames.ONE_MATCH,
+                    })
+                  }
+                />
+              )}
 
-          {selectedSport === "Basketball" && (
-            <BasketballSport
-              onPress={(fixtureId, icon, title, desc) =>
-                navigation.navigate(appScreenNames.BASKETBALL_FIXTURE_INFO, {
-                  fixtureId: fixtureId,
-                  image: icon as ImageSourcePropType,
-                  title: title as string,
-                  desc: desc as string,
-                })
-              }
-              onPressMatchCard={() =>
-                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                  screen: appScreenNames.ONE_MATCH,
-                })
-              }
-            />
-          )}
+              {selectedSport === "Basketball" && (
+                <BasketballSport
+                  onPress={(fixtureId, icon, title, desc) =>
+                    navigation.navigate(
+                      appScreenNames.BASKETBALL_FIXTURE_INFO,
+                      {
+                        fixtureId: fixtureId,
+                        image: icon as ImageSourcePropType,
+                        title: title as string,
+                        desc: desc as string,
+                      },
+                    )
+                  }
+                  onPressMatchCard={() =>
+                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                      screen: appScreenNames.ONE_MATCH,
+                    })
+                  }
+                />
+              )}
 
-          {selectedSport === "Tennis" && (
-            <TennisSport
-              onPress={(fixtureId, icon, title, desc) =>
-                navigation.navigate(appScreenNames.TENNIS_FIXTURE_INFO, {
-                  fixtureId: fixtureId,
-                  image: icon as ImageSourcePropType,
-                  title: title as string,
-                  desc: desc as string,
-                })
-              }
-              onPressMatchCard={() =>
-                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                  screen: appScreenNames.ONE_MATCH,
-                })
-              }
-            />
-          )}
+              {selectedSport === "Tennis" && (
+                <TennisSport
+                  onPress={(fixtureId, icon, title, desc) =>
+                    navigation.navigate(appScreenNames.TENNIS_FIXTURE_INFO, {
+                      fixtureId: fixtureId,
+                      image: icon as ImageSourcePropType,
+                      title: title as string,
+                      desc: desc as string,
+                    })
+                  }
+                  onPressMatchCard={() =>
+                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                      screen: appScreenNames.ONE_MATCH,
+                    })
+                  }
+                />
+              )}
 
-          {selectedSport === "American Football" && (
-            <AmericanFootballSport
-              onPress={(fixtureId, icon, title, desc) =>
-                navigation.navigate(
-                  appScreenNames.AMERICAN_FOOTBALL_FIXTURE_INFO,
-                  {
-                    fixtureId: fixtureId,
-                    image: icon as ImageSourcePropType,
-                    title: title as string,
-                    desc: desc as string,
-                  },
-                )
-              }
-              onPressMatchCard={() =>
-                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                  screen: appScreenNames.ONE_MATCH,
-                })
-              }
-            />
-          )}
+              {selectedSport === "American Football" && (
+                <AmericanFootballSport
+                  onPress={(fixtureId, icon, title, desc) =>
+                    navigation.navigate(
+                      appScreenNames.AMERICAN_FOOTBALL_FIXTURE_INFO,
+                      {
+                        fixtureId: fixtureId,
+                        image: icon as ImageSourcePropType,
+                        title: title as string,
+                        desc: desc as string,
+                      },
+                    )
+                  }
+                  onPressMatchCard={() =>
+                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                      screen: appScreenNames.ONE_MATCH,
+                    })
+                  }
+                />
+              )}
 
-          {selectedSport === "Cricket" && (
-            <Cricket
-              onPress={(fixtureId, icon, title, desc) =>
-                navigation.navigate(appScreenNames.CRICKET_FIXTURE_INFO, {
-                  fixtureId: fixtureId,
-                  image: icon as ImageSourcePropType,
-                  title: title as string,
-                  desc: desc as string,
-                })
-              }
-              onPressMatchCard={() =>
-                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                  screen: appScreenNames.ONE_MATCH,
-                })
-              }
-            />
-          )}
+              {selectedSport === "Cricket" && (
+                <Cricket
+                  onPress={(fixtureId, icon, title, desc) =>
+                    navigation.navigate(appScreenNames.CRICKET_FIXTURE_INFO, {
+                      fixtureId: fixtureId,
+                      image: icon as ImageSourcePropType,
+                      title: title as string,
+                      desc: desc as string,
+                    })
+                  }
+                  onPressMatchCard={() =>
+                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                      screen: appScreenNames.ONE_MATCH,
+                    })
+                  }
+                />
+              )}
 
-          {selectedSport === "Ice Hockey" && (
-            <IceHockey
-              onPress={(fixtureId, icon, title, desc) =>
-                navigation.navigate(appScreenNames.ICE_HOCKEY_FIXTURE_INFO, {
-                  fixtureId: fixtureId,
-                  image: icon as ImageSourcePropType,
-                  title: title as string,
-                  desc: desc as string,
-                })
-              }
-              onPressMatchCard={() =>
-                navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                  screen: appScreenNames.ONE_MATCH,
-                })
-              }
-            />
+              {selectedSport === "Ice Hockey" && (
+                <IceHockey
+                  onPress={(fixtureId, icon, title, desc) =>
+                    navigation.navigate(
+                      appScreenNames.ICE_HOCKEY_FIXTURE_INFO,
+                      {
+                        fixtureId: fixtureId,
+                        image: icon as ImageSourcePropType,
+                        title: title as string,
+                        desc: desc as string,
+                      },
+                    )
+                  }
+                  onPressMatchCard={() =>
+                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                      screen: appScreenNames.ONE_MATCH,
+                    })
+                  }
+                />
+              )}
+            </>
           )}
           <View
             style={{
@@ -248,6 +289,13 @@ export const Football = ({
           }}
         />
       </View>
+      <SearchFilterModal
+        visible={isSearchModalVisible}
+        onClose={() => setIsSearchModalVisible(false)}
+        searchValue={searchQuery}
+        onSearchChange={setSearchQuery}
+        placeholder='Search fixtures...'
+      />
     </>
   );
 };

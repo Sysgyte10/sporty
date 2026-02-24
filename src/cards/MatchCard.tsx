@@ -77,7 +77,7 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
                       : club?.name}
                   </CustomText>
                 </View>
-                <CustomText type='regular' size={12} lightGrey>
+                <CustomText type='bold' size={12} white>
                   {truncateScoreText
                     ? truncateText(club?.score, truncLength)
                     : club?.score}

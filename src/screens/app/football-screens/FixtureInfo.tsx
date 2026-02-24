@@ -2,7 +2,7 @@ import { appScreenNames } from "@src/navigation";
 import { RootStackScreenProps } from "@src/router/types";
 import React, { useEffect, useState } from "react";
 import { AppWrapper } from "../../AppWrapper";
-import { Platform, StyleSheet, View } from "react-native";
+import { ImageSourcePropType, Platform, StyleSheet, View } from "react-native";
 import { colors } from "@src/resources/color/color";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { AppNavigationHeader } from "../../AppHeader";
@@ -32,6 +32,9 @@ import { StatusBar } from "expo-status-bar";
 import { useFixturesStore } from "store";
 
 export type overViewStateType = {
+  fixtureName?: string;
+  icon?: ImageSourcePropType | null;
+  country?: string;
   filteredMatches: matchesDataType[];
   filteredTopScorer: topScorersDataType[];
   matchHightLights: matchHightLightDataType[];
@@ -45,8 +48,10 @@ export const FixtureInfo = ({
 }: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
   const id = route?.params?.fixtureId;
   const { fixtures } = useFixturesStore();
-  console.log("id", fixtures);
   const [overViewData, setOverViewData] = useState<overViewStateType>({
+    fixtureName: "",
+    icon: null,
+    country: "",
     filteredMatches: [],
     filteredTopScorer: [],
     matchHightLights: [],
@@ -54,7 +59,7 @@ export const FixtureInfo = ({
     odds: [],
   });
   const [selectedLineList, setSelectedLineList] = useState<string>(
-    fixturesOverview[0]
+    fixturesOverview[0],
   );
 
   const getOverViewData = () => {
@@ -63,12 +68,16 @@ export const FixtureInfo = ({
       filteredData && filteredData?.matches[0]?.topScorers;
     setOverViewData({
       ...overViewData,
+      fixtureName: filteredData?.fixtureName,
+      icon: filteredData?.icon?.uri,
+      country: filteredData?.country,
       filteredMatches: filteredData?.matches ?? [],
       filteredTopScorer: filteredTopScorers ?? [],
       matchHightLights: filteredData?.matchHighLights ?? [],
       news: filteredData?.news ?? [],
       odds: filteredData?.odds ?? [],
     });
+    console.log("icon", filteredData?.icon);
   };
 
   useEffect(() => {
@@ -92,17 +101,17 @@ export const FixtureInfo = ({
       <View style={styles.ctaContainer}>
         <View style={styles.ctaImgContainer}>
           <Image
-            source={require("@src/assets/png/fifa.png")}
+            source={{ uri: overViewData?.icon as string }}
             style={styles.ctaImg}
             contentFit='fill'
           />
         </View>
         <View style={styles.ctaTitle}>
           <CustomText size={14} white type='semi-bold'>
-            FIFA Club World Cup: Group B
+            {overViewData?.fixtureName}
           </CustomText>
           <CustomText size={12} lightGrey type='medium'>
-            International
+            {overViewData?.country}
           </CustomText>
         </View>
       </View>

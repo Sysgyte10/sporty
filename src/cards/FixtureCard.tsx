@@ -19,7 +19,7 @@ interface IFixtureCardProps {
     fixtureId: string | number | any,
     icon?: ImageSourcePropType,
     title?: string,
-    desc?: string
+    desc?: string,
   ) => void;
   showDate?: boolean;
   onPressMatchCard?: () => void;
@@ -60,7 +60,7 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
         </TouchableOpacity>
       </View>
       {data?.matches &&
-        data?.matches.slice(0, 1).map((matchItem, index) => (
+        data?.matches.map((matchItem, index) => (
           <MatchCard
             matchItem={matchItem}
             key={index}

@@ -5,3 +5,4 @@ export * from "./matchHighlights";
 export * from "./apiStatus";
 export * from "./goToPredictions";
 export * from "./accountCreated";
+export * from "./fixtureSearch";

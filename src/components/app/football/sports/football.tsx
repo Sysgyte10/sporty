@@ -1,24 +1,27 @@
 import { FixtureCard } from "@src/cards";
 import { moderateScale } from "@src/resources/responsiveness";
+import { fixtureDataType } from "@src/types/types";
 import React from "react";
 import { FlatList, View } from "react-native";
-import { useFixturesStore } from "store";
+// import { useFixturesStore } from "store";
 
 interface IFootBallProps {
+  data: fixtureDataType[];
   onPress: (id: any) => void;
   onPressMatchCard: () => void;
 }
 
 export const FootballSport: React.FC<IFootBallProps> = ({
+  data,
   onPress,
   onPressMatchCard,
 }) => {
-  const { fixtures } = useFixturesStore();
+  // const { fixtures } = useFixturesStore();
 
   return (
     <>
       <FlatList
-        data={fixtures}
+        data={data}
         contentContainerStyle={{
           gap: moderateScale(5),
         }}

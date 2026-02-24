@@ -7,3 +7,4 @@ export * from "./ButtonLineList";
 export * from "./DateSwitch";
 export * from "./SectionHeader";
 export * from "./CurrencySelection";
+export * from "./SearchFilterModal";
