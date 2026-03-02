@@ -4,42 +4,59 @@ import { colors } from "@src/resources/color/color";
 import { AuthScreenProps } from "@src/router/types";
 import { authScreenNames } from "@src/navigation/navigation-names";
 import { CustomButton, CustomText } from "@src/components/shared";
-import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { moderateScale } from "@src/resources/responsiveness";
 import Animated, { BounceInUp, FadeIn } from "react-native-reanimated";
+import { useAuthStore } from "@src/api/store/auth";
+import { useAccountCreatedStore, useGoToPredictions } from "@src/hooks";
 
 export const AgeSelection = ({
   navigation,
 }: AuthScreenProps<authScreenNames.AGE_SELECTION>) => {
-  // const opacity = useSharedValue(0);
-  // const translateY = useSharedValue(20);
-  // const scale = useSharedValue(0.95);
-
-  // const animatedStyle = useAnimatedStyle(() => ({
-  //   opacity: opacity.value,
-  //   transform: [{ translateY: translateY.value }, { scale: scale.value }],
-  // }));
-
-  // useEffect(() => {
-  //   opacity.value = withTiming(1, {
-  //     duration: 800,
-  //     easing: Easing.out(Easing.cubic),
-  //   });
-  //   translateY.value = withTiming(0, {
-  //     duration: 800,
-  //     easing: Easing.out(Easing.cubic),
-  //   });
-  //   scale.value = withTiming(1, {
-  //     duration: 800,
-  //     easing: Easing.out(Easing.exp),
-  //   });
-  // }, []);
+  const { setIsAuthenticated } = useAuthStore();
+  const { setGoToPredictions } = useGoToPredictions();
+  const { hasCreatedAccount } = useAccountCreatedStore();
 
   return (
     <>
       <AppWrapper gradientColors={[colors.black, colors.purple]} safeArea>
         <TouchableOpacity
-          onPress={() => navigation.navigate(authScreenNames.LOGIN)}
+          // onPress={() => navigation.navigate(authScreenNames.LOGIN)}
+          onPress={() => {
+            Alert.alert("Info", "Where do you want to go?", [
+              {
+                text: "Dashboard",
+                onPress: () => {
+                  if (hasCreatedAccount) {
+                    setIsAuthenticated(true);
+                    setGoToPredictions(false);
+                  } else {
+                    setIsAuthenticated(true);
+                    setGoToPredictions(false);
+                  }
+                },
+              },
+              {
+                text: "Predictions",
+                onPress: () => {
+                  navigation.navigate(authScreenNames.LOGIN);
+                  setGoToPredictions(false);
+                },
+              },
+              {
+                text: "Close",
+                onPress: () => {
+                  setGoToPredictions(false);
+                },
+              },
+            ]);
+          }}
           style={styles.skipBtn}>
           <CustomText size={16} type='medium' purple>
             Skip
@@ -80,7 +97,9 @@ export const AgeSelection = ({
                 textWhite
                 textType='semi-bold'
                 textSize={16}
-                onPress={() => navigation.navigate(authScreenNames.LOGIN)}
+                onPress={() =>
+                  navigation.navigate(authScreenNames.USER_SELECTION)
+                }
                 btnStyle={styles.btn}
               />
             </Animated.View>
@@ -93,7 +112,9 @@ export const AgeSelection = ({
                 textPurple
                 textType='semi-bold'
                 textSize={16}
-                onPress={() => navigation.navigate(authScreenNames.LOGIN)}
+                onPress={() =>
+                  navigation.navigate(authScreenNames.USER_SELECTION)
+                }
                 btnStyle={styles.btn}
               />
             </Animated.View>

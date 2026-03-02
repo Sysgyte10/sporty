@@ -15,17 +15,26 @@ import {
   DailySingleMatches,
   UpgradeMembership,
   Games,
+  SplashScreen,
 } from "@src/screens/auth";
 
 export const authScreen: authScreenTypes[] = [
   {
-    screenName: authScreenNames.USER_SELECTION,
-    component: UserSelection,
+    screenName: authScreenNames.SPLASHSCREEN,
+    component: SplashScreen,
   },
   {
     screenName: authScreenNames.AGE_SELECTION,
     component: AgeSelection,
   },
+  {
+    screenName: authScreenNames.USER_SELECTION,
+    component: UserSelection,
+  },
+  // {
+  //   screenName: authScreenNames.AGE_SELECTION,
+  //   component: AgeSelection,
+  // },
   {
     screenName: authScreenNames.LOGIN,
     component: Login,

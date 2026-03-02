@@ -19,6 +19,7 @@ export interface AuthStackParamList extends ParamListBase {
   DailySingleMatches: undefined;
   UpgradeMembership: undefined;
   Games: undefined;
+  SplashScreen: undefined;
 }
 
 export type AuthScreenProps<ScreenName extends keyof AuthStackParamList> =
@@ -32,7 +33,7 @@ export interface BottomTabBarStackParamList extends ParamListBase {
 }
 
 export type BottomTabBarScreenProps<
-  ScreenName extends keyof BottomTabBarStackParamList
+  ScreenName extends keyof BottomTabBarStackParamList,
 > = BottomTabScreenProps<BottomTabBarStackParamList, ScreenName>;
 
 //native and app screen navigation

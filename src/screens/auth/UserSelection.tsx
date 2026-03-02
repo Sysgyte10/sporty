@@ -160,46 +160,46 @@ export const UserSelection = ({
             // backArrow
             onGoBack={() => prevStep()}
           />
-          {loading ? (
+          {/* {loading ? (
             <View>
               <Loader size={"small"} color={colors.purple} />
             </View>
-          ) : (
-            <TouchableOpacity
-              onPress={() => {
-                Alert.alert("Info", "Where do you want to go?", [
-                  {
-                    text: "Dashboard",
-                    onPress: () => {
-                      if (hasCreatedAccount) {
-                        setIsAuthenticated(true);
-                        setGoToPredictions(false);
-                      } else {
-                        setIsAuthenticated(true);
-                        setGoToPredictions(false);
-                      }
-                    },
-                  },
-                  {
-                    text: "Predictions",
-                    onPress: () => {
-                      navigation.navigate(authScreenNames.LOGIN);
+          ) : ( */}
+          <TouchableOpacity
+            onPress={() => {
+              Alert.alert("Info", "Where do you want to go?", [
+                {
+                  text: "Dashboard",
+                  onPress: () => {
+                    if (hasCreatedAccount) {
+                      setIsAuthenticated(true);
                       setGoToPredictions(false);
-                    },
-                  },
-                  {
-                    text: "Close",
-                    onPress: () => {
+                    } else {
+                      setIsAuthenticated(true);
                       setGoToPredictions(false);
-                    },
+                    }
                   },
-                ]);
-              }}>
-              <CustomText size={16} type='medium' purple>
-                Skip
-              </CustomText>
-            </TouchableOpacity>
-          )}
+                },
+                {
+                  text: "Predictions",
+                  onPress: () => {
+                    navigation.navigate(authScreenNames.LOGIN);
+                    setGoToPredictions(false);
+                  },
+                },
+                {
+                  text: "Close",
+                  onPress: () => {
+                    setGoToPredictions(false);
+                  },
+                },
+              ]);
+            }}>
+            <CustomText size={16} type='medium' purple>
+              Skip
+            </CustomText>
+          </TouchableOpacity>
+          {/* )} */}
         </View>
         <View
           style={{

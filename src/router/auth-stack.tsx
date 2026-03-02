@@ -20,8 +20,8 @@ export const AuthStack = () => {
         !hasCreatedAccount && goToPredictions
           ? authScreenNames.SIGN_UP
           : hasCreatedAccount && goToPredictions
-          ? authScreenNames.MEMBERSHIP
-          : authScreenNames.USER_SELECTION
+            ? authScreenNames.MEMBERSHIP
+            : authScreenNames.SPLASHSCREEN
       }>
       {authScreen &&
         authScreen.map((screens, index) => (

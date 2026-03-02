@@ -66,11 +66,6 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
             key={index}
             showDate={true}
             onPressMatchCard={onPressMatchCard}
-            containerStyle={
-              {
-                // marginTop: moderateScale(-10),
-              }
-            }
             truncateScoreText
             truncLength={10}
           />

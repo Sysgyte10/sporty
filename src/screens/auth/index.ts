@@ -12,3 +12,4 @@ export * from "./DailyCoupon";
 export * from "./DailySingleMatches";
 export * from "./UpgradeMembership";
 export * from "./Games";
+export * from "./SplashScreen";
