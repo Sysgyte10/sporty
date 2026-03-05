@@ -41,12 +41,12 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
       <View style={styles.subMatchCard}>
         <View style={styles.dateContainer}>
           {showDate && (
-            <CustomText type='regular' size={12} lightGrey>
+            <CustomText type='regular' size={12} white>
               {matchItem?.date}
             </CustomText>
           )}
-          <CustomText type='medium' size={12} lightGrey>
-            FT
+          <CustomText type='medium' size={12} white>
+            {matchItem?.short}
           </CustomText>
         </View>
         <View
@@ -71,7 +71,7 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
                       style={styles.clubImg}
                     />
                   </View>
-                  <CustomText type='regular' size={12} lightGrey>
+                  <CustomText type='regular' size={12} white>
                     {truncateScoreText
                       ? truncateText(club?.name, truncLength)
                       : club?.name}
@@ -88,7 +88,7 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
         <TouchableOpacity onPress={() => onLikeItem?.(matchItem?.id)}>
           <FontAwesome
             name='heart-o'
-            color={colors.lightGrey}
+            color={colors.white}
             size={moderateScale(18)}
           />
         </TouchableOpacity>

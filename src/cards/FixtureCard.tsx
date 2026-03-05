@@ -40,10 +40,10 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
           </View>
 
           <View style={styles.fixtureNameNCountryContainer}>
-            <CustomText type='semi-bold' size={10} white>
+            <CustomText type='semi-bold' size={12} white>
               {data?.fixtureName}
             </CustomText>
-            <CustomText type='regular' size={10} style={{ color: "#9C9C9C" }}>
+            <CustomText type='regular' size={12} style={{ color: "#9C9C9C" }}>
               {data?.country}
             </CustomText>
           </View>

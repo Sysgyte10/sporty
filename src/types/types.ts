@@ -28,6 +28,7 @@ export type teamsDataType = {
 
 export type fixtureDataType = {
   id: number;
+  leagueId: string | number | any;
   fixtureName: string;
   country: string;
   icon: ImageSourcePropType;
@@ -48,8 +49,10 @@ export type topScorersDataType = {
 export type matchesDataType = {
   id: number;
   date: string;
+  short: string;
   topScorers: topScorersDataType[];
   club: {
+    id: string | number | any;
     name: string;
     image: ImageSourcePropType;
     score: string;

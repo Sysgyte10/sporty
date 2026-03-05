@@ -37,7 +37,10 @@ import { useActiveBottomTabStore, useFixturesStore } from "store";
 import { AdComponent, CustomText } from "@src/components/shared";
 import { useAuthStore } from "@src/api/store/auth";
 import { useFixtureSearch, useGoToPredictions } from "@src/hooks";
-import { getLiveFixturesByDate } from "@src/api/services/football/football.service";
+import {
+  getLiveFixtures,
+  getLiveFixturesByDate,
+} from "@src/api/services/football/football.service";
 import { transformFixturesToLeagues } from "@src/api/services/football/football.transformer";
 import { getToday } from "@src/helper/utils";
 
@@ -59,23 +62,46 @@ export const Football = ({
   const { searchQuery, setSearchQuery, filteredFixtures, hasResults } =
     useFixtureSearch(fixtures ?? []);
 
-  useEffect(() => {
-    const initiateData = async () => {
-      try {
-        setLoading(true);
-        const dateToUse = selectedDate || getToday();
-        const data = await getLiveFixturesByDate(dateToUse);
-        const transformed = transformFixturesToLeagues(data);
-        setFixtures(transformed);
-      } catch (err: any) {
-        console.log("Error", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const initiateDataForAllMatches = async () => {
+    try {
+      setLoading(true);
+      const dateToUse = selectedDate || getToday();
+      const data = await getLiveFixturesByDate(dateToUse);
+      const transformed = transformFixturesToLeagues(data);
+      setFixtures(transformed);
+    } catch (err: any) {
+      console.log("Error", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    initiateData();
+  const initiateDataForLiveMatches = async () => {
+    try {
+      setLoading(true);
+      const data = await getLiveFixtures("all");
+      const transformed = transformFixturesToLeagues(data);
+      setFixtures(transformed);
+      console.log("Live Fixtures", transformed);
+    } catch (err: any) {
+      console.log("Error", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    initiateDataForAllMatches();
   }, [selectedDate]);
+
+  //get all live matches currently
+  useEffect(() => {
+    if (selectedLineList === "Live") {
+      initiateDataForLiveMatches();
+    } else {
+      initiateDataForAllMatches();
+    }
+  }, [selectedLineList]);
 
   return (
     <>

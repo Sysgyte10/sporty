@@ -42,7 +42,7 @@ const CustomTabBarButton = ({
       break;
     case "ForYouStack":
       iconName = "document";
-      label = "For You";
+      label = "Live Match";
       break;
   }
 
@@ -68,7 +68,7 @@ const CustomTabBarButton = ({
           label === "Favorite" || label === "For You"
             ? label
             : tabName || label,
-          10
+          10,
         )}
       </CustomText>
     </TouchableOpacity>
