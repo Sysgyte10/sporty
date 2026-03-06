@@ -46,7 +46,7 @@ export const MatchCard: React.FC<IMatchCardProps> = ({
             </CustomText>
           )}
           <CustomText type='medium' size={12} white>
-            {matchItem?.short}
+            {matchItem?.short === "1H" ? "HT" : matchItem?.short}
           </CustomText>
         </View>
         <View

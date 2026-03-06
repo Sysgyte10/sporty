@@ -15,6 +15,7 @@ import { moderateScale } from "@src/resources/responsiveness";
 import Animated, { BounceInUp, FadeIn } from "react-native-reanimated";
 import { useAuthStore } from "@src/api/store/auth";
 import { useAccountCreatedStore, useGoToPredictions } from "@src/hooks";
+import { Image } from "expo-image";
 
 export const AgeSelection = ({
   navigation,
@@ -75,9 +76,25 @@ export const AgeSelection = ({
             </CustomText>
           </Animated.View> */}
           <Animated.View entering={BounceInUp.delay(200).duration(1000)}>
-            <CustomText type='semi-bold' white size={25}>
+            <View
+              style={{
+                width: moderateScale(500),
+                height: moderateScale(70),
+                overflow: "hidden",
+              }}>
+              <Image
+                source={require("@src/assets/png/realscorz.png")}
+                contentFit='cover'
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                // style={styles.headerImage}
+              />
+            </View>
+            {/* <CustomText type='semi-bold' white size={25}>
               RealSc⚽rZ
-            </CustomText>
+            </CustomText> */}
           </Animated.View>
           <CustomText type='medium' size={13} style={styles.descText}>
             {`Please help us on our mission as a responsible`}

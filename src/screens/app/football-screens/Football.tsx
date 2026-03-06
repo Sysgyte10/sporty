@@ -43,6 +43,7 @@ import {
 } from "@src/api/services/football/football.service";
 import { transformFixturesToLeagues } from "@src/api/services/football/football.transformer";
 import { getToday } from "@src/helper/utils";
+import { Image } from "expo-image";
 
 export const Football = ({
   navigation,
@@ -107,26 +108,50 @@ export const Football = ({
     <>
       <AppWrapper safeArea bgColor={colors.black}>
         <StatusBar style='light' />
-        <TouchableOpacity
-          onPress={() => {
-            setIsAuthenticated(false);
-            setGoToPredictions(true);
-          }}
+        <View
           style={{
-            alignSelf: "flex-end",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}>
-          <CustomText size={14} type='medium' purple>
-            Go To Predictions
-          </CustomText>
-        </TouchableOpacity>
-        <FootBallHeader
+          <View
+            style={{
+              width: moderateScale(350),
+              height: moderateScale(70),
+              overflow: "hidden",
+              // backgroundColor: colors.purple,
+              alignItems: "flex-end",
+              marginLeft: moderateScale(-120),
+            }}>
+            <Image
+              source={require("@src/assets/png/realscorz.png")}
+              contentFit='cover'
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+              // style={styles.headerImage}
+            />
+          </View>
+
+          <TouchableOpacity
+            onPress={() => {
+              setIsAuthenticated(false);
+              setGoToPredictions(true);
+            }}>
+            <CustomText size={14} type='medium' purple>
+              Go To Predictions
+            </CustomText>
+          </TouchableOpacity>
+        </View>
+        {/* <FootBallHeader
           title='RealSc⚽rZ'
           showSearchIcon
           showMenuIcon
           onPressSearchIcon={() => setIsSearchModalVisible(true)}
           headerStyle={styles.header}
           onPressMenuIcon={() => navigation.navigate(appScreenNames.MORE)}
-        />
+        /> */}
         <View style={styles.btnListContainer}>
           <ButtonList
             data={sportyTypes}
