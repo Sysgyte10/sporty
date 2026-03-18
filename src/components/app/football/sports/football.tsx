@@ -8,7 +8,7 @@ import { FlatList, View } from "react-native";
 interface IFootBallProps {
   data: fixtureDataType[];
   onPress: (id: any) => void;
-  onPressMatchCard: () => void;
+  onPressMatchCard: (firstClubId: string, secondClubId: string) => void;
 }
 
 export const FootballSport: React.FC<IFootBallProps> = ({
@@ -32,7 +32,9 @@ export const FootballSport: React.FC<IFootBallProps> = ({
               <FixtureCard
                 data={item}
                 onPress={(fixtureId) => onPress(fixtureId)}
-                onPressMatchCard={() => onPressMatchCard()}
+                onPressMatchCard={(firstClubId, secondClubId) =>
+                  onPressMatchCard(firstClubId, secondClubId)
+                }
               />
             </View>
           );

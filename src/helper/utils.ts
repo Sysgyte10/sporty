@@ -66,3 +66,14 @@ export const truncateText = (text: string, length = 10): string => {
 export const getToday = () => {
   return new Date().toISOString().split("T")[0];
 };
+
+export const getMatchStatus = (status?: string): string => {
+  const statusMap: Record<string, string> = {
+    NS: "Not Started",
+    FT: "Full Time",
+    "1H": "First Half",
+    "2H": "Second Half",
+  };
+
+  return statusMap[status ?? ""] || status || "";
+};

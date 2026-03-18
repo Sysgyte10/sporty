@@ -46,6 +46,15 @@ export type topScorersDataType = {
   goals: number;
 };
 
+export type teamPlayersOrSquadDataType = {
+  id: number;
+  name: string;
+  age: number;
+  number: number;
+  position: string;
+  photo: string;
+};
+
 export type matchesDataType = {
   id: number;
   date: string;

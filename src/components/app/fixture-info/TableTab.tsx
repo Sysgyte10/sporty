@@ -11,12 +11,22 @@ interface ITableTabProps {
   goalScorerData: topScorersDataType[];
   leftText?: string;
   actionText?: string;
+  showGD?: boolean;
+  showRightTitleAndValue?: boolean;
+  leftTitleText?: string;
+  middleTitleText?: string;
+  rightTitleText?: string;
 }
 
 export const TableTab: React.FC<ITableTabProps> = ({
   goalScorerData,
   leftText,
   actionText,
+  showGD,
+  showRightTitleAndValue,
+  leftTitleText,
+  middleTitleText,
+  rightTitleText,
 }) => {
   return (
     <View>
@@ -45,31 +55,49 @@ export const TableTab: React.FC<ITableTabProps> = ({
                 white
                 style={{
                   textAlign: "left",
-                  width: "40%",
+                  width: showGD || showRightTitleAndValue ? "45%" : "50%",
                 }}>
-                Team
+                {leftTitleText || "Team"}
               </CustomText>
-              <CustomText type='medium' size={14} white>
-                P
+              <CustomText
+                type='medium'
+                size={14}
+                white
+                style={{
+                  textAlign: "left",
+                  width: showGD ? "3%" : "15%",
+                }}>
+                {middleTitleText || "P"}
               </CustomText>
-              <CustomText type='medium' size={14} white>
-                GD
-              </CustomText>
-              <CustomText type='medium' size={14} white>
-                PTS
-              </CustomText>
+              {showGD && (
+                <CustomText
+                  type='medium'
+                  size={14}
+                  white
+                  style={{
+                    textAlign: "left",
+                    width: "7%",
+                  }}>
+                  GD
+                </CustomText>
+              )}
+              {showRightTitleAndValue && (
+                <CustomText type='medium' size={14} white>
+                  {rightTitleText || "PTS"}
+                </CustomText>
+              )}
             </View>
           }
           keyExtractor={(__, index) => index.toString()}
-          renderItem={({ item, index }) => {
+          renderItem={({ item }) => {
             return (
-              // <Animated.View
-              //   entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
-              //   key={index}>
               <View>
-                <GoalScorerCard topScorerItem={item} showGD />
+                <GoalScorerCard
+                  topScorerItem={item}
+                  showGD={showGD}
+                  type='scorers'
+                />
               </View>
-              // </Animated.View>
             );
           }}
           horizontal={false}
@@ -81,9 +109,9 @@ export const TableTab: React.FC<ITableTabProps> = ({
         />
       </View>
 
-      <View>
+      {/* <View>
         <SectionHeader
-          leftText='FIFA CLUB WORLd CUP. GROUP B'
+          leftText={leftText ? leftText : "FIFA CLUB WORLd CUP. GROUP A"}
           actionText=' '
           containerStyle={{
             marginBottom:
@@ -138,7 +166,7 @@ export const TableTab: React.FC<ITableTabProps> = ({
           windowSize={2}
           updateCellsBatchingPeriod={100}
         />
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -149,7 +177,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: moderateScale(40),
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     paddingVertical: moderateScale(10),
     paddingHorizontal: moderateScale(15),
   },

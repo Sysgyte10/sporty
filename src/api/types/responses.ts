@@ -1,4 +1,5 @@
 import {
+  fixturesH2H,
   footballCountries,
   footballPlayersProfileById,
   liveCurrentFixtureLeagues,
@@ -19,6 +20,7 @@ import {
   searchLiveFixtureLeagues,
   standingsByLeagueIdSeasonTeamId,
   standingsByTeam,
+  teamPlayersOrSquad,
   teamsByCountry,
   teamsById,
   teamsByLeagueAndSeason,
@@ -490,4 +492,34 @@ export type GetPlayerTrophiesByPlayerIdResponse = {
     total: number;
   };
   response: playersTrophiesByPlayersId[];
+};
+
+export type GetFixturesH2HResponse = {
+  get: string;
+  parameters: {
+    h2h: string;
+    from: string;
+    to: string;
+  };
+  errors: [];
+  results: 1;
+  paging: {
+    current: 1;
+    total: 1;
+  };
+  response: fixturesH2H[];
+};
+
+export type GetTeamPlayersOrSquad = {
+  get: string;
+  parameters: {
+    team: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: teamPlayersOrSquad[];
 };

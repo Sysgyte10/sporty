@@ -27122,16 +27122,7 @@ export const playerStats = [
   "Shots on Target",
 ];
 
-export const teamStats = [
-  "All",
-  "Goals Scored",
-  "Goals COncealed",
-  "Average Possession",
-  "Shots on Target",
-  "Total Shots",
-  "Red Cards",
-  "Yellow Cards",
-];
+export const teamStats = ["Home", "Away"];
 
 export const bio = [
   {

@@ -1,3 +1,4 @@
+import { useOneMatchDataStore } from "@src/api/store/app";
 import { OddsCard } from "@src/cards";
 import { ButtonList, SectionHeader } from "@src/common";
 import { CustomText } from "@src/components/shared";
@@ -20,6 +21,7 @@ interface IOddsTabProps {
 
 export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
   const [selectedItem, setSelectedItem] = useState<string>(odds[0]);
+  const { oneMatchData } = useOneMatchDataStore();
   return (
     <View>
       <View style={styles.btnListContainer}>
@@ -31,7 +33,7 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
       </View>
       <View>
         <SectionHeader
-          leftText='FIFA CLUB WORLD CUP. 2025 - Finishing Position - Top 2 {1-2}'
+          leftText={oneMatchData?.[0]?.league.name.toUpperCase()}
           actionText=' '
           containerStyle={{
             marginBottom:
@@ -92,7 +94,7 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
 
       <View>
         <SectionHeader
-          leftText='FIFA CLUB WORLD CUP. 2025 - Finishing Position - Top 4 {1-4}'
+          leftText={oneMatchData?.[0]?.league.name.toUpperCase()}
           actionText=' '
           containerStyle={{
             marginBottom:

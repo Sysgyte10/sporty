@@ -1,46 +1,66 @@
+import { useOneMatchDataStore } from "@src/api/store/app";
 import { GoalScorerCard } from "@src/cards";
 import { ButtonList, SectionHeader } from "@src/common";
 import { CustomText } from "@src/components/shared";
 import { teamStats } from "@src/constants/fixtures";
 import { DVH, moderateScale } from "@src/resources/responsiveness";
-import { topScorersDataType } from "@src/types/types";
-import React, { useState } from "react";
+import {
+  teamPlayersOrSquadDataType,
+  topScorersDataType,
+} from "@src/types/types";
+import React from "react";
 import { FlatList, Platform, StyleSheet, View } from "react-native";
-import Animated, { FadeIn } from "react-native-reanimated";
 
-interface ITeamStatsTabProps {
+interface ScorerProps {
+  type: "scorers";
   goalScorerData: topScorersDataType[];
+}
+
+interface PlayerProps {
+  type: "players";
+  goalScorerData: teamPlayersOrSquadDataType[];
+}
+
+type ITeamStatsTabProps = (ScorerProps | PlayerProps) & {
   showFilter?: boolean;
   listFooterHeight?: number;
-}
+  leftTitle?: string;
+  middleText?: string;
+  rightText?: string;
+  selectedBtn?: string;
+  setSelectedBtn?: (text: string) => void;
+};
 
 export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
   goalScorerData,
   showFilter = true,
   listFooterHeight,
+  leftTitle,
+  middleText,
+  rightText,
 }) => {
-  const [selectedItem, setSelectedItem] = useState<string>(teamStats[0]);
+  const { setSelectedBtn, selectedBtn } = useOneMatchDataStore();
   return (
     <View>
       {showFilter && (
         <View style={styles.btnListContainer}>
           <ButtonList
-            data={teamStats}
-            onButtonPress={(text) => setSelectedItem(text)}
-            selectedBtn={selectedItem}
+            data={["Home", "Away"]}
+            onButtonPress={(text) => setSelectedBtn?.(text as "Home" | "Away")}
+            selectedBtn={selectedBtn}
           />
         </View>
       )}
       <View>
         <SectionHeader
-          leftText={selectedItem}
+          leftText={selectedBtn}
           actionText='  '
           containerStyle={{
             marginBottom:
               Platform.OS === "ios" ? moderateScale(-15) : moderateScale(-20),
           }}
         />
-        <FlatList
+        <FlatList<teamPlayersOrSquadDataType | topScorersDataType>
           data={goalScorerData}
           ListFooterComponent={
             <View
@@ -58,33 +78,34 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
           ListHeaderComponent={
             <View style={styles.flatListHeaderStyle}>
               <CustomText
-                type='medium'
+                type='bold'
                 size={12}
                 white
                 style={{
                   textAlign: "left",
-                  width: "42%",
+                  width: leftTitle ? "35%" : "42%",
                 }}>
-                Goal Scored
+                {leftTitle || `Goal Scored`}
               </CustomText>
-              <CustomText type='medium' size={12} white>
-                Per game
+              <CustomText type='bold' size={12} white>
+                {middleText || `Per game`}
               </CustomText>
-              <CustomText type='medium' size={12} white>
-                Total
+              <CustomText type='bold' size={12} white>
+                {rightText || `Total`}
               </CustomText>
             </View>
           }
           keyExtractor={(__, index) => index.toString()}
           renderItem={({ item, index }) => {
             return (
-              // <Animated.View
-              //   entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
-              //   key={index}>
               <View key={index}>
-                <GoalScorerCard topScorerItem={item} />
+                <GoalScorerCard
+                  topScorerItem={item}
+                  type='players'
+                  showGD
+                  showRightTitleAndValue
+                />
               </View>
-              // </Animated.View>
             );
           }}
           horizontal={false}
@@ -108,7 +129,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: moderateScale(40),
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     paddingVertical: moderateScale(10),
     paddingHorizontal: moderateScale(15),
   },

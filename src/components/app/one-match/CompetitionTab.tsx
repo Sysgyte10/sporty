@@ -8,9 +8,12 @@ import { ButtonList } from "@src/common";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { footballFixtures } from "@src/constants/fixtures";
 import { TeamStatsTab } from "../fixture-info";
+import { useOneMatchDataStore } from "@src/api/store/app";
+import { getMatchStatus, truncateText } from "@src/helper/utils";
 
 export const CompetitionTab: React.FC<{}> = () => {
   const [selectedSport, setSelectedSport] = useState<string>("All");
+  const { oneMatchData } = useOneMatchDataStore();
   return (
     <ScrollContainer style={styles.scrollContainer}>
       <View>
@@ -28,17 +31,18 @@ export const CompetitionTab: React.FC<{}> = () => {
         <View style={styles.scoreContainer}>
           <View style={styles.clubImgContainer}>
             <Image
-              source={require("@src/assets/png/totheham.png")}
+              source={{ uri: oneMatchData?.[0]?.teams?.home?.logo }}
               contentFit='fill'
               style={styles.clubImg}
             />
           </View>
           <CustomText type='bold' size={20} white>
-            1 - 0
+            {oneMatchData?.[0]?.goals?.home ?? ""} -
+            {oneMatchData?.[0]?.goals?.away ?? "-"}
           </CustomText>
           <View style={styles.clubImgContainer}>
             <Image
-              source={require("@src/assets/png/chelsea.png")}
+              source={{ uri: oneMatchData?.[0]?.teams?.away?.logo }}
               contentFit='fill'
               style={styles.clubImg}
             />
@@ -53,13 +57,19 @@ export const CompetitionTab: React.FC<{}> = () => {
             },
           ]}>
           <CustomText type='semi-bold' size={10} lightGrey>
-            TOTHEHAM
+            {truncateText(
+              `${oneMatchData?.[0]?.teams?.home?.name ?? "Team One"}`,
+              15,
+            )}
+          </CustomText>
+          <CustomText type='semi-bold' size={10} white>
+            {getMatchStatus(oneMatchData?.[0]?.fixture?.status?.short)}
           </CustomText>
           <CustomText type='semi-bold' size={10} lightGrey>
-            FINISHED
-          </CustomText>
-          <CustomText type='semi-bold' size={10} lightGrey>
-            CHELSEA
+            {truncateText(
+              `${oneMatchData?.[0]?.teams?.away?.name ?? "Team Two"}`,
+              15,
+            )}
           </CustomText>
         </View>
       </View>

@@ -85,7 +85,11 @@ export interface RootStackParamList extends ParamListBase {
   Language: undefined;
   DefaultSport: undefined;
   ForYouNews: undefined;
-  OneMatch: undefined;
+  OneMatch: {
+    teamOneId: string;
+    teamTwoId: string;
+    dateVal?: string;
+  };
   Team: {
     screenTitle: string;
     screenDesc: string;

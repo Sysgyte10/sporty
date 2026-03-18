@@ -6,8 +6,11 @@ import { Image } from "expo-image";
 import { ScrollContainer } from "@src/screens/ScrollContainer";
 import { OddsTab } from "../fixture-info";
 import { footballFixtures } from "@src/constants/fixtures";
+import { useOneMatchDataStore } from "@src/api/store/app";
+import { getMatchStatus, truncateText } from "@src/helper/utils";
 
 export const TeamTab: React.FC<{}> = () => {
+  const { oneMatchData } = useOneMatchDataStore();
   return (
     <ScrollContainer style={styles.scrollContainer}>
       <View>
@@ -19,23 +22,33 @@ export const TeamTab: React.FC<{}> = () => {
             paddingVertical: moderateScale(10),
             textAlign: "center",
           }}>
-          20.06.2025 02:00
+          {oneMatchData?.[0]?.fixture?.date
+            ? new Date(oneMatchData[0].fixture.date).toLocaleDateString(
+                "en-US",
+                {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                },
+              )
+            : "Match Date"}
         </CustomText>
 
         <View style={styles.scoreContainer}>
           <View style={styles.clubImgContainer}>
             <Image
-              source={require("@src/assets/png/totheham.png")}
+              source={{ uri: oneMatchData?.[0]?.teams?.home?.logo }}
               contentFit='fill'
               style={styles.clubImg}
             />
           </View>
           <CustomText type='bold' size={20} white>
-            1 - 0
+            {oneMatchData?.[0]?.goals?.home ?? ""} -
+            {oneMatchData?.[0]?.goals?.away ?? "-"}
           </CustomText>
           <View style={styles.clubImgContainer}>
             <Image
-              source={require("@src/assets/png/chelsea.png")}
+              source={{ uri: oneMatchData?.[0]?.teams?.away?.logo }}
               contentFit='fill'
               style={styles.clubImg}
             />
@@ -49,14 +62,20 @@ export const TeamTab: React.FC<{}> = () => {
               paddingHorizontal: moderateScale(15),
             },
           ]}>
-          <CustomText type='semi-bold' size={10} lightGrey>
-            TOTHEHAM
+          <CustomText type='semi-bold' size={10} white>
+            {truncateText(
+              `${oneMatchData?.[0]?.teams?.home?.name ?? "Team One"}`,
+              15,
+            )}
           </CustomText>
-          <CustomText type='semi-bold' size={10} lightGrey>
-            FINISHED
+          <CustomText type='semi-bold' size={10} white>
+            {getMatchStatus(oneMatchData?.[0]?.fixture?.status?.short)}
           </CustomText>
-          <CustomText type='semi-bold' size={10} lightGrey>
-            CHELSEA
+          <CustomText type='semi-bold' size={10} white>
+            {truncateText(
+              `${oneMatchData?.[0]?.teams?.away?.name ?? "Team One"}`,
+              15,
+            )}
           </CustomText>
         </View>
       </View>

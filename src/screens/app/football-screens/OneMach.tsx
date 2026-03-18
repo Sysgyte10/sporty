@@ -5,7 +5,7 @@ import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { RootStackScreenProps } from "@src/router/types";
 import { AppNavigationHeader } from "@src/screens/AppHeader";
 import { AppWrapper } from "@src/screens/AppWrapper";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { ButtonLineList } from "@src/common";
@@ -16,11 +16,131 @@ import {
   TeamTab,
 } from "@src/components/app/one-match";
 import Animated, { FadeIn } from "react-native-reanimated";
+import {
+  getFixturesHead2Head,
+  getTeamPlayersOrSquads,
+  getTeamsByLeagueAndSeason,
+} from "@src/api/services/football/football.service";
+import { getMatchStatus, truncateText } from "@src/helper/utils";
+import { useOneMatchDataStore } from "@src/api/store/app";
+import { topScorersDataType } from "@src/types/types";
 
 export const OneMach = ({
   navigation,
+  route,
 }: RootStackScreenProps<appScreenNames.ONE_MATCH>) => {
+  const { teamOneId, teamTwoId, dateVal } = route?.params || {};
   const [selectedLineList, setSelectedLineList] = useState<string>("Match");
+  const [loading, setLoading] = useState<boolean>(false);
+  const {
+    setOneMatchData,
+    oneMatchData,
+    setPlayersData,
+    selectedBtn,
+    setLeagueTeams,
+  } = useOneMatchDataStore();
+  const currYear = new Date().getFullYear() - 1;
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+
+        switch (selectedLineList) {
+          case "Match":
+            const data1 = await getFixturesHead2Head(
+              `${teamOneId}-${teamTwoId}`,
+              dateVal as string,
+              dateVal as string,
+            );
+
+            setOneMatchData(data1 || []);
+            break;
+
+          case "Competition":
+            const data2 = await getFixturesHead2Head(
+              `${teamOneId}-${teamTwoId}`,
+              dateVal as string,
+              dateVal as string,
+            );
+            break;
+
+          case "Team":
+            const data3 = await getFixturesHead2Head(
+              `${teamOneId}-${teamTwoId}`,
+              dateVal as string,
+              dateVal as string,
+            );
+            break;
+
+          case "Players":
+            const data4 = await getTeamPlayersOrSquads(
+              selectedBtn === "Home"
+                ? Number(teamOneId)
+                : selectedBtn === "Away"
+                  ? Number(teamTwoId)
+                  : 0,
+            );
+            const players = data4.map((infos) => infos.players);
+            const transformedPlayers = players[0]?.map((playerArray) => {
+              return {
+                id: playerArray?.id,
+                name: playerArray?.name,
+                age: playerArray?.age,
+                number: playerArray?.number,
+                position: playerArray?.position,
+                photo: playerArray?.photo,
+              };
+            });
+            setPlayersData(transformedPlayers || []);
+            break;
+        }
+      } catch (err) {
+        console.log("Error loading data", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [selectedLineList, teamOneId, teamTwoId, dateVal, selectedBtn]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      async function loadData() {
+        try {
+          if (oneMatchData.length > 0) {
+            console.log("oneMatchData", oneMatchData);
+
+            const data = await getTeamsByLeagueAndSeason(
+              oneMatchData?.[0]?.league.id,
+              currYear,
+            );
+
+            const transformedData = data.map((item) => {
+              return {
+                id: item?.team?.id,
+                footballerName: item?.team?.name,
+                clubName: item?.venue?.name,
+                clubImg: item?.team?.logo,
+                goals: 0,
+              } as topScorersDataType;
+            });
+
+            setLeagueTeams(transformedData);
+          }
+        } catch (err: any) {
+          console.log("Error fetching data for league and season");
+        }
+      }
+
+      loadData();
+    }, 2000); // ⏱️ 2 seconds
+
+    // 🧹 cleanup (VERY IMPORTANT)
+    return () => clearTimeout(timer);
+  }, [oneMatchData]);
+
   return (
     <AppWrapper safeArea style={styles.appWrapper}>
       <View
@@ -46,23 +166,33 @@ export const OneMach = ({
               paddingVertical: moderateScale(10),
               textAlign: "center",
             }}>
-            20.06.2025 02:00
+            {oneMatchData?.[0]?.fixture?.date
+              ? new Date(oneMatchData[0].fixture.date).toLocaleDateString(
+                  "en-US",
+                  {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  },
+                )
+              : "Match Date"}
           </CustomText>
 
           <View style={styles.scoreContainer}>
             <View style={styles.clubImgContainer}>
               <Image
-                source={require("@src/assets/png/totheham.png")}
+                source={{ uri: oneMatchData?.[0]?.teams?.home?.logo }}
                 contentFit='fill'
                 style={styles.clubImg}
               />
             </View>
             <CustomText type='bold' size={20} white>
-              1 - 0
+              {oneMatchData?.[0]?.goals?.home ?? ""} -
+              {oneMatchData?.[0]?.goals?.away ?? "-"}
             </CustomText>
             <View style={styles.clubImgContainer}>
               <Image
-                source={require("@src/assets/png/chelsea.png")}
+                source={{ uri: oneMatchData?.[0]?.teams?.away?.logo }}
                 contentFit='fill'
                 style={styles.clubImg}
               />
@@ -76,14 +206,17 @@ export const OneMach = ({
                 paddingHorizontal: moderateScale(15),
               },
             ]}>
-            <CustomText type='semi-bold' size={10} lightGrey>
-              TOTHEHAM
+            <CustomText type='semi-bold' size={10} white>
+              {oneMatchData?.[0]?.teams?.home?.name ?? "Team One"}
             </CustomText>
             <CustomText type='semi-bold' size={10} lightGrey>
-              FINISHED
+              {getMatchStatus(oneMatchData?.[0]?.fixture?.status?.short)}
             </CustomText>
-            <CustomText type='semi-bold' size={10} lightGrey>
-              CHELSEA
+            <CustomText type='semi-bold' size={10} white>
+              {truncateText(
+                `${oneMatchData?.[0]?.teams?.away?.name ?? "Team One"}`,
+                15,
+              )}
             </CustomText>
           </View>
         </View>
@@ -118,7 +251,11 @@ export const OneMach = ({
 
       {selectedLineList === "Players" && (
         <Animated.View entering={FadeIn.delay(200).duration(600)}>
-          <PlayersTab />
+          <PlayersTab
+            leftTitle="Player's Name"
+            middleText='Position'
+            rightText='Number'
+          />
         </Animated.View>
       )}
     </AppWrapper>

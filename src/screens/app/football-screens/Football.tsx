@@ -44,6 +44,7 @@ import {
 import { transformFixturesToLeagues } from "@src/api/services/football/football.transformer";
 import { getToday } from "@src/helper/utils";
 import { Image } from "expo-image";
+import { Feather } from "@expo/vector-icons";
 
 export const Football = ({
   navigation,
@@ -56,12 +57,13 @@ export const Football = ({
   const { setTabName } = useActiveBottomTabStore();
   const { setIsAuthenticated } = useAuthStore();
   const { setGoToPredictions } = useGoToPredictions();
-
-  const [selectedDate, setSelectedData] = useState<string>("");
+  const today = new Date().toISOString().split("T")[0] as string;
+  const [selectedDate, setSelectedData] = useState<string>(today);
   const [loading, setLoading] = useState<boolean>(false);
   const { setFixtures, fixtures } = useFixturesStore();
-  const { searchQuery, setSearchQuery, filteredFixtures, hasResults } =
-    useFixtureSearch(fixtures ?? []);
+  const { searchQuery, setSearchQuery, filteredFixtures } = useFixtureSearch(
+    fixtures ?? [],
+  );
 
   const initiateDataForAllMatches = async () => {
     try {
@@ -91,6 +93,23 @@ export const Football = ({
     }
   };
 
+  const initiateDataForFinishedMatches = async () => {
+    try {
+      setLoading(true);
+      const finishedMatches = fixtures.map((fixture) => {
+        const matchData = fixture.matches.filter(
+          (match) => match.short === "FT",
+        );
+        return { ...fixture, matches: matchData };
+      });
+      setFixtures(finishedMatches);
+    } catch (err: any) {
+      console.log("Error", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     initiateDataForAllMatches();
   }, [selectedDate]);
@@ -99,8 +118,10 @@ export const Football = ({
   useEffect(() => {
     if (selectedLineList === "Live") {
       initiateDataForLiveMatches();
-    } else {
+    } else if (selectedLineList === "All") {
       initiateDataForAllMatches();
+    } else if (selectedLineList === "Finished") {
+      initiateDataForFinishedMatches();
     }
   }, [selectedLineList]);
 
@@ -133,16 +154,29 @@ export const Football = ({
               // style={styles.headerImage}
             />
           </View>
+          <View>
+            <TouchableOpacity
+              onPress={() => setIsSearchModalVisible(true)}
+              style={{
+                alignSelf: "flex-end",
+              }}>
+              <Feather
+                name='search'
+                color={colors.white}
+                size={moderateScale(20)}
+              />
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => {
-              setIsAuthenticated(false);
-              setGoToPredictions(true);
-            }}>
-            <CustomText size={14} type='medium' purple>
-              Go To Predictions
-            </CustomText>
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setIsAuthenticated(false);
+                setGoToPredictions(true);
+              }}>
+              <CustomText size={14} type='medium' purple>
+                Go To Predictions
+              </CustomText>
+            </TouchableOpacity>
+          </View>
         </View>
         {/* <FootBallHeader
           title='RealSc⚽rZ'
@@ -176,6 +210,7 @@ export const Football = ({
           </View>
           <DateSwitch
             onDateChange={(dateVal) => {
+              console.log("Selected Date", dateVal);
               setSelectedData(dateVal);
             }}
           />
@@ -208,9 +243,14 @@ export const Football = ({
                       fixtureId: fixtureId,
                     })
                   }
-                  onPressMatchCard={() =>
+                  onPressMatchCard={(firstClubId, secondClubId) =>
                     navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
                       screen: appScreenNames.ONE_MATCH,
+                      params: {
+                        teamOneId: firstClubId,
+                        teamTwoId: secondClubId,
+                        dateVal: selectedDate,
+                      },
                     })
                   }
                 />

@@ -1,30 +1,35 @@
-import { CustomText } from "@src/components/shared";
 import { moderateScale } from "@src/resources/responsiveness";
 import { ScrollContainer } from "@src/screens/ScrollContainer";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { NewsTab } from "../fixture-info";
-import { footballFixtures } from "@src/constants/fixtures";
+import { TeamStatsTab } from "../fixture-info";
+import { useOneMatchDataStore } from "@src/api/store/app";
 
-export const PlayersTab: React.FC<{}> = () => {
+interface IPlayersTabProps {
+  leftTitle?: string;
+  middleText?: string;
+  rightText?: string;
+}
+
+export const PlayersTab: React.FC<IPlayersTabProps> = ({
+  leftTitle,
+  middleText,
+  rightText,
+}) => {
+  const { playersData } = useOneMatchDataStore();
   return (
     <ScrollContainer style={styles.scrollContainer}>
-      <CustomText
-        type='semi-bold'
-        size={12}
-        lightGrey
-        style={{
-          marginTop: moderateScale(-10),
-          textAlign: "center",
-        }}>
-        Countdown to:
-      </CustomText>
       <View />
-      {/* liner gradient card */}
-      <CustomText type='semi-bold' lightGrey size={12}>
-        Other Updates
-      </CustomText>
-      <NewsTab newsData={footballFixtures[0]?.news} />
+      <TeamStatsTab
+        goalScorerData={playersData}
+        type='players'
+        showFilter={true}
+        listFooterHeight={0.1}
+        leftTitle={leftTitle}
+        middleText={middleText}
+        rightText={rightText}
+      />
+      {/* <NewsTab newsData={footballFixtures[0]?.news} /> */}
     </ScrollContainer>
   );
 };

@@ -11,6 +11,8 @@ import SwitchToggle from "react-native-switch-toggle";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
 import { oneMatchInfo } from "@src/constants/onematch";
+import { useOneMatchDataStore } from "@src/api/store/app";
+import { getMatchStatus } from "@src/helper/utils";
 
 const keyStats = [
   {
@@ -32,6 +34,9 @@ const keyStats = [
 
 export const MatchTab: React.FC<{}> = () => {
   const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false);
+  const { oneMatchData } = useOneMatchDataStore();
+  const { leagueTeams } = useOneMatchDataStore();
+
   return (
     <ScrollContainer style={styles.scrollContainer}>
       <View style={styles.timeLineCard}>
@@ -51,7 +56,9 @@ export const MatchTab: React.FC<{}> = () => {
         size={12}
         lightGrey
         style={{ textAlign: "center", paddingVertical: moderateScale(10) }}>
-        HALF TIME {`{0 - 1}`}
+        {getMatchStatus(oneMatchData?.[0]?.fixture?.status?.short)}
+        {oneMatchData?.[0]?.goals?.home ?? ""} -{" "}
+        {oneMatchData?.[0]?.goals?.away ?? "-"}
       </CustomText>
 
       <View style={styles.scoreBoardCard}>
@@ -196,13 +203,14 @@ export const MatchTab: React.FC<{}> = () => {
             ))}
         </View>
       </View>
-      <Animated.View entering={FadeIn.delay(200).duration(600)}>
+      {/* <Animated.View entering={FadeIn.delay(200).duration(600)}>
         <TeamStatsTab
           goalScorerData={footballFixtures[0]?.matches[0]?.topScorers}
           showFilter={false}
           listFooterHeight={0.1}
+          type='players'
         />
-      </Animated.View>
+      </Animated.View> */}
       <View
         style={[
           styles.scoreBoardCard,
@@ -243,7 +251,17 @@ export const MatchTab: React.FC<{}> = () => {
         size={12}
         lightGrey
         style={{ textAlign: "center", paddingVertical: moderateScale(10) }}>
-        HALF TIME {`{0 - 1}`}
+        {oneMatchData?.[0]?.fixture?.status?.short === "NS"
+          ? "NOT STARTED "
+          : oneMatchData?.[0]?.fixture?.status?.short === "FT"
+            ? "FULL TIME "
+            : oneMatchData?.[0]?.fixture?.status?.short === "2H"
+              ? "SECOND HALF "
+              : oneMatchData?.[0]?.fixture?.status?.short === "1H"
+                ? "FIRST HALF "
+                : oneMatchData?.[0]?.fixture?.status?.short}
+        {oneMatchData?.[0]?.goals?.home ?? ""} -{" "}
+        {oneMatchData?.[0]?.goals?.away ?? "-"}
       </CustomText>
       <View
         style={[
@@ -268,7 +286,12 @@ export const MatchTab: React.FC<{}> = () => {
           {oneMatchInfo[0]?.lastName}
         </CustomText>
       </View>
-      <TableTab goalScorerData={footballFixtures[0]?.matches[0]?.topScorers} />
+      <TableTab
+        goalScorerData={leagueTeams}
+        leftText={oneMatchData?.[0]?.league.name.toUpperCase()}
+        leftTitleText='Club Names'
+        middleTitleText='Venue'
+      />
 
       <View
         style={[

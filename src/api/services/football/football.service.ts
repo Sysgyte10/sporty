@@ -1,5 +1,6 @@
 import { BASE_URL } from "../../endpoint/endpoint";
 import {
+  GetFixturesH2HResponse,
   GetFootballCountryResponse,
   GetFootballPlayersProfileByIdResponse,
   GetLiveCurrentFixturesLeaguesResponse,
@@ -19,6 +20,7 @@ import {
   GetPlayerTrophiesByPlayerIdResponse,
   GetStandingsByLeagueIdSeasonTeamIdResponse,
   GetStandingsByTeamResponse,
+  GetTeamPlayersOrSquad,
   GetTeamsByCountryResponse,
   GetTeamsByIdResponse,
   GetTeamsByLeagueAndSeasonResponse,
@@ -33,6 +35,7 @@ import {
   SearchLiveFixturesResponse,
 } from "../../types/responses";
 import {
+  fixturesH2H,
   footballCountries,
   footballPlayersProfileById,
   liveCurrentFixtureLeagues,
@@ -53,6 +56,7 @@ import {
   searchLiveFixtureLeagues,
   standingsByLeagueIdSeasonTeamId,
   standingsByTeam,
+  teamPlayersOrSquad,
   teamsById,
   teamsByLeagueAndSeason,
   teamsByName,
@@ -567,6 +571,38 @@ export const getPlayersTrophiesByPlayerId = async (
     return responseData?.response ?? [];
   } catch (err: any) {
     console.error("Error fetching players trophies by player id", err);
+    return [];
+  }
+};
+
+export const getFixturesHead2Head = async (
+  h2h: string,
+  from: string,
+  to: string,
+): Promise<fixturesH2H[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/fixtures/headtohead/range?h2h=${h2h}&from=${from}&to=${to}`,
+    );
+    const responseData: GetFixturesH2HResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching fixtures h2h", err);
+    return [];
+  }
+};
+
+export const getTeamPlayersOrSquads = async (
+  teamId: number,
+): Promise<teamPlayersOrSquad[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/squads?teamId=${teamId}`,
+    );
+    const responseData: GetTeamPlayersOrSquad = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching team players", err);
     return [];
   }
 };
