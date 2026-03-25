@@ -43,6 +43,7 @@ export interface RootStackParamList extends ParamListBase {
   ForYou: undefined;
   FixtureInfo: {
     fixtureId: string | number | any;
+    leagueId: string | number | any;
   };
   BasketballFixtureInfo: {
     fixtureId: string | number | any;

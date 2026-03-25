@@ -30,6 +30,8 @@ import {
 } from "@src/components/app/fixture-info";
 import { StatusBar } from "expo-status-bar";
 import { useFixturesStore } from "store";
+import { getStandingsByLeagueSeason } from "@src/api/services/football/football.service";
+import { mergeArrays } from "@src/helper/utils";
 
 export type overViewStateType = {
   fixtureName?: string;
@@ -46,7 +48,9 @@ export const FixtureInfo = ({
   navigation,
   route,
 }: RootStackScreenProps<appScreenNames.FIXTURE_INFO>) => {
-  const id = route?.params?.fixtureId;
+  const date = new Date();
+  const season = date.getFullYear() - 1;
+  const { fixtureId: id, leagueId } = route?.params;
   const { fixtures } = useFixturesStore();
   const [overViewData, setOverViewData] = useState<overViewStateType>({
     fixtureName: "",
@@ -77,7 +81,6 @@ export const FixtureInfo = ({
       news: filteredData?.news ?? [],
       odds: filteredData?.odds ?? [],
     });
-    console.log("icon", filteredData?.icon);
   };
 
   useEffect(() => {
@@ -85,10 +88,36 @@ export const FixtureInfo = ({
   }, [id]);
 
   useEffect(() => {
-    if (overViewData) {
-      console.log("overViewData", overViewData);
-    }
-  }, [overViewData]);
+    const initiateDataLoad = async (): Promise<void> => {
+      if (selectedLineList === fixturesOverview[6]) //team stats
+      {
+        await getStandingsByLeagueSeason(leagueId, season)
+          .then((res) => {
+            const mergedData = mergeArrays(res?.[0]?.league.standings ?? []);
+            const transformedData: topScorersDataType[] = mergedData.map(
+              (item) => {
+                return {
+                  id: item?.team?.id,
+                  footballerName: item?.team?.name,
+                  clubName: String(item?.points),
+                  clubImg: item?.team?.logo as ImageSourcePropType,
+                  goals: item?.all?.goals?.for,
+                };
+              },
+            );
+            setOverViewData({
+              ...overViewData,
+              filteredTopScorer: transformedData,
+            });
+          })
+          .catch((err) =>
+            console.log("Error fetching standings by league season", err),
+          );
+      }
+    };
+    initiateDataLoad();
+  }, [selectedLineList]);
+
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
       <StatusBar style='light' />
@@ -202,7 +231,12 @@ export const FixtureInfo = ({
       )}
       {selectedLineList === fixturesOverview[6] && (
         // <Animated.View entering={FadeIn.delay(200).duration(600)}>
-        <TeamStatsTab goalScorerData={overViewData?.filteredTopScorer} />
+        <TeamStatsTab
+          goalScorerData={overViewData?.filteredTopScorer}
+          type='scorers'
+          leftTitle='Team Name'
+          middleText='Position'
+        />
         // </Animated.View>
       )}
     </AppWrapper>

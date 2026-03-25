@@ -19,6 +19,7 @@ import {
   GetPlayersSidelinedBulkByPlayerIdResponse,
   GetPlayerTrophiesByPlayerIdResponse,
   GetStandingsByLeagueIdSeasonTeamIdResponse,
+  GetStandingsByLeagueSeasonResponse,
   GetStandingsByTeamResponse,
   GetTeamPlayersOrSquad,
   GetTeamsByCountryResponse,
@@ -55,6 +56,7 @@ import {
   playersTrophiesByPlayersId,
   searchLiveFixtureLeagues,
   standingsByLeagueIdSeasonTeamId,
+  standingsByLeagueSeason,
   standingsByTeam,
   teamPlayersOrSquad,
   teamsById,
@@ -442,6 +444,23 @@ export const getStandingsByTeam = async (
     return responseData?.response ?? [];
   } catch (err: any) {
     console.error("Error fetching standings by team", err);
+    return [];
+  }
+};
+
+export const getStandingsByLeagueSeason = async (
+  leagueId: number,
+  season: number,
+): Promise<standingsByLeagueSeason[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/standings?league=${leagueId}&season=${season}`,
+    );
+    const responseData: GetStandingsByLeagueSeasonResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching standings by league and season", err);
     return [];
   }
 };

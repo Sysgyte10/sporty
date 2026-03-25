@@ -40,6 +40,7 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
   rightText,
 }) => {
   const { setSelectedBtn, selectedBtn } = useOneMatchDataStore();
+  console.log("goalScorerData", goalScorerData);
   return (
     <View>
       {showFilter && (
@@ -101,7 +102,7 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
               <View key={index}>
                 <GoalScorerCard
                   topScorerItem={item}
-                  type='players'
+                  type={"scorers"}
                   showGD
                   showRightTitleAndValue
                 />

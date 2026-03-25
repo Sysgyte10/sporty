@@ -1,4 +1,9 @@
-export const footBallWatches = ["All", "Live", "Odds", "Finished"];
+export const footBallWatches = [
+  "All",
+  "Live",
+  //  "Odds",
+  "Finished",
+];
 
 export const favoritesList = [
   "Match",

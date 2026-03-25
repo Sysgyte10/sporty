@@ -17,6 +17,7 @@ interface IFixtureCardProps {
   data: fixtureDataType;
   onPress: (
     fixtureId: string | number | any,
+    leagueId: string | number | any,
     icon?: ImageSourcePropType,
     title?: string,
     desc?: string,
@@ -50,7 +51,13 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
         </View>
         <TouchableOpacity
           onPress={() =>
-            onPress(data?.id, data?.icon, data?.fixtureName, data?.country)
+            onPress(
+              data?.id,
+              data?.leagueId,
+              data?.icon,
+              data?.fixtureName,
+              data?.country,
+            )
           }>
           <MaterialIcons
             name='keyboard-arrow-right'

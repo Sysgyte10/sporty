@@ -77,3 +77,7 @@ export const getMatchStatus = (status?: string): string => {
 
   return statusMap[status ?? ""] || status || "";
 };
+
+export const mergeArrays = <T>(data: T[][]): T[] => {
+  return data.flat();
+};

@@ -178,14 +178,6 @@ export const Football = ({
             </TouchableOpacity>
           </View>
         </View>
-        {/* <FootBallHeader
-          title='RealSc⚽rZ'
-          showSearchIcon
-          showMenuIcon
-          onPressSearchIcon={() => setIsSearchModalVisible(true)}
-          headerStyle={styles.header}
-          onPressMenuIcon={() => navigation.navigate(appScreenNames.MORE)}
-        /> */}
         <View style={styles.btnListContainer}>
           <ButtonList
             data={sportyTypes}
@@ -238,9 +230,10 @@ export const Football = ({
               {selectedSport === "Football" && (
                 <FootballSport
                   data={filteredFixtures}
-                  onPress={(fixtureId) =>
+                  onPress={(fixtureId, leagueId) =>
                     navigation.navigate(appScreenNames.FIXTURE_INFO, {
                       fixtureId: fixtureId,
+                      leagueId: leagueId,
                     })
                   }
                   onPressMatchCard={(firstClubId, secondClubId) =>

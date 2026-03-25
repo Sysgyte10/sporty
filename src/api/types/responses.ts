@@ -19,6 +19,7 @@ import {
   playersTrophiesByPlayersId,
   searchLiveFixtureLeagues,
   standingsByLeagueIdSeasonTeamId,
+  standingsByLeagueSeason,
   standingsByTeam,
   teamPlayersOrSquad,
   teamsByCountry,
@@ -382,6 +383,21 @@ export type GetStandingsByTeamResponse = {
     total: number;
   };
   response: standingsByTeam[];
+};
+
+export type GetStandingsByLeagueSeasonResponse = {
+  get: string;
+  parameters: {
+    league: number;
+    season: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: standingsByLeagueSeason[];
 };
 
 export type GetPlayerSeasonsResponse = {
