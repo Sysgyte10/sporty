@@ -236,13 +236,14 @@ export const Football = ({
                       leagueId: leagueId,
                     })
                   }
-                  onPressMatchCard={(firstClubId, secondClubId) =>
+                  onPressMatchCard={(firstClubId, secondClubId, leagueId) =>
                     navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
                       screen: appScreenNames.ONE_MATCH,
                       params: {
                         teamOneId: firstClubId,
                         teamTwoId: secondClubId,
                         dateVal: selectedDate,
+                        leagueId: leagueId,
                       },
                     })
                   }

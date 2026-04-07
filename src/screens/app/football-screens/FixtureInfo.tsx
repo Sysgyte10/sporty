@@ -81,6 +81,7 @@ export const FixtureInfo = ({
       news: filteredData?.news ?? [],
       odds: filteredData?.odds ?? [],
     });
+    console.log("filteredData", filteredData);
   };
 
   useEffect(() => {

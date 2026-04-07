@@ -7,6 +7,7 @@ import {
 import React from "react";
 import { Platform, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import { Image } from "expo-image";
+import { truncateText } from "@src/helper/utils";
 
 interface IGoalScorerCardProps {
   topScorerItem: topScorersDataType | teamPlayersOrSquadDataType;
@@ -23,6 +24,7 @@ export const GoalScorerCard: React.FC<IGoalScorerCardProps> = ({
   type,
   showRightTitleAndValue,
 }) => {
+  console.log("topScorerItems", topScorerItem);
   return (
     <View style={[styles.card, style]}>
       <View
@@ -70,8 +72,8 @@ export const GoalScorerCard: React.FC<IGoalScorerCardProps> = ({
             width: showGD && showRightTitleAndValue ? DVW(35) : DVW(35),
           }}>
           {type === "players"
-            ? topScorerItem?.position
-            : topScorerItem?.clubName}
+            ? truncateText(topScorerItem?.position)
+            : truncateText(topScorerItem?.clubName)}
         </CustomText>
         {showGD && (
           <CustomText type='medium' size={16} white>
@@ -80,7 +82,7 @@ export const GoalScorerCard: React.FC<IGoalScorerCardProps> = ({
         )}
         {showRightTitleAndValue && (
           <CustomText type='medium' size={16} white>
-            {type === "players" ? topScorerItem?.age : "0"}
+            {type === "players" ? topScorerItem?.age : topScorerItem?.goals}
           </CustomText>
         )}
       </View>

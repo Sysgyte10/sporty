@@ -18,6 +18,7 @@ import {
 import Animated, { FadeIn } from "react-native-reanimated";
 import {
   getFixturesHead2Head,
+  getStandingsByLeagueSeason,
   getTeamPlayersOrSquads,
   getTeamsByLeagueAndSeason,
 } from "@src/api/services/football/football.service";
@@ -29,10 +30,12 @@ export const OneMach = ({
   navigation,
   route,
 }: RootStackScreenProps<appScreenNames.ONE_MATCH>) => {
-  const { teamOneId, teamTwoId, dateVal } = route?.params || {};
+  const { teamOneId, teamTwoId, dateVal, leagueId } = route?.params || {};
   const [selectedLineList, setSelectedLineList] = useState<string>("Match");
   const [loading, setLoading] = useState<boolean>(false);
   const {
+    competitionData,
+    setCompetitionData,
     setOneMatchData,
     oneMatchData,
     setPlayersData,
@@ -58,11 +61,18 @@ export const OneMach = ({
             break;
 
           case "Competition":
-            const data2 = await getFixturesHead2Head(
-              `${teamOneId}-${teamTwoId}`,
-              dateVal as string,
-              dateVal as string,
-            );
+            const data2 = await getStandingsByLeagueSeason(leagueId, currYear);
+            const standings = data2.map((item) => item?.league?.standings);
+            const competitionData = standings[0][0]?.map((teamInfo) => {
+              return {
+                id: teamInfo?.team?.id,
+                footballerName: teamInfo?.team?.name,
+                clubName: teamInfo?.team?.name,
+                clubImg: teamInfo?.team?.logo,
+                goals: teamInfo?.points,
+              } as topScorersDataType;
+            });
+            setCompetitionData(competitionData || []);
             break;
 
           case "Team":

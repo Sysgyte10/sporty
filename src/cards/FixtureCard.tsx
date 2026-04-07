@@ -23,7 +23,11 @@ interface IFixtureCardProps {
     desc?: string,
   ) => void;
   showDate?: boolean;
-  onPressMatchCard?: (firstClubId: string, secondClubId: string) => void;
+  onPressMatchCard?: (
+    firstClubId: string,
+    secondClubId: string,
+    leagueId: any,
+  ) => void;
 }
 
 export const FixtureCard: React.FC<IFixtureCardProps> = ({
@@ -74,7 +78,11 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
             showDate={true}
             onPressMatchCard={() => {
               const clubIds = matchItem.club.map((club) => club.id);
-              onPressMatchCard?.(clubIds[0] as string, clubIds[1] as string);
+              onPressMatchCard?.(
+                clubIds[0] as string,
+                clubIds[1] as string,
+                data?.leagueId,
+              );
             }}
             truncateScoreText
             truncLength={10}

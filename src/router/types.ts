@@ -90,6 +90,7 @@ export interface RootStackParamList extends ParamListBase {
     teamOneId: string;
     teamTwoId: string;
     dateVal?: string;
+    leagueId: any;
   };
   Team: {
     screenTitle: string;

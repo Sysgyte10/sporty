@@ -6,6 +6,8 @@ import {
 import { create } from "zustand";
 
 interface IOneMatchDataProps {
+  competitionData: topScorersDataType[];
+  setCompetitionData: (data: topScorersDataType[]) => void;
   oneMatchData: fixturesH2H[];
   setOneMatchData: (data: fixturesH2H[]) => void;
   playersData: teamPlayersOrSquadDataType[];
@@ -17,6 +19,8 @@ interface IOneMatchDataProps {
 }
 
 export const useOneMatchDataStore = create<IOneMatchDataProps>((set) => ({
+  competitionData: [],
+  setCompetitionData: (competitionData) => set({ competitionData }),
   oneMatchData: [],
   setOneMatchData: (oneMatchData) => set({ oneMatchData }),
   playersData: [],

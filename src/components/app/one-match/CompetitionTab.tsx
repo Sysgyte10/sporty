@@ -10,10 +10,11 @@ import { footballFixtures } from "@src/constants/fixtures";
 import { TeamStatsTab } from "../fixture-info";
 import { useOneMatchDataStore } from "@src/api/store/app";
 import { getMatchStatus, truncateText } from "@src/helper/utils";
+import { topScorersDataType } from "@src/types/types";
 
 export const CompetitionTab: React.FC<{}> = () => {
   const [selectedSport, setSelectedSport] = useState<string>("All");
-  const { oneMatchData } = useOneMatchDataStore();
+  const { competitionData, oneMatchData } = useOneMatchDataStore();
   return (
     <ScrollContainer style={styles.scrollContainer}>
       <View>
@@ -82,9 +83,11 @@ export const CompetitionTab: React.FC<{}> = () => {
       </View>
       <Animated.View entering={FadeIn.delay(200).duration(600)}>
         <TeamStatsTab
-          goalScorerData={footballFixtures[0]?.matches[0]?.topScorers}
+          goalScorerData={competitionData}
           showFilter={false}
           listFooterHeight={0.1}
+          leftTitle='Club Names'
+          middleText='Goals'
         />
       </Animated.View>
     </ScrollContainer>
