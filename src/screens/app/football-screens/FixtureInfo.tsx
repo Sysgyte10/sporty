@@ -81,7 +81,6 @@ export const FixtureInfo = ({
       news: filteredData?.news ?? [],
       odds: filteredData?.odds ?? [],
     });
-    console.log("filteredData", filteredData);
   };
 
   useEffect(() => {
@@ -90,7 +89,7 @@ export const FixtureInfo = ({
 
   useEffect(() => {
     const initiateDataLoad = async (): Promise<void> => {
-      if (selectedLineList === fixturesOverview[6]) //team stats
+      if (overViewData?.filteredMatches.length > 0) //team stats
       {
         await getStandingsByLeagueSeason(leagueId, season)
           .then((res) => {
@@ -117,7 +116,7 @@ export const FixtureInfo = ({
       }
     };
     initiateDataLoad();
-  }, [selectedLineList]);
+  }, [overViewData?.filteredMatches]);
 
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>

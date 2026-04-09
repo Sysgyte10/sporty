@@ -1,18 +1,18 @@
 import { CustomText } from "@src/components/shared";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { ScrollContainer } from "@src/screens/ScrollContainer";
-import React, { useState } from "react";
-import { Platform, StyleSheet, View } from "react-native";
-import { Image } from "expo-image";
-import Animated, { FadeIn } from "react-native-reanimated";
-import { TableTab, TeamStatsTab } from "../fixture-info";
-import { footballFixtures } from "@src/constants/fixtures";
+import React, { useEffect, useState } from "react";
+import { Platform, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { Image, ImageBackground } from "expo-image";
+import { TableTab } from "../fixture-info";
 import SwitchToggle from "react-native-switch-toggle";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
 import { oneMatchInfo } from "@src/constants/onematch";
 import { useOneMatchDataStore } from "@src/api/store/app";
-import { getMatchStatus } from "@src/helper/utils";
+import { getMatchStatus, getPlayerStyle, groupByRow } from "@src/helper/utils";
+import { getLineUpsOfTeams } from "@src/api/services/football/football.service";
+import { lineUpsOfTeams } from "@src/api/types/types";
 
 const keyStats = [
   {
@@ -36,6 +36,34 @@ export const MatchTab: React.FC<{}> = () => {
   const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false);
   const { oneMatchData } = useOneMatchDataStore();
   const { leagueTeams } = useOneMatchDataStore();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [lineUps, setLineUps] = useState<lineUpsOfTeams | null>(null);
+  const [grouped, setGrouped] = useState<any>(null);
+
+  useEffect(() => {
+    const initializeData = async () => {
+      setLoading(true);
+      try {
+        const data = await getLineUpsOfTeams(592872, 50);
+        console.log("Lineups data:", data);
+        setLineUps(data[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initializeData();
+  }, []);
+
+  useEffect(() => {
+    if (loading || !lineUps) {
+      return;
+    }
+    const grouped = groupByRow(lineUps.startXI);
+    setGrouped(grouped);
+  }, [lineUps, loading]);
 
   return (
     <ScrollContainer style={styles.scrollContainer}>
@@ -447,20 +475,131 @@ export const MatchTab: React.FC<{}> = () => {
             />
           </View>
         </View>
-        <View
+        {/* <View
           style={{
             width: "100%",
-            height: DVH(40),
+            height: DVH(47),
             overflow: "hidden",
           }}>
-          <Image
+          <ImageBackground
             contentFit='fill'
             style={{
               width: "100%",
               height: "100%",
             }}
-            source={require("@src/assets/png/football-pitch.png")}
-          />
+            source={require("@src/assets/jpg/football-field.jpg")}>
+            <View style={{ flex: 1 }}>
+              {Object.entries(grouped).map(([row, players]: any) =>
+                players.map((player: any, index: number) => {
+                  const style = getPlayerStyle(
+                    Number(row),
+                    index,
+                    players.length,
+                  );
+
+                  return (
+                    <View key={player.id} style={style as StyleProp<ViewStyle>}>
+                      <View
+                        style={{
+                          width: 50,
+                          height: 50,
+                          borderRadius: 25,
+                          backgroundColor: `#${lineUps.team.colors.player.primary}`,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          borderWidth: 2,
+                          borderColor: `#${lineUps.team.colors.player.border}`,
+                        }}>
+                        <CustomText type='bold' white size={12}>
+                          {player.name.split(" ").pop()}
+                        </CustomText>
+                      </View>
+
+                      <CustomText
+                        white
+                        size={10}
+                        style={{
+                          marginTop: 4,
+                          textAlign: "center",
+                        }}>
+                        {player?.name}
+                      </CustomText>
+                    </View>
+                  );
+                }),
+              )}
+            </View>
+          </ImageBackground>
+        </View> */}
+
+        <View
+          style={{
+            width: "100%",
+            height: DVH(47),
+            overflow: "hidden",
+          }}>
+          <ImageBackground
+            contentFit='fill'
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+            source={require("@src/assets/jpg/football-field.jpg")}>
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: "rgba(0,0,0,0.5)",
+                marginLeft: moderateScale(-50),
+              }}>
+              {Object.entries(grouped || {}).map(([row, players]: any) =>
+                players.map((player: any, index: number) => {
+                  const style = getPlayerStyle(
+                    Number(row),
+                    index,
+                    players.length,
+                  );
+
+                  return (
+                    <View key={player.id} style={style as StyleProp<ViewStyle>}>
+                      {/* Player Circle */}
+                      <View
+                        style={{
+                          width: moderateScale(50),
+                          height: moderateScale(50),
+                          borderRadius: moderateScale(25),
+                          backgroundColor: colors.purple,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          borderWidth: 2,
+                          borderColor: `#${lineUps?.team?.colors?.player?.border ?? "ffffff"}`,
+                        }}>
+                        <CustomText
+                          type='bold'
+                          white
+                          size={10}
+                          style={{
+                            textAlign: "center",
+                          }}>
+                          {player.name.split(" ").pop()}
+                        </CustomText>
+                      </View>
+
+                      {/* Player Name */}
+                      <CustomText
+                        white
+                        size={10}
+                        style={{
+                          marginTop: 4,
+                          textAlign: "center",
+                        }}>
+                        {player?.name}
+                      </CustomText>
+                    </View>
+                  );
+                }),
+              )}
+            </View>
+          </ImageBackground>
         </View>
       </View>
 

@@ -81,3 +81,35 @@ export const getMatchStatus = (status?: string): string => {
 export const mergeArrays = <T>(data: T[][]): T[] => {
   return data.flat();
 };
+
+const parseGrid = (grid: string) => {
+  const [row, col] = grid.split(":").map(Number);
+  return { row, col };
+};
+
+export const groupByRow = (players: any[]) => {
+  return players.reduce(
+    (acc, item) => {
+      const grid = item.player.grid;
+      if (!grid) return acc;
+
+      const { row } = parseGrid(grid);
+
+      if (!acc[row]) acc[row] = [];
+      acc[row].push(item.player);
+
+      return acc;
+    },
+    {} as Record<number, any[]>,
+  );
+};
+
+export const getPlayerStyle = (row: number, index: number, total: number) => {
+  return {
+    position: "absolute" as const,
+    top: `${(row - 1) * 23}%`, // adjust spacing vertically
+    left: `${((index + 1) / (total + 1)) * 100}%`,
+    transform: [{ translateX: -25 }],
+    alignItems: "center" as const,
+  };
+};

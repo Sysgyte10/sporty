@@ -3,6 +3,7 @@ import {
   GetFixturesH2HResponse,
   GetFootballCountryResponse,
   GetFootballPlayersProfileByIdResponse,
+  GetLineUpsOfTeamsResponse,
   GetLiveCurrentFixturesLeaguesResponse,
   GetLiveFixtureByIdResponse,
   GetLiveFixtureOfLeaguesByIdResponse,
@@ -39,6 +40,7 @@ import {
   fixturesH2H,
   footballCountries,
   footballPlayersProfileById,
+  lineUpsOfTeams,
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
   liveFixtures,
@@ -622,6 +624,22 @@ export const getTeamPlayersOrSquads = async (
     return responseData?.response ?? [];
   } catch (err: any) {
     console.error("Error fetching team players", err);
+    return [];
+  }
+};
+
+export const getLineUpsOfTeams = async (
+  fixtureId: number,
+  teamId: number,
+): Promise<lineUpsOfTeams[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/fixtures/lineups/team?fixture=${fixtureId}&team=${teamId}`,
+    );
+    const responseData: GetLineUpsOfTeamsResponse = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: unknown) {
+    console.error("Error fetching team line-ups", err);
     return [];
   }
 };

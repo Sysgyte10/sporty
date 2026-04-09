@@ -29,6 +29,7 @@ type ITeamStatsTabProps = (ScorerProps | PlayerProps) & {
   rightText?: string;
   selectedBtn?: string;
   setSelectedBtn?: (text: string) => void;
+  type?: "scorers" | "players";
 };
 
 export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
@@ -38,6 +39,7 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
   leftTitle,
   middleText,
   rightText,
+  type,
 }) => {
   const { setSelectedBtn, selectedBtn } = useOneMatchDataStore();
   return (
@@ -103,6 +105,7 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
                   topScorerItem={item}
                   showGD
                   showRightTitleAndValue
+                  type={type === "players" ? "players" : "scorers"}
                 />
               </View>
             );

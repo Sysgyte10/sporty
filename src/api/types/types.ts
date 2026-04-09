@@ -1046,3 +1046,45 @@ export type teamPlayersOrSquad = {
     photo: string;
   }[];
 };
+
+export type lineUpsOfTeams = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+    colors: {
+      player: {
+        primary: string;
+        number: string;
+        border: string;
+      };
+      goalkeeper: {
+        primary: string;
+        number: string;
+        border: string;
+      };
+    };
+  };
+  formation: string;
+  startXI: {
+    player: {
+      id: number;
+      name: string;
+      pos: "G" | "D" | "M" | "F";
+      grid: `${number}:${number}`;
+    };
+  }[];
+  substitutes: {
+    player: {
+      id: number;
+      name: string;
+      pos: "G" | "D" | "M" | "F";
+      grid: `${number}:${number}` | null;
+    };
+  }[];
+  coach: {
+    id: number;
+    name: string;
+    photo: string;
+  };
+};

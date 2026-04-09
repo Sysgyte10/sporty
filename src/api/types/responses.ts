@@ -2,6 +2,7 @@ import {
   fixturesH2H,
   footballCountries,
   footballPlayersProfileById,
+  lineUpsOfTeams,
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
   liveFixtures,
@@ -538,4 +539,18 @@ export type GetTeamPlayersOrSquad = {
     total: number;
   };
   response: teamPlayersOrSquad[];
+};
+
+export type GetLineUpsOfTeamsResponse = {
+  get: string;
+  parameters: {
+    date: null;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: lineUpsOfTeams[];
 };
