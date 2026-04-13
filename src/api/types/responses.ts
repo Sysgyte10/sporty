@@ -1,4 +1,10 @@
 import {
+  basketballCountries,
+  basketballLeagues,
+  basketballSeasons,
+  basketballStatistics,
+  basketballTeamsById,
+  basketballTimeZones,
   fixturesH2H,
   footballCountries,
   footballPlayersProfileById,
@@ -553,4 +559,58 @@ export type GetLineUpsOfTeamsResponse = {
     total: number;
   };
   response: lineUpsOfTeams[];
+};
+
+//Basketball Responses
+
+export type GetBasketballTimeZonesResponse = {
+  get: string;
+  parameters: unknown[];
+  errors: unknown[];
+  results: number;
+  response: basketballTimeZones;
+};
+
+export type GetBasketballSeasonsResponse = {
+  get: string;
+  parameters: unknown[];
+  errors: unknown[];
+  results: number;
+  response: basketballSeasons;
+};
+
+export type GetBasketballCountriesResponse = {
+  get: string;
+  parameters: unknown[];
+  errors: unknown[];
+  results: number;
+  response: basketballCountries[];
+};
+
+export type GetBasketballLeaguesResponse = {
+  get: string;
+  parameters: unknown[];
+  errors: unknown[];
+  results: number;
+  response: basketballLeagues[];
+};
+
+export type GetBasketballTeamsByIdResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: basketballTeamsById[];
+};
+
+export type GetBasketballStatisticsResponse = {
+  get: string;
+  parameters: {
+    season: string;
+    team: string;
+    league: string;
+  };
+  errors: unknown[];
+  results: number;
+  response: basketballStatistics[];
 };

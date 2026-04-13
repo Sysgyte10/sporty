@@ -1,3 +1,5 @@
+import { getBasketballTimezones } from "../services/basketball/basketball.service";
+
 export type PlayerPosition =
   | "Goalkeeper"
   | "Defender"
@@ -1086,5 +1088,155 @@ export type lineUpsOfTeams = {
     id: number;
     name: string;
     photo: string;
+  };
+};
+
+//Basketball
+export type basketballTimeZones = string[];
+
+export type basketballSeasons = string[];
+
+export type basketballCountries = {
+  id: number;
+  name: string;
+  code: string | null;
+  flag: string | null;
+};
+
+export type basketballLeagues = {
+  id: number;
+  name: string;
+  type: string;
+  logo: string;
+  country: {
+    id: number;
+    name: string;
+    code: string | null;
+    flag: string | null;
+  };
+  seasons: {
+    season: number;
+    start: string;
+    end: string;
+    coverage: {
+      games: {
+        statistics: {
+          teams: boolean;
+          players: boolean;
+        };
+      };
+      standings: boolean;
+      players: boolean;
+      odds: boolean;
+    };
+  }[];
+};
+
+export type basketballTeamsById = {
+  id: number;
+  name: string;
+  logo: string;
+  nationnal: boolean;
+  country: {
+    id: number;
+    name: string;
+    code: string | null;
+    flag: string | null;
+  };
+};
+
+export type basketballStatistics = {
+  country: {
+    id: number;
+    name: string;
+    code: string | null;
+    flag: string | null;
+  };
+  league: {
+    id: number;
+    name: string;
+    type: string;
+    season: string;
+    logo: string;
+  };
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+  };
+  games: {
+    played: {
+      home: number;
+      away: number;
+      all: number;
+    };
+    wins: {
+      home: {
+        total: number;
+        percentage: string | null;
+      };
+      away: {
+        total: number;
+        percentage: string | null;
+      };
+      all: {
+        total: number;
+        percentage: string | null;
+      };
+    };
+    draws: {
+      home: {
+        total: number;
+        percentage: string | null;
+      };
+      away: {
+        total: number;
+        percentage: string | null;
+      };
+      all: {
+        total: number;
+        percentage: string | null;
+      };
+    };
+    loses: {
+      home: {
+        total: number;
+        percentage: string | null;
+      };
+      away: {
+        total: number;
+        percentage: string | null;
+      };
+      all: {
+        total: number;
+        percentage: string | null;
+      };
+    };
+  };
+  points: {
+    for: {
+      total: {
+        home: number;
+        away: number;
+        all: number;
+      };
+      average: {
+        home: string;
+        away: string;
+        all: string;
+      };
+    };
+    against: {
+      total: {
+        home: number;
+        away: number;
+        all: number;
+      };
+      average: {
+        home: string;
+        away: string;
+        all: string;
+      };
+    };
   };
 };
