@@ -1,7 +1,10 @@
 import {
   basketballCountries,
+  basketballGames,
   basketballLeagues,
   basketballSeasons,
+  basketballStandings,
+  basketballStandingsGroups,
   basketballStatistics,
   basketballTeamsById,
   basketballTimeZones,
@@ -613,4 +616,28 @@ export type GetBasketballStatisticsResponse = {
   errors: unknown[];
   results: number;
   response: basketballStatistics[];
+};
+
+export type GetBasketballStandingsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: basketballStandings[];
+};
+
+export type GetBasketballStandingsGroupsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: basketballStandingsGroups[];
+};
+
+export type GetBasketballGamesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: basketballGames[];
 };

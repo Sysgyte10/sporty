@@ -1,7 +1,9 @@
 import {
   basketballCountries,
+  basketballGames,
   basketballLeagues,
   basketballSeasons,
+  basketballStandings,
   basketballStatistics,
   basketballTeamsById,
   basketballTimeZones,
@@ -9,12 +11,15 @@ import {
 import { BASE_URL } from "../../endpoint/endpoint";
 import {
   GetBasketballCountriesResponse,
+  GetBasketballGamesResponse,
   GetBasketballLeaguesResponse,
   GetBasketballSeasonsResponse,
+  GetBasketballStandingsResponse,
   GetBasketballStatisticsResponse,
   GetBasketballTeamsByIdResponse,
   GetBasketballTimeZonesResponse,
 } from "@src/api/types/responses";
+import { getToday } from "@src/helper/utils";
 
 export const getBasketballTimezones =
   async (): Promise<basketballTimeZones> => {
@@ -100,5 +105,38 @@ export const getBasketballStatistics = async (
   } catch (err: any) {
     console.log("Error fetching basketball statistics:", err.message);
     return [] as basketballStatistics[];
+  }
+};
+
+//go back to check if the endpoint is correct, because it is not working
+export const getBasketballStandings = async (
+  season: string,
+  league: number,
+): Promise<basketballStandings[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiBasket/basketball/standings?season=${season}&league=${league}`,
+    );
+    const data: GetBasketballStandingsResponse = await response.json();
+    return data?.response || [];
+  } catch (err: any) {
+    console.log("Error fetching basketball standings:", err.message);
+    return [] as basketballStandings[];
+  }
+};
+
+export const getBasketballStandingsGroups = async (
+  date: string,
+): Promise<basketballGames[]> => {
+  date = getToday();
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiBasket/basketball/games?date=${date}`,
+    );
+    const data: GetBasketballGamesResponse = await response.json();
+    return data?.response || [];
+  } catch (err: any) {
+    console.log("Error fetching basketball games:", err.message);
+    return [] as basketballGames[];
   }
 };

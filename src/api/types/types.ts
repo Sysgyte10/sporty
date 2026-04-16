@@ -1240,3 +1240,18 @@ export type basketballStatistics = {
     };
   };
 };
+
+export type basketballStandings = {};
+
+export type basketballStandingsGroups = string;
+
+export type basketballGames = {
+  id: number;
+  date: string;
+  time: string;
+  timestamp: number;
+  timezone: string;
+  stage: null;
+  week: null;
+  venue: string;
+};
