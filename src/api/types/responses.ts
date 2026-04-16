@@ -11,6 +11,15 @@ import {
   fixturesH2H,
   footballCountries,
   footballPlayersProfileById,
+  hockeyCountries,
+  hockeyGames,
+  hockeyGamesEvent,
+  hockeyGamesH2H,
+  hockeyLeagues,
+  hockeySeasons,
+  hockeyTeams,
+  hockeyTeamStatistics,
+  hockeyTimeZones,
   lineUpsOfTeams,
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
@@ -640,4 +649,76 @@ export type GetBasketballGamesResponse = {
   errors: unknown[];
   results: number;
   response: basketballGames[];
+};
+
+export type GetHockeyTimeZonesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeyTimeZones[];
+};
+
+export type GetHockeySeasonsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeySeasons[];
+};
+
+export type GetHockeyCountriesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeyCountries[];
+};
+
+export type GetHockeyLeaguesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeyLeagues[];
+};
+
+export type GetHockeyTeamsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeyTeams[];
+};
+
+export type GetHockeyTeamsStatisticsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeyTeamStatistics[];
+};
+
+export type GetHockeyGamesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeyGames[];
+};
+
+export type GetHockeyGamesH2HResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeyGamesH2H[];
+};
+
+export type GetHockeyGamesEventResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: hockeyGamesEvent[];
 };

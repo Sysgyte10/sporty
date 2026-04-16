@@ -1255,3 +1255,21 @@ export type basketballGames = {
   week: null;
   venue: string;
 };
+
+export type hockeyTimeZones = {};
+
+export type hockeySeasons = {};
+
+export type hockeyCountries = {};
+
+export type hockeyLeagues = {};
+
+export type hockeyTeams = {};
+
+export type hockeyTeamStatistics = {};
+
+export type hockeyGames = {};
+
+export type hockeyGamesH2H = {};
+
+export type hockeyGamesEvent = {};
