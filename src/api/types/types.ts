@@ -1273,3 +1273,181 @@ export type hockeyGames = {};
 export type hockeyGamesH2H = {};
 
 export type hockeyGamesEvent = {};
+
+export type americanFootballTimeZones = string;
+
+export type americanFootballSeasons = string;
+
+export type americanFootballLeagues = {
+  league: {
+    id: number;
+    name: string;
+    logo: string;
+  };
+  country: {
+    name: string;
+    code: string;
+    flag: string;
+  };
+  seasons: {
+    year: number;
+    start: string;
+    end: string;
+    current: boolean;
+    coverage: {
+      games: {
+        events: boolean;
+        statisitcs: {
+          teams: boolean;
+          players: boolean;
+        };
+      };
+      statistics: {
+        season: {
+          players: boolean;
+        };
+      };
+      players: boolean;
+      injuries: boolean;
+      standings: boolean;
+    };
+  }[];
+};
+
+export type americanFootballTeamsById = {};
+
+export type americanFootballPlayersById = {
+  id: number;
+  name: string;
+  age: number;
+  height: string;
+  weight: string;
+  college: string;
+  group: string;
+  position: string;
+  number: number;
+  salary: any | null;
+  experience: number;
+  image: string;
+};
+
+export type americanFootballPlayersStatistics = {
+  player: {
+    id: number;
+    name: string;
+    image: string;
+  };
+  teams: {
+    team: {
+      id: number;
+      name: string;
+      logo: string;
+    };
+    groups: {
+      name: string;
+      statistics: {
+        name: string;
+        value: string;
+      }[];
+    }[];
+  }[];
+};
+
+export type americanFootballInjuries = {};
+
+export type americanFootballGames = {
+  game: {
+    id: number;
+    stage: string;
+    week: string;
+    date: {
+      timezone: string;
+      date: string;
+      time: string;
+      timestamp: number;
+    };
+    venue: {
+      name: string;
+      city: string;
+    };
+    status: {
+      short: string;
+      long: string;
+      timer: string | null;
+    };
+  };
+  league: {
+    id: number;
+    name: string;
+    season: string;
+    logo: string;
+    country: {
+      name: string;
+      code: string;
+      flag: string;
+    };
+  };
+  teams: {
+    home: {
+      id: number;
+      name: string;
+      logo: string;
+    };
+    away: {
+      id: number;
+      name: string;
+      logo: string;
+    };
+  };
+  scores: {
+    home: {
+      id: number;
+      name: any;
+      logo: any;
+      quarter_1: number;
+      quarter_2: number;
+      quarter_3: number;
+      quarter_4: number;
+      overtime: number | null;
+      total: number;
+    };
+    away: {
+      id: number;
+      name: any;
+      logo: any;
+      quarter_1: number;
+      quarter_2: number;
+      quarter_3: number;
+      quarter_4: number;
+      overtime: number | null;
+      total: number;
+    };
+  };
+};
+
+export type americanFootballGamesEvents = {
+  quarter: string;
+  minute: string;
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+  };
+  player: {
+    id: number;
+    name: string;
+    image: string;
+  };
+  type: string;
+  comment: string;
+  score: {
+    home: number;
+    away: number;
+  };
+};
+
+export type americanFootballGamesStatisticsOfTeams = {};
+
+export type americanFootballGamesStatisticsOfPlayers = {};
+
+export type americanFootballGamesStandings = {};

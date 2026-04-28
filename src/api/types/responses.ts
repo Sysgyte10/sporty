@@ -1,4 +1,15 @@
 import {
+  americanFootballGames,
+  americanFootballGamesEvents,
+  americanFootballGamesStatisticsOfPlayers,
+  americanFootballGamesStatisticsOfTeams,
+  americanFootballInjuries,
+  americanFootballLeagues,
+  americanFootballPlayersById,
+  americanFootballPlayersStatistics,
+  americanFootballSeasons,
+  americanFootballTeamsById,
+  americanFootballTimeZones,
   basketballCountries,
   basketballGames,
   basketballLeagues,
@@ -721,4 +732,94 @@ export type GetHockeyGamesEventResponse = {
   errors: unknown[];
   results: number;
   response: hockeyGamesEvent[];
+};
+
+//American Football Responses
+
+export type GetAmericanFootballTimeZonesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballTimeZones[];
+};
+
+export type GetAmericanFootballSeasonsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballSeasons[];
+};
+
+export type GetAmericanFootballLeaguesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballLeagues[];
+};
+
+export type GetAmericanFootballTeamsByIdResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballTeamsById[];
+};
+
+export type GetAmericanFootballPlayersByIdResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballPlayersById[];
+};
+
+export type GetAmericanFootballPlayersStatisticsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballPlayersStatistics[];
+};
+
+export type GetAmericanFootballInjuriesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballInjuries[];
+};
+
+export type GetAmericanFootballGamesResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballGames[];
+};
+
+export type GetAmericanFootballGamesEventsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballGamesEvents[];
+};
+
+export type GetAmericanFootballGamesStatisticsOfTeamsResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballGamesStatisticsOfTeams[];
+};
+
+export type GetAmericanFootballGamesStatisticsOfPlayersResponse = {
+  get: string;
+  parameters: object;
+  errors: unknown[];
+  results: number;
+  response: americanFootballGamesStatisticsOfPlayers[];
 };
