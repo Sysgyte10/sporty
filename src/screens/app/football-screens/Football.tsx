@@ -22,7 +22,6 @@ import {
   SearchFilterModal,
 } from "@src/common";
 import { sportyTypes } from "@src/constants/user-selection-steps";
-import { FootBallHeader } from "@src/components/app/football";
 import { footBallWatches } from "@src/constants/football";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -45,6 +44,8 @@ import { transformFixturesToLeagues } from "@src/api/services/football/football.
 import { getToday } from "@src/helper/utils";
 import { Image } from "expo-image";
 import { Feather } from "@expo/vector-icons";
+import { getHockeyLeagues } from "@src/api/services/hockey/hockey.service";
+import { transformLeaguesToFixtures } from "@src/api/services/hockey/hockey.transformer";
 
 export const Football = ({
   navigation,
@@ -65,12 +66,28 @@ export const Football = ({
     fixtures ?? [],
   );
 
-  const initiateDataForAllMatches = async () => {
+  //run when football is selected...
+  const initiateDataForAllFootballMatches = async () => {
     try {
       setLoading(true);
       const dateToUse = selectedDate || getToday();
       const data = await getLiveFixturesByDate(dateToUse);
       const transformed = transformFixturesToLeagues(data);
+      setFixtures(transformed);
+    } catch (err: any) {
+      console.log("Error", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  //run when ice-hockey is selected...
+  const initiateDataForAllIceHockeyMatches = async () => {
+    try {
+      setLoading(true);
+      const leagues = await getHockeyLeagues();
+      const transformed = await transformLeaguesToFixtures(leagues);
+      console.log("Transformed Hockey Fixtures", transformed);
       setFixtures(transformed);
     } catch (err: any) {
       console.log("Error", err);
@@ -111,7 +128,17 @@ export const Football = ({
   };
 
   useEffect(() => {
-    initiateDataForAllMatches();
+    if (selectedSport === "Football") {
+      initiateDataForAllFootballMatches();
+    } else if (selectedSport === "Ice Hockey") {
+      initiateDataForAllIceHockeyMatches();
+    }
+  }, [selectedSport]);
+
+  useEffect(() => {
+    if (selectedSport === "Football") {
+      initiateDataForAllFootballMatches();
+    }
   }, [selectedDate]);
 
   //get all live matches currently
@@ -119,7 +146,7 @@ export const Football = ({
     if (selectedLineList === "Live") {
       initiateDataForLiveMatches();
     } else if (selectedLineList === "All") {
-      initiateDataForAllMatches();
+      initiateDataForAllFootballMatches();
     } else if (selectedLineList === "Finished") {
       initiateDataForFinishedMatches();
     }
@@ -250,6 +277,28 @@ export const Football = ({
                 />
               )}
 
+              {selectedSport === "Ice Hockey" && (
+                <IceHockey
+                  data={filteredFixtures}
+                  onPress={(fixtureId, icon, title, desc) =>
+                    navigation.navigate(
+                      appScreenNames.ICE_HOCKEY_FIXTURE_INFO,
+                      {
+                        fixtureId: fixtureId,
+                        image: icon as ImageSourcePropType,
+                        title: title as string,
+                        desc: desc as string,
+                      },
+                    )
+                  }
+                  onPressMatchCard={() =>
+                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
+                      screen: appScreenNames.ONE_MATCH,
+                    })
+                  }
+                />
+              )}
+
               {selectedSport === "Basketball" && (
                 <BasketballSport
                   onPress={(fixtureId, icon, title, desc) =>
@@ -319,27 +368,6 @@ export const Football = ({
                       title: title as string,
                       desc: desc as string,
                     })
-                  }
-                  onPressMatchCard={() =>
-                    navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
-                      screen: appScreenNames.ONE_MATCH,
-                    })
-                  }
-                />
-              )}
-
-              {selectedSport === "Ice Hockey" && (
-                <IceHockey
-                  onPress={(fixtureId, icon, title, desc) =>
-                    navigation.navigate(
-                      appScreenNames.ICE_HOCKEY_FIXTURE_INFO,
-                      {
-                        fixtureId: fixtureId,
-                        image: icon as ImageSourcePropType,
-                        title: title as string,
-                        desc: desc as string,
-                      },
-                    )
                   }
                   onPressMatchCard={() =>
                     navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {

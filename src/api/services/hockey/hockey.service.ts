@@ -12,7 +12,7 @@ import {
 } from "@src/api/types/responses";
 import {
   hockeyCountries,
-  hockeyGames,
+  hockeyGamesById,
   hockeyGamesEvent,
   hockeyGamesH2H,
   hockeyLeagues,
@@ -103,14 +103,16 @@ export const getHockeyTeamStatistics = async (
 };
 
 //check if the endpoint is correct, because it is not working
-export const hockeyGamesById = async (id: number): Promise<hockeyGames[]> => {
+export const getHockeyGamesById = async (
+  id: number,
+): Promise<hockeyGamesById[]> => {
   try {
     const response = await fetch(`${BASE_URL}/api/Hockey/games?id=${id}`);
     const data: GetHockeyGamesResponse = await response.json();
     return data?.response || [];
   } catch (err: any) {
     console.log("Error fetching hockey games:", err);
-    return [] as hockeyGames[];
+    return [] as hockeyGamesById[];
   }
 };
 

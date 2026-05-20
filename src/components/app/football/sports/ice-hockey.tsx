@@ -1,6 +1,7 @@
 import { FixtureCard } from "@src/cards";
 import { iceHockeyFixtures } from "@src/constants/fixtures";
 import { moderateScale } from "@src/resources/responsiveness";
+import { fixtureDataType } from "@src/types/types";
 import React from "react";
 import { FlatList, ImageSourcePropType, View } from "react-native";
 
@@ -9,19 +10,21 @@ interface IIceHockeyProps {
     id: any,
     icon?: ImageSourcePropType,
     title?: string,
-    desc?: string
+    desc?: string,
   ) => void;
   onPressMatchCard: () => void;
+  data: fixtureDataType[];
 }
 
 export const IceHockey: React.FC<IIceHockeyProps> = ({
   onPress,
   onPressMatchCard,
+  data,
 }) => {
   return (
     <>
       <FlatList
-        data={iceHockeyFixtures}
+        data={data}
         contentContainerStyle={{
           gap: moderateScale(1),
         }}
@@ -34,8 +37,8 @@ export const IceHockey: React.FC<IIceHockeyProps> = ({
             <View key={index}>
               <FixtureCard
                 data={item}
-                onPress={(fixtureId, icon, title, desc) =>
-                  onPress(fixtureId, icon, title, desc)
+                onPress={(fixtureId, leagueId, icon, title, desc) =>
+                  onPress(fixtureId, leagueId, icon, title, desc)
                 }
                 onPressMatchCard={() => onPressMatchCard()}
               />

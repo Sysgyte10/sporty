@@ -1256,19 +1256,202 @@ export type basketballGames = {
   venue: string;
 };
 
-export type hockeyTimeZones = {};
+export type hockeyTimeZones = string;
 
-export type hockeySeasons = {};
+export type hockeySeasons = string;
 
-export type hockeyCountries = {};
+export type hockeyCountries = {
+  id: number;
+  name: string;
+  code: string;
+  flag: string;
+};
 
-export type hockeyLeagues = {};
+export type hockeyLeagues = {
+  id: number;
+  name: string;
+  type: string;
+  logo: string;
+  country: {
+    id: number;
+    name: string;
+    code: string;
+    flag: string;
+  };
+  seasons: {
+    season: number;
+    current: boolean;
+    start: string;
+    end: string;
+  }[];
+};
 
-export type hockeyTeams = {};
+export type hockeyTeams = {
+  id: number;
+  name: string;
+  logo: string;
+  national: boolean;
+  founded: number;
+  colors: string[];
+  arena: {
+    name: null;
+    capacity: null;
+    location: null;
+  };
+  country: {
+    id: number;
+    name: string;
+    code: string;
+    flag: string;
+  };
+};
 
-export type hockeyTeamStatistics = {};
+export type hockeyTeamStatistics = {
+  country: {
+    id: number;
+    name: string;
+    code: string;
+    flag: string;
+  };
 
-export type hockeyGames = {};
+  league: {
+    id: number;
+    name: string;
+    type: string;
+    logo: string;
+    country: string | null;
+    seasons: unknown[] | null;
+  };
+
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+  };
+
+  games: {
+    played: {
+      home: number;
+      away: number;
+      all: number;
+    };
+
+    wins: {
+      home: {
+        total: number;
+        percentage: string | null;
+      };
+
+      away: {
+        total: number;
+        percentage: string | null;
+      };
+
+      all: {
+        total: number;
+        percentage: string | null;
+      };
+    };
+
+    loses: {
+      home: {
+        total: number;
+        percentage: string | null;
+      };
+
+      away: {
+        total: number;
+        percentage: string | null;
+      };
+
+      all: {
+        total: number;
+        percentage: string | null;
+      };
+    };
+  };
+
+  goals: {
+    for: {
+      total: {
+        home: number;
+        away: number;
+        all: number;
+      };
+
+      average: {
+        home: string;
+        away: string;
+        all: string;
+      };
+    };
+
+    against: {
+      total: {
+        home: number;
+        away: number;
+        all: number;
+      };
+
+      average: {
+        home: string;
+        away: string;
+        all: string;
+      };
+    };
+  };
+};
+
+export type hockeyGamesById = {
+  id: number;
+  date: string;
+  time: string;
+  timestamp: number;
+  timezone: string;
+  week: null;
+  timer: null;
+  status: {
+    long: string;
+    short: string;
+  };
+  country: {
+    id: number;
+    name: string;
+    code: string;
+    flag: string;
+  };
+  league: {
+    id: number;
+    name: string;
+    type: string;
+    logo: string;
+    season: number;
+  };
+  teams: {
+    home: {
+      id: number;
+      name: string;
+      logo: string;
+    };
+    away: {
+      id: number;
+      name: string;
+      logo: string;
+    };
+  };
+  scores: {
+    home: number;
+    away: number;
+  };
+  periods: {
+    first: null;
+    second: null;
+    third: null;
+    overtime: null;
+    penalties: null;
+  };
+  events: boolean;
+};
 
 export type hockeyGamesH2H = {};
 

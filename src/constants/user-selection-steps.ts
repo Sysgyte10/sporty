@@ -3,6 +3,7 @@ import { teamsDataType } from "@src/types/types";
 export const userSelectionSteps = ["1", "2", "3", "4"];
 export const sportyTypes = [
   "Football",
+  "Ice Hockey",
   "Basketball",
   // "Volleyball",
   "Tennis",
@@ -25,7 +26,6 @@ export const sportyTypes = [
   // "Skiing",
   // "Surfing",
   // "Rowing",
-  "Ice Hockey",
 ];
 
 export const teamsData: teamsDataType = [
