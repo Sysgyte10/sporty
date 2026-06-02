@@ -1,67 +1,70 @@
 import React from "react";
 import { AppWrapper } from "../AppWrapper";
-import { Alert, StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { colors } from "@src/resources/color/color";
 import { DVW, moderateScale } from "@src/resources/responsiveness";
 import { AuthScreenProps } from "@src/router/types";
 import { authScreenNames } from "@src/navigation";
-import { FormHeader, Loader } from "@src/common";
-import { loginFormTypes } from "@src/form/types/types";
+import { FormHeader } from "@src/common";
+import { loginFormTypes, resetPasswordFormTypes } from "@src/form/types/types";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginValidationSchema } from "@src/form/validation-rule/rule";
+import { loginValidationSchema, resetPasswordValidationSchema } from "@src/form/validation-rule/rule";
 import { CustomInput } from "@src/components/shared/input/CustomInput";
 import { CustomButton, CustomText } from "@src/components/shared";
 import { useAuth } from "@src/api/services/auth";
 
-export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
-  const { login, loading, forgotPassword } = useAuth();
+export const ResetPassword = ({ navigation, route }: AuthScreenProps<authScreenNames>) => {
+    const params = route?.params;
+    console.log(params);
+    const {resetPassword,loading} = useAuth();
   const {
     control,
     handleSubmit,
     formState: { errors },
-    getValues
-  } = useForm<loginFormTypes>({
+  } = useForm<resetPasswordFormTypes>({
     mode: "onChange",
-    resolver: yupResolver(loginValidationSchema),
+    resolver: yupResolver(resetPasswordValidationSchema),
   });
 
-  const onSubmit = (data: loginFormTypes) => {
-    login({
-      email: data?.email,
-      password: data?.password,
+  const onSubmit = async (data: resetPasswordFormTypes) => {
+    await resetPassword({
+      email: String(params?.email),
+      newPassword: data.newPassword,
+      confirmPassword: data.confirmPassword,
+      token: String(params?.token)
     });
   };
   return (
     <AppWrapper safeArea bgColor={colors.black} style={styles.appWrapper}>
       <FormHeader
-        title="Welcome Back"
-        description={"Please provide the information below\nto get logged in"}
+        title="Reset Password"
+        description={"Please provide the information below\nto get reset password"}
         showBackBtn
         onPressBackBtn={() => navigation.goBack()}
       />
       <View
         style={{
           gap: moderateScale(20),
+          marginTop: moderateScale(20)
         }}
       >
         <Controller
           control={control}
           render={({ field }) => (
             <CustomInput
-              title="Email"
+              title="New Password"
               value={field.value}
               onChangeText={(enteredValue) => field.onChange(enteredValue)}
-              error={errors?.email?.message}
-              type="custom"
-              placeholder="Your email"
+              error={errors?.newPassword?.message}
+              type="password"
+              placeholder="enter new password"
               placeHolderTextColor={colors.lightGrey}
-              keyboardType="email-address"
               showErrorText
               style={styles.input}
             />
           )}
-          name="email"
+          name="newPassword"
           defaultValue=""
         />
 
@@ -69,24 +72,24 @@ export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
           control={control}
           render={({ field }) => (
             <CustomInput
-              title="Password"
+              title="Confirm Password"
               value={field.value}
               onChangeText={(enteredValue) => field.onChange(enteredValue)}
-              error={errors?.password?.message}
+              error={errors?.confirmPassword?.message}
               type="password"
-              placeholder="Enter your password"
+              placeholder="enter confirm password"
               placeHolderTextColor={colors.lightGrey}
               showErrorText
               style={styles.input}
             />
           )}
-          name="password"
+          name="confirmPassword"
           defaultValue=""
         />
       </View>
 
       <CustomButton
-        title="Login"
+        title="Reset Password"
         buttonType="Solid"
         purple
         textWhite
@@ -109,37 +112,13 @@ export const Login = ({ navigation }: AuthScreenProps<authScreenNames>) => {
           Don't have an account?
         </CustomText>
         <TouchableOpacity
-          onPress={() => navigation.navigate(authScreenNames.SIGN_UP)}
+          onPress={() => navigation.navigate(authScreenNames.LOGIN)}
         >
           <CustomText type="medium" size={14} purple>
-            SignUp
+            Login
           </CustomText>
         </TouchableOpacity>
       </View>
-      {loading ? (
-        <View style={{paddingVertical: moderateScale(15), width: '100%', alignItems: 'center', justifyContent: 'center'}}>
-        <Loader size="small" color={colors.white}/>
-        </View>
-      ):(
-      <TouchableOpacity
-        onPress={async () => {
-          const {email} = getValues();
-          if(!email) {
-            Alert.alert("Error", "Please enter your email address in the email field");
-          } else {
-            await forgotPassword({ email });
-          }
-        }}
-        style={{
-          alignSelf: "center",
-          paddingVertical: moderateScale(10)
-        }}
-      >
-        <CustomText type="medium" size={14} purple>
-          Forgot Password
-        </CustomText>
-      </TouchableOpacity>
-      )}
     </AppWrapper>
   );
 };

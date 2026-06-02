@@ -17,6 +17,7 @@ import {
   Games,
   SplashScreen,
 } from "@src/screens/auth";
+import { ResetPassword } from "@src/screens/auth/ResetPassword";
 
 export const authScreen: authScreenTypes[] = [
   {
@@ -83,4 +84,8 @@ export const authScreen: authScreenTypes[] = [
     screenName: authScreenNames.GAMES,
     component: Games,
   },
+  {
+    screenName: authScreenNames.RESET_PASSWORD,
+    component: ResetPassword
+  }
 ];

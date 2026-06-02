@@ -20,6 +20,10 @@ export interface AuthStackParamList extends ParamListBase {
   UpgradeMembership: undefined;
   Games: undefined;
   SplashScreen: undefined;
+  ResetPassword: {
+    token: string;
+    email: string;
+  }
 }
 
 export type AuthScreenProps<ScreenName extends keyof AuthStackParamList> =

@@ -1,11 +1,4 @@
 import { useState } from "react";
-import {
-  ApiResponse,
-  loginResponse,
-  loginUserTypes,
-  registerUserTypes,
-  UserResponse,
-} from "../types/types";
 import { useAuthStore } from "@src/api/store/auth";
 import { ModalMessageProvider } from "@src/helper/msg-utils";
 import { colors } from "@src/resources/color/color";
@@ -14,6 +7,7 @@ import { AuthStackParamList } from "@src/router/types";
 import { authScreenNames } from "@src/navigation";
 import { useAccountCreatedStore } from "@src/hooks";
 import { BASE_URL } from "../endpoint/endpoint";
+import { Alert } from "react-native";
 
 export const useAuth = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -127,7 +121,10 @@ export const useAuth = () => {
   const login = async ({
     email,
     password,
-  }: loginUserTypes): Promise<ApiResponse<loginResponse>> => {
+  }: {
+    email: string;
+    password: string;
+  }): Promise<any> => {
     setLoading(true);
     setIsSuccess(false);
     try {
@@ -141,7 +138,7 @@ export const useAuth = () => {
           password: password,
         }),
       });
-      const data: ApiResponse<loginResponse> = await response.json();
+      const data: any = await response.json();
       if (data && data?.success) {
         setIsSuccess(true);
         setIsAuthenticated(true);
@@ -216,11 +213,134 @@ export const useAuth = () => {
     }
   };
 
+  const forgotPassword = async ({
+    email,
+  }: {
+    email: string;
+  }): Promise<{
+    success: true;
+    message: string;
+    data: {
+      message: string;
+      token: string;
+      name: string;
+    };
+  }> => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${BASE_URL}/api/User/forgotPassword`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
+      const data: {
+        success: true;
+    message: string;
+    data: {
+      message: string;
+      token: string;
+      name: string;
+    };
+      } = await response.json();
+      if(data?.success){
+        navigation.navigate(authScreenNames.RESET_PASSWORD, {
+          email: email,
+          token: data?.data?.token
+        })
+      }else{
+        Alert.alert("Error", String(data?.message));
+      }
+      return data;
+    } catch (err) {
+      console.log("Error", err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const resetPassword = async ({
+    email,
+    newPassword,
+    confirmPassword,
+    token
+  }: {
+    email: string;
+    newPassword: string;
+    confirmPassword: string;
+    token: string;
+  }): Promise<{
+    success: true;
+    message: string;
+    data: {
+      message: string;
+      token: string;
+      name: string;
+    };
+  }> => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${BASE_URL}/api/User/resetPassword`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+           email,
+    newPassword,
+    confirmPassword,
+    token
+        }),
+      });
+      const data: {
+        success: true;
+    message: string;
+    data: {
+      message: string;
+      token: string;
+      name: string;
+    };
+      } = await response.json();
+      if(data?.success){
+        ModalMessageProvider.showModalMsg({
+          title: "Success",
+          description: String(data?.message),
+          msgType: "SUCCESS",
+          containerStyle: {
+            backgroundColor: "#1b1919",
+          },
+          titleStyle: {
+            color: colors.white,
+          },
+          descriptionStyle: {
+            color: colors.white,
+          },
+          hideMsgIcon: true,
+        });
+        navigation.navigate(authScreenNames.LOGIN);
+      }else{
+        Alert.alert("Error", String(data?.message));
+      }
+      return data;
+    } catch (err) {
+      console.log("Error", err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     loading,
     error,
     register,
     login,
+    forgotPassword,
+    resetPassword,
     isSuccess,
   };
 };

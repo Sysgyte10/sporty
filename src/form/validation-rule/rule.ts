@@ -37,6 +37,14 @@ export const loginValidationSchema = yup.object().shape({
   password: yup.string().required("password is required"),
 });
 
+export const resetPasswordValidationSchema = yup.object().shape({
+  newPassword: yup.string().required('Password is required'),
+  confirmPassword: yup
+    .string()
+    .required('Confirm password is required')
+    .oneOf([yup.ref('newPassword')], 'Passwords must match'),
+});
+
 export const signUpValidationSchema = yup.object().shape({
   first_name: yup.string().required("first name is required"),
   last_name: yup.string().required("last name is required"),

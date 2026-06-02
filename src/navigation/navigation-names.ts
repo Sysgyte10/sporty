@@ -14,6 +14,7 @@ export enum authScreenNames {
   UPGRADE_MEMBERSHIP = "UpgradeMembership",
   GAMES = "Games",
   SPLASHSCREEN = "SplashScreen",
+  RESET_PASSWORD = "ResetPassword"
 }
 
 export enum bottomTabScreenNames {
