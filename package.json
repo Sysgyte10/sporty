@@ -14,7 +14,9 @@
     "build:preview:ios": "eas build --profile preview --platform ios",
     "build:dev:ios": "eas build --profile development --platform ios",
     "build:prod:android": "eas build --profile production --platform android",
-    "build:prod:ios": "eas build --profile production --platform ios"
+    "build:prod:ios": "eas build --profile production --platform ios",
+    "android:uat:apk": "cd android && ./gradlew assembleRelease",
+    "android:uat:debug": "cd android && ./gradlew assembleDebug"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
