@@ -23,7 +23,7 @@ export interface AuthStackParamList extends ParamListBase {
   ResetPassword: {
     token: string;
     email: string;
-  }
+  };
 }
 
 export type AuthScreenProps<ScreenName extends keyof AuthStackParamList> =
@@ -95,6 +95,7 @@ export interface RootStackParamList extends ParamListBase {
     teamTwoId: string;
     dateVal?: string;
     leagueId: any;
+    fixtureId: any;
   };
   Team: {
     screenTitle: string;

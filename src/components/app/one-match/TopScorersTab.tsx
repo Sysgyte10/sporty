@@ -11,17 +11,17 @@ interface IPlayersTabProps {
   rightText?: string;
 }
 
-export const PlayersTab: React.FC<IPlayersTabProps> = ({
+export const TopScorersTab: React.FC<IPlayersTabProps> = ({
   leftTitle,
   middleText,
   rightText,
 }) => {
-  const { playersData } = useOneMatchDataStore();
+  const { topScorerData } = useOneMatchDataStore();
   return (
     <ScrollContainer style={styles.scrollContainer}>
       <View />
       <TeamStatsTab
-        goalScorerData={playersData}
+        goalScorerData={topScorerData}
         type="players"
         showFilter={true}
         listFooterHeight={0.1}

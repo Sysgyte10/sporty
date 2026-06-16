@@ -11,7 +11,10 @@ import { colors } from "@src/resources/color/color";
 import { oneMatchInfo } from "@src/constants/onematch";
 import { useOneMatchDataStore } from "@src/api/store/app";
 import { getMatchStatus, getPlayerStyle, groupByRow } from "@src/helper/utils";
-import { getLineUpsOfTeams } from "@src/api/services/football/football.service";
+import {
+  getLineUpsOfTeams,
+  getTopScorerOfLeagueAndSeason,
+} from "@src/api/services/football/football.service";
 import { lineUpsOfTeams } from "@src/api/types/types";
 
 const keyStats = [
@@ -32,7 +35,19 @@ const keyStats = [
   },
 ];
 
-export const MatchTab: React.FC<{}> = () => {
+interface IMatchTabProps {
+  teamOneId: string;
+  teamTwoId: string;
+  fixtureId: string;
+  leagueId: string;
+}
+
+export const MatchTab: React.FC<IMatchTabProps> = ({
+  teamOneId,
+  teamTwoId,
+  fixtureId,
+  leagueId,
+}) => {
   const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false);
   const { oneMatchData } = useOneMatchDataStore();
   const { leagueTeams } = useOneMatchDataStore();
@@ -44,8 +59,8 @@ export const MatchTab: React.FC<{}> = () => {
     const initializeData = async () => {
       setLoading(true);
       try {
-        const data = await getLineUpsOfTeams(592872, 50);
-        console.log("Lineups data:", data);
+        const data = await getLineUpsOfTeams(1520723, 20);
+        // console.log("Lineups data:", data);
         setLineUps(data[0]);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -68,22 +83,23 @@ export const MatchTab: React.FC<{}> = () => {
   return (
     <ScrollContainer style={styles.scrollContainer}>
       <View style={styles.timeLineCard}>
-        <CustomText type='semi-bold' size={12} lightGrey>
+        <CustomText type="semi-bold" size={12} lightGrey>
           Timeline
         </CustomText>
         <View style={styles.arrowContainer}>
           <MaterialCommunityIcons
-            name='arrow-collapse'
+            name="arrow-collapse"
             size={moderateScale(15)}
             color={colors.white}
           />
         </View>
       </View>
       <CustomText
-        type='semi-bold'
+        type="semi-bold"
         size={12}
         lightGrey
-        style={{ textAlign: "center", paddingVertical: moderateScale(10) }}>
+        style={{ textAlign: "center", paddingVertical: moderateScale(10) }}
+      >
         {getMatchStatus(oneMatchData?.[0]?.fixture?.status?.short)}
         {oneMatchData?.[0]?.goals?.home ?? ""} -{" "}
         {oneMatchData?.[0]?.goals?.away ?? "-"}
@@ -99,14 +115,15 @@ export const MatchTab: React.FC<{}> = () => {
                   flexDirection: "row",
                   alignItems: "center",
                   gap: moderateScale(12),
-                }}>
-                <CustomText type='bold' size={10} lightGrey>
+                }}
+              >
+                <CustomText type="bold" size={10} lightGrey>
                   {item?.time}
                 </CustomText>
                 {item?.yellowCard ? (
                   // <View style={styles.yellowCard} />
                   <FontAwesome
-                    name='soccer-ball-o'
+                    name="soccer-ball-o"
                     size={moderateScale(17)}
                     color={colors.white}
                     style={{
@@ -116,14 +133,14 @@ export const MatchTab: React.FC<{}> = () => {
                 ) : (
                   <Image
                     source={require("@src/assets/png/recycle.png")}
-                    contentFit='contain'
+                    contentFit="contain"
                     style={styles.recycleIcon}
                   />
                 )}
-                <CustomText type='bold' size={10} lightGrey>
+                <CustomText type="bold" size={10} lightGrey>
                   {item?.firstName}
                 </CustomText>
-                <CustomText type='medium' size={10} lightGrey>
+                <CustomText type="medium" size={10} lightGrey>
                   {item?.lastName}
                 </CustomText>
               </View>
@@ -138,8 +155,9 @@ export const MatchTab: React.FC<{}> = () => {
                   flexDirection: "row",
                   alignItems: "center",
                   gap: moderateScale(12),
-                }}>
-                <CustomText type='bold' size={10} lightGrey>
+                }}
+              >
+                <CustomText type="bold" size={10} lightGrey>
                   {item?.time}
                 </CustomText>
                 {item?.yellowCard ? (
@@ -151,7 +169,7 @@ export const MatchTab: React.FC<{}> = () => {
                   //   style={styles.recycleIcon}
                   // />
                   <FontAwesome
-                    name='soccer-ball-o'
+                    name="soccer-ball-o"
                     size={moderateScale(17)}
                     color={colors.white}
                     style={{
@@ -159,10 +177,10 @@ export const MatchTab: React.FC<{}> = () => {
                     }}
                   />
                 )}
-                <CustomText type='bold' size={10} lightGrey>
+                <CustomText type="bold" size={10} lightGrey>
                   {item?.firstName}
                 </CustomText>
-                <CustomText type='medium' size={10} lightGrey>
+                <CustomText type="medium" size={10} lightGrey>
                   {item?.lastName}
                 </CustomText>
               </View>
@@ -177,8 +195,9 @@ export const MatchTab: React.FC<{}> = () => {
                   flexDirection: "row",
                   alignItems: "center",
                   gap: moderateScale(12),
-                }}>
-                <CustomText type='bold' size={10} lightGrey>
+                }}
+              >
+                <CustomText type="bold" size={10} lightGrey>
                   {item?.time}
                 </CustomText>
                 {item?.yellowCard ? (
@@ -186,14 +205,14 @@ export const MatchTab: React.FC<{}> = () => {
                 ) : (
                   <Image
                     source={require("@src/assets/png/recycle.png")}
-                    contentFit='contain'
+                    contentFit="contain"
                     style={styles.recycleIcon}
                   />
                 )}
-                <CustomText type='bold' size={10} lightGrey>
+                <CustomText type="bold" size={10} lightGrey>
                   {item?.firstName}
                 </CustomText>
-                <CustomText type='medium' size={10} lightGrey>
+                <CustomText type="medium" size={10} lightGrey>
                   {item?.lastName}
                 </CustomText>
               </View>
@@ -208,8 +227,9 @@ export const MatchTab: React.FC<{}> = () => {
                   flexDirection: "row",
                   alignItems: "center",
                   gap: moderateScale(12),
-                }}>
-                <CustomText type='bold' size={10} lightGrey>
+                }}
+              >
+                <CustomText type="bold" size={10} lightGrey>
                   {item?.time}
                 </CustomText>
                 {item?.yellowCard ? (
@@ -217,14 +237,14 @@ export const MatchTab: React.FC<{}> = () => {
                 ) : (
                   <Image
                     source={require("@src/assets/png/recycle.png")}
-                    contentFit='contain'
+                    contentFit="contain"
                     style={styles.recycleIcon}
                   />
                 )}
-                <CustomText type='bold' size={10} lightGrey>
+                <CustomText type="bold" size={10} lightGrey>
                   {item?.firstName}
                 </CustomText>
-                <CustomText type='medium' size={10} lightGrey>
+                <CustomText type="medium" size={10} lightGrey>
                   {item?.lastName}
                 </CustomText>
               </View>
@@ -247,8 +267,9 @@ export const MatchTab: React.FC<{}> = () => {
             alignItems: "center",
             justifyContent: "space-between",
           },
-        ]}>
-        <CustomText type='medium' size={12} lightGrey>
+        ]}
+      >
+        <CustomText type="medium" size={12} lightGrey>
           Show Substitution
         </CustomText>
         <SwitchToggle
@@ -275,10 +296,11 @@ export const MatchTab: React.FC<{}> = () => {
         />
       </View>
       <CustomText
-        type='semi-bold'
+        type="semi-bold"
         size={12}
         lightGrey
-        style={{ textAlign: "center", paddingVertical: moderateScale(10) }}>
+        style={{ textAlign: "center", paddingVertical: moderateScale(10) }}
+      >
         {oneMatchData?.[0]?.fixture?.status?.short === "NS"
           ? "NOT STARTED "
           : oneMatchData?.[0]?.fixture?.status?.short === "FT"
@@ -298,41 +320,43 @@ export const MatchTab: React.FC<{}> = () => {
             justifyContent: "flex-end",
             gap: moderateScale(10),
           },
-        ]}>
+        ]}
+      >
         <FontAwesome
-          name='soccer-ball-o'
+          name="soccer-ball-o"
           size={moderateScale(17)}
           color={colors.white}
           style={{
             marginRight: moderateScale(10),
           }}
         />
-        <CustomText type='semi-bold' size={12} lightGrey>
+        <CustomText type="semi-bold" size={12} lightGrey>
           {oneMatchInfo[0]?.firstName}
         </CustomText>
-        <CustomText type='medium' size={12} lightGrey>
+        <CustomText type="medium" size={12} lightGrey>
           {oneMatchInfo[0]?.lastName}
         </CustomText>
       </View>
       <TableTab
         goalScorerData={leagueTeams}
         leftText={oneMatchData?.[0]?.league.name.toUpperCase()}
-        leftTitleText='Club Names'
-        middleTitleText='Venue'
+        leftTitleText="Club Names"
+        middleTitleText="Venue"
       />
 
       <View
         style={[
           styles.timeLineCard,
           { flexDirection: "column", marginBottom: moderateScale(10) },
-        ]}>
+        ]}
+      >
         <View style={styles.keyStatsIconContainer}>
-          <CustomText type='semi-bold' size={12} lightGrey>
+          <CustomText type="semi-bold" size={12} lightGrey>
             Key stats
           </CustomText>
           <View style={styles.arrowContainer}>
             <MaterialCommunityIcons
-              name='arrow-collapse'
+              name="arrow-collapse"
               size={moderateScale(15)}
               color={colors.white}
             />
@@ -344,14 +368,15 @@ export const MatchTab: React.FC<{}> = () => {
             alignItems: "center",
             justifyContent: "space-between",
             width: "100%",
-          }}>
+          }}
+        >
           {keyStats &&
             keyStats.map((item, index) => (
               <View style={styles.keyStatsSubCard} key={index}>
-                <CustomText size={10} type='medium' lightGrey>
+                <CustomText size={10} type="medium" lightGrey>
                   {item.title}
                 </CustomText>
-                <CustomText size={12} type='semi-bold' lightGrey>
+                <CustomText size={12} type="semi-bold" lightGrey>
                   {item.clubName}
                 </CustomText>
                 <View
@@ -360,12 +385,14 @@ export const MatchTab: React.FC<{}> = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                     flex: 1,
-                  }}>
+                  }}
+                >
                   {item?.stats?.map((value, index) => (
                     <View
                       style={{ flex: 1, gap: moderateScale(5) }}
-                      key={index}>
-                      <CustomText type='semi-bold' size={12} lightGrey>
+                      key={index}
+                    >
+                      <CustomText type="semi-bold" size={12} lightGrey>
                         {value}
                       </CustomText>
                       <View
@@ -386,16 +413,17 @@ export const MatchTab: React.FC<{}> = () => {
       </View>
 
       <View style={styles.timeLineCard}>
-        <CustomText type='medium' size={12} lightGrey>
+        <CustomText type="medium" size={12} lightGrey>
           Relevant Matches
         </CustomText>
       </View>
 
       <CustomText
-        type='semi-bold'
+        type="semi-bold"
         size={12}
         lightGrey
-        style={{ textAlign: "center", paddingVertical: moderateScale(10) }}>
+        style={{ textAlign: "center", paddingVertical: moderateScale(10) }}
+      >
         JUNE 19 (FT)
       </CustomText>
 
@@ -409,11 +437,11 @@ export const MatchTab: React.FC<{}> = () => {
                     ? require("@src/assets/png/totheham.png")
                     : require("@src/assets/png/liverpool.png")
                 }
-                contentFit='fill'
+                contentFit="fill"
                 style={styles.clubImg}
               />
             </View>
-            <CustomText type='bold' size={20} white>
+            <CustomText type="bold" size={20} white>
               {index === 0 ? "1 - 0" : "0 - 1"}
             </CustomText>
             <View style={styles.clubImgContainer}>
@@ -423,7 +451,7 @@ export const MatchTab: React.FC<{}> = () => {
                     ? require("@src/assets/png/chelsea.png")
                     : require("@src/assets/png/arsenal.png")
                 }
-                contentFit='fill'
+                contentFit="fill"
                 style={styles.clubImg}
               />
             </View>
@@ -435,14 +463,15 @@ export const MatchTab: React.FC<{}> = () => {
                 paddingHorizontal: moderateScale(15),
                 paddingBottom: moderateScale(10),
               },
-            ]}>
-            <CustomText type='semi-bold' size={10} lightGrey>
+            ]}
+          >
+            <CustomText type="semi-bold" size={10} lightGrey>
               {index === 0 ? "TOTHEHAM" : "LIVERPOOL"}
             </CustomText>
-            <CustomText type='semi-bold' size={10} lightGrey>
+            <CustomText type="semi-bold" size={10} lightGrey>
               FINISHED
             </CustomText>
-            <CustomText type='semi-bold' size={10} lightGrey>
+            <CustomText type="semi-bold" size={10} lightGrey>
               {index === 0 ? "CHELSEA" : "ARSENAL"}
             </CustomText>
           </View>
@@ -455,7 +484,8 @@ export const MatchTab: React.FC<{}> = () => {
           {
             flexDirection: "column",
           },
-        ]}>
+        ]}
+      >
         <View
           style={{
             flexDirection: "row",
@@ -463,13 +493,14 @@ export const MatchTab: React.FC<{}> = () => {
             justifyContent: "space-between",
             width: "100%",
             paddingBottom: moderateScale(5),
-          }}>
-          <CustomText type='semi-bold' size={12} lightGrey>
+          }}
+        >
+          <CustomText type="semi-bold" size={12} lightGrey>
             CONFIRMED LINEUPS
           </CustomText>
           <View style={styles.arrowContainer}>
             <MaterialCommunityIcons
-              name='arrow-collapse'
+              name="arrow-collapse"
               size={moderateScale(15)}
               color={colors.white}
             />
@@ -537,21 +568,24 @@ export const MatchTab: React.FC<{}> = () => {
             width: "100%",
             height: DVH(47),
             overflow: "hidden",
-          }}>
+          }}
+        >
           <ImageBackground
-            contentFit='fill'
+            contentFit="fill"
             style={{
               width: "100%",
               height: "100%",
             }}
-            source={require("@src/assets/jpg/football-field.jpg")}>
+            source={require("@src/assets/jpg/football-field.jpg")}
+          >
             <View
               style={{
                 flex: 1,
                 backgroundColor: "rgba(0,0,0,0.5)",
                 marginLeft: moderateScale(-50),
-              }}>
-              {Object.entries(grouped || {}).map(([row, players]: any) =>
+              }}
+            >
+              {/* {Object.entries(grouped || {}).map(([row, players]: any) =>
                 players.map((player: any, index: number) => {
                   const style = getPlayerStyle(
                     Number(row),
@@ -561,7 +595,7 @@ export const MatchTab: React.FC<{}> = () => {
 
                   return (
                     <View key={player.id} style={style as StyleProp<ViewStyle>}>
-                      {/* Player Circle */}
+                      
                       <View
                         style={{
                           width: moderateScale(50),
@@ -572,32 +606,34 @@ export const MatchTab: React.FC<{}> = () => {
                           alignItems: "center",
                           borderWidth: 2,
                           borderColor: `#${lineUps?.team?.colors?.player?.border ?? "ffffff"}`,
-                        }}>
+                        }}
+                      >
                         <CustomText
-                          type='bold'
+                          type="bold"
                           white
                           size={10}
                           style={{
                             textAlign: "center",
-                          }}>
+                          }}
+                        >
                           {player.name.split(" ").pop()}
                         </CustomText>
                       </View>
 
-                      {/* Player Name */}
                       <CustomText
                         white
                         size={10}
                         style={{
                           marginTop: 4,
                           textAlign: "center",
-                        }}>
+                        }}
+                      >
                         {player?.name}
                       </CustomText>
                     </View>
                   );
                 }),
-              )}
+              )} */}
             </View>
           </ImageBackground>
         </View>

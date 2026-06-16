@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.adebunmy.realscorz"
+      "bundleIdentifier": "com.adebunmy.realscorz",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {

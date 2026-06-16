@@ -32,6 +32,7 @@ import {
   GetTeamsPlayerSquadByPlayerIdResponse,
   GetTeamsPlayerSquadResponse,
   GetTeamsSeasonsResponse,
+  GetTopScorerOfLeagueAndSeasonResponse,
   GetTransfersPlayerByPlayerIdResponse,
   GetVenuesByIdResponse,
   SearchLiveFixturesResponse,
@@ -640,6 +641,23 @@ export const getLineUpsOfTeams = async (
     return responseData?.response ?? [];
   } catch (err: unknown) {
     console.error("Error fetching team line-ups", err);
+    return [];
+  }
+};
+
+export const getTopScorerOfLeagueAndSeason = async (
+  season: number,
+  league: number,
+): Promise<lineUpsOfTeams[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/top-scorers?season=${season}&league=${league}`,
+    );
+    const responseData: GetTopScorerOfLeagueAndSeasonResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: unknown) {
+    console.error("Error fetching top scorer of league and season", err);
     return [];
   }
 };

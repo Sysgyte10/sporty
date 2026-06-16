@@ -27,6 +27,7 @@ interface IFixtureCardProps {
     firstClubId: string,
     secondClubId: string,
     leagueId: any,
+    fixtureId: any,
   ) => void;
 }
 
@@ -41,14 +42,14 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
       <View style={styles.titleActionBtnContainer}>
         <View style={styles.fixtureImgTitleContainer}>
           <View style={styles.imgContainer}>
-            <Image source={data?.icon} style={styles.img} contentFit='cover' />
+            <Image source={data?.icon} style={styles.img} contentFit="cover" />
           </View>
 
           <View style={styles.fixtureNameNCountryContainer}>
-            <CustomText type='semi-bold' size={12} white>
+            <CustomText type="semi-bold" size={12} white>
               {data?.fixtureName}
             </CustomText>
-            <CustomText type='regular' size={12} style={{ color: "#9C9C9C" }}>
+            <CustomText type="regular" size={12} style={{ color: "#9C9C9C" }}>
               {data?.country}
             </CustomText>
           </View>
@@ -62,9 +63,10 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
               data?.fixtureName,
               data?.country,
             )
-          }>
+          }
+        >
           <MaterialIcons
-            name='keyboard-arrow-right'
+            name="keyboard-arrow-right"
             size={moderateScale(25)}
             color={colors.lightGrey}
           />
@@ -82,6 +84,7 @@ export const FixtureCard: React.FC<IFixtureCardProps> = ({
                 clubIds[0] as string,
                 clubIds[1] as string,
                 data?.leagueId,
+                data?.id,
               );
             }}
             truncateScoreText

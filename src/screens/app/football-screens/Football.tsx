@@ -155,13 +155,14 @@ export const Football = ({
   return (
     <>
       <AppWrapper safeArea bgColor={colors.black}>
-        <StatusBar style='light' />
+        <StatusBar style="light" />
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
-          }}>
+          }}
+        >
           <View
             style={{
               width: moderateScale(350),
@@ -170,10 +171,11 @@ export const Football = ({
               // backgroundColor: colors.purple,
               alignItems: "flex-end",
               marginLeft: moderateScale(-120),
-            }}>
+            }}
+          >
             <Image
               source={require("@src/assets/png/realscorz.png")}
-              contentFit='cover'
+              contentFit="cover"
               style={{
                 width: "100%",
                 height: "100%",
@@ -186,9 +188,10 @@ export const Football = ({
               onPress={() => setIsSearchModalVisible(true)}
               style={{
                 alignSelf: "flex-end",
-              }}>
+              }}
+            >
               <Feather
-                name='search'
+                name="search"
                 color={colors.white}
                 size={moderateScale(20)}
               />
@@ -198,8 +201,9 @@ export const Football = ({
               onPress={() => {
                 setIsAuthenticated(false);
                 setGoToPredictions(true);
-              }}>
-              <CustomText size={14} type='medium' purple>
+              }}
+            >
+              <CustomText size={14} type="medium" purple>
                 Go To Predictions
               </CustomText>
             </TouchableOpacity>
@@ -220,7 +224,8 @@ export const Football = ({
           <View
             style={{
               marginTop: moderateScale(-30),
-            }}>
+            }}
+          >
             <ButtonLineList
               data={footBallWatches}
               onButtonPress={(text) => setSelectedLineList(text)}
@@ -235,7 +240,7 @@ export const Football = ({
           />
           <AdComponent
             imgSrc={require("@src/assets/jpg/ad1.jpg")}
-            imageFit='contain'
+            imageFit="contain"
             visible={true}
           />
           {loading ? (
@@ -249,8 +254,9 @@ export const Football = ({
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: "rgba(0,0,0,0.6)",
-              }}>
-              <Loader size='large' color={colors.purple} />
+              }}
+            >
+              <Loader size="large" color={colors.purple} />
             </View>
           ) : (
             <>
@@ -263,7 +269,12 @@ export const Football = ({
                       leagueId: leagueId,
                     })
                   }
-                  onPressMatchCard={(firstClubId, secondClubId, leagueId) =>
+                  onPressMatchCard={(
+                    firstClubId,
+                    secondClubId,
+                    leagueId,
+                    fixtureId,
+                  ) =>
                     navigation.navigate(bottomTabScreenNames.FOOTBALL_STACK, {
                       screen: appScreenNames.ONE_MATCH,
                       params: {
@@ -271,6 +282,7 @@ export const Football = ({
                         teamTwoId: secondClubId,
                         dateVal: selectedDate,
                         leagueId: leagueId,
+                        fixtureId: fixtureId,
                       },
                     })
                   }
@@ -392,10 +404,11 @@ export const Football = ({
           bottom: moderateScale(1),
           width: "95%",
           alignSelf: "center",
-        }}>
+        }}
+      >
         <AdComponent
           imgSrc={require("@src/assets/jpg/ad2.jpg")}
-          imageFit='cover'
+          imageFit="cover"
           visible={true}
           containerStyle={{
             height: DVH(7),
@@ -407,7 +420,7 @@ export const Football = ({
         onClose={() => setIsSearchModalVisible(false)}
         searchValue={searchQuery}
         onSearchChange={setSearchQuery}
-        placeholder='Search fixtures...'
+        placeholder="Search fixtures..."
       />
     </>
   );

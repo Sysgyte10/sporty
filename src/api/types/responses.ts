@@ -823,3 +823,17 @@ export type GetAmericanFootballGamesStatisticsOfPlayersResponse = {
   results: number;
   response: americanFootballGamesStatisticsOfPlayers[];
 };
+
+export type GetTopScorerOfLeagueAndSeasonResponse = {
+  get: string;
+  parameters: {
+    date: null;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: lineUpsOfTeams[];
+};

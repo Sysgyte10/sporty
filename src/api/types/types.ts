@@ -1050,45 +1050,68 @@ export type teamPlayersOrSquad = {
 };
 
 export type lineUpsOfTeams = {
-  team: {
-    id: number;
-    name: string;
-    logo: string;
-    colors: {
-      player: {
-        primary: string;
-        number: string;
-        border: string;
-      };
-      goalkeeper: {
-        primary: string;
-        number: string;
-        border: string;
-      };
-    };
-  };
-  formation: string;
-  startXI: {
+  players: {
     player: {
       id: number;
       name: string;
-      pos: "G" | "D" | "M" | "F";
-      grid: `${number}:${number}`;
+      photo: string;
     };
+    statistics: {
+      games: {
+        minutes: number;
+        number: null;
+        position: null;
+        rating: string;
+        captain: boolean;
+        substitute: boolean;
+      };
+      offsides: number;
+      shots: {
+        total: number;
+        on: number;
+      };
+      goals: {
+        total: number;
+        conceded: null;
+        assists: number;
+        saves: number;
+      };
+      passes: {
+        total: number;
+        key: number;
+        accuracy: string;
+      };
+      tackles: {
+        total: number;
+        blocks: number;
+        interceptions: number;
+      };
+      duels: {
+        total: number;
+        won: number;
+      };
+      dribbles: {
+        attempts: number;
+        success: number;
+        past: null;
+      };
+      fouls: {
+        drawn: number;
+        committed: number;
+      };
+      cards: {
+        yellow: number;
+        red: number;
+      };
+      penalty: {
+        won: null;
+        commited: null;
+        scored: number;
+        missed: null;
+        saved: null;
+      };
+    }[];
   }[];
-  substitutes: {
-    player: {
-      id: number;
-      name: string;
-      pos: "G" | "D" | "M" | "F";
-      grid: `${number}:${number}` | null;
-    };
-  }[];
-  coach: {
-    id: number;
-    name: string;
-    photo: string;
-  };
 };
 
 //Basketball

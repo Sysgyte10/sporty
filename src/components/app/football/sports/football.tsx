@@ -12,6 +12,7 @@ interface IFootBallProps {
     firstClubId: string,
     secondClubId: string,
     leagueId: any,
+    fixtureId: any,
   ) => void;
 }
 
@@ -36,8 +37,18 @@ export const FootballSport: React.FC<IFootBallProps> = ({
               <FixtureCard
                 data={item}
                 onPress={(fixtureId, leagueId) => onPress(fixtureId, leagueId)}
-                onPressMatchCard={(firstClubId, secondClubId, leagueId) =>
-                  onPressMatchCard(firstClubId, secondClubId, leagueId)
+                onPressMatchCard={(
+                  firstClubId,
+                  secondClubId,
+                  leagueId,
+                  fixtureId,
+                ) =>
+                  onPressMatchCard(
+                    firstClubId,
+                    secondClubId,
+                    leagueId,
+                    fixtureId,
+                  )
                 }
               />
             </View>

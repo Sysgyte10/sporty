@@ -21,20 +21,25 @@ import {
   getStandingsByLeagueSeason,
   getTeamPlayersOrSquads,
   getTeamsByLeagueAndSeason,
+  getTopScorerOfLeagueAndSeason,
 } from "@src/api/services/football/football.service";
 import { getMatchStatus, truncateText } from "@src/helper/utils";
 import { useOneMatchDataStore } from "@src/api/store/app";
 import { topScorersDataType } from "@src/types/types";
+import { TopScorersTab } from "@src/components/app/one-match/TopScorersTab";
 
 export const OneMach = ({
   navigation,
   route,
 }: RootStackScreenProps<appScreenNames.ONE_MATCH>) => {
-  const { teamOneId, teamTwoId, dateVal, leagueId } = route?.params || {};
+  const { teamOneId, teamTwoId, dateVal, leagueId, fixtureId } =
+    route?.params || {};
+  // console.log("teamOneId", teamOneId, "and teamOneTwoId", teamTwoId);
   const [selectedLineList, setSelectedLineList] = useState<string>("Match");
   const [loading, setLoading] = useState<boolean>(false);
   const {
     competitionData,
+    setTopScorerData,
     setCompetitionData,
     setOneMatchData,
     oneMatchData,
@@ -151,6 +156,32 @@ export const OneMach = ({
     return () => clearTimeout(timer);
   }, [oneMatchData]);
 
+  useEffect(() => {
+    const initiateTopScorers = async () => {
+      try {
+        const data = await getTopScorerOfLeagueAndSeason(2026, leagueId);
+
+        if (data) {
+          const transformedData = data.map((scorer: any) => ({
+            id: scorer.player?.id,
+            name: scorer.player?.name,
+            age: scorer.statistics?.[0]?.goals?.total,
+            number: scorer.statistics?.[0]?.games?.number,
+            position: scorer.statistics?.[0]?.games?.position,
+            photo: scorer.player?.photo,
+            goals: scorer.statistics?.[0]?.goals?.total,
+          }));
+
+          setTopScorerData(transformedData);
+        }
+      } catch (error) {
+        console.error("Error fetching top scorers:", error);
+      }
+    };
+
+    initiateTopScorers();
+  }, []);
+
   return (
     <AppWrapper safeArea style={styles.appWrapper}>
       <View
@@ -158,9 +189,10 @@ export const OneMach = ({
           paddingRight: moderateScale(15),
           borderBottomWidth: DVW(0.3),
           borderBottomColor: colors.lightGrey,
-        }}>
+        }}
+      >
         <AppNavigationHeader
-          title='Back'
+          title="Back"
           // heartIcon
           // notificationIcon
           onPressActionBtn={() => navigation.goBack()}
@@ -169,13 +201,14 @@ export const OneMach = ({
       {selectedLineList === "Match" && (
         <View>
           <CustomText
-            type='semi-bold'
+            type="semi-bold"
             size={12}
             lightGrey
             style={{
               paddingVertical: moderateScale(10),
               textAlign: "center",
-            }}>
+            }}
+          >
             {oneMatchData?.[0]?.fixture?.date
               ? new Date(oneMatchData[0].fixture.date).toLocaleDateString(
                   "en-US",
@@ -192,18 +225,18 @@ export const OneMach = ({
             <View style={styles.clubImgContainer}>
               <Image
                 source={{ uri: oneMatchData?.[0]?.teams?.home?.logo }}
-                contentFit='fill'
+                contentFit="fill"
                 style={styles.clubImg}
               />
             </View>
-            <CustomText type='bold' size={20} white>
+            <CustomText type="bold" size={20} white>
               {oneMatchData?.[0]?.goals?.home ?? ""} -
               {oneMatchData?.[0]?.goals?.away ?? "-"}
             </CustomText>
             <View style={styles.clubImgContainer}>
               <Image
                 source={{ uri: oneMatchData?.[0]?.teams?.away?.logo }}
-                contentFit='fill'
+                contentFit="fill"
                 style={styles.clubImg}
               />
             </View>
@@ -215,14 +248,15 @@ export const OneMach = ({
                 paddingTop: moderateScale(25),
                 paddingHorizontal: moderateScale(15),
               },
-            ]}>
-            <CustomText type='semi-bold' size={10} white>
+            ]}
+          >
+            <CustomText type="semi-bold" size={10} white>
               {oneMatchData?.[0]?.teams?.home?.name ?? "Team One"}
             </CustomText>
-            <CustomText type='semi-bold' size={10} lightGrey>
+            <CustomText type="semi-bold" size={10} lightGrey>
               {getMatchStatus(oneMatchData?.[0]?.fixture?.status?.short)}
             </CustomText>
-            <CustomText type='semi-bold' size={10} white>
+            <CustomText type="semi-bold" size={10} white>
               {truncateText(
                 `${oneMatchData?.[0]?.teams?.away?.name ?? "Team One"}`,
                 15,
@@ -234,9 +268,10 @@ export const OneMach = ({
       <View
         style={{
           marginVertical: moderateScale(10),
-        }}>
+        }}
+      >
         <ButtonLineList
-          data={["Match", "Competition", "Team", "Players"]}
+          data={["Match", "Competition", "Team", "Players", "Top Scorers"]}
           onButtonPress={(text) => setSelectedLineList(text)}
           selectedBtn={selectedLineList}
         />
@@ -244,7 +279,12 @@ export const OneMach = ({
 
       {selectedLineList === "Match" && (
         <Animated.View entering={FadeIn.delay(200).duration(600)}>
-          <MatchTab />
+          <MatchTab
+            teamOneId={teamOneId}
+            teamTwoId={teamTwoId}
+            fixtureId={fixtureId}
+            leagueId={leagueId}
+          />
         </Animated.View>
       )}
       {selectedLineList === "Competition" && (
@@ -263,8 +303,18 @@ export const OneMach = ({
         <Animated.View entering={FadeIn.delay(200).duration(600)}>
           <PlayersTab
             leftTitle="Player's Name"
-            middleText='Position'
-            rightText='Number'
+            middleText="Position"
+            rightText="Number"
+          />
+        </Animated.View>
+      )}
+
+      {selectedLineList === "Top Scorers" && (
+        <Animated.View entering={FadeIn.delay(200).duration(600)}>
+          <TopScorersTab
+            leftTitle="Player's Name"
+            middleText="Position"
+            rightText="Goals"
           />
         </Animated.View>
       )}
