@@ -3,6 +3,7 @@ import {
   GetFixturesH2HResponse,
   GetFootballCountryResponse,
   GetFootballPlayersProfileByIdResponse,
+  GetKeyStatsOfTeamsByLeagueSeasonTeamIdResponse,
   GetLineUpsOfTeamsResponse,
   GetLiveCurrentFixturesLeaguesResponse,
   GetLiveFixtureByIdResponse,
@@ -32,7 +33,10 @@ import {
   GetTeamsPlayerSquadByPlayerIdResponse,
   GetTeamsPlayerSquadResponse,
   GetTeamsSeasonsResponse,
+  GetTopRedCardsOfLeagueAndSeasonResponse,
   GetTopScorerOfLeagueAndSeasonResponse,
+  GetTopScorerOfLeagueAndSeasonResponse2,
+  GetTopYellowCardsOfLeagueAndSeasonResponse,
   GetTransfersPlayerByPlayerIdResponse,
   GetVenuesByIdResponse,
   SearchLiveFixturesResponse,
@@ -41,6 +45,7 @@ import {
   fixturesH2H,
   footballCountries,
   footballPlayersProfileById,
+  keyStatsOfTeamsByLeagueSeasonTeamId,
   lineUpsOfTeams,
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
@@ -70,6 +75,7 @@ import {
   teamsPlayerSquadByPlayerId,
   teamsPlayerSquadByTeamId,
   teamsSeasons,
+  TopScorerEntry,
   transfersPlayerByPlayerId,
   venuesById,
 } from "../../types/types";
@@ -658,6 +664,75 @@ export const getTopScorerOfLeagueAndSeason = async (
     return responseData?.response ?? [];
   } catch (err: unknown) {
     console.error("Error fetching top scorer of league and season", err);
+    return [];
+  }
+};
+
+export const getKeyStatsOfTeamsByLeagueSeason = async (
+  season: number,
+  league: number,
+  teamId: number,
+): Promise<keyStatsOfTeamsByLeagueSeasonTeamId[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/standings/by-league-season-teamid?league=${league}&season=${season}&teamId=${teamId}`,
+    );
+    const responseData: GetKeyStatsOfTeamsByLeagueSeasonTeamIdResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: any) {
+    console.error("Error fetching key stats of teams", err);
+    return [];
+  }
+};
+
+export const getTopScorerOfLeagueAndSeason2 = async (
+  season: number,
+  league: number,
+): Promise<TopScorerEntry[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/top-scorers?season=${season}&league=${league}`,
+    );
+    const responseData: GetTopScorerOfLeagueAndSeasonResponse2 =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: unknown) {
+    console.error("Error fetching top scorer of league and season", err);
+    return [];
+  }
+};
+
+export const getTopRedCardsOfLeagueAndSeason = async (
+  season: number,
+  league: number,
+): Promise<TopScorerEntry[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/top-red-cards?season=${season}&league=${league}`,
+    );
+    const responseData: GetTopRedCardsOfLeagueAndSeasonResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: unknown) {
+    console.error("Error fetching top red cards of league and season", err);
+    return [];
+  }
+};
+
+export const getTopYellowCardsOfLeagueAndSeason = async (
+  season: number,
+  league: number,
+): Promise<TopScorerEntry[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/players/top-yellow-cards?season=${season}&league=${league}`,
+    );
+    const responseData: GetTopYellowCardsOfLeagueAndSeasonResponse =
+      await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: unknown) {
+    console.error("Error fetching top yellow cards of league and season", err);
     return [];
   }
 };

@@ -1657,3 +1657,144 @@ export type americanFootballGamesStatisticsOfTeams = {};
 export type americanFootballGamesStatisticsOfPlayers = {};
 
 export type americanFootballGamesStandings = {};
+
+export type keyStatsOfTeamsByLeagueSeasonTeamId = {
+  league: {
+    id: number;
+    name: string;
+    country: string;
+    logo: string;
+    flag: string;
+    season: number;
+    standings: {
+      rank: number;
+      team: { id: number; name: string; logo: string };
+      points: number;
+      goalsDiff: number;
+      group: string;
+      form: string;
+      status: string;
+      description: string;
+      all: {
+        played: number;
+        win: number;
+        draw: number;
+        lose: number;
+        goals: { for: number; against: number };
+      };
+      home: {
+        played: number;
+        win: number;
+        draw: number;
+        lose: number;
+        goals: { for: number; against: number };
+      };
+      away: {
+        played: number;
+        win: number;
+        draw: number;
+        lose: number;
+        goals: {
+          for: number;
+          against: number;
+        };
+      };
+      update: string;
+    }[][];
+  };
+};
+
+// Add this to types.ts (or wherever your shared types live)
+export interface TopScorerEntry {
+  player: {
+    id: number;
+    name: string;
+    firstname: string;
+    lastname: string;
+    age: number;
+    birth: {
+      date: string;
+      place: string;
+      country: string;
+    };
+    nationality: string;
+    height: string;
+    weight: string;
+    injured: boolean;
+    photo: string;
+  };
+  statistics: Array<{
+    team: {
+      id: number;
+      name: string;
+      logo: string;
+    };
+    league: {
+      id: number;
+      name: string;
+      country: string;
+      logo: string | null;
+      flag: string | null;
+      season: number;
+    };
+    games: {
+      appearences: number;
+      lineups: number;
+      minutes: number;
+      number: number;
+      position: string;
+      rating: string;
+      captain: boolean;
+    };
+    substitutes: {
+      in: number;
+      out: number;
+      bench: number;
+    };
+    shots: {
+      total: number | null;
+      on: number | null;
+    };
+    goals: {
+      total: number;
+      conceded: number;
+      assists: number | null;
+      saves: number | null;
+    };
+    passes: {
+      total: number | null;
+      key: number | null;
+      accuracy: number | null;
+    };
+    tackles: {
+      total: number | null;
+      blocks: number | null;
+      interceptions: number | null;
+    };
+    duels: {
+      total: number | null;
+      won: number | null;
+    };
+    dribbles: {
+      attempts: number | null;
+      success: number | null;
+      past: number | null;
+    };
+    fouls: {
+      drawn: number | null;
+      committed: number | null;
+    };
+    cards: {
+      yellow: number;
+      yellowred: number;
+      red: number;
+    };
+    penalty: {
+      won: number | null;
+      commited: number | null;
+      scored: number;
+      missed: number;
+      saved: number | null;
+    };
+  }>;
+}

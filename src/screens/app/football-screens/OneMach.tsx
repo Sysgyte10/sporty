@@ -46,6 +46,7 @@ export const OneMach = ({
     setPlayersData,
     selectedBtn,
     setLeagueTeams,
+    setOddsData,
   } = useOneMatchDataStore();
   const currYear = new Date().getFullYear() - 1;
 
@@ -180,6 +181,27 @@ export const OneMach = ({
     };
 
     initiateTopScorers();
+  }, []);
+
+  useEffect(() => {
+    const initiateGetStandingsByLeagueAndSeason = async () => {
+      try {
+        const data = await getStandingsByLeagueSeason(leagueId, 2026);
+
+        if (data) {
+          const transformedData = data[0].league.standings[0].map((club) => ({
+            clubName: club.team.name,
+            odd: club?.all?.win, // replace with your actual odd value
+          }));
+
+          setOddsData(transformedData);
+        }
+      } catch (error) {
+        console.error("Error fetching standings:", error);
+      }
+    };
+
+    initiateGetStandingsByLeagueAndSeason();
   }, []);
 
   return (

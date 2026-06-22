@@ -18,6 +18,8 @@ interface IOneMatchDataProps {
   setLeagueTeams: (data: topScorersDataType[]) => void;
   topScorerData: teamPlayersOrSquadDataType[];
   setTopScorerData: (data: teamPlayersOrSquadDataType[]) => void;
+  oddsData: { clubName: string; odd: number }[];
+  setOddsData: (data: { clubName: string; odd: number }[]) => void;
 }
 
 export const useOneMatchDataStore = create<IOneMatchDataProps>((set) => ({
@@ -33,4 +35,6 @@ export const useOneMatchDataStore = create<IOneMatchDataProps>((set) => ({
   setLeagueTeams: (leagueTeams) => set({ leagueTeams }),
   topScorerData: [],
   setTopScorerData: (topScorerData) => set({ topScorerData }),
+  oddsData: [],
+  setOddsData: (oddsData) => set({ oddsData }),
 }));

@@ -21,7 +21,7 @@ interface IOddsTabProps {
 
 export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
   const [selectedItem, setSelectedItem] = useState<string>(odds[0]);
-  const { oneMatchData } = useOneMatchDataStore();
+  const { oneMatchData, oddsData: oddsFromAPI } = useOneMatchDataStore();
   return (
     <View>
       <View style={styles.btnListContainer}>
@@ -32,9 +32,9 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
         />
       </View>
       <View>
-        <SectionHeader
+        {/* <SectionHeader
           leftText={oneMatchData?.[0]?.league.name.toUpperCase()}
-          actionText=' '
+          actionText=" "
           containerStyle={{
             marginBottom:
               Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
@@ -42,8 +42,8 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
           leftTextStyle={{
             fontSize: moderateScale(11),
           }}
-        />
-        <FlatList
+        /> */}
+        {/* <FlatList
           data={oddsData}
           contentContainerStyle={{
             paddingVertical: moderateScale(10),
@@ -77,8 +77,9 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
                 paddingHorizontal: moderateScale(20),
                 borderBottomRightRadius: moderateScale(10),
                 borderBottomLeftRadius: moderateScale(10),
-              }}>
-              <CustomText type='medium' size={12} purple>
+              }}
+            >
+              <CustomText type="medium" size={12} purple>
                 See all
               </CustomText>
             </TouchableOpacity>
@@ -89,13 +90,13 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
           initialNumToRender={2}
           windowSize={2}
           updateCellsBatchingPeriod={100}
-        />
+        /> */}
       </View>
 
       <View>
         <SectionHeader
           leftText={oneMatchData?.[0]?.league.name.toUpperCase()}
-          actionText=' '
+          actionText=" "
           containerStyle={{
             marginBottom:
               Platform.OS === "ios" ? moderateScale(-10) : moderateScale(-20),
@@ -105,7 +106,7 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
           }}
         />
         <FlatList
-          data={oddsData}
+          data={oddsFromAPI}
           contentContainerStyle={{
             paddingVertical: moderateScale(10),
             marginTop: 0,
@@ -115,7 +116,8 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
             return (
               <Animated.View
                 entering={FadeIn.delay(index * 200).duration(800)} // increase to 800ms or more
-                key={index}>
+                key={index}
+              >
                 <OddsCard
                   oddsItem={item}
                   style={{
@@ -136,8 +138,9 @@ export const OddsTab: React.FC<IOddsTabProps> = ({ oddsData }) => {
                 paddingHorizontal: moderateScale(20),
                 borderBottomRightRadius: moderateScale(10),
                 borderBottomLeftRadius: moderateScale(10),
-              }}>
-              <CustomText type='medium' size={12} purple>
+              }}
+            >
+              <CustomText type="medium" size={12} purple>
                 See all
               </CustomText>
             </TouchableOpacity>

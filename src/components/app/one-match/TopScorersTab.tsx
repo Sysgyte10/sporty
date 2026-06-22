@@ -23,7 +23,7 @@ export const TopScorersTab: React.FC<IPlayersTabProps> = ({
       <TeamStatsTab
         goalScorerData={topScorerData}
         type="players"
-        showFilter={true}
+        showFilter={false}
         listFooterHeight={0.1}
         leftTitle={leftTitle}
         middleText={middleText}

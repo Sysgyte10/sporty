@@ -31,6 +31,7 @@ import {
   hockeyTeams,
   hockeyTeamStatistics,
   hockeyTimeZones,
+  keyStatsOfTeamsByLeagueSeasonTeamId,
   lineUpsOfTeams,
   liveCurrentFixtureLeagues,
   liveFixtureOfLeaguesByCountry,
@@ -61,6 +62,7 @@ import {
   teamsPlayerSquadByPlayerId,
   teamsPlayerSquadByTeamId,
   teamsSeasons,
+  TopScorerEntry,
   transfersPlayerByPlayerId,
   venuesById,
 } from "./types";
@@ -837,3 +839,33 @@ export type GetTopScorerOfLeagueAndSeasonResponse = {
   };
   response: lineUpsOfTeams[];
 };
+
+export type GetKeyStatsOfTeamsByLeagueSeasonTeamIdResponse = {
+  get: string;
+  parameters: {
+    league: string;
+    season: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: keyStatsOfTeamsByLeagueSeasonTeamId[];
+};
+
+export interface GetTopScorerOfLeagueAndSeasonResponse2 {
+  response: TopScorerEntry[];
+  // include other top-level fields here if your API wraps with paging/errors/etc.
+}
+
+export interface GetTopRedCardsOfLeagueAndSeasonResponse {
+  response: TopScorerEntry[];
+  // include other top-level fields here if your API wraps with paging/errors/etc.
+}
+
+export interface GetTopYellowCardsOfLeagueAndSeasonResponse {
+  response: TopScorerEntry[];
+  // include other top-level fields here if your API wraps with paging/errors/etc.
+}

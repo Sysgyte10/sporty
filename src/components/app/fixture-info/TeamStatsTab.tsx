@@ -2,7 +2,6 @@ import { useOneMatchDataStore } from "@src/api/store/app";
 import { GoalScorerCard } from "@src/cards";
 import { ButtonList, SectionHeader } from "@src/common";
 import { CustomText } from "@src/components/shared";
-import { teamStats } from "@src/constants/fixtures";
 import { DVH, moderateScale } from "@src/resources/responsiveness";
 import {
   teamPlayersOrSquadDataType,
@@ -56,7 +55,7 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
       <View>
         <SectionHeader
           leftText={selectedBtn}
-          actionText='  '
+          actionText="  "
           containerStyle={{
             marginBottom:
               Platform.OS === "ios" ? moderateScale(-15) : moderateScale(-20),
@@ -80,19 +79,20 @@ export const TeamStatsTab: React.FC<ITeamStatsTabProps> = ({
           ListHeaderComponent={
             <View style={styles.flatListHeaderStyle}>
               <CustomText
-                type='bold'
+                type="bold"
                 size={12}
                 white
                 style={{
                   textAlign: "left",
                   width: leftTitle ? "35%" : "42%",
-                }}>
+                }}
+              >
                 {leftTitle || `Goal Scored`}
               </CustomText>
-              <CustomText type='bold' size={12} white>
+              <CustomText type="bold" size={12} white>
                 {middleText || `Per game`}
               </CustomText>
-              <CustomText type='bold' size={12} white>
+              <CustomText type="bold" size={12} white>
                 {rightText || `Total`}
               </CustomText>
             </View>
