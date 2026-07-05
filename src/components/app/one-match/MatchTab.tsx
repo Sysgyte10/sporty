@@ -850,29 +850,36 @@ import { CustomText } from "@src/components/shared";
 import { DVH, DVW, moderateScale } from "@src/resources/responsiveness";
 import { ScrollContainer } from "@src/screens/ScrollContainer";
 import React, { useEffect, useState } from "react";
-import { Platform, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
-import { Image, ImageBackground } from "expo-image";
-import { TableTab } from "../fixture-info";
+import { Platform, StyleSheet, View } from "react-native";
+import { ImageBackground } from "expo-image";
 import SwitchToggle from "react-native-switch-toggle";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "@src/resources/color/color";
-import { oneMatchInfo } from "@src/constants/onematch";
 import { useOneMatchDataStore } from "@src/api/store/app";
-import { getMatchStatus, getPlayerStyle, groupByRow } from "@src/helper/utils";
+import {
+  getMatchStatus,
+  groupByRow,
+  transformStatistics,
+} from "@src/helper/utils";
 import {
   getKeyStatsOfTeamsByLeagueSeason,
   getLineUpsOfTeams,
-  getTopScorerOfLeagueAndSeason,
   getTopScorerOfLeagueAndSeason2,
   getTopYellowCardsOfLeagueAndSeason,
   getTopRedCardsOfLeagueAndSeason,
+  getStatisticsOfFixturesByFixtureId,
 } from "@src/api/services/football/football.service";
-import { lineUpsOfTeams, TopScorerEntry } from "@src/api/types/types";
+import {
+  lineUpsOfTeams,
+  StatisticsOfFeatures,
+  TopScorerEntry,
+} from "@src/api/types/types";
 
-type KeyStat = {
+export type KeyStat = {
   title: string;
   clubName: string;
-  stats: number[];
+  stats: [number, number]; // numeric, used for bar flex
+  displayStats: [string | number, string | number]; // shown as text
 };
 
 type PlayerStatInfo = {
@@ -951,6 +958,7 @@ export const MatchTab: React.FC<IMatchTabProps> = ({
     null,
   );
   const [redCardInfo, setRedCardInfo] = useState<PlayerStatInfo[] | null>(null);
+  const [statistics, setStatistics] = useState<KeyStat[] | null>(null);
 
   useEffect(() => {
     const initializeData = async () => {
@@ -973,7 +981,7 @@ export const MatchTab: React.FC<IMatchTabProps> = ({
   }, []);
 
   useEffect(() => {
-    if (loading || !lineUps) {
+    if (loading || !lineUps?.startXI?.length) {
       return;
     }
     const grouped = groupByRow(lineUps.startXI);
@@ -1107,6 +1115,26 @@ export const MatchTab: React.FC<IMatchTabProps> = ({
     initializeGetTopStats();
   }, [leagueId]);
 
+  useEffect(() => {
+    const initiateGetKeyStats = async () => {
+      setLoading(true);
+      try {
+        const data = await getStatisticsOfFixturesByFixtureId(
+          Number(fixtureId),
+        );
+        if (data) {
+          setStatistics(transformStatistics(data));
+        }
+      } catch (error) {
+        console.error("Error fetching fixture statistics:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initiateGetKeyStats(); // ← this call was missing
+  }, [fixtureId]);
+
   return (
     <ScrollContainer style={styles.scrollContainer}>
       <View style={styles.timeLineCard}>
@@ -1219,18 +1247,11 @@ export const MatchTab: React.FC<IMatchTabProps> = ({
         )}
       />
 
-      {/* <TableTab
-        goalScorerData={leagueTeams}
-        leftText={oneMatchData?.[0]?.league.name.toUpperCase()}
-        leftTitleText="Club Names"
-        middleTitleText="Venue"
-      /> */}
-
       <View style={styles.keyStatsContainer}>
-        {keyStatsData?.map((item, index) => (
+        {statistics?.map((item, index) => (
           <View key={index} style={styles.keyStatRow}>
             <CustomText size={12} type="semi-bold" lightGrey>
-              {item.stats[0]}
+              {item.displayStats[0]}
             </CustomText>
 
             <View style={styles.statCenter}>
@@ -1254,7 +1275,6 @@ export const MatchTab: React.FC<IMatchTabProps> = ({
                     },
                   ]}
                 />
-
                 <View
                   style={[
                     styles.rightBar,
@@ -1269,78 +1289,11 @@ export const MatchTab: React.FC<IMatchTabProps> = ({
             </View>
 
             <CustomText size={12} type="semi-bold" lightGrey>
-              {item.stats[1]}
+              {item.displayStats[1]}
             </CustomText>
           </View>
         ))}
       </View>
-      {/* </View> */}
-
-      {/* <View style={styles.timeLineCard}>
-        <CustomText type="medium" size={12} lightGrey>
-          Relevant Matches
-        </CustomText>
-      </View>
-
-      <CustomText
-        type="semi-bold"
-        size={12}
-        lightGrey
-        style={{ textAlign: "center", paddingVertical: moderateScale(10) }}
-      >
-        JUNE 19 (FT)
-      </CustomText> */}
-
-      {/* {Array.from({ length: 2 }).map((_, index) => (
-        <View style={styles.scoreContainerCard}>
-          <View style={styles.scoreContainer}>
-            <View style={styles.clubImgContainer}>
-              <Image
-                source={
-                  index === 0
-                    ? require("@src/assets/png/totheham.png")
-                    : require("@src/assets/png/liverpool.png")
-                }
-                contentFit="fill"
-                style={styles.clubImg}
-              />
-            </View>
-            <CustomText type="bold" size={20} white>
-              {index === 0 ? "1 - 0" : "0 - 1"}
-            </CustomText>
-            <View style={styles.clubImgContainer}>
-              <Image
-                source={
-                  index === 0
-                    ? require("@src/assets/png/chelsea.png")
-                    : require("@src/assets/png/arsenal.png")
-                }
-                contentFit="fill"
-                style={styles.clubImg}
-              />
-            </View>
-          </View>
-          <View
-            style={[
-              styles.scoreContainer,
-              {
-                paddingHorizontal: moderateScale(15),
-                paddingBottom: moderateScale(10),
-              },
-            ]}
-          >
-            <CustomText type="semi-bold" size={10} lightGrey>
-              {index === 0 ? "TOTHEHAM" : "LIVERPOOL"}
-            </CustomText>
-            <CustomText type="semi-bold" size={10} lightGrey>
-              FINISHED
-            </CustomText>
-            <CustomText type="semi-bold" size={10} lightGrey>
-              {index === 0 ? "CHELSEA" : "ARSENAL"}
-            </CustomText>
-          </View>
-        </View>
-      ))} */}
 
       <View
         style={[
@@ -1370,62 +1323,6 @@ export const MatchTab: React.FC<IMatchTabProps> = ({
             />
           </View>
         </View>
-        {/* <View
-          style={{
-            width: "100%",
-            height: DVH(47),
-            overflow: "hidden",
-          }}>
-          <ImageBackground
-            contentFit='fill'
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-            source={require("@src/assets/jpg/football-field.jpg")}>
-            <View style={{ flex: 1 }}>
-              {Object.entries(grouped).map(([row, players]: any) =>
-                players.map((player: any, index: number) => {
-                  const style = getPlayerStyle(
-                    Number(row),
-                    index,
-                    players.length,
-                  );
-
-                  return (
-                    <View key={player.id} style={style as StyleProp<ViewStyle>}>
-                      <View
-                        style={{
-                          width: 50,
-                          height: 50,
-                          borderRadius: 25,
-                          backgroundColor: `#${lineUps.team.colors.player.primary}`,
-                          justifyContent: "center",
-                          alignItems: "center",
-                          borderWidth: 2,
-                          borderColor: `#${lineUps.team.colors.player.border}`,
-                        }}>
-                        <CustomText type='bold' white size={12}>
-                          {player.name.split(" ").pop()}
-                        </CustomText>
-                      </View>
-
-                      <CustomText
-                        white
-                        size={10}
-                        style={{
-                          marginTop: 4,
-                          textAlign: "center",
-                        }}>
-                        {player?.name}
-                      </CustomText>
-                    </View>
-                  );
-                }),
-              )}
-            </View>
-          </ImageBackground>
-        </View> */}
 
         <View
           style={{

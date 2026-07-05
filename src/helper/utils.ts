@@ -1,3 +1,5 @@
+import { StatisticsOfFeatures } from "@src/api/types/types";
+import { KeyStat } from "@src/components/app/one-match";
 import { QueryClient } from "@tanstack/react-query";
 import * as Network from "expo-network";
 
@@ -87,10 +89,12 @@ const parseGrid = (grid: string) => {
   return { row, col };
 };
 
-export const groupByRow = (players: any[]) => {
+export const groupByRow = (players: any[] | null | undefined) => {
+  if (!Array.isArray(players)) return {} as Record<number, any[]>;
+
   return players.reduce(
     (acc, item) => {
-      const grid = item.player.grid;
+      const grid = item?.player?.grid;
       if (!grid) return acc;
 
       const { row } = parseGrid(grid);
@@ -112,4 +116,53 @@ export const getPlayerStyle = (row: number, index: number, total: number) => {
     transform: [{ translateX: -25 }],
     alignItems: "center" as const,
   };
+};
+
+export const parseStatValue = (value: string | number | null): number => {
+  if (value === null || value === undefined) return 0;
+  if (typeof value === "number") return value;
+  const parsed = parseFloat(value.replace("%", ""));
+  return isNaN(parsed) ? 0 : parsed;
+};
+
+const STAT_TITLES = [
+  "Shots on Goal",
+  "Shots off Goal",
+  "Total Shots",
+  "Blocked Shots",
+  "Shots insidebox",
+  "Shots outsidebox",
+  "Fouls",
+  "Corner Kicks",
+  "Offsides",
+  "Ball Possession",
+  "Yellow Cards",
+  "Red Cards",
+  "Goalkeeper Saves",
+  "Total passes",
+  "Passes accurate",
+  "Passes %",
+];
+
+export const transformStatistics = (
+  data: StatisticsOfFeatures[],
+): KeyStat[] => {
+  if (!data || data.length < 2) return [];
+
+  const [teamOneData, teamTwoData] = data;
+
+  return STAT_TITLES.map((title) => {
+    const teamOneStat = teamOneData.statistics.find((s) => s.type === title);
+    const teamTwoStat = teamTwoData.statistics.find((s) => s.type === title);
+
+    const teamOneValue = teamOneStat?.value ?? 0;
+    const teamTwoValue = teamTwoStat?.value ?? 0;
+
+    return {
+      title,
+      clubName: teamOneData.team.name,
+      stats: [parseStatValue(teamOneValue), parseStatValue(teamTwoValue)],
+      displayStats: [teamOneValue ?? 0, teamTwoValue ?? 0],
+    };
+  });
 };

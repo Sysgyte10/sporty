@@ -1798,3 +1798,27 @@ export interface TopScorerEntry {
     };
   }>;
 }
+
+export type StatisticsOfFeatures = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+  };
+  statistics: {
+    type: string;
+    value: number;
+  }[];
+};
+
+export type StatisticsByTeamIdFixtureIdType = {
+  team: {
+    id: number;
+    name: string;
+    logo: string;
+  };
+  statistics: {
+    type: string;
+    value: number;
+  }[];
+};

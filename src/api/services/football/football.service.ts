@@ -23,6 +23,8 @@ import {
   GetStandingsByLeagueIdSeasonTeamIdResponse,
   GetStandingsByLeagueSeasonResponse,
   GetStandingsByTeamResponse,
+  GetStatisticsByTeamIdFixtureId,
+  GetStatisticsOfFixture,
   GetTeamPlayersOrSquad,
   GetTeamsByCountryResponse,
   GetTeamsByIdResponse,
@@ -66,6 +68,8 @@ import {
   standingsByLeagueIdSeasonTeamId,
   standingsByLeagueSeason,
   standingsByTeam,
+  StatisticsByTeamIdFixtureIdType,
+  StatisticsOfFeatures,
   teamPlayersOrSquad,
   teamsById,
   teamsByLeagueAndSeason,
@@ -733,6 +737,38 @@ export const getTopYellowCardsOfLeagueAndSeason = async (
     return responseData?.response ?? [];
   } catch (err: unknown) {
     console.error("Error fetching top yellow cards of league and season", err);
+    return [];
+  }
+};
+
+export const getStatisticsOfFixturesByFixtureId = async (
+  fixtureId: number,
+): Promise<StatisticsOfFeatures[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/fixtures/statistics/fixtureId?fixtureId=${fixtureId}`,
+    );
+    const responseData: GetStatisticsOfFixture = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: unknown) {
+    console.error("Error fetching statistics of features", err);
+    return [];
+  }
+};
+
+export const getStatisticsByTeamIdAndFixtureIdAndType = async (
+  fixtureId: number,
+  teamId: number,
+  type: string,
+): Promise<StatisticsByTeamIdFixtureIdType[]> => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/ApiFootball/fixtures/statistics/fixtureId?fixtureId=${fixtureId}`,
+    );
+    const responseData: GetStatisticsByTeamIdFixtureId = await response?.json();
+    return responseData?.response ?? [];
+  } catch (err: unknown) {
+    console.error("Error fetching statistics", err);
     return [];
   }
 };

@@ -52,6 +52,8 @@ import {
   standingsByLeagueIdSeasonTeamId,
   standingsByLeagueSeason,
   standingsByTeam,
+  StatisticsByTeamIdFixtureIdType,
+  StatisticsOfFeatures,
   teamPlayersOrSquad,
   teamsByCountry,
   teamsById,
@@ -868,4 +870,33 @@ export interface GetTopRedCardsOfLeagueAndSeasonResponse {
 export interface GetTopYellowCardsOfLeagueAndSeasonResponse {
   response: TopScorerEntry[];
   // include other top-level fields here if your API wraps with paging/errors/etc.
+}
+
+export interface GetStatisticsOfFixture {
+  get: string;
+  parameters: {
+    fixture: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: StatisticsOfFeatures[];
+  // include other top-level fields here if your API wraps with paging/errors/etc.
+}
+
+export interface GetStatisticsByTeamIdFixtureId {
+  get: string;
+  parameters: {
+    fixture: string;
+  };
+  errors: unknown[];
+  results: number;
+  paging: {
+    current: number;
+    total: number;
+  };
+  response: StatisticsByTeamIdFixtureIdType[];
 }
